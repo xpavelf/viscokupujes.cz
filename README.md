@@ -1,0 +1,1 @@
+# viscokupujes.cz

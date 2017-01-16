@@ -1,0 +1,168 @@
+
+@import "./reset.css";
+@import "~react-searchbox/dist/react-searchbox.css";
+
+  button {
+  cursor: pointer;
+}
+
+/**************************/
+/*********** App **********/
+/**************************/
+.App {
+  max-width: 800px;
+  margin: 0 auto 0 auto;
+  background-color: #f8f6ed
+}
+
+.App__content {
+  padding: 5px;
+}
+/**************************/
+/******* Toolbar **********/
+/**************************/
+.Toolbar {
+  background-color: #3cb73c;
+  position: relative;
+  height: 65px;
+  border-bottom: 3px solid #319631;
+}
+
+.Toolbar__title {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+  text-align: center;
+  text-shadow: 1px 1px 3px #222;
+  line-height: 50px;
+}
+
+.Toolbar__title img {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.Toolbar__searchButton {
+  background: transparent;
+  border: none;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 10px;
+  fill: white;
+}
+
+/****************************/
+/********* SearchBox ********/
+/****************************/
+
+.SearchBox,
+.SearchBox__input,
+.SearchBox__clearButton,
+.SearchBox__backButton {
+  font-family: 'Roboto', sans-serif;
+}
+
+.SearchBox__input {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  height: 55px;
+  margin: 5px;
+  width: calc(100% - 10px);
+}
+
+.SearchBox__link {
+  padding: 6px;
+}
+
+.SearchBox__Product-name {
+  padding-bottom: 6px;
+  display: block;
+  font-size: 16px;
+}
+
+.SearchBox__Product-producer {
+  font-size: 13px;
+  color: #bbb;
+}
+
+/**************************/
+/********* Product ********/
+/**************************/
+
+.Product {
+  padding: 10px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.Product__name {
+  padding-bottom: 10px;
+  display: block;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.Product__producer {
+  font-size: 15px;
+  color: #bbb;
+
+}
+
+.Product__nutrition-facts {
+  border: 2px solid black;
+  padding: 10px;
+  border-collapse: separate;
+  background-color: white;
+  margin: 10px auto;
+}
+
+.Product__nutrition-facts td {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.Product__nutrition-facts caption {
+  border: 2px solid black;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.Product__nutrition-facts caption div {
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.Product__e {
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  font-size: 25px;
+  font-family: 'Patrick Hand', cursive;
+  line-height: 70px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 7px;
+  text-transform: capitalize;
+}
+
+.Product__e--0 {
+  background-color: #3cb73c;
+  background-image: linear-gradient(#3cb73c, #319631);
+}
+
+.Product__e--1 {
+  background-color: #ffcc00;
+  background-image: linear-gradient(#ffd265, #ffcc00);
+}
+
+.Product__e--2 {
+
+  background-color: #ff5353;
+  background-image: linear-gradient(#ff5353, #bb0000);
+}
