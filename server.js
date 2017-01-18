@@ -1,3 +1,4 @@
+const http = require("http");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -17,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', express.static('public'));
 
-const port = process.env.PORT || 8989;
+const port = process.env.PORT || process.env.NODE_PORT || 8989;
+const ipaddr =  process.env.NODE_IP || 'localhost';
 
 const router = express.Router();
 
@@ -65,7 +67,8 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
   res.json(_map_e(product));
 });
 
-const server = app.listen(port, () => {
+const server = http.createServer(app);
+server.listen(port, ipaddr, () => {
   let host = server.address().address;
   let port = server.address().port;
 
