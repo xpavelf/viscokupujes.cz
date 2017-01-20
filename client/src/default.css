@@ -45,10 +45,10 @@
 .Toolbar__searchButton {
   background: transparent;
   border: none;
-  height: 32px;
-  width: 32px;
+  height: 45px;
+  width: 45px;
   position: absolute;
-  top: calc(50% - 16px);
+  top: calc(50% - 20px);
   right: 10px;
   fill: white;
 }
@@ -173,7 +173,7 @@
   border: 3px solid gray;
   width: 500px;
   min-height: 200px;
-  z-index: 11;
+  z-index: 21;
   top: 15%;
   left: 5%;
   width: 90%;
@@ -191,11 +191,12 @@
 }
 
 .Ecko-modal__title {
-
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .Ecko-modal__content {
-  padding-top: 20px;
+  padding-top: 15px;
   text-align: justify;
 }
 
@@ -212,6 +213,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10;
-  background-color: rgba(50,50,50,.25);
+  z-index: 20;
+  background-color: rgba(0, 0, 0, .5);
 }

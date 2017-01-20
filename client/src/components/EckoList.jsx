@@ -19,11 +19,11 @@ export default class EckoList extends React.Component {
   }
 
   getModal(e) {
-
     return (
       <div className="Ecko-modal">
         <div className="Ecko-modal__title">
           <div className={"Ecko Ecko--" + e.rating}>{e.id}</div>
+          &nbsp;&nbsp;{e.names[0]}
           <button onClick={this.hide} className="Ecko-modal__btnClose">✕</button>
         </div>
         <div className="Ecko-modal__content">{e.desc}</div>

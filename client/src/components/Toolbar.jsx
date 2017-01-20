@@ -14,12 +14,12 @@ import {
 const nullSuggestionComp = (
   <ReactSuggestion>
     <img height="15" src={imgProgressbar} />
-    &nbsp;&nbsp;&nbsp;Vyhledavam...
+    &nbsp;&nbsp;&nbsp;Vyhledávám...
   </ReactSuggestion>
 )
 
 const emptySuggestionComp = (
-  <ReactSuggestion>Nenasli jsme zadny produkt... &#x2639;</ReactSuggestion>
+  <ReactSuggestion>Nenašli jsme žádný produkt... &#x2639;</ReactSuggestion>
 )
 
 const Suggestion = (props) => {

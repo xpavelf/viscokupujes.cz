@@ -220,13 +220,13 @@
 	  _reactSearchbox.Suggestion,
 	  null,
 	  _react2.default.createElement("img", { height: "15", src: _progressbar2.default }),
-	  "\xA0\xA0\xA0Vyhledavam..."
+	  "\xA0\xA0\xA0Vyhled\xE1v\xE1m..."
 	);
 
 	var emptySuggestionComp = _react2.default.createElement(
 	  _reactSearchbox.Suggestion,
 	  null,
-	  "Nenasli jsme zadny produkt... \u2639"
+	  "Nena\u0161li jsme \u017E\xE1dn\xFD produkt... \u2639"
 	);
 
 	var Suggestion = function Suggestion(props) {
@@ -1053,7 +1053,7 @@
 	          "button",
 	          { className: "SearchBox__clearButton",
 	            onClick: this.clearInput },
-	          "x"
+	          "\u2715"
 	        ),
 	        _react2.default.createElement(_SuggestionList2.default, {
 	          show: this.state.showSuggestionList,
@@ -1481,7 +1481,6 @@
 	  _createClass(EckoList, [{
 	    key: "getModal",
 	    value: function getModal(e) {
-
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "Ecko-modal" },
@@ -1493,6 +1492,8 @@
 	            { className: "Ecko Ecko--" + e.rating },
 	            e.id
 	          ),
+	          "\xA0\xA0",
+	          e.names[0],
 	          _react2.default.createElement(
 	            "button",
 	            { onClick: this.hide, className: "Ecko-modal__btnClose" },
@@ -1556,10 +1557,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _EckoList = __webpack_require__(20);
-
-	var _EckoList2 = _interopRequireDefault(_EckoList);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1567,8 +1564,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var earr = [{ id: "e150d", rating: 1, names: ["Amoniak", "Sulfitový karamel"] }, { id: "e290", rating: 0, names: ["Oxid uhličitý", "Suchý led"] }, { id: "e330", rating: 0, names: ["Kyselina citronová", "Kyselinou citronovou"] }, { id: "e338", rating: 0, names: ["Kyselina fosforečná", "Kyseliny fosforečná"] }, { id: "e950", rating: 2, names: ["Acesulfam K", "Acesulfam-k"] }, { id: "e951", rating: 2, names: ["Aspartam"] }, { id: "e952", rating: 2, names: ["Cyklamáty", "Cyklamát"], desc: "fda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fa" }];
 
 	var AboutUs = function (_React$Component) {
 	  _inherits(AboutUs, _React$Component);
@@ -2594,7 +2589,7 @@
 	exports.i(__webpack_require__(37), "");
 
 	// module
-	exports.push([module.id, "\nbutton {\n  cursor: pointer;\n}\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 32px;\n  width: 32px;\n  position: absolute;\n  top: calc(50% - 16px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  min-height: 200px;\n  z-index: 11;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 10px;\n}\n\n.Ecko-modal__btnClose {\n  float: right;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n\n}\n\n.Ecko-modal__content {\n  padding-top: 20px;\n  text-align: justify;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  background-color: rgba(50,50,50,.25);\n}\n", ""]);
+	exports.push([module.id, "\nbutton {\n  cursor: pointer;\n}\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  min-height: 200px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 10px;\n}\n\n.Ecko-modal__btnClose {\n  float: right;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n  text-align: justify;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
 
 	// exports
 
@@ -2678,7 +2673,7 @@
 
 
 	// module
-	exports.push([module.id, "/**************************/\r\n/***** SearchBox **********/\r\n/**************************/\r\n.SearchBox {\r\n  position: relative;\r\n}\r\n\r\n.SearchBox__input {\r\n  position: relative;\r\n  font-size: 20px;\r\n  z-index: 11;\r\n  padding: 15px 50px 10px 10px;\r\n  border: none;\r\n  display: inline-block;\r\n  width: 100%;\r\n}\r\n.SearchBox__clearButton {\r\n  position: absolute;\r\n  background: transparent;\r\n  border: none;\r\n  z-index: 12;\r\n  font-size: 20px;\r\n  top: calc(50% - 16px);\r\n  right: 5px;\r\n  height: 32px;\r\n  width: 32px;\r\n}\r\n\r\n.SearchBox__backButton {\r\n  position: absolute;\r\n  background: transparent;\r\n  border: none;\r\n  z-index: 12;\r\n  font-size: 20px;\r\n  top: calc(50% - 16px);\r\n  left: 10px;\r\n  height: 32px;\r\n  width: 32px;\r\n}\r\n\r\n.SearchBox__backButton + .SearchBox__input {\r\n  padding-left: 50px;\r\n}\r\n\r\n/**************************/\r\n/***** SugestionList ******/\r\n/**************************/\r\n.SuggestionList {\r\n  display: none;\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: absolute;\r\n  max-height: 300px;\r\n  min-width: 300px;\r\n  overflow: auto;\r\n  border: 3px solid #003d50;\r\n  z-index: 11;\r\n  background-color: white;\r\n}\r\n\r\n.SuggestionList__backdrop {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 10;\r\n  background-color: rgba(50,50,50,.25);\r\n}\r\n\r\n.SuggestionList--open {\r\n  display: block;\r\n}\r\n/**************************/\r\n/****** Suggestion ********/\r\n/**************************/\r\n.Suggestion {\r\n  padding: 0px;\r\n}\r\n\r\n.Suggestion__block {\r\n  padding: 10px 10px;\r\n}\r\n\r\n.Suggestion__link {\r\n  margin: -10px -10px;\r\n  padding: 10px 10px;\r\n  border-bottom: 1px solid #ccc;\r\n  display: block;\r\n  text-decoration: none;\r\n  color: black;\r\n}\r\n\r\n\r\n.Suggestion__link:hover,\r\n.Suggestion__link:focus {\r\n  background-color: #eee;\r\n}\r\n", ""]);
+	exports.push([module.id, "/**************************/\r\n/***** SearchBox **********/\r\n/**************************/\r\n.SearchBox {\r\n  position: relative;\r\n}\r\n\r\n.SearchBox__input {\r\n  position: relative;\r\n  font-size: 20px;\r\n  z-index: 11;\r\n  padding: 15px 50px 10px 10px;\r\n  border: none;\r\n  display: inline-block;\r\n  width: 100%;\r\n}\r\n.SearchBox__clearButton {\r\n  position: absolute;\r\n  background: transparent;\r\n  border: none;\r\n  z-index: 12;\r\n  font-size: 20px;\r\n  top: calc(50% - 16px);\r\n  right: 5px;\r\n  height: 32px;\r\n  width: 32px;\r\n}\r\n\r\n.SearchBox__backButton {\r\n  position: absolute;\r\n  background: transparent;\r\n  border: none;\r\n  z-index: 12;\r\n  font-size: 20px;\r\n  top: calc(50% - 16px);\r\n  left: 10px;\r\n  height: 32px;\r\n  width: 32px;\r\n}\r\n\r\n.SearchBox__backButton + .SearchBox__input {\r\n  padding-left: 50px;\r\n}\r\n\r\n/**************************/\r\n/***** SugestionList ******/\r\n/**************************/\r\n.SuggestionList {\r\n  display: none;\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: absolute;\r\n  max-height: 300px;\r\n  min-width: 300px;\r\n  overflow: auto;\r\n  border: 3px solid #003d50;\r\n  z-index: 11;\r\n  background-color: white;\r\n}\r\n\r\n.SuggestionList__backdrop {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 10;\r\n  background-color: rgba(0, 0, 0, .5);\r\n}\r\n\r\n.SuggestionList--open {\r\n  display: block;\r\n}\r\n/**************************/\r\n/****** Suggestion ********/\r\n/**************************/\r\n.Suggestion {\r\n  padding: 0px;\r\n}\r\n\r\n.Suggestion__block {\r\n  padding: 10px 10px;\r\n}\r\n\r\n.Suggestion__link {\r\n  margin: -10px -10px;\r\n  padding: 10px 10px;\r\n  border-bottom: 1px solid #ccc;\r\n  display: block;\r\n  text-decoration: none;\r\n  color: black;\r\n}\r\n\r\n\r\n.Suggestion__link:hover,\r\n.Suggestion__link:focus {\r\n  background-color: #eee;\r\n}\r\n", ""]);
 
 	// exports
 
