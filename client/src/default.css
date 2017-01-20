@@ -137,8 +137,9 @@
   padding-top: 10px;
 }
 
-.Product__e {
+.Ecko {
   color: white;
+  border: none;
   width: 70px;
   height: 70px;
   border-radius: 35px;
@@ -151,18 +152,66 @@
   text-transform: capitalize;
 }
 
-.Product__e--0 {
+.Ecko--0 {
   background-color: #3cb73c;
   background-image: linear-gradient(#3cb73c, #319631);
 }
 
-.Product__e--1 {
+.Ecko--1 {
   background-color: #ffcc00;
   background-image: linear-gradient(#ffd265, #ffcc00);
 }
 
-.Product__e--2 {
-
+.Ecko--2 {
   background-color: #ff5353;
   background-image: linear-gradient(#ff5353, #bb0000);
+}
+
+.Ecko-modal {
+  position: fixed;
+  background-color: white;
+  border: 3px solid gray;
+  width: 500px;
+  min-height: 200px;
+  z-index: 11;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  padding: 10px;
+}
+
+.Ecko-modal__btnClose {
+  float: right;
+  background: transparent;
+  display: inline-block;
+  border: none;
+  font-size: 25px;
+  height: 40px;
+  width: 40px;
+}
+
+.Ecko-modal__title {
+
+}
+
+.Ecko-modal__content {
+  padding-top: 20px;
+  text-align: justify;
+}
+
+@media only screen and (min-width: 700px) {
+  .Ecko-modal {
+    width: 600px;
+    left: calc(50% - 300px);
+  }
+}
+
+.Ecko-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(50,50,50,.25);
 }

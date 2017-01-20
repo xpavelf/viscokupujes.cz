@@ -1,4 +1,5 @@
 import React from "react";
+import EckoList from "./EckoList";
 
 export default class Product extends React.Component {
   render() {
@@ -7,9 +8,7 @@ export default class Product extends React.Component {
       <div className="Product">
         <h2 className="Product__name">{prod.name}</h2>
         <small className="Product__producer">{prod.producer}</small>
-        <div>
-          { prod.e.map((gr) => Object.keys(gr).map(eKey => <div className={"Product__e Product__e--" + gr[eKey].rating} key={eKey}>{eKey}</div>)).reverse() }
-        </div>
+        <EckoList list={prod.e} />
         <table className="Product__nutrition-facts">
           <caption>Nutriční hodnoty{prod.nutr[0] ? <div>{prod.nutr[0]}</div> : ""}</caption>
           <tbody>

@@ -33,12 +33,7 @@ const _arr_filter = (arr, cb, limit) => {
 }
 
 const _map_e = (product) => {
-  let gr = product.e.reduce((acc, e) => {
-    let ind = ecka[e].rating;
-    acc[ind][e] = ecka[e];
-    return acc;
-  }, Array.of({}, {}, {}));
-
+  let gr = product.e.map(e => Object.assign({ id: e }, ecka[e]));
   return Object.assign({}, product, { e: gr });
 }
 

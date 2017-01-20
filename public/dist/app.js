@@ -60,11 +60,11 @@
 
 	var _reactRedux = __webpack_require__(6);
 
-	var _store = __webpack_require__(21);
+	var _store = __webpack_require__(22);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	__webpack_require__(32);
+	__webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -119,7 +119,7 @@
 
 	var _Product2 = _interopRequireDefault(_Product);
 
-	var _AboutUs = __webpack_require__(20);
+	var _AboutUs = __webpack_require__(21);
 
 	var _AboutUs2 = _interopRequireDefault(_AboutUs);
 
@@ -1345,6 +1345,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _EckoList = __webpack_require__(20);
+
+	var _EckoList2 = _interopRequireDefault(_EckoList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1379,19 +1383,7 @@
 	          { className: "Product__producer" },
 	          prod.producer
 	        ),
-	        _react2.default.createElement(
-	          "div",
-	          null,
-	          prod.e.map(function (gr) {
-	            return Object.keys(gr).map(function (eKey) {
-	              return _react2.default.createElement(
-	                "div",
-	                { className: "Product__e Product__e--" + gr[eKey].rating, key: eKey },
-	                eKey
-	              );
-	            });
-	          }).reverse()
-	        ),
+	        _react2.default.createElement(_EckoList2.default, { list: prod.e }),
 	        _react2.default.createElement(
 	          "table",
 	          { className: "Product__nutrition-facts" },
@@ -1459,6 +1451,125 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var EckoList = function (_React$Component) {
+	  _inherits(EckoList, _React$Component);
+
+	  function EckoList() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, EckoList);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EckoList.__proto__ || Object.getPrototypeOf(EckoList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { showBackdrop: false }, _this.onClick = function (ecko) {
+	      _this.setState({
+	        showBackdrop: true,
+	        selected: ecko
+	      });
+	    }, _this.hide = function () {
+	      _this.setState({
+	        showBackdrop: false,
+	        selected: null
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(EckoList, [{
+	    key: "getModal",
+	    value: function getModal(e) {
+
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "Ecko-modal" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "Ecko-modal__title" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "Ecko Ecko--" + e.rating },
+	            e.id
+	          ),
+	          _react2.default.createElement(
+	            "button",
+	            { onClick: this.hide, className: "Ecko-modal__btnClose" },
+	            "\u2715"
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "Ecko-modal__content" },
+	          e.desc
+	        )
+	      );
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+
+	      var arr = this.props.list.sort(function (a, b) {
+	        return b.rating - a.rating;
+	      });
+
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        arr.map(function (ecko) {
+	          return _react2.default.createElement(
+	            "button",
+	            { onClick: function onClick() {
+	                return _this2.onClick(ecko);
+	              }, className: "Ecko Ecko--" + ecko.rating, key: ecko.id },
+	            ecko.id
+	          );
+	        }),
+	        this.state.showBackdrop ? _react2.default.createElement("div", { className: "Ecko-backdrop", onClick: this.hide }) : null,
+	        this.state.showBackdrop ? this.getModal(this.state.selected) : null
+	      );
+	    }
+	  }]);
+
+	  return EckoList;
+	}(_react2.default.Component);
+
+	exports.default = EckoList;
+	;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _EckoList = __webpack_require__(20);
+
+	var _EckoList2 = _interopRequireDefault(_EckoList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var earr = [{ id: "e150d", rating: 1, names: ["Amoniak", "Sulfitový karamel"] }, { id: "e290", rating: 0, names: ["Oxid uhličitý", "Suchý led"] }, { id: "e330", rating: 0, names: ["Kyselina citronová", "Kyselinou citronovou"] }, { id: "e338", rating: 0, names: ["Kyselina fosforečná", "Kyseliny fosforečná"] }, { id: "e950", rating: 2, names: ["Acesulfam K", "Acesulfam-k"] }, { id: "e951", rating: 2, names: ["Aspartam"] }, { id: "e952", rating: 2, names: ["Cyklamáty", "Cyklamát"], desc: "fda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fafda fda fafd af dafdasff daf a fa" }];
+
 	var AboutUs = function (_React$Component) {
 	  _inherits(AboutUs, _React$Component);
 
@@ -1490,7 +1601,7 @@
 	;
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1499,21 +1610,21 @@
 	  value: true
 	});
 
-	var _redux = __webpack_require__(22);
+	var _redux = __webpack_require__(23);
 
-	var _reduxLogger = __webpack_require__(23);
+	var _reduxLogger = __webpack_require__(24);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reduxPromiseMiddleware = __webpack_require__(29);
+	var _reduxPromiseMiddleware = __webpack_require__(30);
 
 	var _reduxPromiseMiddleware2 = _interopRequireDefault(_reduxPromiseMiddleware);
 
-	var _reduxThunk = __webpack_require__(30);
+	var _reduxThunk = __webpack_require__(31);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(31);
+	var _reducers = __webpack_require__(32);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -1524,13 +1635,13 @@
 	exports.default = (0, _redux.createStore)(_reducers2.default, middleware);
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(2))(185);
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1541,11 +1652,11 @@
 	  value: true
 	});
 
-	var _core = __webpack_require__(24);
+	var _core = __webpack_require__(25);
 
-	var _helpers = __webpack_require__(25);
+	var _helpers = __webpack_require__(26);
 
-	var _defaults = __webpack_require__(28);
+	var _defaults = __webpack_require__(29);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -1648,7 +1759,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1658,9 +1769,9 @@
 	});
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(25);
+	var _helpers = __webpack_require__(26);
 
-	var _diff = __webpack_require__(26);
+	var _diff = __webpack_require__(27);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -1789,7 +1900,7 @@
 	}
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1813,7 +1924,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1823,7 +1934,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(27);
+	var _deepDiff = __webpack_require__(28);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -1909,7 +2020,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -2338,7 +2449,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2389,19 +2500,19 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(2))(209);
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(2))(208);
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2448,16 +2559,16 @@
 	;
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(33);
+	var content = __webpack_require__(34);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(37)(content, {});
+	var update = __webpack_require__(38)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2474,22 +2585,22 @@
 	}
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(34)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
-	exports.i(__webpack_require__(35), "");
 	exports.i(__webpack_require__(36), "");
+	exports.i(__webpack_require__(37), "");
 
 	// module
-	exports.push([module.id, "\nbutton {\n  cursor: pointer;\n}\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 32px;\n  width: 32px;\n  position: absolute;\n  top: calc(50% - 16px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Product__e {\n  color: white;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Product__e--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Product__e--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Product__e--2 {\n\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n", ""]);
+	exports.push([module.id, "\nbutton {\n  cursor: pointer;\n}\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 32px;\n  width: 32px;\n  position: absolute;\n  top: calc(50% - 16px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  min-height: 200px;\n  z-index: 11;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 10px;\n}\n\n.Ecko-modal__btnClose {\n  float: right;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n\n}\n\n.Ecko-modal__content {\n  padding-top: 20px;\n  text-align: justify;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 10;\n  background-color: rgba(50,50,50,.25);\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	/*
@@ -2545,10 +2656,10 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(34)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
 
 
@@ -2559,10 +2670,10 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(34)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
 
 
@@ -2573,7 +2684,7 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
