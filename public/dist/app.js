@@ -230,13 +230,33 @@
 	);
 
 	var Suggestion = function Suggestion(props) {
+	  var splitAt = function splitAt(hit, str, startpos) {
+	    return [str.slice(startpos, hit[0]), str.slice(hit[0], hit[1]), str.slice(hit[1])];
+	  };
+	  var hits = props.data.hits;
+	  var name = [];
+	  if (hits && hits.length) {
+	    for (var i = 0; i < hits.length; i++) {
+	      var prev = i === 0 ? 0 : hits[i - 1][1];
+	      var arr = splitAt(hits[i], props.data.name, prev);
+	      var end = i + 1 === hits.length ? arr[2] : null;
+	      name = name.concat(arr[0], _react2.default.createElement(
+	        "span",
+	        { className: "SearchBox__Product-highlight" },
+	        arr[1]
+	      ), end);
+	    }
+	  } else {
+	    name = props.data.name;
+	  }
+
 	  return _react2.default.createElement(
 	    _reactSearchbox.SuggestionLink,
 	    { data: props.data, onSelect: props.onSelect },
 	    _react2.default.createElement(
 	      "div",
 	      { className: "SearchBox__Product-name" },
-	      props.data.name
+	      name
 	    ),
 	    _react2.default.createElement(
 	      "div",
@@ -246,26 +266,26 @@
 	  );
 	};
 
-	var SearchBox = (_dec = (0, _reactRedux.connect)(function (store) {
+	var Toolbar = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {
 	    foundProducts: store.foundProducts,
 	    selectedProduct: store.selectedProduct
 	  };
 	}), _dec(_class = function (_React$Component) {
-	  _inherits(SearchBox, _React$Component);
+	  _inherits(Toolbar, _React$Component);
 
-	  function SearchBox() {
+	  function Toolbar() {
 	    var _ref;
 
 	    var _temp, _this, _ret;
 
-	    _classCallCheck(this, SearchBox);
+	    _classCallCheck(this, Toolbar);
 
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call.apply(_ref, [this].concat(args))), _this), _this.state = { showSearchBox: !!_this.props.selectedProduct }, _this.onChange = (0, _debounce2.default)(function (term) {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = { showSearchBox: !!_this.props.selectedProduct }, _this.onChange = (0, _debounce2.default)(function (term) {
 	      _this.props.dispatch((0, _Search.searchProduct)(term));
 	    }, 500), _this.onSelect = function (product) {
 	      _this.props.dispatch((0, _Search.selectProduct)(product));
@@ -275,7 +295,7 @@
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
-	  _createClass(SearchBox, [{
+	  _createClass(Toolbar, [{
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -318,9 +338,9 @@
 	    }
 	  }]);
 
-	  return SearchBox;
+	  return Toolbar;
 	}(_react2.default.Component)) || _class);
-	exports.default = SearchBox;
+	exports.default = Toolbar;
 
 /***/ },
 /* 6 */
@@ -1384,7 +1404,7 @@
 	          prod.producer
 	        ),
 	        _react2.default.createElement(_EckoList2.default, { list: prod.e }),
-	        _react2.default.createElement(
+	        prod.nutr ? _react2.default.createElement(
 	          "table",
 	          { className: "Product__nutrition-facts" },
 	          _react2.default.createElement(
@@ -1414,7 +1434,7 @@
 	              );
 	            })
 	          )
-	        ),
+	        ) : null,
 	        prod.ref
 	      );
 	    }
@@ -2592,7 +2612,7 @@
 	exports.i(__webpack_require__(37), "");
 
 	// module
-	exports.push([module.id, "\nbutton {\n  cursor: pointer;\n}\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
+	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
 
 	// exports
 

@@ -23,35 +23,48 @@ const ipaddr =  process.env.NODE_IP || 'localhost';
 
 const router = express.Router();
 
-const _arr_filter = (arr, cb, limit) => {
+const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const normalizeStr = (str) => removeDiacritics(str).toLowerCase();
+const regForTerm = (term) => RegExp(`\\b${escapeRegExp(term)}`, "g");
+const predicateWithHits = (term) => (prod) => {
+  let regx = regForTerm(normalizeStr(term));
+  let str = normalizeStr(prod.name);
+  let hits = [];
+  let match;
+  while (match = regx.exec(str)) {
+    hits.push([match.index, match.index + term.length]);
+  }
+
+  if (hits.length) {
+    return Object.assign({}, prod, { hits });
+  }
+
+  return null;
+}
+
+const arr_filter_with_map = (arr, cb, limit) => {
   let ret = [];
   for (let i = 0; i < arr.length && ret.length < limit; i++) {
     let val = arr[i];
-    if (cb(val, i, arr)) ret.push(val);
+    let res = cb(val, i, arr);
+    if (res) ret.push(res);
   }
   return ret;
 }
 
 const _map_e = (product) => {
-  let gr = product.e.map(e => Object.assign({ id: e }, ecka[e]));
-  return Object.assign({}, product, { e: gr });
+  let arr_e = product.e.map(e => Object.assign({ id: e }, ecka[e]));
+  return Object.assign({}, product, { e: arr_e});
 }
+
 
 app.get("/api/product", (req, res) => {
   let q = req.query.q;
   winston.info("product search '%s'", q);
+  const limit = 20;
+  const filtered = q ? arr_filter_with_map(products, predicateWithHits(q), 20) : products.slice(0, 20);
 
-  let term = removeDiacritics(q).toLowerCase();
-
-  const predicate = (product) => removeDiacritics(product.name)
-    .toLowerCase()
-    .split(" ")
-    .some(str => str.startsWith(term));
-
-  const filtered = _arr_filter(products, predicate, 20)
-    .map(_map_e);
-
-  res.json(filtered);
+  res.json(filtered.map(_map_e));
 });
 
 app.get("/api/product/:id(\\d+)", (req, res) => {

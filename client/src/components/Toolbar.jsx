@@ -23,9 +23,24 @@ const emptySuggestionComp = (
 )
 
 const Suggestion = (props) => {
+  const splitAt = (hit, str, startpos) => [str.slice(startpos, hit[0]), str.slice(hit[0], hit[1]), str.slice(hit[1])];
+  let hits = props.data.hits;
+  let name = [];
+  if (hits && hits.length) {
+    for (let i = 0; i < hits.length; i++) {
+      let prev = (i === 0) ? 0 : hits[i - 1][1];
+      let arr = splitAt(hits[i], props.data.name, prev);
+      let end = (i + 1 === hits.length) ? arr[2] : null;
+      name = name
+        .concat(arr[0], <span className="SearchBox__Product-highlight">{arr[1]}</span>, end);
+    }
+  } else {
+    name = props.data.name;
+  }
+
   return (
     <ReactSuggestionLink data={props.data} onSelect={props.onSelect}>
-      <div className="SearchBox__Product-name">{props.data.name}</div>
+      <div className="SearchBox__Product-name">{name}</div>
       <div className="SearchBox__Product-producer">{props.data.producer}</div>
     </ReactSuggestionLink>
   )
@@ -37,7 +52,7 @@ const Suggestion = (props) => {
     selectedProduct: store.selectedProduct
   }
 })
-export default class SearchBox extends React.Component {
+export default class Toolbar extends React.Component {
   state = { showSearchBox : !!this.props.selectedProduct }
 
   onChange = debounce((term) => {
