@@ -31,7 +31,7 @@
 .Toolbar__title {
   font-size: 30px;
   color: white;
-  margin: 0;
+  margin: 0 30px 0 0;
   text-align: center;
   text-shadow: 1px 1px 3px #222;
   line-height: 50px;
@@ -172,16 +172,17 @@
   background-color: white;
   border: 3px solid gray;
   width: 500px;
-  min-height: 200px;
   z-index: 21;
   top: 15%;
   left: 5%;
   width: 90%;
-  padding: 10px;
+  padding: 20px 10px;
 }
 
 .Ecko-modal__btnClose {
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   background: transparent;
   display: inline-block;
   border: none;
@@ -194,10 +195,14 @@
   font-size: 20px;
   font-weight: bold;
 }
+.Ecko-modal__title > * { display: table-cell; }
+.Ecko-modal__name {
+  padding-left: 10px;
+  vertical-align: middle;
+}
 
 .Ecko-modal__content {
   padding-top: 15px;
-  text-align: justify;
 }
 
 @media only screen and (min-width: 700px) {
