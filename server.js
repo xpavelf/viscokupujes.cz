@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const winston = require("winston");
-const products = require("./data.json");
+const products = require("../data/data.json");
 const ecka = require("./e.json");
 const removeDiacritics = require("diacritics").remove;
 
