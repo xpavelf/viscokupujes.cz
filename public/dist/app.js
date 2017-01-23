@@ -285,13 +285,14 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = { showSearchBox: !!_this.props.selectedProduct }, _this.onChange = (0, _debounce2.default)(function (term) {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = { showSearchBox: !_this.props.selectedProduct }, _this.goBack = function () {
+	      _this.props.dispatch((0, _Search.selectProduct)(null));
+	      _this.setState({ showSearchBox: true });
+	    }, _this.onChange = (0, _debounce2.default)(function (term) {
 	      _this.props.dispatch((0, _Search.searchProduct)(term));
 	    }, 500), _this.onSelect = function (product) {
 	      _this.props.dispatch((0, _Search.selectProduct)(product));
 	      _this.setState({ showSearchBox: false });
-	    }, _this.toggleSearchBox = function (visible) {
-	      _this.setState({ showSearchBox: visible });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -301,39 +302,38 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "Toolbar" },
-	        !this.state.showSearchBox ? _react2.default.createElement(
-	          "div",
-	          null,
+	        _react2.default.createElement(
+	          "h1",
+	          { className: "Toolbar__title" },
 	          _react2.default.createElement(
-	            "h1",
-	            { className: "Toolbar__title" },
+	            "button",
+	            { className: "Toolbar__backBtn", onClick: this.goBack },
 	            _react2.default.createElement("img", { src: _cart2.default }),
 	            _react2.default.createElement("img", { src: _logo2.default })
 	          ),
 	          _react2.default.createElement(
-	            "button",
-	            { className: "Toolbar__searchButton",
-	              onClick: this.toggleSearchBox.bind(null, true) },
+	            "a",
+	            { target: "_blank", href: "https://www.facebook.com/viscokupujes", title: "Facebook", className: "Toolbar__fbLink" },
 	            _react2.default.createElement(
 	              "svg",
-	              { viewBox: "0 0 1000 1000" },
-	              _react2.default.createElement("path", { d: "M954.7,855L774.6,674.8c-13.5-13.5-30.8-20.8-48.4-22.5c54.3-67.7,87-153.5,87-246.8C813.1,187.4,635.7,10,417.6,10S22.1,187.4,22.1,405.5S199.5,801,417.6,801c82.3,0,158.8-25.3,222.1-68.5c0.4,19.6,8,39.1,23,54.1l180.2,180.2c15.4,15.5,35.7,23.2,55.9,23.2c20.2,0,40.5-7.7,55.9-23.2C985.6,935.9,985.6,885.9,954.7,855z M417.6,669.2c-145.4,0-263.7-118.3-263.7-263.7s118.3-263.7,263.7-263.7s263.7,118.3,263.7,263.7S563,669.2,417.6,669.2z" })
+	              { height: "32", width: "32", viewBox: "0 0 512 512" },
+	              _react2.default.createElement("rect", { fill: "#319631", x: "0", y: "0", width: "512", height: "512" }),
+	              _react2.default.createElement("path", { fill: "white", d: "M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64 H288z" })
 	            )
 	          )
-	        ) : _react2.default.createElement(_reactSearchbox.SearchBox, {
+	        ),
+	        this.state.showSearchBox ? _react2.default.createElement(_reactSearchbox.SearchBox, {
 	          onChange: this.onChange,
 	          onSelect: this.onSelect,
-	          onBack: this.toggleSearchBox.bind(null, false),
-	          showBackButton: true,
 	          selectedToString: function selectedToString(data) {
 	            return "";
 	          },
-	          placeholder: "Najdi produkt...",
+	          placeholder: "Najdi v\xFDrobek...",
 	          suggestions: this.props.foundProducts,
 	          suggestionComp: Suggestion,
 	          nullSuggestionElm: nullSuggestionComp,
 	          emptySuggestionElm: emptySuggestionComp
-	        })
+	        }) : null
 	      );
 	    }
 	  }]);
@@ -1606,47 +1606,51 @@
 	        _react2.default.createElement(
 	          "p",
 	          { className: "AboutUs__text" },
-	          "Chc",
 	          _react2.default.createElement(
-	            "span",
-	            { className: "text-red" },
-	            "e"
-	          ),
-	          "\u0161 j\xEDst zdrav",
-	          _react2.default.createElement(
-	            "span",
-	            { className: "text-red" },
-	            "\u011B"
-	          ),
-	          "?",
-	          _react2.default.createElement("br", null),
-	          "N",
-	          _react2.default.createElement(
-	            "span",
-	            { className: "text-red" },
-	            "e"
-	          ),
-	          "vyzn\xE1\u0161 s",
-	          _react2.default.createElement(
-	            "span",
-	            { className: "text-red" },
-	            "e"
-	          ),
-	          " v ",
-	          _react2.default.createElement(
-	            "span",
-	            { className: "text-red" },
-	            "\xC9"
-	          ),
-	          "\u010Dk\xE1ch?",
-	          _react2.default.createElement("br", null),
-	          "M\xE1\u0161 dost n",
-	          _react2.default.createElement(
-	            "span",
-	            { className: "text-red" },
-	            "e"
-	          ),
-	          "kvalitn\xEDch v\xFDrobk\u016F?"
+	            "strong",
+	            null,
+	            "Chc",
+	            _react2.default.createElement(
+	              "span",
+	              { className: "text-red" },
+	              "e"
+	            ),
+	            "\u0161 j\xEDst zdrav",
+	            _react2.default.createElement(
+	              "span",
+	              { className: "text-red" },
+	              "\u011B"
+	            ),
+	            "?",
+	            _react2.default.createElement("br", null),
+	            "N",
+	            _react2.default.createElement(
+	              "span",
+	              { className: "text-red" },
+	              "e"
+	            ),
+	            "vyzn\xE1\u0161 s",
+	            _react2.default.createElement(
+	              "span",
+	              { className: "text-red" },
+	              "e"
+	            ),
+	            " v ",
+	            _react2.default.createElement(
+	              "span",
+	              { className: "text-red" },
+	              "\xC9"
+	            ),
+	            "\u010Dk\xE1ch?",
+	            _react2.default.createElement("br", null),
+	            "M\xE1\u0161 dost n",
+	            _react2.default.createElement(
+	              "span",
+	              { className: "text-red" },
+	              "e"
+	            ),
+	            "kvalitn\xEDch v\xFDrobk\u016F?"
+	          )
 	        ),
 	        _react2.default.createElement(
 	          "div",
@@ -1654,17 +1658,13 @@
 	          _react2.default.createElement(
 	            "p",
 	            null,
-	            "A proto\u017Ee n\xE1s u\u017E taky nebavilo st\xE1t v supermarketu, lu\u0161tit mal\xE1 p\xEDsmenka na obalech a hledat schovan\xE1 \xE9\u010Dka v textu, rozhodli jsme se p\u0159ij\xEDt s aplikac\xED ",
+	            " Vytvo\u0159ili jsme ti aplikaci ",
 	            _react2.default.createElement(
 	              "strong",
 	              null,
 	              "V\xED\u0161CoKupuje\u0161"
 	            ),
-	            ". Sta\u010D\xED jen naj\xEDt v\xFDrobek kliknut\xEDm na lupu v prav\xE9m horn\xEDm rohu."
-	          ),
-	          _react2.default.createElement(
-	            "p",
-	            null,
+	            ", proto\u017Ee n\xE1s u\u017E nebavilo st\xE1t v supermarketu, lu\u0161tit mal\xE1 p\xEDsmenka na obalech a hledat schovan\xE1 \xE9\u010Dka v textu. ",
 	            _react2.default.createElement(
 	              "strong",
 	              null,
@@ -1689,13 +1689,19 @@
 	          _react2.default.createElement(
 	            "p",
 	            null,
-	            "Zat\xEDm m\xE1me datab\xE1zi asi 12 000 v\xFDrobk\u016F. Jsme jen oby\u010Dejn\xED lidi jako ty, co cht\u011Bj\xED kupovat a j\xEDst kvalitn\u011Bj\u0161\xED potraviny. Nikdo n\xE1s nesponzoruje ani neovliv\u0148uje. Proto budeme r\xE1di, kdy\u017E na\u0161i aplikaci ",
+	            "Zat\xEDm m\xE1me datab\xE1zi asi 12 000 v\xFDrobk\u016F. Nikdo n\xE1s nesponzoruje ani neovliv\u0148uje. Jsme jen oby\u010Dejn\xED lidi jako ty, co cht\u011Bj\xED kupovat a j\xEDst kvalitn\u011Bj\u0161\xED potraviny. Proto budeme r\xE1di, kdy\u017E na\u0161i aplikaci ",
 	            _react2.default.createElement(
 	              "strong",
 	              null,
 	              "V\xED\u0161CoKupuje\u0161"
 	            ),
-	            " bude\u0161 sd\xEDlet p\u0159es Facebook a \u0159ekne\u0161 o n\xED sv\xFDm kamar\xE1d\u016Fm. Pokud se ti na n\xED n\u011Bco nel\xEDb\xED, dej to v\u011Bd\u011Bt n\xE1m, a\u0165 m\xE1me co zlep\u0161ovat."
+	            " bude\u0161 sd\xEDlet p\u0159es ",
+	            _react2.default.createElement(
+	              "a",
+	              { target: "_blank", href: "https://www.facebook.com/viscokupujes/" },
+	              "Facebook"
+	            ),
+	            " a \u0159ekne\u0161 o n\xED sv\xFDm kamar\xE1d\u016Fm. Pokud se ti na n\xED n\u011Bco nel\xEDb\xED, dej to v\u011Bd\u011Bt n\xE1m, a\u0165 m\xE1me co zlep\u0161ovat."
 	          )
 	        )
 	      );
@@ -2702,7 +2708,7 @@
 	exports.i(__webpack_require__(37), "");
 
 	// module
-	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\nstrong { font-weight: bold; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px 5px 50px 5px;\n}\n\n.AboutUs__text {\n  padding-top: 10px;\n  text-align: center;\n  font-size: 25px;\n  font-family: 'Roboto', sans-serif;\n  color: #206320;\n  line-height: 35px;\n}\n\n.AboutUs .text-red {\n  color: red;\n}\n\n.AboutUs__ecka {\n  text-align: center;\n  padding-top: 10px;\n  font-family: 'Roboto', sans-serif;\n}\n\n.AboutUs__ecka p {\n  text-align: justify;\n  font-size: 15px;\n  line-height: 16px;\n  padding-top: 10px;\n}\n\n.AboutUs__ecka .Ecko {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 60px;\n  height: 60px;\n  border-radius: 35px;\n  font-size: 21px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 60px;\n  text-align: center;\n  display: inline-block;\n  margin: 5px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
+	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\nstrong { font-weight: bold; }\na { color: blue; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n}\n\n.App__content {\n  padding: 5px 5px 50px 5px;\n}\n\n.AboutUs__text {\n  padding-top: 10px;\n  text-align: center;\n  font-size: 25px;\n  font-family: 'Roboto', sans-serif;\n  color: #206320;\n  line-height: 35px;\n}\n\n.AboutUs .text-red {\n  color: red;\n}\n\n.AboutUs__ecka {\n  text-align: center;\n  padding-top: 10px;\n  font-family: 'Roboto', sans-serif;\n}\n\n.AboutUs__ecka p {\n  text-align: justify;\n  font-size: 15px;\n  line-height: 16px;\n  padding-top: 10px;\n}\n\n.AboutUs__ecka .Ecko {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__backBtn {\n  border: none;\n  background-color: transparent;\n}\n\n.Toolbar__fbLink {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n@media only screen and (max-width: 330px) {\n  .Toolbar__title img:first-child { display: none; }\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__clearButton {\n  font-size: 15px;\n  width: 26px;\n  height: 26px;\n}\n\n.SearchBox__input {\n  font-size: 20px;\n  padding: 3px 50px 3px 10px;\n  margin: 0px 5px 5px 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n.Suggestion__link {\n  padding: 6px 10px;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 60px;\n  height: 60px;\n  border-radius: 35px;\n  font-size: 21px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 60px;\n  text-align: center;\n  display: inline-block;\n  margin: 5px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
 
 	// exports
 

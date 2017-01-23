@@ -5,6 +5,7 @@
 button { cursor: pointer; }
 html, body, #root, .App { height: 100%; }
 strong { font-weight: bold; }
+a { color: blue; }
 
 /**************************/
 /*********** App **********/
@@ -12,7 +13,6 @@ strong { font-weight: bold; }
 .App {
   max-width: 800px;
   margin: 0 auto 0 auto;
-  background-color: #f8f6ed;
 }
 
 .App__content {
@@ -56,8 +56,18 @@ strong { font-weight: bold; }
 .Toolbar {
   background-color: #3cb73c;
   position: relative;
-  height: 65px;
   border-bottom: 3px solid #319631;
+}
+
+.Toolbar__backBtn {
+  border: none;
+  background-color: transparent;
+}
+
+.Toolbar__fbLink {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .Toolbar__title {
@@ -66,12 +76,15 @@ strong { font-weight: bold; }
   margin: 0 30px 0 0;
   text-align: center;
   text-shadow: 1px 1px 3px #222;
-  line-height: 50px;
 }
 
 .Toolbar__title img {
   vertical-align: middle;
   display: inline-block;
+}
+
+@media only screen and (max-width: 330px) {
+  .Toolbar__title img:first-child { display: none; }
 }
 
 .Toolbar__searchButton {
@@ -96,12 +109,16 @@ strong { font-weight: bold; }
   font-family: 'Roboto', sans-serif;
 }
 
+.SearchBox__clearButton {
+  font-size: 15px;
+  width: 26px;
+  height: 26px;
+}
+
 .SearchBox__input {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 25px;
-  height: 55px;
-  margin: 5px;
+  font-size: 20px;
+  padding: 3px 50px 3px 10px;
+  margin: 0px 5px 5px 5px;
   width: calc(100% - 10px);
 }
 
@@ -122,6 +139,10 @@ strong { font-weight: bold; }
 .SearchBox__Product-producer {
   font-size: 13px;
   color: #bbb;
+}
+
+.Suggestion__link {
+  padding: 6px 10px;
 }
 
 /**************************/
