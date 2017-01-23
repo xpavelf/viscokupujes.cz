@@ -4,6 +4,7 @@
 
 button { cursor: pointer; }
 html, body, #root, .App { height: 100%; }
+strong { font-weight: bold; }
 
 /**************************/
 /*********** App **********/
@@ -15,8 +16,40 @@ html, body, #root, .App { height: 100%; }
 }
 
 .App__content {
-  padding: 5px;
+  padding: 5px 5px 50px 5px;
 }
+
+.AboutUs__text {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  color: #206320;
+  line-height: 35px;
+}
+
+.AboutUs .text-red {
+  color: red;
+}
+
+.AboutUs__ecka {
+  text-align: center;
+  padding-top: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.AboutUs__ecka p {
+  text-align: justify;
+  font-size: 15px;
+  line-height: 16px;
+  padding-top: 10px;
+}
+
+.AboutUs__ecka .Ecko {
+  font-weight: bold;
+  font-size: 40px;
+}
+
 /**************************/
 /******* Toolbar **********/
 /**************************/
@@ -143,15 +176,15 @@ html, body, #root, .App { height: 100%; }
 .Ecko {
   color: white;
   border: none;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 35px;
-  font-size: 25px;
+  font-size: 21px;
   font-family: 'Patrick Hand', cursive;
-  line-height: 70px;
+  line-height: 60px;
   text-align: center;
   display: inline-block;
-  margin: 10px 7px;
+  margin: 5px;
   text-transform: capitalize;
 }
 

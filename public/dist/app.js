@@ -1588,9 +1588,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// <div className="Ecko Ecko--2">!</div>
-	// <div className="Ecko Ecko--1">?</div>
-	// <div className="Ecko Ecko--0">✓</div>
 	var AboutUs = function (_React$Component) {
 	  _inherits(AboutUs, _React$Component);
 
@@ -1607,9 +1604,99 @@
 	        "div",
 	        { className: "AboutUs" },
 	        _react2.default.createElement(
-	          "h2",
-	          null,
-	          "AboutUs"
+	          "p",
+	          { className: "AboutUs__text" },
+	          "Chc",
+	          _react2.default.createElement(
+	            "span",
+	            { className: "text-red" },
+	            "e"
+	          ),
+	          "\u0161 j\xEDst zdrav",
+	          _react2.default.createElement(
+	            "span",
+	            { className: "text-red" },
+	            "\u011B"
+	          ),
+	          "?",
+	          _react2.default.createElement("br", null),
+	          "N",
+	          _react2.default.createElement(
+	            "span",
+	            { className: "text-red" },
+	            "e"
+	          ),
+	          "vyzn\xE1\u0161 s",
+	          _react2.default.createElement(
+	            "span",
+	            { className: "text-red" },
+	            "e"
+	          ),
+	          " v ",
+	          _react2.default.createElement(
+	            "span",
+	            { className: "text-red" },
+	            "\xC9"
+	          ),
+	          "\u010Dk\xE1ch?",
+	          _react2.default.createElement("br", null),
+	          "M\xE1\u0161 dost n",
+	          _react2.default.createElement(
+	            "span",
+	            { className: "text-red" },
+	            "e"
+	          ),
+	          "kvalitn\xEDch v\xFDrobk\u016F?"
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "AboutUs__ecka" },
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "A proto\u017Ee n\xE1s u\u017E taky nebavilo st\xE1t v supermarketu, lu\u0161tit mal\xE1 p\xEDsmenka na obalech a hledat schovan\xE1 \xE9\u010Dka v textu, rozhodli jsme se p\u0159ij\xEDt s aplikac\xED ",
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "V\xED\u0161CoKupuje\u0161"
+	            ),
+	            ". Sta\u010D\xED jen naj\xEDt v\xFDrobek kliknut\xEDm na lupu v prav\xE9m horn\xEDm rohu."
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "Rozd\u011Blili jsme ti \xE9\u010Dka jednodu\u0161e do t\u0159\xED kategori\xED podle \u0161kodlivosti."
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "Ecko Ecko--2" },
+	            "!"
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "Ecko Ecko--1" },
+	            "?"
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "Ecko Ecko--0" },
+	            "\u2713"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Zat\xEDm m\xE1me datab\xE1zi asi 12 000 v\xFDrobk\u016F. Jsme jen oby\u010Dejn\xED lidi jako ty, co cht\u011Bj\xED kupovat a j\xEDst kvalitn\u011Bj\u0161\xED potraviny. Nikdo n\xE1s nesponzoruje ani neovliv\u0148uje. Proto budeme r\xE1di, kdy\u017E na\u0161i aplikaci ",
+	            _react2.default.createElement(
+	              "strong",
+	              null,
+	              "V\xED\u0161CoKupuje\u0161"
+	            ),
+	            " bude\u0161 sd\xEDlet p\u0159es Facebook a \u0159ekne\u0161 o n\xED sv\xFDm kamar\xE1d\u016Fm. Pokud se ti na n\xED n\u011Bco nel\xEDb\xED, dej to v\u011Bd\u011Bt n\xE1m, a\u0165 m\xE1me co zlep\u0161ovat."
+	          )
 	        )
 	      );
 	    }
@@ -2615,7 +2702,7 @@
 	exports.i(__webpack_require__(37), "");
 
 	// module
-	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px;\n}\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 70px;\n  height: 70px;\n  border-radius: 35px;\n  font-size: 25px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 70px;\n  text-align: center;\n  display: inline-block;\n  margin: 10px 7px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
+	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\nstrong { font-weight: bold; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px 5px 50px 5px;\n}\n\n.AboutUs__text {\n  padding-top: 10px;\n  text-align: center;\n  font-size: 25px;\n  font-family: 'Roboto', sans-serif;\n  color: #206320;\n  line-height: 35px;\n}\n\n.AboutUs .text-red {\n  color: red;\n}\n\n.AboutUs__ecka {\n  text-align: center;\n  padding-top: 10px;\n  font-family: 'Roboto', sans-serif;\n}\n\n.AboutUs__ecka p {\n  text-align: justify;\n  font-size: 15px;\n  line-height: 16px;\n  padding-top: 10px;\n}\n\n.AboutUs__ecka .Ecko {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  height: 65px;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n  line-height: 50px;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__input {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  font-size: 25px;\n  height: 55px;\n  margin: 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 60px;\n  height: 60px;\n  border-radius: 35px;\n  font-size: 21px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 60px;\n  text-align: center;\n  display: inline-block;\n  margin: 5px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
 
 	// exports
 
