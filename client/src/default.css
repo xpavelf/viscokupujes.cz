@@ -13,6 +13,7 @@ a { color: blue; }
 .App {
   max-width: 800px;
   margin: 0 auto 0 auto;
+  background-color: #f8f6ed;
 }
 
 .App__content {
@@ -62,6 +63,11 @@ a { color: blue; }
 .Toolbar__backBtn {
   border: none;
   background-color: transparent;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
 }
 
 .Toolbar__fbLink {
@@ -113,12 +119,13 @@ a { color: blue; }
   font-size: 15px;
   width: 26px;
   height: 26px;
+  top: calc(50% - 13px);
 }
 
 .SearchBox__input {
   font-size: 20px;
   padding: 3px 50px 3px 10px;
-  margin: 0px 5px 5px 5px;
+  margin: 0px 5px;
   width: calc(100% - 10px);
 }
 

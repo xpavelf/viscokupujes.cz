@@ -75,6 +75,10 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
   res.json(_map_e(product));
 });
 
+app.get("/product/*", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 const server = http.createServer(app);
 server.listen(port, ipaddr, () => {
   let host = server.address().address;

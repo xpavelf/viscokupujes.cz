@@ -1,7 +1,8 @@
 import React from "react"
 import { connect } from "react-redux";
 import debounce from "debounce";
-import { searchProduct, selectProduct, clearFoundProducts } from "../actions/Search";
+import { browserHistory } from "react-router";
+import { searchProduct, selectProduct } from "../actions/Product";
 import imgProgressbar from "../icons/progressbar.gif";
 import imgCart from "../icons/cart.png";
 import imgLogo from "../icons/logo.png";
@@ -46,17 +47,15 @@ const Suggestion = (props) => {
   )
 }
 
-@connect((store) => {
-  return {
-    foundProducts: store.foundProducts,
-    selectedProduct: store.selectedProduct
-  }
-})
+@connect((store) => ({
+  activeProduct: store.activeProduct,
+  foundProducts: store.searchProduct.products
+}))
 export default class Toolbar extends React.Component {
-  state = { showSearchBox : !this.props.selectedProduct }
+  state = { showSearchBox : !this.props.activeProduct.products }
 
   goBack = () => {
-    this.props.dispatch(selectProduct(null))
+    browserHistory.push("/");
     this.setState({showSearchBox: true })
   }
 
@@ -65,17 +64,16 @@ export default class Toolbar extends React.Component {
   }, 500)
 
   onSelect = (product) => {
-    this.props.dispatch(selectProduct(product))
+    browserHistory.push("/product/" + product.id);
     this.setState({showSearchBox: false })
   }
 
   render() {
     return (
       <div className="Toolbar">
+        { !this.state.showSearchBox ? <button className="Toolbar__backBtn" onClick={this.goBack}>←</button> : null }
         <h1 className="Toolbar__title">
-          <button className="Toolbar__backBtn" onClick={this.goBack}>
-            <img src={imgCart} /><img src={imgLogo} />
-          </button>
+          <img src={imgCart} /><img src={imgLogo} />
           <a target="_blank" href="https://www.facebook.com/viscokupujes" title="Facebook" className="Toolbar__fbLink">
             <svg height="32" width="32" viewBox="0 0 512 512">
               <rect fill="#319631" x="0" y="0" width="512" height="512" />
