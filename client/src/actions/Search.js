@@ -10,6 +10,13 @@ export function searchProduct(term) {
   });
 }
 
+export function searchProductById(id) {
+  return ({
+    type: SEARCH_PRODUCT_BY_ID,
+    payload: fetch(`/api/product/${id}`).then(resp => resp.json())
+  });
+}
+
 export function selectProduct(product) {
   return ({
     type: SELECT_PRODUCT,

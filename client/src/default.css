@@ -13,6 +13,7 @@ a { color: blue; }
 .App {
   max-width: 800px;
   margin: 0 auto 0 auto;
+  background-color: #f8f6ed;
 }
 
 .App__content {
@@ -62,6 +63,11 @@ a { color: blue; }
 .Toolbar__backBtn {
   border: none;
   background-color: transparent;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
 }
 
 .Toolbar__fbLink {

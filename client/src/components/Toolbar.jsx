@@ -72,10 +72,9 @@ export default class Toolbar extends React.Component {
   render() {
     return (
       <div className="Toolbar">
+        { !this.state.showSearchBox ? <button className="Toolbar__backBtn" onClick={this.goBack}>←</button> : null }
         <h1 className="Toolbar__title">
-          <button className="Toolbar__backBtn" onClick={this.goBack}>
-            <img src={imgCart} /><img src={imgLogo} />
-          </button>
+          <img src={imgCart} /><img src={imgLogo} />
           <a target="_blank" href="https://www.facebook.com/viscokupujes" title="Facebook" className="Toolbar__fbLink">
             <svg height="32" width="32" viewBox="0 0 512 512">
               <rect fill="#319631" x="0" y="0" width="512" height="512" />
