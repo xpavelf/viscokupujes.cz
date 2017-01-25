@@ -58,9 +58,9 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reactRedux = __webpack_require__(8);
+	var _reactRedux = __webpack_require__(21);
 
-	var _store = __webpack_require__(24);
+	var _store = __webpack_require__(6);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -110,15 +110,21 @@
 
 	var _reactRouter = __webpack_require__(5);
 
-	var _App = __webpack_require__(6);
+	var _store = __webpack_require__(6);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _Product = __webpack_require__(17);
+
+	var _App = __webpack_require__(19);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Product = __webpack_require__(21);
+	var _Product2 = __webpack_require__(32);
 
-	var _Product2 = _interopRequireDefault(_Product);
+	var _Product3 = _interopRequireDefault(_Product2);
 
-	var _AboutUs = __webpack_require__(23);
+	var _AboutUs = __webpack_require__(34);
 
 	var _AboutUs2 = _interopRequireDefault(_AboutUs);
 
@@ -127,8 +133,11 @@
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: "/", component: _App2.default },
-	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _AboutUs2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: "product/:id", component: _Product2.default })
+	  _react2.default.createElement(_reactRouter.IndexRoute, { getComponent: function getComponent(nextState, cb) {
+	      _store2.default.dispatch((0, _Product.resetActiveProduct)());
+	      cb(null, _AboutUs2.default);
+	    } }),
+	  _react2.default.createElement(_reactRouter.Route, { path: "product/:id", component: _Product3.default })
 	);
 
 /***/ },
@@ -147,285 +156,909 @@
 	  value: true
 	});
 
-	var _react = __webpack_require__(1);
+	var _redux = __webpack_require__(7);
 
-	var _react2 = _interopRequireDefault(_react);
+	var _reduxLogger = __webpack_require__(8);
 
-	var _Toolbar = __webpack_require__(7);
+	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _Toolbar2 = _interopRequireDefault(_Toolbar);
+	var _reduxPromiseMiddleware = __webpack_require__(14);
+
+	var _reduxPromiseMiddleware2 = _interopRequireDefault(_reduxPromiseMiddleware);
+
+	var _reduxThunk = __webpack_require__(15);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _reducers = __webpack_require__(16);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function (props) {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "App" },
-	    _react2.default.createElement(_Toolbar2.default, null),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "App__content" },
-	      props.children
-	    )
-	  );
-	};
+	var middleware = (0, _redux.applyMiddleware)((0, _reduxPromiseMiddleware2.default)(), _reduxThunk2.default);
+
+	exports.default = (0, _redux.createStore)(_reducers2.default, middleware);
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _dec, _class;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(8);
-
-	var _debounce = __webpack_require__(9);
-
-	var _debounce2 = _interopRequireDefault(_debounce);
-
-	var _reactRouter = __webpack_require__(5);
-
-	var _Product = __webpack_require__(11);
-
-	var _progressbar = __webpack_require__(13);
-
-	var _progressbar2 = _interopRequireDefault(_progressbar);
-
-	var _cart = __webpack_require__(14);
-
-	var _cart2 = _interopRequireDefault(_cart);
-
-	var _logo = __webpack_require__(15);
-
-	var _logo2 = _interopRequireDefault(_logo);
-
-	var _reactSearchbox = __webpack_require__(16);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var nullSuggestionComp = _react2.default.createElement(
-	  _reactSearchbox.Suggestion,
-	  null,
-	  _react2.default.createElement("img", { height: "15", src: _progressbar2.default }),
-	  "\xA0\xA0\xA0Vyhled\xE1v\xE1m..."
-	);
-
-	var emptySuggestionComp = _react2.default.createElement(
-	  _reactSearchbox.Suggestion,
-	  null,
-	  "Nena\u0161li jsme \u017E\xE1dn\xFD produkt... \u2639"
-	);
-
-	var Suggestion = function Suggestion(props) {
-	  var splitAt = function splitAt(hit, str, startpos) {
-	    return [str.slice(startpos, hit[0]), str.slice(hit[0], hit[1]), str.slice(hit[1])];
-	  };
-	  var hits = props.data.hits;
-	  var name = [];
-	  if (hits && hits.length) {
-	    for (var i = 0; i < hits.length; i++) {
-	      var prev = i === 0 ? 0 : hits[i - 1][1];
-	      var arr = splitAt(hits[i], props.data.name, prev);
-	      var end = i + 1 === hits.length ? arr[2] : null;
-	      name = name.concat(arr[0], _react2.default.createElement(
-	        "span",
-	        { className: "SearchBox__Product-highlight" },
-	        arr[1]
-	      ), end);
-	    }
-	  } else {
-	    name = props.data.name;
-	  }
-
-	  return _react2.default.createElement(
-	    _reactSearchbox.SuggestionLink,
-	    { data: props.data, onSelect: props.onSelect },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "SearchBox__Product-name" },
-	      name
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "SearchBox__Product-producer" },
-	      props.data.producer
-	    )
-	  );
-	};
-
-	var Toolbar = (_dec = (0, _reactRedux.connect)(function (store) {
-	  return {
-	    activeProduct: store.activeProduct,
-	    foundProducts: store.searchProduct.products
-	  };
-	}), _dec(_class = function (_React$Component) {
-	  _inherits(Toolbar, _React$Component);
-
-	  function Toolbar() {
-	    var _ref;
-
-	    var _temp, _this, _ret;
-
-	    _classCallCheck(this, Toolbar);
-
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this.state = { showSearchBox: !_this.props.activeProduct.products }, _this.goBack = function () {
-	      _reactRouter.browserHistory.push("/");
-	      _this.setState({ showSearchBox: true });
-	    }, _this.onChange = (0, _debounce2.default)(function (term) {
-	      _this.props.dispatch((0, _Product.searchProduct)(term));
-	    }, 500), _this.onSelect = function (product) {
-	      _reactRouter.browserHistory.push("/product/" + product.id);
-	      _this.setState({ showSearchBox: false });
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
-	  }
-
-	  _createClass(Toolbar, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "Toolbar" },
-	        !this.state.showSearchBox ? _react2.default.createElement(
-	          "button",
-	          { className: "Toolbar__backBtn", onClick: this.goBack },
-	          "\u2190"
-	        ) : null,
-	        _react2.default.createElement(
-	          "h1",
-	          { className: "Toolbar__title" },
-	          _react2.default.createElement("img", { src: _cart2.default }),
-	          _react2.default.createElement("img", { src: _logo2.default }),
-	          _react2.default.createElement(
-	            "a",
-	            { target: "_blank", href: "https://www.facebook.com/viscokupujes", title: "Facebook", className: "Toolbar__fbLink" },
-	            _react2.default.createElement(
-	              "svg",
-	              { height: "32", width: "32", viewBox: "0 0 512 512" },
-	              _react2.default.createElement("rect", { fill: "#319631", x: "0", y: "0", width: "512", height: "512" }),
-	              _react2.default.createElement("path", { fill: "white", d: "M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64 H288z" })
-	            )
-	          )
-	        ),
-	        this.state.showSearchBox ? _react2.default.createElement(_reactSearchbox.SearchBox, {
-	          onChange: this.onChange,
-	          onSelect: this.onSelect,
-	          selectedToString: function selectedToString(data) {
-	            return "";
-	          },
-	          placeholder: "Najdi v\xFDrobek...",
-	          suggestions: this.props.foundProducts,
-	          suggestionComp: Suggestion,
-	          nullSuggestionElm: nullSuggestionComp,
-	          emptySuggestionElm: emptySuggestionComp
-	        }) : null
-	      );
-	    }
-	  }]);
-
-	  return Toolbar;
-	}(_react2.default.Component)) || _class);
-	exports.default = Toolbar;
+	module.exports = (__webpack_require__(2))(185);
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = (__webpack_require__(2))(178);
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _core = __webpack_require__(9);
+
+	var _helpers = __webpack_require__(10);
+
+	var _defaults = __webpack_require__(13);
+
+	var _defaults2 = _interopRequireDefault(_defaults);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Creates logger with following options
+	 *
+	 * @namespace
+	 * @param {object} options - options for logger
+	 * @param {string | function | object} options.level - console[level]
+	 * @param {boolean} options.duration - print duration of each action?
+	 * @param {boolean} options.timestamp - print timestamp with each action?
+	 * @param {object} options.colors - custom colors
+	 * @param {object} options.logger - implementation of the `console` API
+	 * @param {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
+	 * @param {boolean} options.collapsed - is group collapsed?
+	 * @param {boolean} options.predicate - condition which resolves logger behavior
+	 * @param {function} options.stateTransformer - transform state before print
+	 * @param {function} options.actionTransformer - transform action before print
+	 * @param {function} options.errorTransformer - transform error before print
+	 *
+	 * @returns {function} logger middleware
+	 */
+	function createLogger() {
+	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	  var loggerOptions = _extends({}, _defaults2.default, options);
+
+	  var logger = loggerOptions.logger;
+	  var transformer = loggerOptions.transformer;
+	  var stateTransformer = loggerOptions.stateTransformer;
+	  var errorTransformer = loggerOptions.errorTransformer;
+	  var predicate = loggerOptions.predicate;
+	  var logErrors = loggerOptions.logErrors;
+	  var diffPredicate = loggerOptions.diffPredicate;
+
+	  // Return if 'console' object is not defined
+
+	  if (typeof logger === 'undefined') {
+	    return function () {
+	      return function (next) {
+	        return function (action) {
+	          return next(action);
+	        };
+	      };
+	    };
+	  }
+
+	  if (transformer) {
+	    console.error('Option \'transformer\' is deprecated, use \'stateTransformer\' instead!'); // eslint-disable-line no-console
+	  }
+
+	  var logBuffer = [];
+
+	  return function (_ref) {
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        // Exit early if predicate function returns 'false'
+	        if (typeof predicate === 'function' && !predicate(getState, action)) {
+	          return next(action);
+	        }
+
+	        var logEntry = {};
+	        logBuffer.push(logEntry);
+
+	        logEntry.started = _helpers.timer.now();
+	        logEntry.startedTime = new Date();
+	        logEntry.prevState = stateTransformer(getState());
+	        logEntry.action = action;
+
+	        var returnedValue = undefined;
+	        if (logErrors) {
+	          try {
+	            returnedValue = next(action);
+	          } catch (e) {
+	            logEntry.error = errorTransformer(e);
+	          }
+	        } else {
+	          returnedValue = next(action);
+	        }
+
+	        logEntry.took = _helpers.timer.now() - logEntry.started;
+	        logEntry.nextState = stateTransformer(getState());
+
+	        var diff = loggerOptions.diff && typeof diffPredicate === 'function' ? diffPredicate(getState, action) : loggerOptions.diff;
+
+	        (0, _core.printBuffer)(logBuffer, _extends({}, loggerOptions, { diff: diff }));
+	        logBuffer.length = 0;
+
+	        if (logEntry.error) throw logEntry.error;
+	        return returnedValue;
+	      };
+	    };
+	  };
+	}
+
+	exports.default = createLogger;
+	module.exports = exports['default'];
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	/**
-	 * Module dependencies.
-	 */
+	'use strict';
 
-	var now = __webpack_require__(10);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.printBuffer = printBuffer;
+
+	var _helpers = __webpack_require__(10);
+
+	var _diff = __webpack_require__(11);
+
+	var _diff2 = _interopRequireDefault(_diff);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 	/**
-	 * Returns a function, that, as long as it continues to be invoked, will not
-	 * be triggered. The function will be called after it stops being called for
-	 * N milliseconds. If `immediate` is passed, trigger the function on the
-	 * leading edge, instead of the trailing.
+	 * Get log level string based on supplied params
 	 *
-	 * @source underscore.js
-	 * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
-	 * @param {Function} function to wrap
-	 * @param {Number} timeout in ms (`100`)
-	 * @param {Boolean} whether to execute at the beginning (`false`)
-	 * @api public
+	 * @param {string | function | object} level - console[level]
+	 * @param {object} action - selected action
+	 * @param {array} payload - selected payload
+	 * @param {string} type - log entry type
+	 *
+	 * @returns {string} level
 	 */
+	function getLogLevel(level, action, payload, type) {
+	  switch (typeof level === 'undefined' ? 'undefined' : _typeof(level)) {
+	    case 'object':
+	      return typeof level[type] === 'function' ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
+	    case 'function':
+	      return level(action);
+	    default:
+	      return level;
+	  }
+	}
 
-	module.exports = function debounce(func, wait, immediate){
-	  var timeout, args, context, timestamp, result;
-	  if (null == wait) wait = 100;
+	function defaultTitleFormatter(options) {
+	  var timestamp = options.timestamp;
+	  var duration = options.duration;
 
-	  function later() {
-	    var last = now() - timestamp;
+	  return function (action, time, took) {
+	    var parts = ['action'];
+	    if (timestamp) {
+	      parts.push('@ ' + time);
+	    }
+	    parts.push(action.type);
+	    if (duration) {
+	      parts.push('(in ' + took.toFixed(2) + ' ms)');
+	    }
+	    return parts.join(' ');
+	  };
+	}
 
-	    if (last < wait && last > 0) {
-	      timeout = setTimeout(later, wait - last);
-	    } else {
-	      timeout = null;
-	      if (!immediate) {
-	        result = func.apply(context, args);
-	        if (!timeout) context = args = null;
+	function printBuffer(buffer, options) {
+	  var logger = options.logger;
+	  var actionTransformer = options.actionTransformer;
+	  var _options$titleFormatt = options.titleFormatter;
+	  var titleFormatter = _options$titleFormatt === undefined ? defaultTitleFormatter(options) : _options$titleFormatt;
+	  var collapsed = options.collapsed;
+	  var colors = options.colors;
+	  var level = options.level;
+	  var diff = options.diff;
+
+	  buffer.forEach(function (logEntry, key) {
+	    var started = logEntry.started;
+	    var startedTime = logEntry.startedTime;
+	    var action = logEntry.action;
+	    var prevState = logEntry.prevState;
+	    var error = logEntry.error;
+	    var took = logEntry.took;
+	    var nextState = logEntry.nextState;
+
+	    var nextEntry = buffer[key + 1];
+
+	    if (nextEntry) {
+	      nextState = nextEntry.prevState;
+	      took = nextEntry.started - started;
+	    }
+
+	    // Message
+	    var formattedAction = actionTransformer(action);
+	    var isCollapsed = typeof collapsed === 'function' ? collapsed(function () {
+	      return nextState;
+	    }, action) : collapsed;
+
+	    var formattedTime = (0, _helpers.formatTime)(startedTime);
+	    var titleCSS = colors.title ? 'color: ' + colors.title(formattedAction) + ';' : null;
+	    var title = titleFormatter(formattedAction, formattedTime, took);
+
+	    // Render
+	    try {
+	      if (isCollapsed) {
+	        if (colors.title) logger.groupCollapsed('%c ' + title, titleCSS);else logger.groupCollapsed(title);
+	      } else {
+	        if (colors.title) logger.group('%c ' + title, titleCSS);else logger.group(title);
 	      }
-	    }
-	  };
-
-	  return function debounced() {
-	    context = this;
-	    args = arguments;
-	    timestamp = now();
-	    var callNow = immediate && !timeout;
-	    if (!timeout) timeout = setTimeout(later, wait);
-	    if (callNow) {
-	      result = func.apply(context, args);
-	      context = args = null;
+	    } catch (e) {
+	      logger.log(title);
 	    }
 
-	    return result;
-	  };
-	};
+	    var prevStateLevel = getLogLevel(level, formattedAction, [prevState], 'prevState');
+	    var actionLevel = getLogLevel(level, formattedAction, [formattedAction], 'action');
+	    var errorLevel = getLogLevel(level, formattedAction, [error, prevState], 'error');
+	    var nextStateLevel = getLogLevel(level, formattedAction, [nextState], 'nextState');
 
+	    if (prevStateLevel) {
+	      if (colors.prevState) logger[prevStateLevel]('%c prev state', 'color: ' + colors.prevState(prevState) + '; font-weight: bold', prevState);else logger[prevStateLevel]('prev state', prevState);
+	    }
+
+	    if (actionLevel) {
+	      if (colors.action) logger[actionLevel]('%c action', 'color: ' + colors.action(formattedAction) + '; font-weight: bold', formattedAction);else logger[actionLevel]('action', formattedAction);
+	    }
+
+	    if (error && errorLevel) {
+	      if (colors.error) logger[errorLevel]('%c error', 'color: ' + colors.error(error, prevState) + '; font-weight: bold', error);else logger[errorLevel]('error', error);
+	    }
+
+	    if (nextStateLevel) {
+	      if (colors.nextState) logger[nextStateLevel]('%c next state', 'color: ' + colors.nextState(nextState) + '; font-weight: bold', nextState);else logger[nextStateLevel]('next state', nextState);
+	    }
+
+	    if (diff) {
+	      (0, _diff2.default)(prevState, nextState, logger, isCollapsed);
+	    }
+
+	    try {
+	      logger.groupEnd();
+	    } catch (e) {
+	      logger.log('—— log end ——');
+	    }
+	  });
+	}
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = Date.now || now
+	"use strict";
 
-	function now() {
-	    return new Date().getTime()
-	}
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var repeat = exports.repeat = function repeat(str, times) {
+	  return new Array(times + 1).join(str);
+	};
 
+	var pad = exports.pad = function pad(num, maxLength) {
+	  return repeat("0", maxLength - num.toString().length) + num;
+	};
+
+	var formatTime = exports.formatTime = function formatTime(time) {
+	  return pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
+	};
+
+	// Use performance API if it's available in order to get better precision
+	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
 /* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = diffLogger;
+
+	var _deepDiff = __webpack_require__(12);
+
+	var _deepDiff2 = _interopRequireDefault(_deepDiff);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// https://github.com/flitbit/diff#differences
+	var dictionary = {
+	  'E': {
+	    color: '#2196F3',
+	    text: 'CHANGED:'
+	  },
+	  'N': {
+	    color: '#4CAF50',
+	    text: 'ADDED:'
+	  },
+	  'D': {
+	    color: '#F44336',
+	    text: 'DELETED:'
+	  },
+	  'A': {
+	    color: '#2196F3',
+	    text: 'ARRAY:'
+	  }
+	};
+
+	function style(kind) {
+	  return 'color: ' + dictionary[kind].color + '; font-weight: bold';
+	}
+
+	function render(diff) {
+	  var kind = diff.kind;
+	  var path = diff.path;
+	  var lhs = diff.lhs;
+	  var rhs = diff.rhs;
+	  var index = diff.index;
+	  var item = diff.item;
+
+	  switch (kind) {
+	    case 'E':
+	      return path.join('.') + ' ' + lhs + ' → ' + rhs;
+	    case 'N':
+	      return path.join('.') + ' ' + rhs;
+	    case 'D':
+	      return '' + path.join('.');
+	    case 'A':
+	      return [path.join('.') + '[' + index + ']', item];
+	    default:
+	      return null;
+	  }
+	}
+
+	function diffLogger(prevState, newState, logger, isCollapsed) {
+	  var diff = (0, _deepDiff2.default)(prevState, newState);
+
+	  try {
+	    if (isCollapsed) {
+	      logger.groupCollapsed('diff');
+	    } else {
+	      logger.group('diff');
+	    }
+	  } catch (e) {
+	    logger.log('diff');
+	  }
+
+	  if (diff) {
+	    diff.forEach(function (elem) {
+	      var kind = elem.kind;
+
+	      var output = render(elem);
+
+	      logger.log('%c ' + dictionary[kind].text, style(kind), output);
+	    });
+	  } else {
+	    logger.log('—— no diff ——');
+	  }
+
+	  try {
+	    logger.groupEnd();
+	  } catch (e) {
+	    logger.log('—— diff end —— ');
+	  }
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
+	 * deep-diff.
+	 * Licensed under the MIT License.
+	 */
+	;(function(root, factory) {
+	  'use strict';
+	  if (true) {
+	    // AMD. Register as an anonymous module.
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	      return factory();
+	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === 'object') {
+	    // Node. Does not work with strict CommonJS, but
+	    // only CommonJS-like environments that support module.exports,
+	    // like Node.
+	    module.exports = factory();
+	  } else {
+	    // Browser globals (root is window)
+	    root.DeepDiff = factory();
+	  }
+	}(this, function(undefined) {
+	  'use strict';
+
+	  var $scope, conflict, conflictResolution = [];
+	  if (typeof global === 'object' && global) {
+	    $scope = global;
+	  } else if (typeof window !== 'undefined') {
+	    $scope = window;
+	  } else {
+	    $scope = {};
+	  }
+	  conflict = $scope.DeepDiff;
+	  if (conflict) {
+	    conflictResolution.push(
+	      function() {
+	        if ('undefined' !== typeof conflict && $scope.DeepDiff === accumulateDiff) {
+	          $scope.DeepDiff = conflict;
+	          conflict = undefined;
+	        }
+	      });
+	  }
+
+	  // nodejs compatible on server side and in the browser.
+	  function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    ctor.prototype = Object.create(superCtor.prototype, {
+	      constructor: {
+	        value: ctor,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	  }
+
+	  function Diff(kind, path) {
+	    Object.defineProperty(this, 'kind', {
+	      value: kind,
+	      enumerable: true
+	    });
+	    if (path && path.length) {
+	      Object.defineProperty(this, 'path', {
+	        value: path,
+	        enumerable: true
+	      });
+	    }
+	  }
+
+	  function DiffEdit(path, origin, value) {
+	    DiffEdit.super_.call(this, 'E', path);
+	    Object.defineProperty(this, 'lhs', {
+	      value: origin,
+	      enumerable: true
+	    });
+	    Object.defineProperty(this, 'rhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffEdit, Diff);
+
+	  function DiffNew(path, value) {
+	    DiffNew.super_.call(this, 'N', path);
+	    Object.defineProperty(this, 'rhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffNew, Diff);
+
+	  function DiffDeleted(path, value) {
+	    DiffDeleted.super_.call(this, 'D', path);
+	    Object.defineProperty(this, 'lhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffDeleted, Diff);
+
+	  function DiffArray(path, index, item) {
+	    DiffArray.super_.call(this, 'A', path);
+	    Object.defineProperty(this, 'index', {
+	      value: index,
+	      enumerable: true
+	    });
+	    Object.defineProperty(this, 'item', {
+	      value: item,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffArray, Diff);
+
+	  function arrayRemove(arr, from, to) {
+	    var rest = arr.slice((to || from) + 1 || arr.length);
+	    arr.length = from < 0 ? arr.length + from : from;
+	    arr.push.apply(arr, rest);
+	    return arr;
+	  }
+
+	  function realTypeOf(subject) {
+	    var type = typeof subject;
+	    if (type !== 'object') {
+	      return type;
+	    }
+
+	    if (subject === Math) {
+	      return 'math';
+	    } else if (subject === null) {
+	      return 'null';
+	    } else if (Array.isArray(subject)) {
+	      return 'array';
+	    } else if (Object.prototype.toString.call(subject) === '[object Date]') {
+	      return 'date';
+	    } else if (typeof subject.toString !== 'undefined' && /^\/.*\//.test(subject.toString())) {
+	      return 'regexp';
+	    }
+	    return 'object';
+	  }
+
+	  function deepDiff(lhs, rhs, changes, prefilter, path, key, stack) {
+	    path = path || [];
+	    var currentPath = path.slice(0);
+	    if (typeof key !== 'undefined') {
+	      if (prefilter) {
+	        if (typeof(prefilter) === 'function' && prefilter(currentPath, key)) { return; }
+	        else if (typeof(prefilter) === 'object') {
+	          if (prefilter.prefilter && prefilter.prefilter(currentPath, key)) { return; }
+	          if (prefilter.normalize) {
+	            var alt = prefilter.normalize(currentPath, key, lhs, rhs);
+	            if (alt) {
+	              lhs = alt[0];
+	              rhs = alt[1];
+	            }
+	          }
+	        }
+	      }
+	      currentPath.push(key);
+	    }
+
+	    // Use string comparison for regexes
+	    if (realTypeOf(lhs) === 'regexp' && realTypeOf(rhs) === 'regexp') {
+	      lhs = lhs.toString();
+	      rhs = rhs.toString();
+	    }
+
+	    var ltype = typeof lhs;
+	    var rtype = typeof rhs;
+	    if (ltype === 'undefined') {
+	      if (rtype !== 'undefined') {
+	        changes(new DiffNew(currentPath, rhs));
+	      }
+	    } else if (rtype === 'undefined') {
+	      changes(new DiffDeleted(currentPath, lhs));
+	    } else if (realTypeOf(lhs) !== realTypeOf(rhs)) {
+	      changes(new DiffEdit(currentPath, lhs, rhs));
+	    } else if (Object.prototype.toString.call(lhs) === '[object Date]' && Object.prototype.toString.call(rhs) === '[object Date]' && ((lhs - rhs) !== 0)) {
+	      changes(new DiffEdit(currentPath, lhs, rhs));
+	    } else if (ltype === 'object' && lhs !== null && rhs !== null) {
+	      stack = stack || [];
+	      if (stack.indexOf(lhs) < 0) {
+	        stack.push(lhs);
+	        if (Array.isArray(lhs)) {
+	          var i, len = lhs.length;
+	          for (i = 0; i < lhs.length; i++) {
+	            if (i >= rhs.length) {
+	              changes(new DiffArray(currentPath, i, new DiffDeleted(undefined, lhs[i])));
+	            } else {
+	              deepDiff(lhs[i], rhs[i], changes, prefilter, currentPath, i, stack);
+	            }
+	          }
+	          while (i < rhs.length) {
+	            changes(new DiffArray(currentPath, i, new DiffNew(undefined, rhs[i++])));
+	          }
+	        } else {
+	          var akeys = Object.keys(lhs);
+	          var pkeys = Object.keys(rhs);
+	          akeys.forEach(function(k, i) {
+	            var other = pkeys.indexOf(k);
+	            if (other >= 0) {
+	              deepDiff(lhs[k], rhs[k], changes, prefilter, currentPath, k, stack);
+	              pkeys = arrayRemove(pkeys, other);
+	            } else {
+	              deepDiff(lhs[k], undefined, changes, prefilter, currentPath, k, stack);
+	            }
+	          });
+	          pkeys.forEach(function(k) {
+	            deepDiff(undefined, rhs[k], changes, prefilter, currentPath, k, stack);
+	          });
+	        }
+	        stack.length = stack.length - 1;
+	      }
+	    } else if (lhs !== rhs) {
+	      if (!(ltype === 'number' && isNaN(lhs) && isNaN(rhs))) {
+	        changes(new DiffEdit(currentPath, lhs, rhs));
+	      }
+	    }
+	  }
+
+	  function accumulateDiff(lhs, rhs, prefilter, accum) {
+	    accum = accum || [];
+	    deepDiff(lhs, rhs,
+	      function(diff) {
+	        if (diff) {
+	          accum.push(diff);
+	        }
+	      },
+	      prefilter);
+	    return (accum.length) ? accum : undefined;
+	  }
+
+	  function applyArrayChange(arr, index, change) {
+	    if (change.path && change.path.length) {
+	      var it = arr[index],
+	          i, u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          delete it[change.path[i]];
+	          break;
+	        case 'E':
+	        case 'N':
+	          it[change.path[i]] = change.rhs;
+	          break;
+	      }
+	    } else {
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(arr[index], change.index, change.item);
+	          break;
+	        case 'D':
+	          arr = arrayRemove(arr, index);
+	          break;
+	        case 'E':
+	        case 'N':
+	          arr[index] = change.rhs;
+	          break;
+	      }
+	    }
+	    return arr;
+	  }
+
+	  function applyChange(target, source, change) {
+	    if (target && source && change && change.kind) {
+	      var it = target,
+	          i = -1,
+	          last = change.path ? change.path.length - 1 : 0;
+	      while (++i < last) {
+	        if (typeof it[change.path[i]] === 'undefined') {
+	          it[change.path[i]] = (typeof change.path[i] === 'number') ? [] : {};
+	        }
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(change.path ? it[change.path[i]] : it, change.index, change.item);
+	          break;
+	        case 'D':
+	          delete it[change.path[i]];
+	          break;
+	        case 'E':
+	        case 'N':
+	          it[change.path[i]] = change.rhs;
+	          break;
+	      }
+	    }
+	  }
+
+	  function revertArrayChange(arr, index, change) {
+	    if (change.path && change.path.length) {
+	      // the structure of the object at the index has changed...
+	      var it = arr[index],
+	          i, u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          revertArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'E':
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'N':
+	          delete it[change.path[i]];
+	          break;
+	      }
+	    } else {
+	      // the array item is different...
+	      switch (change.kind) {
+	        case 'A':
+	          revertArrayChange(arr[index], change.index, change.item);
+	          break;
+	        case 'D':
+	          arr[index] = change.lhs;
+	          break;
+	        case 'E':
+	          arr[index] = change.lhs;
+	          break;
+	        case 'N':
+	          arr = arrayRemove(arr, index);
+	          break;
+	      }
+	    }
+	    return arr;
+	  }
+
+	  function revertChange(target, source, change) {
+	    if (target && source && change && change.kind) {
+	      var it = target,
+	          i, u;
+	      u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        if (typeof it[change.path[i]] === 'undefined') {
+	          it[change.path[i]] = {};
+	        }
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          // Array was modified...
+	          // it will be an array...
+	          revertArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          // Item was deleted...
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'E':
+	          // Item was edited...
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'N':
+	          // Item is new...
+	          delete it[change.path[i]];
+	          break;
+	      }
+	    }
+	  }
+
+	  function applyDiff(target, source, filter) {
+	    if (target && source) {
+	      var onChange = function(change) {
+	        if (!filter || filter(target, source, change)) {
+	          applyChange(target, source, change);
+	        }
+	      };
+	      deepDiff(target, source, onChange);
+	    }
+	  }
+
+	  Object.defineProperties(accumulateDiff, {
+
+	    diff: {
+	      value: accumulateDiff,
+	      enumerable: true
+	    },
+	    observableDiff: {
+	      value: deepDiff,
+	      enumerable: true
+	    },
+	    applyDiff: {
+	      value: applyDiff,
+	      enumerable: true
+	    },
+	    applyChange: {
+	      value: applyChange,
+	      enumerable: true
+	    },
+	    revertChange: {
+	      value: revertChange,
+	      enumerable: true
+	    },
+	    isConflict: {
+	      value: function() {
+	        return 'undefined' !== typeof conflict;
+	      },
+	      enumerable: true
+	    },
+	    noConflict: {
+	      value: function() {
+	        if (conflictResolution) {
+	          conflictResolution.forEach(function(it) {
+	            it();
+	          });
+	          conflictResolution = null;
+	        }
+	        return accumulateDiff;
+	      },
+	      enumerable: true
+	    }
+	  });
+
+	  return accumulateDiff;
+	}));
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  level: "log",
+	  logger: console,
+	  logErrors: true,
+	  collapsed: undefined,
+	  predicate: undefined,
+	  duration: false,
+	  timestamp: true,
+	  stateTransformer: function stateTransformer(state) {
+	    return state;
+	  },
+	  actionTransformer: function actionTransformer(action) {
+	    return action;
+	  },
+	  errorTransformer: function errorTransformer(error) {
+	    return error;
+	  },
+	  colors: {
+	    title: function title() {
+	      return "inherit";
+	    },
+	    prevState: function prevState() {
+	      return "#9E9E9E";
+	    },
+	    action: function action() {
+	      return "#03A9F4";
+	    },
+	    nextState: function nextState() {
+	      return "#4CAF50";
+	    },
+	    error: function error() {
+	      return "#F20404";
+	    }
+	  },
+	  diff: false,
+	  diffPredicate: undefined,
+
+	  // Deprecated options
+	  transformer: undefined
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(2))(262);
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(2))(261);
+
+/***/ },
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -433,14 +1066,63 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.GET_PRODUCT_BY_ID = exports.SEARCH_PRODUCT = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = function () {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
+	  var action = arguments[1];
+
+
+	  switch (action.type) {
+	    case _Product.SEARCH_PRODUCT_RESET:
+	      return _extends({}, state, { searchProduct: INITIAL_STATE.searchProduct });
+	    case _Product.SEARCH_PRODUCT + "_PENDING":
+	      return _extends({}, state, { searchProduct: { products: null, err: null, pending: true } });
+
+	    case _Product.SEARCH_PRODUCT + "_FULFILLED":
+	      return _extends({}, state, { searchProduct: { products: action.payload, err: null, pending: false } });
+
+	    case _Product.GET_PRODUCT_BY_ID_RESET:
+	      return _extends({}, state, { activeProduct: INITIAL_STATE.activeProduct });
+	    case _Product.GET_PRODUCT_BY_ID + "_FULFILLED":
+	      return _extends({}, state, { activeProduct: { product: action.payload, err: null, pending: false } });
+
+	  }
+
+	  return state;
+	};
+
+	var _Product = __webpack_require__(17);
+
+	var INITIAL_STATE = {
+	  searchProduct: { products: null, err: null, pending: false },
+	  activeProduct: { product: null, err: null, pending: false }
+	};
+
+	;
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.GET_PRODUCT_BY_ID_RESET = exports.GET_PRODUCT_BY_ID = exports.SEARCH_PRODUCT_RESET = exports.SEARCH_PRODUCT = undefined;
 	exports.searchProduct = searchProduct;
 	exports.getProductById = getProductById;
+	exports.resetSearchProduct = resetSearchProduct;
+	exports.resetActiveProduct = resetActiveProduct;
 
-	__webpack_require__(12);
+	__webpack_require__(18);
 
 	var SEARCH_PRODUCT = exports.SEARCH_PRODUCT = "SEARCH_PRODUCT";
+	var SEARCH_PRODUCT_RESET = exports.SEARCH_PRODUCT_RESET = SEARCH_PRODUCT + "_RESET";
 	var GET_PRODUCT_BY_ID = exports.GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
+	var GET_PRODUCT_BY_ID_RESET = exports.GET_PRODUCT_BY_ID_RESET = GET_PRODUCT_BY_ID + "_RESET";
 
 	function searchProduct(term) {
 	  return {
@@ -460,8 +1142,16 @@
 	  };
 	}
 
+	function resetSearchProduct() {
+	  return { type: SEARCH_PRODUCT_RESET };
+	}
+
+	function resetActiveProduct() {
+	  return { type: GET_PRODUCT_BY_ID_RESET };
+	}
+
 /***/ },
-/* 12 */
+/* 18 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -925,25 +1615,314 @@
 
 
 /***/ },
-/* 13 */
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Toolbar = __webpack_require__(20);
+
+	var _Toolbar2 = _interopRequireDefault(_Toolbar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "App" },
+	    _react2.default.createElement(_Toolbar2.default, null),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "App__content" },
+	      props.children
+	    )
+	  );
+	};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(21);
+
+	var _debounce = __webpack_require__(22);
+
+	var _debounce2 = _interopRequireDefault(_debounce);
+
+	var _reactRouter = __webpack_require__(5);
+
+	var _Product = __webpack_require__(17);
+
+	var _progressbar = __webpack_require__(24);
+
+	var _progressbar2 = _interopRequireDefault(_progressbar);
+
+	var _cart = __webpack_require__(25);
+
+	var _cart2 = _interopRequireDefault(_cart);
+
+	var _logo = __webpack_require__(26);
+
+	var _logo2 = _interopRequireDefault(_logo);
+
+	var _reactSearchbox = __webpack_require__(27);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Suggestion = function Suggestion(props) {
+	  var splitAt = function splitAt(hit, str, startpos) {
+	    return [str.slice(startpos, hit[0]), str.slice(hit[0], hit[1]), str.slice(hit[1])];
+	  };
+	  var hits = props.data.hits;
+	  var name = [];
+	  if (hits && hits.length) {
+	    for (var i = 0; i < hits.length; i++) {
+	      var prev = i === 0 ? 0 : hits[i - 1][1];
+	      var arr = splitAt(hits[i], props.data.name, prev);
+	      var end = i + 1 === hits.length ? arr[2] : null;
+	      name = name.concat(arr[0], _react2.default.createElement(
+	        "span",
+	        { key: hits[i], className: "SearchBox__Product-highlight" },
+	        arr[1]
+	      ), end);
+	    }
+	  } else {
+	    name = props.data.name;
+	  }
+
+	  return _react2.default.createElement(
+	    _reactSearchbox.SuggestionLink,
+	    { data: props.data, onSelect: props.onSelect },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "SearchBox__Product-name" },
+	      name
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "SearchBox__Product-producer" },
+	      props.data.producer
+	    )
+	  );
+	};
+
+	var Toolbar = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    activeProduct: store.activeProduct,
+	    searchProduct: store.searchProduct
+	  };
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(Toolbar, _React$Component);
+
+	  function Toolbar() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Toolbar);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this.goBack = function () {
+	      _reactRouter.browserHistory.push("/");
+	    }, _this._searchProductDebounced = (0, _debounce2.default)(function (term) {
+	      _this.props.dispatch((0, _Product.searchProduct)(term));
+	    }, 300), _this.onChange = function (term) {
+	      _this.props.dispatch((0, _Product.resetSearchProduct)());
+	      _this._searchProductDebounced(term);
+	    }, _this.onSelect = function (product) {
+	      _reactRouter.browserHistory.push("/product/" + product.id);
+	    }, _this.renderEmptySuggestion = function (data) {
+	      if (data.pending) {
+	        return _react2.default.createElement(
+	          _reactSearchbox.Suggestion,
+	          null,
+	          _react2.default.createElement("img", { height: "15", src: _progressbar2.default }),
+	          "\xA0\xA0\xA0Vyhled\xE1v\xE1m.."
+	        );
+	      } else if (data.products !== null) {
+	        return _react2.default.createElement(
+	          _reactSearchbox.Suggestion,
+	          null,
+	          "Nena\u0161li jsme \u017E\xE1dn\xFD produkt... \u2639"
+	        );
+	      }
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Toolbar, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "Toolbar" },
+	        this.props.activeProduct.product ? _react2.default.createElement(
+	          "button",
+	          { className: "Toolbar__backBtn", onClick: this.goBack },
+	          "\u2190"
+	        ) : null,
+	        _react2.default.createElement(
+	          "h1",
+	          { className: "Toolbar__title" },
+	          _react2.default.createElement("img", { src: _cart2.default }),
+	          _react2.default.createElement("img", { src: _logo2.default }),
+	          _react2.default.createElement(
+	            "a",
+	            { target: "_blank", href: "https://www.facebook.com/viscokupujes", title: "Facebook", className: "Toolbar__fbLink" },
+	            _react2.default.createElement(
+	              "svg",
+	              { height: "32", width: "32", viewBox: "0 0 512 512" },
+	              _react2.default.createElement("rect", { fill: "#319631", x: "0", y: "0", width: "512", height: "512" }),
+	              _react2.default.createElement("path", { fill: "white", d: "M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64 H288z" })
+	            )
+	          )
+	        ),
+	        !this.props.activeProduct.product ? _react2.default.createElement(_reactSearchbox.SearchBox, {
+	          onChange: this.onChange,
+	          onSelect: this.onSelect,
+	          placeholder: "Najdi v\xFDrobek...",
+	          suggestions: this.props.searchProduct,
+	          parseSuggestionsData: function parseSuggestionsData(data) {
+	            return data.products;
+	          },
+	          suggestionComp: Suggestion,
+	          renderEmptySuggestion: this.renderEmptySuggestion
+	        }) : null
+	      );
+	    }
+	  }]);
+
+	  return Toolbar;
+	}(_react2.default.Component)) || _class);
+	exports.default = Toolbar;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (__webpack_require__(2))(178);
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/**
+	 * Module dependencies.
+	 */
+
+	var now = __webpack_require__(23);
+
+	/**
+	 * Returns a function, that, as long as it continues to be invoked, will not
+	 * be triggered. The function will be called after it stops being called for
+	 * N milliseconds. If `immediate` is passed, trigger the function on the
+	 * leading edge, instead of the trailing.
+	 *
+	 * @source underscore.js
+	 * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
+	 * @param {Function} function to wrap
+	 * @param {Number} timeout in ms (`100`)
+	 * @param {Boolean} whether to execute at the beginning (`false`)
+	 * @api public
+	 */
+
+	module.exports = function debounce(func, wait, immediate){
+	  var timeout, args, context, timestamp, result;
+	  if (null == wait) wait = 100;
+
+	  function later() {
+	    var last = now() - timestamp;
+
+	    if (last < wait && last > 0) {
+	      timeout = setTimeout(later, wait - last);
+	    } else {
+	      timeout = null;
+	      if (!immediate) {
+	        result = func.apply(context, args);
+	        if (!timeout) context = args = null;
+	      }
+	    }
+	  };
+
+	  return function debounced() {
+	    context = this;
+	    args = arguments;
+	    timestamp = now();
+	    var callNow = immediate && !timeout;
+	    if (!timeout) timeout = setTimeout(later, wait);
+	    if (callNow) {
+	      result = func.apply(context, args);
+	      context = args = null;
+	    }
+
+	    return result;
+	  };
+	};
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = Date.now || now
+
+	function now() {
+	    return new Date().getTime()
+	}
+
+
+/***/ },
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = "/dist/assets/progressbar-daa4e6.gif";
 
 /***/ },
-/* 14 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = "/dist/assets/cart-805c01.png";
 
 /***/ },
-/* 15 */
+/* 26 */
 /***/ function(module, exports) {
 
 	module.exports = "/dist/assets/logo-3932ee.png";
 
 /***/ },
-/* 16 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -953,15 +1932,15 @@
 	});
 	exports.SuggestionLink = exports.Suggestion = exports.SearchBox = undefined;
 
-	var _SearchBox = __webpack_require__(17);
+	var _SearchBox = __webpack_require__(28);
 
 	var _SearchBox2 = _interopRequireDefault(_SearchBox);
 
-	var _Suggestion = __webpack_require__(19);
+	var _Suggestion = __webpack_require__(30);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
-	var _SuggestionLink = __webpack_require__(20);
+	var _SuggestionLink = __webpack_require__(31);
 
 	var _SuggestionLink2 = _interopRequireDefault(_SuggestionLink);
 
@@ -972,7 +1951,7 @@
 	var SuggestionLink = exports.SuggestionLink = _SuggestionLink2.default;
 
 /***/ },
-/* 17 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -987,7 +1966,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SuggestionList = __webpack_require__(18);
+	var _SuggestionList = __webpack_require__(29);
 
 	var _SuggestionList2 = _interopRequireDefault(_SuggestionList);
 
@@ -1080,8 +2059,8 @@
 	          onSelect: this.onSelect,
 	          suggestions: this.props.suggestions,
 	          suggestionComp: this.props.suggestionComp,
-	          nullSuggestionElm: this.props.nullSuggestionElm,
-	          emptySuggestionElm: this.props.emptySuggestionElm })
+	          parseSuggestionsData: this.props.parseSuggestionsData,
+	          renderEmptySuggestion: this.props.renderEmptySuggestion })
 	      );
 	    }
 	  }]);
@@ -1095,10 +2074,10 @@
 	  onBack: _react2.default.PropTypes.func,
 	  selectedToString: _react2.default.PropTypes.func,
 	  placeholder: _react2.default.PropTypes.string,
-	  suggestions: _react2.default.PropTypes.array,
+	  suggestions: _react2.default.PropTypes.object,
+	  parseSuggestionsData: _react2.default.PropTypes.func,
+	  renderEmptySuggestion: _react2.default.PropTypes.func,
 	  suggestionComp: _react2.default.PropTypes.func,
-	  nullSuggestionElm: _react2.default.PropTypes.element,
-	  emptySuggestionElm: _react2.default.PropTypes.element,
 	  showBackButton: _react2.default.PropTypes.bool,
 	  autoFocus: _react2.default.PropTypes.bool
 	};
@@ -1114,7 +2093,7 @@
 	exports.default = SearchBox;
 
 /***/ },
-/* 18 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1129,7 +2108,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Suggestion = __webpack_require__(19);
+	var _Suggestion = __webpack_require__(30);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
@@ -1156,23 +2135,20 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SuggestionList.__proto__ || Object.getPrototypeOf(SuggestionList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { show: false }, _this.hide = function () {
-	      return _this.setState({ show: false });
-	    }, _this.getSuggestions = function () {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SuggestionList.__proto__ || Object.getPrototypeOf(SuggestionList)).call.apply(_ref, [this].concat(args))), _this), _this.state = { show: false }, _this.renderSuggestions = function (data) {
+	      var sugArr = _this.props.parseSuggestionsData(data);
 
-	      if (_this.props.suggestions === null) {
-	        return _this.props.nullSuggestionElm;
+	      if (!sugArr || !sugArr.length) {
+	        return _this.props.renderEmptySuggestion(data);
 	      }
 
-	      if (_this.props.suggestions.length === 0) {
-	        return _this.props.emptySuggestionElm;
-	      }
-
-	      return _this.props.suggestions.map(function (data) {
+	      return sugArr.map(function (itemData) {
 	        return _react2.default.createElement(_this2.props.suggestionComp, {
 	          onSelect: _this.props.onSelect,
-	          data: data, key: data.id });
+	          data: itemData, key: itemData.id });
 	      });
+	    }, _this.hide = function () {
+	      return _this.setState({ show: false });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -1191,7 +2167,7 @@
 	        _react2.default.createElement(
 	          "ul",
 	          { className: "SuggestionList " + show },
-	          this.getSuggestions()
+	          this.renderSuggestions(this.props.suggestions)
 	        ),
 	        this.state.show ? _react2.default.createElement("div", { onClick: this.hide, className: "SuggestionList__backdrop" }) : ""
 	      );
@@ -1202,29 +2178,25 @@
 	}(_react2.default.Component);
 
 	SuggestionList.propTypes = {
-	  suggestions: _react2.default.PropTypes.array,
+	  suggestions: _react2.default.PropTypes.object,
 	  suggestionComp: _react2.default.PropTypes.func,
-	  nullSuggestionElm: _react2.default.PropTypes.element,
-	  emptySuggestionElm: _react2.default.PropTypes.element
+	  parseSuggestionsData: _react2.default.PropTypes.func,
+	  renderEmptySuggestion: _react2.default.PropTypes.func
 	};
 	SuggestionList.defaultProps = {
 	  suggestions: null,
 	  suggestionComp: _Suggestion2.default,
-	  nullSuggestionElm: _react2.default.createElement(
-	    _Suggestion2.default,
-	    null,
-	    "Searching ..."
-	  ),
-	  emptySuggestionElm: _react2.default.createElement(
-	    _Suggestion2.default,
-	    null,
-	    "Sorry, we didn't find any results \u2639"
-	  )
+	  parseSuggestionsData: function parseSuggestionsData(data) {
+	    return data;
+	  },
+	  renderEmptySuggestion: function renderEmptySuggestion(data) {
+	    return null;
+	  }
 	};
 	exports.default = SuggestionList;
 
 /***/ },
-/* 19 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1277,7 +2249,7 @@
 	exports.default = Suggestion;
 
 /***/ },
-/* 20 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1292,7 +2264,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Suggestion = __webpack_require__(19);
+	var _Suggestion = __webpack_require__(30);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
@@ -1349,7 +2321,7 @@
 	exports.default = SuggestionLink;
 
 /***/ },
-/* 21 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1367,13 +2339,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _EckoList = __webpack_require__(22);
+	var _EckoList = __webpack_require__(33);
 
 	var _EckoList2 = _interopRequireDefault(_EckoList);
 
-	var _reactRedux = __webpack_require__(8);
+	var _reactRedux = __webpack_require__(21);
 
-	var _Product = __webpack_require__(11);
+	var _Product = __webpack_require__(17);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1461,7 +2433,7 @@
 	;
 
 /***/ },
-/* 22 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1580,7 +2552,7 @@
 	;
 
 /***/ },
-/* 23 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1723,26 +2695,23 @@
 	            "p",
 	            null,
 	            "Kontaktujte n\xE1s na:",
+	            _react2.default.createElement("br", null),
 	            _react2.default.createElement(
-	              "div",
-	              null,
+	              "a",
+	              { target: "_blank", href: "https://www.facebook.com/viscokupujes", title: "Facebook" },
 	              _react2.default.createElement(
-	                "a",
-	                { target: "_blank", href: "https://www.facebook.com/viscokupujes", title: "Facebook" },
-	                _react2.default.createElement(
-	                  "svg",
-	                  { height: "32", width: "32", viewBox: "0 0 512 512" },
-	                  _react2.default.createElement("path", { fill: "#319631", d: "M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64 H288z" })
-	                )
-	              ),
+	                "svg",
+	                { height: "32", width: "32", viewBox: "0 0 512 512" },
+	                _react2.default.createElement("path", { fill: "#319631", d: "M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64 H288z" })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "a",
+	              { href: "mailto:viscokupujes@gmail.com" },
 	              _react2.default.createElement(
-	                "a",
-	                { href: "mailto:viscokupujes@gmail.com" },
-	                _react2.default.createElement(
-	                  "svg",
-	                  { height: "32", width: "32", viewBox: "0 0 256 200", strokeWidth: "10", stroke: "#319631", transform: "scale(.8)" },
-	                  _react2.default.createElement("path", { d: "M 0,97.00377 0,0 129.00497,0 258.00995,0 257.75497,96.75 257.5,193.5 128.75,193.75377 0,194.00755 0,97.00377 z m 203.25561,47.75479 -42.24144,-42.24143 -11.75708,11.64086 c -12.15071,12.03059 -16.16572,14.86722 -20.95743,14.80657 -4.12528,-0.0522 -5.85964,-1.32169 -19.35007,-14.16339 L 96.65978,103.10234 54.829888,144.17892 C 31.82345,166.77103 13,185.64801 13,186.12775 13,186.61908 63.76621,187 129.24852,187 l 116.24852,0 -42.24143,-42.24144 z M 49.248521,54.751479 7,12.502959 7,97 7,181.49704 49.248521,139.24852 91.49704,97 49.248521,54.751479 z M 251,96.91667 C 251,50.670833 250.63934,12.983333 250.19852,13.166667 249.75771,13.35 230.77241,32.312699 208.00897,55.305998 L 166.6209,97.112 208.55599,139.056 C 231.62028,162.1252 250.60558,181 250.74554,181 250.88549,181 251,143.1625 251,96.91667 z M 188.1087,64.75281 244.7174,7.5 186.8587,7.241942 c -31.82228,-0.141932 -84.0685,-0.141932 -116.10269,0 L 12.51201,7.5 l 56.994,57.28148 c 45.3652,45.59402 57.50408,57.27562 59.49399,57.25281 1.96251,-0.0225 14.67058,-12.33773 59.1087,-57.28148 z" })
-	                )
+	                "svg",
+	                { height: "32", width: "32", viewBox: "0 0 256 200", strokeWidth: "10", stroke: "#319631", transform: "scale(.8)" },
+	                _react2.default.createElement("path", { d: "M 0,97.00377 0,0 129.00497,0 258.00995,0 257.75497,96.75 257.5,193.5 128.75,193.75377 0,194.00755 0,97.00377 z m 203.25561,47.75479 -42.24144,-42.24143 -11.75708,11.64086 c -12.15071,12.03059 -16.16572,14.86722 -20.95743,14.80657 -4.12528,-0.0522 -5.85964,-1.32169 -19.35007,-14.16339 L 96.65978,103.10234 54.829888,144.17892 C 31.82345,166.77103 13,185.64801 13,186.12775 13,186.61908 63.76621,187 129.24852,187 l 116.24852,0 -42.24143,-42.24144 z M 49.248521,54.751479 7,12.502959 7,97 7,181.49704 49.248521,139.24852 91.49704,97 49.248521,54.751479 z M 251,96.91667 C 251,50.670833 250.63934,12.983333 250.19852,13.166667 249.75771,13.35 230.77241,32.312699 208.00897,55.305998 L 166.6209,97.112 208.55599,139.056 C 231.62028,162.1252 250.60558,181 250.74554,181 250.88549,181 251,143.1625 251,96.91667 z M 188.1087,64.75281 244.7174,7.5 186.8587,7.241942 c -31.82228,-0.141932 -84.0685,-0.141932 -116.10269,0 L 12.51201,7.5 l 56.994,57.28148 c 45.3652,45.59402 57.50408,57.27562 59.49399,57.25281 1.96251,-0.0225 14.67058,-12.33773 59.1087,-57.28148 z" })
 	              )
 	            )
 	          )
@@ -1755,961 +2724,6 @@
 	}(_react2.default.Component);
 
 	exports.default = AboutUs;
-	;
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _redux = __webpack_require__(25);
-
-	var _reduxLogger = __webpack_require__(26);
-
-	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-
-	var _reduxPromiseMiddleware = __webpack_require__(32);
-
-	var _reduxPromiseMiddleware2 = _interopRequireDefault(_reduxPromiseMiddleware);
-
-	var _reduxThunk = __webpack_require__(33);
-
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-	var _reducers = __webpack_require__(34);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var middleware = (0, _redux.applyMiddleware)((0, _reduxPromiseMiddleware2.default)(), _reduxThunk2.default);
-
-	exports.default = (0, _redux.createStore)(_reducers2.default, middleware);
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = (__webpack_require__(2))(185);
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _core = __webpack_require__(27);
-
-	var _helpers = __webpack_require__(28);
-
-	var _defaults = __webpack_require__(31);
-
-	var _defaults2 = _interopRequireDefault(_defaults);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Creates logger with following options
-	 *
-	 * @namespace
-	 * @param {object} options - options for logger
-	 * @param {string | function | object} options.level - console[level]
-	 * @param {boolean} options.duration - print duration of each action?
-	 * @param {boolean} options.timestamp - print timestamp with each action?
-	 * @param {object} options.colors - custom colors
-	 * @param {object} options.logger - implementation of the `console` API
-	 * @param {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
-	 * @param {boolean} options.collapsed - is group collapsed?
-	 * @param {boolean} options.predicate - condition which resolves logger behavior
-	 * @param {function} options.stateTransformer - transform state before print
-	 * @param {function} options.actionTransformer - transform action before print
-	 * @param {function} options.errorTransformer - transform error before print
-	 *
-	 * @returns {function} logger middleware
-	 */
-	function createLogger() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	  var loggerOptions = _extends({}, _defaults2.default, options);
-
-	  var logger = loggerOptions.logger;
-	  var transformer = loggerOptions.transformer;
-	  var stateTransformer = loggerOptions.stateTransformer;
-	  var errorTransformer = loggerOptions.errorTransformer;
-	  var predicate = loggerOptions.predicate;
-	  var logErrors = loggerOptions.logErrors;
-	  var diffPredicate = loggerOptions.diffPredicate;
-
-	  // Return if 'console' object is not defined
-
-	  if (typeof logger === 'undefined') {
-	    return function () {
-	      return function (next) {
-	        return function (action) {
-	          return next(action);
-	        };
-	      };
-	    };
-	  }
-
-	  if (transformer) {
-	    console.error('Option \'transformer\' is deprecated, use \'stateTransformer\' instead!'); // eslint-disable-line no-console
-	  }
-
-	  var logBuffer = [];
-
-	  return function (_ref) {
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        // Exit early if predicate function returns 'false'
-	        if (typeof predicate === 'function' && !predicate(getState, action)) {
-	          return next(action);
-	        }
-
-	        var logEntry = {};
-	        logBuffer.push(logEntry);
-
-	        logEntry.started = _helpers.timer.now();
-	        logEntry.startedTime = new Date();
-	        logEntry.prevState = stateTransformer(getState());
-	        logEntry.action = action;
-
-	        var returnedValue = undefined;
-	        if (logErrors) {
-	          try {
-	            returnedValue = next(action);
-	          } catch (e) {
-	            logEntry.error = errorTransformer(e);
-	          }
-	        } else {
-	          returnedValue = next(action);
-	        }
-
-	        logEntry.took = _helpers.timer.now() - logEntry.started;
-	        logEntry.nextState = stateTransformer(getState());
-
-	        var diff = loggerOptions.diff && typeof diffPredicate === 'function' ? diffPredicate(getState, action) : loggerOptions.diff;
-
-	        (0, _core.printBuffer)(logBuffer, _extends({}, loggerOptions, { diff: diff }));
-	        logBuffer.length = 0;
-
-	        if (logEntry.error) throw logEntry.error;
-	        return returnedValue;
-	      };
-	    };
-	  };
-	}
-
-	exports.default = createLogger;
-	module.exports = exports['default'];
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.printBuffer = printBuffer;
-
-	var _helpers = __webpack_require__(28);
-
-	var _diff = __webpack_require__(29);
-
-	var _diff2 = _interopRequireDefault(_diff);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
-	/**
-	 * Get log level string based on supplied params
-	 *
-	 * @param {string | function | object} level - console[level]
-	 * @param {object} action - selected action
-	 * @param {array} payload - selected payload
-	 * @param {string} type - log entry type
-	 *
-	 * @returns {string} level
-	 */
-	function getLogLevel(level, action, payload, type) {
-	  switch (typeof level === 'undefined' ? 'undefined' : _typeof(level)) {
-	    case 'object':
-	      return typeof level[type] === 'function' ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
-	    case 'function':
-	      return level(action);
-	    default:
-	      return level;
-	  }
-	}
-
-	function defaultTitleFormatter(options) {
-	  var timestamp = options.timestamp;
-	  var duration = options.duration;
-
-	  return function (action, time, took) {
-	    var parts = ['action'];
-	    if (timestamp) {
-	      parts.push('@ ' + time);
-	    }
-	    parts.push(action.type);
-	    if (duration) {
-	      parts.push('(in ' + took.toFixed(2) + ' ms)');
-	    }
-	    return parts.join(' ');
-	  };
-	}
-
-	function printBuffer(buffer, options) {
-	  var logger = options.logger;
-	  var actionTransformer = options.actionTransformer;
-	  var _options$titleFormatt = options.titleFormatter;
-	  var titleFormatter = _options$titleFormatt === undefined ? defaultTitleFormatter(options) : _options$titleFormatt;
-	  var collapsed = options.collapsed;
-	  var colors = options.colors;
-	  var level = options.level;
-	  var diff = options.diff;
-
-	  buffer.forEach(function (logEntry, key) {
-	    var started = logEntry.started;
-	    var startedTime = logEntry.startedTime;
-	    var action = logEntry.action;
-	    var prevState = logEntry.prevState;
-	    var error = logEntry.error;
-	    var took = logEntry.took;
-	    var nextState = logEntry.nextState;
-
-	    var nextEntry = buffer[key + 1];
-
-	    if (nextEntry) {
-	      nextState = nextEntry.prevState;
-	      took = nextEntry.started - started;
-	    }
-
-	    // Message
-	    var formattedAction = actionTransformer(action);
-	    var isCollapsed = typeof collapsed === 'function' ? collapsed(function () {
-	      return nextState;
-	    }, action) : collapsed;
-
-	    var formattedTime = (0, _helpers.formatTime)(startedTime);
-	    var titleCSS = colors.title ? 'color: ' + colors.title(formattedAction) + ';' : null;
-	    var title = titleFormatter(formattedAction, formattedTime, took);
-
-	    // Render
-	    try {
-	      if (isCollapsed) {
-	        if (colors.title) logger.groupCollapsed('%c ' + title, titleCSS);else logger.groupCollapsed(title);
-	      } else {
-	        if (colors.title) logger.group('%c ' + title, titleCSS);else logger.group(title);
-	      }
-	    } catch (e) {
-	      logger.log(title);
-	    }
-
-	    var prevStateLevel = getLogLevel(level, formattedAction, [prevState], 'prevState');
-	    var actionLevel = getLogLevel(level, formattedAction, [formattedAction], 'action');
-	    var errorLevel = getLogLevel(level, formattedAction, [error, prevState], 'error');
-	    var nextStateLevel = getLogLevel(level, formattedAction, [nextState], 'nextState');
-
-	    if (prevStateLevel) {
-	      if (colors.prevState) logger[prevStateLevel]('%c prev state', 'color: ' + colors.prevState(prevState) + '; font-weight: bold', prevState);else logger[prevStateLevel]('prev state', prevState);
-	    }
-
-	    if (actionLevel) {
-	      if (colors.action) logger[actionLevel]('%c action', 'color: ' + colors.action(formattedAction) + '; font-weight: bold', formattedAction);else logger[actionLevel]('action', formattedAction);
-	    }
-
-	    if (error && errorLevel) {
-	      if (colors.error) logger[errorLevel]('%c error', 'color: ' + colors.error(error, prevState) + '; font-weight: bold', error);else logger[errorLevel]('error', error);
-	    }
-
-	    if (nextStateLevel) {
-	      if (colors.nextState) logger[nextStateLevel]('%c next state', 'color: ' + colors.nextState(nextState) + '; font-weight: bold', nextState);else logger[nextStateLevel]('next state', nextState);
-	    }
-
-	    if (diff) {
-	      (0, _diff2.default)(prevState, nextState, logger, isCollapsed);
-	    }
-
-	    try {
-	      logger.groupEnd();
-	    } catch (e) {
-	      logger.log('—— log end ——');
-	    }
-	  });
-	}
-
-/***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var repeat = exports.repeat = function repeat(str, times) {
-	  return new Array(times + 1).join(str);
-	};
-
-	var pad = exports.pad = function pad(num, maxLength) {
-	  return repeat("0", maxLength - num.toString().length) + num;
-	};
-
-	var formatTime = exports.formatTime = function formatTime(time) {
-	  return pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
-	};
-
-	// Use performance API if it's available in order to get better precision
-	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = diffLogger;
-
-	var _deepDiff = __webpack_require__(30);
-
-	var _deepDiff2 = _interopRequireDefault(_deepDiff);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// https://github.com/flitbit/diff#differences
-	var dictionary = {
-	  'E': {
-	    color: '#2196F3',
-	    text: 'CHANGED:'
-	  },
-	  'N': {
-	    color: '#4CAF50',
-	    text: 'ADDED:'
-	  },
-	  'D': {
-	    color: '#F44336',
-	    text: 'DELETED:'
-	  },
-	  'A': {
-	    color: '#2196F3',
-	    text: 'ARRAY:'
-	  }
-	};
-
-	function style(kind) {
-	  return 'color: ' + dictionary[kind].color + '; font-weight: bold';
-	}
-
-	function render(diff) {
-	  var kind = diff.kind;
-	  var path = diff.path;
-	  var lhs = diff.lhs;
-	  var rhs = diff.rhs;
-	  var index = diff.index;
-	  var item = diff.item;
-
-	  switch (kind) {
-	    case 'E':
-	      return path.join('.') + ' ' + lhs + ' → ' + rhs;
-	    case 'N':
-	      return path.join('.') + ' ' + rhs;
-	    case 'D':
-	      return '' + path.join('.');
-	    case 'A':
-	      return [path.join('.') + '[' + index + ']', item];
-	    default:
-	      return null;
-	  }
-	}
-
-	function diffLogger(prevState, newState, logger, isCollapsed) {
-	  var diff = (0, _deepDiff2.default)(prevState, newState);
-
-	  try {
-	    if (isCollapsed) {
-	      logger.groupCollapsed('diff');
-	    } else {
-	      logger.group('diff');
-	    }
-	  } catch (e) {
-	    logger.log('diff');
-	  }
-
-	  if (diff) {
-	    diff.forEach(function (elem) {
-	      var kind = elem.kind;
-
-	      var output = render(elem);
-
-	      logger.log('%c ' + dictionary[kind].text, style(kind), output);
-	    });
-	  } else {
-	    logger.log('—— no diff ——');
-	  }
-
-	  try {
-	    logger.groupEnd();
-	  } catch (e) {
-	    logger.log('—— diff end —— ');
-	  }
-	}
-	module.exports = exports['default'];
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
-	 * deep-diff.
-	 * Licensed under the MIT License.
-	 */
-	;(function(root, factory) {
-	  'use strict';
-	  if (true) {
-	    // AMD. Register as an anonymous module.
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
-	      return factory();
-	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	  } else if (typeof exports === 'object') {
-	    // Node. Does not work with strict CommonJS, but
-	    // only CommonJS-like environments that support module.exports,
-	    // like Node.
-	    module.exports = factory();
-	  } else {
-	    // Browser globals (root is window)
-	    root.DeepDiff = factory();
-	  }
-	}(this, function(undefined) {
-	  'use strict';
-
-	  var $scope, conflict, conflictResolution = [];
-	  if (typeof global === 'object' && global) {
-	    $scope = global;
-	  } else if (typeof window !== 'undefined') {
-	    $scope = window;
-	  } else {
-	    $scope = {};
-	  }
-	  conflict = $scope.DeepDiff;
-	  if (conflict) {
-	    conflictResolution.push(
-	      function() {
-	        if ('undefined' !== typeof conflict && $scope.DeepDiff === accumulateDiff) {
-	          $scope.DeepDiff = conflict;
-	          conflict = undefined;
-	        }
-	      });
-	  }
-
-	  // nodejs compatible on server side and in the browser.
-	  function inherits(ctor, superCtor) {
-	    ctor.super_ = superCtor;
-	    ctor.prototype = Object.create(superCtor.prototype, {
-	      constructor: {
-	        value: ctor,
-	        enumerable: false,
-	        writable: true,
-	        configurable: true
-	      }
-	    });
-	  }
-
-	  function Diff(kind, path) {
-	    Object.defineProperty(this, 'kind', {
-	      value: kind,
-	      enumerable: true
-	    });
-	    if (path && path.length) {
-	      Object.defineProperty(this, 'path', {
-	        value: path,
-	        enumerable: true
-	      });
-	    }
-	  }
-
-	  function DiffEdit(path, origin, value) {
-	    DiffEdit.super_.call(this, 'E', path);
-	    Object.defineProperty(this, 'lhs', {
-	      value: origin,
-	      enumerable: true
-	    });
-	    Object.defineProperty(this, 'rhs', {
-	      value: value,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffEdit, Diff);
-
-	  function DiffNew(path, value) {
-	    DiffNew.super_.call(this, 'N', path);
-	    Object.defineProperty(this, 'rhs', {
-	      value: value,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffNew, Diff);
-
-	  function DiffDeleted(path, value) {
-	    DiffDeleted.super_.call(this, 'D', path);
-	    Object.defineProperty(this, 'lhs', {
-	      value: value,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffDeleted, Diff);
-
-	  function DiffArray(path, index, item) {
-	    DiffArray.super_.call(this, 'A', path);
-	    Object.defineProperty(this, 'index', {
-	      value: index,
-	      enumerable: true
-	    });
-	    Object.defineProperty(this, 'item', {
-	      value: item,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffArray, Diff);
-
-	  function arrayRemove(arr, from, to) {
-	    var rest = arr.slice((to || from) + 1 || arr.length);
-	    arr.length = from < 0 ? arr.length + from : from;
-	    arr.push.apply(arr, rest);
-	    return arr;
-	  }
-
-	  function realTypeOf(subject) {
-	    var type = typeof subject;
-	    if (type !== 'object') {
-	      return type;
-	    }
-
-	    if (subject === Math) {
-	      return 'math';
-	    } else if (subject === null) {
-	      return 'null';
-	    } else if (Array.isArray(subject)) {
-	      return 'array';
-	    } else if (Object.prototype.toString.call(subject) === '[object Date]') {
-	      return 'date';
-	    } else if (typeof subject.toString !== 'undefined' && /^\/.*\//.test(subject.toString())) {
-	      return 'regexp';
-	    }
-	    return 'object';
-	  }
-
-	  function deepDiff(lhs, rhs, changes, prefilter, path, key, stack) {
-	    path = path || [];
-	    var currentPath = path.slice(0);
-	    if (typeof key !== 'undefined') {
-	      if (prefilter) {
-	        if (typeof(prefilter) === 'function' && prefilter(currentPath, key)) { return; }
-	        else if (typeof(prefilter) === 'object') {
-	          if (prefilter.prefilter && prefilter.prefilter(currentPath, key)) { return; }
-	          if (prefilter.normalize) {
-	            var alt = prefilter.normalize(currentPath, key, lhs, rhs);
-	            if (alt) {
-	              lhs = alt[0];
-	              rhs = alt[1];
-	            }
-	          }
-	        }
-	      }
-	      currentPath.push(key);
-	    }
-
-	    // Use string comparison for regexes
-	    if (realTypeOf(lhs) === 'regexp' && realTypeOf(rhs) === 'regexp') {
-	      lhs = lhs.toString();
-	      rhs = rhs.toString();
-	    }
-
-	    var ltype = typeof lhs;
-	    var rtype = typeof rhs;
-	    if (ltype === 'undefined') {
-	      if (rtype !== 'undefined') {
-	        changes(new DiffNew(currentPath, rhs));
-	      }
-	    } else if (rtype === 'undefined') {
-	      changes(new DiffDeleted(currentPath, lhs));
-	    } else if (realTypeOf(lhs) !== realTypeOf(rhs)) {
-	      changes(new DiffEdit(currentPath, lhs, rhs));
-	    } else if (Object.prototype.toString.call(lhs) === '[object Date]' && Object.prototype.toString.call(rhs) === '[object Date]' && ((lhs - rhs) !== 0)) {
-	      changes(new DiffEdit(currentPath, lhs, rhs));
-	    } else if (ltype === 'object' && lhs !== null && rhs !== null) {
-	      stack = stack || [];
-	      if (stack.indexOf(lhs) < 0) {
-	        stack.push(lhs);
-	        if (Array.isArray(lhs)) {
-	          var i, len = lhs.length;
-	          for (i = 0; i < lhs.length; i++) {
-	            if (i >= rhs.length) {
-	              changes(new DiffArray(currentPath, i, new DiffDeleted(undefined, lhs[i])));
-	            } else {
-	              deepDiff(lhs[i], rhs[i], changes, prefilter, currentPath, i, stack);
-	            }
-	          }
-	          while (i < rhs.length) {
-	            changes(new DiffArray(currentPath, i, new DiffNew(undefined, rhs[i++])));
-	          }
-	        } else {
-	          var akeys = Object.keys(lhs);
-	          var pkeys = Object.keys(rhs);
-	          akeys.forEach(function(k, i) {
-	            var other = pkeys.indexOf(k);
-	            if (other >= 0) {
-	              deepDiff(lhs[k], rhs[k], changes, prefilter, currentPath, k, stack);
-	              pkeys = arrayRemove(pkeys, other);
-	            } else {
-	              deepDiff(lhs[k], undefined, changes, prefilter, currentPath, k, stack);
-	            }
-	          });
-	          pkeys.forEach(function(k) {
-	            deepDiff(undefined, rhs[k], changes, prefilter, currentPath, k, stack);
-	          });
-	        }
-	        stack.length = stack.length - 1;
-	      }
-	    } else if (lhs !== rhs) {
-	      if (!(ltype === 'number' && isNaN(lhs) && isNaN(rhs))) {
-	        changes(new DiffEdit(currentPath, lhs, rhs));
-	      }
-	    }
-	  }
-
-	  function accumulateDiff(lhs, rhs, prefilter, accum) {
-	    accum = accum || [];
-	    deepDiff(lhs, rhs,
-	      function(diff) {
-	        if (diff) {
-	          accum.push(diff);
-	        }
-	      },
-	      prefilter);
-	    return (accum.length) ? accum : undefined;
-	  }
-
-	  function applyArrayChange(arr, index, change) {
-	    if (change.path && change.path.length) {
-	      var it = arr[index],
-	          i, u = change.path.length - 1;
-	      for (i = 0; i < u; i++) {
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          applyArrayChange(it[change.path[i]], change.index, change.item);
-	          break;
-	        case 'D':
-	          delete it[change.path[i]];
-	          break;
-	        case 'E':
-	        case 'N':
-	          it[change.path[i]] = change.rhs;
-	          break;
-	      }
-	    } else {
-	      switch (change.kind) {
-	        case 'A':
-	          applyArrayChange(arr[index], change.index, change.item);
-	          break;
-	        case 'D':
-	          arr = arrayRemove(arr, index);
-	          break;
-	        case 'E':
-	        case 'N':
-	          arr[index] = change.rhs;
-	          break;
-	      }
-	    }
-	    return arr;
-	  }
-
-	  function applyChange(target, source, change) {
-	    if (target && source && change && change.kind) {
-	      var it = target,
-	          i = -1,
-	          last = change.path ? change.path.length - 1 : 0;
-	      while (++i < last) {
-	        if (typeof it[change.path[i]] === 'undefined') {
-	          it[change.path[i]] = (typeof change.path[i] === 'number') ? [] : {};
-	        }
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          applyArrayChange(change.path ? it[change.path[i]] : it, change.index, change.item);
-	          break;
-	        case 'D':
-	          delete it[change.path[i]];
-	          break;
-	        case 'E':
-	        case 'N':
-	          it[change.path[i]] = change.rhs;
-	          break;
-	      }
-	    }
-	  }
-
-	  function revertArrayChange(arr, index, change) {
-	    if (change.path && change.path.length) {
-	      // the structure of the object at the index has changed...
-	      var it = arr[index],
-	          i, u = change.path.length - 1;
-	      for (i = 0; i < u; i++) {
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          revertArrayChange(it[change.path[i]], change.index, change.item);
-	          break;
-	        case 'D':
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'E':
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'N':
-	          delete it[change.path[i]];
-	          break;
-	      }
-	    } else {
-	      // the array item is different...
-	      switch (change.kind) {
-	        case 'A':
-	          revertArrayChange(arr[index], change.index, change.item);
-	          break;
-	        case 'D':
-	          arr[index] = change.lhs;
-	          break;
-	        case 'E':
-	          arr[index] = change.lhs;
-	          break;
-	        case 'N':
-	          arr = arrayRemove(arr, index);
-	          break;
-	      }
-	    }
-	    return arr;
-	  }
-
-	  function revertChange(target, source, change) {
-	    if (target && source && change && change.kind) {
-	      var it = target,
-	          i, u;
-	      u = change.path.length - 1;
-	      for (i = 0; i < u; i++) {
-	        if (typeof it[change.path[i]] === 'undefined') {
-	          it[change.path[i]] = {};
-	        }
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          // Array was modified...
-	          // it will be an array...
-	          revertArrayChange(it[change.path[i]], change.index, change.item);
-	          break;
-	        case 'D':
-	          // Item was deleted...
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'E':
-	          // Item was edited...
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'N':
-	          // Item is new...
-	          delete it[change.path[i]];
-	          break;
-	      }
-	    }
-	  }
-
-	  function applyDiff(target, source, filter) {
-	    if (target && source) {
-	      var onChange = function(change) {
-	        if (!filter || filter(target, source, change)) {
-	          applyChange(target, source, change);
-	        }
-	      };
-	      deepDiff(target, source, onChange);
-	    }
-	  }
-
-	  Object.defineProperties(accumulateDiff, {
-
-	    diff: {
-	      value: accumulateDiff,
-	      enumerable: true
-	    },
-	    observableDiff: {
-	      value: deepDiff,
-	      enumerable: true
-	    },
-	    applyDiff: {
-	      value: applyDiff,
-	      enumerable: true
-	    },
-	    applyChange: {
-	      value: applyChange,
-	      enumerable: true
-	    },
-	    revertChange: {
-	      value: revertChange,
-	      enumerable: true
-	    },
-	    isConflict: {
-	      value: function() {
-	        return 'undefined' !== typeof conflict;
-	      },
-	      enumerable: true
-	    },
-	    noConflict: {
-	      value: function() {
-	        if (conflictResolution) {
-	          conflictResolution.forEach(function(it) {
-	            it();
-	          });
-	          conflictResolution = null;
-	        }
-	        return accumulateDiff;
-	      },
-	      enumerable: true
-	    }
-	  });
-
-	  return accumulateDiff;
-	}));
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = {
-	  level: "log",
-	  logger: console,
-	  logErrors: true,
-	  collapsed: undefined,
-	  predicate: undefined,
-	  duration: false,
-	  timestamp: true,
-	  stateTransformer: function stateTransformer(state) {
-	    return state;
-	  },
-	  actionTransformer: function actionTransformer(action) {
-	    return action;
-	  },
-	  errorTransformer: function errorTransformer(error) {
-	    return error;
-	  },
-	  colors: {
-	    title: function title() {
-	      return "inherit";
-	    },
-	    prevState: function prevState() {
-	      return "#9E9E9E";
-	    },
-	    action: function action() {
-	      return "#03A9F4";
-	    },
-	    nextState: function nextState() {
-	      return "#4CAF50";
-	    },
-	    error: function error() {
-	      return "#F20404";
-	    }
-	  },
-	  diff: false,
-	  diffPredicate: undefined,
-
-	  // Deprecated options
-	  transformer: undefined
-	};
-	module.exports = exports['default'];
-
-/***/ },
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = (__webpack_require__(2))(262);
-
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = (__webpack_require__(2))(261);
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
-	  var action = arguments[1];
-
-
-	  switch (action.type) {
-	    case _Product.SEARCH_PRODUCT_RESET:
-	      return _extends({}, state, { searchProduct: INITIAL_STATE.searchProduct });
-
-	    case _Product.SEARCH_PRODUCT + "_PENDING":
-	      return _extends({}, state, { searchProduct: { products: [], err: null, pending: true } });
-
-	    case _Product.SEARCH_PRODUCT + "_FULFILLED":
-	      return _extends({}, state, { searchProduct: { products: action.payload, err: null, pending: false } });
-
-	    case _Product.GET_PRODUCT_BY_ID + "_FULFILLED":
-	      return _extends({}, state, { activeProduct: { product: action.payload, err: null, pending: false } });
-
-	  }
-
-	  return state;
-	};
-
-	var _Product = __webpack_require__(11);
-
-	var INITIAL_STATE = {
-	  searchProduct: { products: [], err: null, pending: false },
-	  activeProduct: { product: null, err: null, pending: false }
-	};
-
 	;
 
 /***/ },

@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux";
 import debounce from "debounce";
 import { browserHistory } from "react-router";
-import { searchProduct, selectProduct } from "../actions/Product";
+import { searchProduct, resetSearchProduct, resetActiveProduct } from "../actions/Product";
 import imgProgressbar from "../icons/progressbar.gif";
 import imgCart from "../icons/cart.png";
 import imgLogo from "../icons/logo.png";
@@ -11,17 +11,6 @@ import {
   Suggestion as ReactSuggestion,
   SuggestionLink as ReactSuggestionLink
 } from "react-searchbox"
-
-const nullSuggestionComp = (
-  <ReactSuggestion>
-    <img height="15" src={imgProgressbar} />
-    &nbsp;&nbsp;&nbsp;Vyhledávám...
-  </ReactSuggestion>
-)
-
-const emptySuggestionComp = (
-  <ReactSuggestion>Nenašli jsme žádný produkt... &#x2639;</ReactSuggestion>
-)
 
 const Suggestion = (props) => {
   const splitAt = (hit, str, startpos) => [str.slice(startpos, hit[0]), str.slice(hit[0], hit[1]), str.slice(hit[1])];
@@ -33,7 +22,7 @@ const Suggestion = (props) => {
       let arr = splitAt(hits[i], props.data.name, prev);
       let end = (i + 1 === hits.length) ? arr[2] : null;
       name = name
-        .concat(arr[0], <span className="SearchBox__Product-highlight">{arr[1]}</span>, end);
+        .concat(arr[0], <span key={hits[i]} className="SearchBox__Product-highlight">{arr[1]}</span>, end);
     }
   } else {
     name = props.data.name;
@@ -49,29 +38,39 @@ const Suggestion = (props) => {
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
-  foundProducts: store.searchProduct.products
+  searchProduct: store.searchProduct
 }))
 export default class Toolbar extends React.Component {
-  state = { showSearchBox : !this.props.activeProduct.products }
 
   goBack = () => {
     browserHistory.push("/");
-    this.setState({showSearchBox: true })
   }
 
-  onChange = debounce((term) => {
+  _searchProductDebounced = debounce((term) => {
     this.props.dispatch(searchProduct(term))
-  }, 500)
+  }, 300)
+
+  onChange = (term) => {
+    this.props.dispatch(resetSearchProduct())
+    this._searchProductDebounced(term)
+  }
 
   onSelect = (product) => {
     browserHistory.push("/product/" + product.id);
-    this.setState({showSearchBox: false })
+  }
+
+  renderEmptySuggestion = (data) => {
+    if (data.pending) {
+      return <ReactSuggestion><img height="15" src={imgProgressbar} />&nbsp;&nbsp;&nbsp;Vyhledávám..</ReactSuggestion>
+    } else if (data.products !== null) {
+      return <ReactSuggestion>Nenašli jsme žádný produkt... &#x2639;</ReactSuggestion>
+    }
   }
 
   render() {
     return (
       <div className="Toolbar">
-        { !this.state.showSearchBox ? <button className="Toolbar__backBtn" onClick={this.goBack}>←</button> : null }
+        { this.props.activeProduct.product ? <button className="Toolbar__backBtn" onClick={this.goBack}>←</button> : null }
         <h1 className="Toolbar__title">
           <img src={imgCart} /><img src={imgLogo} />
           <a target="_blank" href="https://www.facebook.com/viscokupujes" title="Facebook" className="Toolbar__fbLink">
@@ -81,16 +80,15 @@ export default class Toolbar extends React.Component {
             </svg>
           </a>
         </h1>
-        { this.state.showSearchBox ?
+        { !this.props.activeProduct.product ?
             <ReactSearchBox
               onChange={this.onChange}
               onSelect={this.onSelect}
-              selectedToString={(data) => ""}
               placeholder="Najdi výrobek..."
-              suggestions={this.props.foundProducts}
+              suggestions={this.props.searchProduct}
+              parseSuggestionsData={(data) => data.products}
               suggestionComp={Suggestion}
-              nullSuggestionElm={nullSuggestionComp}
-              emptySuggestionElm={emptySuggestionComp}
+              renderEmptySuggestion={this.renderEmptySuggestion}
               /> : null
           }
       </div>
