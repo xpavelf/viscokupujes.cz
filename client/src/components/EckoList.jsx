@@ -1,15 +1,15 @@
-import React from "react";
-import { browserHistory } from "react-router";
+import React from "react"
+import { browserHistory } from "react-router"
 
 export default class EckoList extends React.Component {
 
-  state = { showBackdrop: false };
+  state = { showBackdrop: false }
 
   onClick = (ecko) => {
     this.setState({
       showBackdrop: true,
       selected: ecko
-    });
+    })
   }
 
   hide = () => {
@@ -29,12 +29,12 @@ export default class EckoList extends React.Component {
         </div>
         {e.desc ? <div className="Ecko-modal__content">{e.desc}</div> : null }
       </div>
-    );
+    )
   }
 
   render() {
     let arr = this.props.list
-      .sort((a, b) => b.rating - a.rating);
+      .sort((a, b) => b.rating - a.rating)
 
     return (
       <div>
@@ -45,6 +45,6 @@ export default class EckoList extends React.Component {
         { this.state.showBackdrop ? <div className="Ecko-backdrop" onClick={this.hide} /> : null }
         { this.state.showBackdrop ? this.getModal(this.state.selected) : null }
       </div>
-    );
+    )
   }
-};
+}

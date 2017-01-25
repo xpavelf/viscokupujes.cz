@@ -58,7 +58,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reactRedux = __webpack_require__(21);
+	var _reactRedux = __webpack_require__(15);
 
 	var _store = __webpack_require__(6);
 
@@ -66,7 +66,7 @@
 
 	var _reactRouter = __webpack_require__(5);
 
-	__webpack_require__(35);
+	__webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -114,17 +114,17 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _Product = __webpack_require__(17);
+	var _Product = __webpack_require__(11);
 
-	var _App = __webpack_require__(19);
+	var _App = __webpack_require__(13);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Product2 = __webpack_require__(32);
+	var _Product2 = __webpack_require__(26);
 
 	var _Product3 = _interopRequireDefault(_Product2);
 
-	var _AboutUs = __webpack_require__(34);
+	var _AboutUs = __webpack_require__(28);
 
 	var _AboutUs2 = _interopRequireDefault(_AboutUs);
 
@@ -158,19 +158,15 @@
 
 	var _redux = __webpack_require__(7);
 
-	var _reduxLogger = __webpack_require__(8);
-
-	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-
-	var _reduxPromiseMiddleware = __webpack_require__(14);
+	var _reduxPromiseMiddleware = __webpack_require__(8);
 
 	var _reduxPromiseMiddleware2 = _interopRequireDefault(_reduxPromiseMiddleware);
 
-	var _reduxThunk = __webpack_require__(15);
+	var _reduxThunk = __webpack_require__(9);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(16);
+	var _reducers = __webpack_require__(10);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -190,875 +186,16 @@
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _core = __webpack_require__(9);
-
-	var _helpers = __webpack_require__(10);
-
-	var _defaults = __webpack_require__(13);
-
-	var _defaults2 = _interopRequireDefault(_defaults);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Creates logger with following options
-	 *
-	 * @namespace
-	 * @param {object} options - options for logger
-	 * @param {string | function | object} options.level - console[level]
-	 * @param {boolean} options.duration - print duration of each action?
-	 * @param {boolean} options.timestamp - print timestamp with each action?
-	 * @param {object} options.colors - custom colors
-	 * @param {object} options.logger - implementation of the `console` API
-	 * @param {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
-	 * @param {boolean} options.collapsed - is group collapsed?
-	 * @param {boolean} options.predicate - condition which resolves logger behavior
-	 * @param {function} options.stateTransformer - transform state before print
-	 * @param {function} options.actionTransformer - transform action before print
-	 * @param {function} options.errorTransformer - transform error before print
-	 *
-	 * @returns {function} logger middleware
-	 */
-	function createLogger() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	  var loggerOptions = _extends({}, _defaults2.default, options);
-
-	  var logger = loggerOptions.logger;
-	  var transformer = loggerOptions.transformer;
-	  var stateTransformer = loggerOptions.stateTransformer;
-	  var errorTransformer = loggerOptions.errorTransformer;
-	  var predicate = loggerOptions.predicate;
-	  var logErrors = loggerOptions.logErrors;
-	  var diffPredicate = loggerOptions.diffPredicate;
-
-	  // Return if 'console' object is not defined
-
-	  if (typeof logger === 'undefined') {
-	    return function () {
-	      return function (next) {
-	        return function (action) {
-	          return next(action);
-	        };
-	      };
-	    };
-	  }
-
-	  if (transformer) {
-	    console.error('Option \'transformer\' is deprecated, use \'stateTransformer\' instead!'); // eslint-disable-line no-console
-	  }
-
-	  var logBuffer = [];
-
-	  return function (_ref) {
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        // Exit early if predicate function returns 'false'
-	        if (typeof predicate === 'function' && !predicate(getState, action)) {
-	          return next(action);
-	        }
-
-	        var logEntry = {};
-	        logBuffer.push(logEntry);
-
-	        logEntry.started = _helpers.timer.now();
-	        logEntry.startedTime = new Date();
-	        logEntry.prevState = stateTransformer(getState());
-	        logEntry.action = action;
-
-	        var returnedValue = undefined;
-	        if (logErrors) {
-	          try {
-	            returnedValue = next(action);
-	          } catch (e) {
-	            logEntry.error = errorTransformer(e);
-	          }
-	        } else {
-	          returnedValue = next(action);
-	        }
-
-	        logEntry.took = _helpers.timer.now() - logEntry.started;
-	        logEntry.nextState = stateTransformer(getState());
-
-	        var diff = loggerOptions.diff && typeof diffPredicate === 'function' ? diffPredicate(getState, action) : loggerOptions.diff;
-
-	        (0, _core.printBuffer)(logBuffer, _extends({}, loggerOptions, { diff: diff }));
-	        logBuffer.length = 0;
-
-	        if (logEntry.error) throw logEntry.error;
-	        return returnedValue;
-	      };
-	    };
-	  };
-	}
-
-	exports.default = createLogger;
-	module.exports = exports['default'];
+	module.exports = (__webpack_require__(2))(262);
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.printBuffer = printBuffer;
-
-	var _helpers = __webpack_require__(10);
-
-	var _diff = __webpack_require__(11);
-
-	var _diff2 = _interopRequireDefault(_diff);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
-	/**
-	 * Get log level string based on supplied params
-	 *
-	 * @param {string | function | object} level - console[level]
-	 * @param {object} action - selected action
-	 * @param {array} payload - selected payload
-	 * @param {string} type - log entry type
-	 *
-	 * @returns {string} level
-	 */
-	function getLogLevel(level, action, payload, type) {
-	  switch (typeof level === 'undefined' ? 'undefined' : _typeof(level)) {
-	    case 'object':
-	      return typeof level[type] === 'function' ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
-	    case 'function':
-	      return level(action);
-	    default:
-	      return level;
-	  }
-	}
-
-	function defaultTitleFormatter(options) {
-	  var timestamp = options.timestamp;
-	  var duration = options.duration;
-
-	  return function (action, time, took) {
-	    var parts = ['action'];
-	    if (timestamp) {
-	      parts.push('@ ' + time);
-	    }
-	    parts.push(action.type);
-	    if (duration) {
-	      parts.push('(in ' + took.toFixed(2) + ' ms)');
-	    }
-	    return parts.join(' ');
-	  };
-	}
-
-	function printBuffer(buffer, options) {
-	  var logger = options.logger;
-	  var actionTransformer = options.actionTransformer;
-	  var _options$titleFormatt = options.titleFormatter;
-	  var titleFormatter = _options$titleFormatt === undefined ? defaultTitleFormatter(options) : _options$titleFormatt;
-	  var collapsed = options.collapsed;
-	  var colors = options.colors;
-	  var level = options.level;
-	  var diff = options.diff;
-
-	  buffer.forEach(function (logEntry, key) {
-	    var started = logEntry.started;
-	    var startedTime = logEntry.startedTime;
-	    var action = logEntry.action;
-	    var prevState = logEntry.prevState;
-	    var error = logEntry.error;
-	    var took = logEntry.took;
-	    var nextState = logEntry.nextState;
-
-	    var nextEntry = buffer[key + 1];
-
-	    if (nextEntry) {
-	      nextState = nextEntry.prevState;
-	      took = nextEntry.started - started;
-	    }
-
-	    // Message
-	    var formattedAction = actionTransformer(action);
-	    var isCollapsed = typeof collapsed === 'function' ? collapsed(function () {
-	      return nextState;
-	    }, action) : collapsed;
-
-	    var formattedTime = (0, _helpers.formatTime)(startedTime);
-	    var titleCSS = colors.title ? 'color: ' + colors.title(formattedAction) + ';' : null;
-	    var title = titleFormatter(formattedAction, formattedTime, took);
-
-	    // Render
-	    try {
-	      if (isCollapsed) {
-	        if (colors.title) logger.groupCollapsed('%c ' + title, titleCSS);else logger.groupCollapsed(title);
-	      } else {
-	        if (colors.title) logger.group('%c ' + title, titleCSS);else logger.group(title);
-	      }
-	    } catch (e) {
-	      logger.log(title);
-	    }
-
-	    var prevStateLevel = getLogLevel(level, formattedAction, [prevState], 'prevState');
-	    var actionLevel = getLogLevel(level, formattedAction, [formattedAction], 'action');
-	    var errorLevel = getLogLevel(level, formattedAction, [error, prevState], 'error');
-	    var nextStateLevel = getLogLevel(level, formattedAction, [nextState], 'nextState');
-
-	    if (prevStateLevel) {
-	      if (colors.prevState) logger[prevStateLevel]('%c prev state', 'color: ' + colors.prevState(prevState) + '; font-weight: bold', prevState);else logger[prevStateLevel]('prev state', prevState);
-	    }
-
-	    if (actionLevel) {
-	      if (colors.action) logger[actionLevel]('%c action', 'color: ' + colors.action(formattedAction) + '; font-weight: bold', formattedAction);else logger[actionLevel]('action', formattedAction);
-	    }
-
-	    if (error && errorLevel) {
-	      if (colors.error) logger[errorLevel]('%c error', 'color: ' + colors.error(error, prevState) + '; font-weight: bold', error);else logger[errorLevel]('error', error);
-	    }
-
-	    if (nextStateLevel) {
-	      if (colors.nextState) logger[nextStateLevel]('%c next state', 'color: ' + colors.nextState(nextState) + '; font-weight: bold', nextState);else logger[nextStateLevel]('next state', nextState);
-	    }
-
-	    if (diff) {
-	      (0, _diff2.default)(prevState, nextState, logger, isCollapsed);
-	    }
-
-	    try {
-	      logger.groupEnd();
-	    } catch (e) {
-	      logger.log('—— log end ——');
-	    }
-	  });
-	}
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var repeat = exports.repeat = function repeat(str, times) {
-	  return new Array(times + 1).join(str);
-	};
-
-	var pad = exports.pad = function pad(num, maxLength) {
-	  return repeat("0", maxLength - num.toString().length) + num;
-	};
-
-	var formatTime = exports.formatTime = function formatTime(time) {
-	  return pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
-	};
-
-	// Use performance API if it's available in order to get better precision
-	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = diffLogger;
-
-	var _deepDiff = __webpack_require__(12);
-
-	var _deepDiff2 = _interopRequireDefault(_deepDiff);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// https://github.com/flitbit/diff#differences
-	var dictionary = {
-	  'E': {
-	    color: '#2196F3',
-	    text: 'CHANGED:'
-	  },
-	  'N': {
-	    color: '#4CAF50',
-	    text: 'ADDED:'
-	  },
-	  'D': {
-	    color: '#F44336',
-	    text: 'DELETED:'
-	  },
-	  'A': {
-	    color: '#2196F3',
-	    text: 'ARRAY:'
-	  }
-	};
-
-	function style(kind) {
-	  return 'color: ' + dictionary[kind].color + '; font-weight: bold';
-	}
-
-	function render(diff) {
-	  var kind = diff.kind;
-	  var path = diff.path;
-	  var lhs = diff.lhs;
-	  var rhs = diff.rhs;
-	  var index = diff.index;
-	  var item = diff.item;
-
-	  switch (kind) {
-	    case 'E':
-	      return path.join('.') + ' ' + lhs + ' → ' + rhs;
-	    case 'N':
-	      return path.join('.') + ' ' + rhs;
-	    case 'D':
-	      return '' + path.join('.');
-	    case 'A':
-	      return [path.join('.') + '[' + index + ']', item];
-	    default:
-	      return null;
-	  }
-	}
-
-	function diffLogger(prevState, newState, logger, isCollapsed) {
-	  var diff = (0, _deepDiff2.default)(prevState, newState);
-
-	  try {
-	    if (isCollapsed) {
-	      logger.groupCollapsed('diff');
-	    } else {
-	      logger.group('diff');
-	    }
-	  } catch (e) {
-	    logger.log('diff');
-	  }
-
-	  if (diff) {
-	    diff.forEach(function (elem) {
-	      var kind = elem.kind;
-
-	      var output = render(elem);
-
-	      logger.log('%c ' + dictionary[kind].text, style(kind), output);
-	    });
-	  } else {
-	    logger.log('—— no diff ——');
-	  }
-
-	  try {
-	    logger.groupEnd();
-	  } catch (e) {
-	    logger.log('—— diff end —— ');
-	  }
-	}
-	module.exports = exports['default'];
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
-	 * deep-diff.
-	 * Licensed under the MIT License.
-	 */
-	;(function(root, factory) {
-	  'use strict';
-	  if (true) {
-	    // AMD. Register as an anonymous module.
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
-	      return factory();
-	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	  } else if (typeof exports === 'object') {
-	    // Node. Does not work with strict CommonJS, but
-	    // only CommonJS-like environments that support module.exports,
-	    // like Node.
-	    module.exports = factory();
-	  } else {
-	    // Browser globals (root is window)
-	    root.DeepDiff = factory();
-	  }
-	}(this, function(undefined) {
-	  'use strict';
-
-	  var $scope, conflict, conflictResolution = [];
-	  if (typeof global === 'object' && global) {
-	    $scope = global;
-	  } else if (typeof window !== 'undefined') {
-	    $scope = window;
-	  } else {
-	    $scope = {};
-	  }
-	  conflict = $scope.DeepDiff;
-	  if (conflict) {
-	    conflictResolution.push(
-	      function() {
-	        if ('undefined' !== typeof conflict && $scope.DeepDiff === accumulateDiff) {
-	          $scope.DeepDiff = conflict;
-	          conflict = undefined;
-	        }
-	      });
-	  }
-
-	  // nodejs compatible on server side and in the browser.
-	  function inherits(ctor, superCtor) {
-	    ctor.super_ = superCtor;
-	    ctor.prototype = Object.create(superCtor.prototype, {
-	      constructor: {
-	        value: ctor,
-	        enumerable: false,
-	        writable: true,
-	        configurable: true
-	      }
-	    });
-	  }
-
-	  function Diff(kind, path) {
-	    Object.defineProperty(this, 'kind', {
-	      value: kind,
-	      enumerable: true
-	    });
-	    if (path && path.length) {
-	      Object.defineProperty(this, 'path', {
-	        value: path,
-	        enumerable: true
-	      });
-	    }
-	  }
-
-	  function DiffEdit(path, origin, value) {
-	    DiffEdit.super_.call(this, 'E', path);
-	    Object.defineProperty(this, 'lhs', {
-	      value: origin,
-	      enumerable: true
-	    });
-	    Object.defineProperty(this, 'rhs', {
-	      value: value,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffEdit, Diff);
-
-	  function DiffNew(path, value) {
-	    DiffNew.super_.call(this, 'N', path);
-	    Object.defineProperty(this, 'rhs', {
-	      value: value,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffNew, Diff);
-
-	  function DiffDeleted(path, value) {
-	    DiffDeleted.super_.call(this, 'D', path);
-	    Object.defineProperty(this, 'lhs', {
-	      value: value,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffDeleted, Diff);
-
-	  function DiffArray(path, index, item) {
-	    DiffArray.super_.call(this, 'A', path);
-	    Object.defineProperty(this, 'index', {
-	      value: index,
-	      enumerable: true
-	    });
-	    Object.defineProperty(this, 'item', {
-	      value: item,
-	      enumerable: true
-	    });
-	  }
-	  inherits(DiffArray, Diff);
-
-	  function arrayRemove(arr, from, to) {
-	    var rest = arr.slice((to || from) + 1 || arr.length);
-	    arr.length = from < 0 ? arr.length + from : from;
-	    arr.push.apply(arr, rest);
-	    return arr;
-	  }
-
-	  function realTypeOf(subject) {
-	    var type = typeof subject;
-	    if (type !== 'object') {
-	      return type;
-	    }
-
-	    if (subject === Math) {
-	      return 'math';
-	    } else if (subject === null) {
-	      return 'null';
-	    } else if (Array.isArray(subject)) {
-	      return 'array';
-	    } else if (Object.prototype.toString.call(subject) === '[object Date]') {
-	      return 'date';
-	    } else if (typeof subject.toString !== 'undefined' && /^\/.*\//.test(subject.toString())) {
-	      return 'regexp';
-	    }
-	    return 'object';
-	  }
-
-	  function deepDiff(lhs, rhs, changes, prefilter, path, key, stack) {
-	    path = path || [];
-	    var currentPath = path.slice(0);
-	    if (typeof key !== 'undefined') {
-	      if (prefilter) {
-	        if (typeof(prefilter) === 'function' && prefilter(currentPath, key)) { return; }
-	        else if (typeof(prefilter) === 'object') {
-	          if (prefilter.prefilter && prefilter.prefilter(currentPath, key)) { return; }
-	          if (prefilter.normalize) {
-	            var alt = prefilter.normalize(currentPath, key, lhs, rhs);
-	            if (alt) {
-	              lhs = alt[0];
-	              rhs = alt[1];
-	            }
-	          }
-	        }
-	      }
-	      currentPath.push(key);
-	    }
-
-	    // Use string comparison for regexes
-	    if (realTypeOf(lhs) === 'regexp' && realTypeOf(rhs) === 'regexp') {
-	      lhs = lhs.toString();
-	      rhs = rhs.toString();
-	    }
-
-	    var ltype = typeof lhs;
-	    var rtype = typeof rhs;
-	    if (ltype === 'undefined') {
-	      if (rtype !== 'undefined') {
-	        changes(new DiffNew(currentPath, rhs));
-	      }
-	    } else if (rtype === 'undefined') {
-	      changes(new DiffDeleted(currentPath, lhs));
-	    } else if (realTypeOf(lhs) !== realTypeOf(rhs)) {
-	      changes(new DiffEdit(currentPath, lhs, rhs));
-	    } else if (Object.prototype.toString.call(lhs) === '[object Date]' && Object.prototype.toString.call(rhs) === '[object Date]' && ((lhs - rhs) !== 0)) {
-	      changes(new DiffEdit(currentPath, lhs, rhs));
-	    } else if (ltype === 'object' && lhs !== null && rhs !== null) {
-	      stack = stack || [];
-	      if (stack.indexOf(lhs) < 0) {
-	        stack.push(lhs);
-	        if (Array.isArray(lhs)) {
-	          var i, len = lhs.length;
-	          for (i = 0; i < lhs.length; i++) {
-	            if (i >= rhs.length) {
-	              changes(new DiffArray(currentPath, i, new DiffDeleted(undefined, lhs[i])));
-	            } else {
-	              deepDiff(lhs[i], rhs[i], changes, prefilter, currentPath, i, stack);
-	            }
-	          }
-	          while (i < rhs.length) {
-	            changes(new DiffArray(currentPath, i, new DiffNew(undefined, rhs[i++])));
-	          }
-	        } else {
-	          var akeys = Object.keys(lhs);
-	          var pkeys = Object.keys(rhs);
-	          akeys.forEach(function(k, i) {
-	            var other = pkeys.indexOf(k);
-	            if (other >= 0) {
-	              deepDiff(lhs[k], rhs[k], changes, prefilter, currentPath, k, stack);
-	              pkeys = arrayRemove(pkeys, other);
-	            } else {
-	              deepDiff(lhs[k], undefined, changes, prefilter, currentPath, k, stack);
-	            }
-	          });
-	          pkeys.forEach(function(k) {
-	            deepDiff(undefined, rhs[k], changes, prefilter, currentPath, k, stack);
-	          });
-	        }
-	        stack.length = stack.length - 1;
-	      }
-	    } else if (lhs !== rhs) {
-	      if (!(ltype === 'number' && isNaN(lhs) && isNaN(rhs))) {
-	        changes(new DiffEdit(currentPath, lhs, rhs));
-	      }
-	    }
-	  }
-
-	  function accumulateDiff(lhs, rhs, prefilter, accum) {
-	    accum = accum || [];
-	    deepDiff(lhs, rhs,
-	      function(diff) {
-	        if (diff) {
-	          accum.push(diff);
-	        }
-	      },
-	      prefilter);
-	    return (accum.length) ? accum : undefined;
-	  }
-
-	  function applyArrayChange(arr, index, change) {
-	    if (change.path && change.path.length) {
-	      var it = arr[index],
-	          i, u = change.path.length - 1;
-	      for (i = 0; i < u; i++) {
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          applyArrayChange(it[change.path[i]], change.index, change.item);
-	          break;
-	        case 'D':
-	          delete it[change.path[i]];
-	          break;
-	        case 'E':
-	        case 'N':
-	          it[change.path[i]] = change.rhs;
-	          break;
-	      }
-	    } else {
-	      switch (change.kind) {
-	        case 'A':
-	          applyArrayChange(arr[index], change.index, change.item);
-	          break;
-	        case 'D':
-	          arr = arrayRemove(arr, index);
-	          break;
-	        case 'E':
-	        case 'N':
-	          arr[index] = change.rhs;
-	          break;
-	      }
-	    }
-	    return arr;
-	  }
-
-	  function applyChange(target, source, change) {
-	    if (target && source && change && change.kind) {
-	      var it = target,
-	          i = -1,
-	          last = change.path ? change.path.length - 1 : 0;
-	      while (++i < last) {
-	        if (typeof it[change.path[i]] === 'undefined') {
-	          it[change.path[i]] = (typeof change.path[i] === 'number') ? [] : {};
-	        }
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          applyArrayChange(change.path ? it[change.path[i]] : it, change.index, change.item);
-	          break;
-	        case 'D':
-	          delete it[change.path[i]];
-	          break;
-	        case 'E':
-	        case 'N':
-	          it[change.path[i]] = change.rhs;
-	          break;
-	      }
-	    }
-	  }
-
-	  function revertArrayChange(arr, index, change) {
-	    if (change.path && change.path.length) {
-	      // the structure of the object at the index has changed...
-	      var it = arr[index],
-	          i, u = change.path.length - 1;
-	      for (i = 0; i < u; i++) {
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          revertArrayChange(it[change.path[i]], change.index, change.item);
-	          break;
-	        case 'D':
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'E':
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'N':
-	          delete it[change.path[i]];
-	          break;
-	      }
-	    } else {
-	      // the array item is different...
-	      switch (change.kind) {
-	        case 'A':
-	          revertArrayChange(arr[index], change.index, change.item);
-	          break;
-	        case 'D':
-	          arr[index] = change.lhs;
-	          break;
-	        case 'E':
-	          arr[index] = change.lhs;
-	          break;
-	        case 'N':
-	          arr = arrayRemove(arr, index);
-	          break;
-	      }
-	    }
-	    return arr;
-	  }
-
-	  function revertChange(target, source, change) {
-	    if (target && source && change && change.kind) {
-	      var it = target,
-	          i, u;
-	      u = change.path.length - 1;
-	      for (i = 0; i < u; i++) {
-	        if (typeof it[change.path[i]] === 'undefined') {
-	          it[change.path[i]] = {};
-	        }
-	        it = it[change.path[i]];
-	      }
-	      switch (change.kind) {
-	        case 'A':
-	          // Array was modified...
-	          // it will be an array...
-	          revertArrayChange(it[change.path[i]], change.index, change.item);
-	          break;
-	        case 'D':
-	          // Item was deleted...
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'E':
-	          // Item was edited...
-	          it[change.path[i]] = change.lhs;
-	          break;
-	        case 'N':
-	          // Item is new...
-	          delete it[change.path[i]];
-	          break;
-	      }
-	    }
-	  }
-
-	  function applyDiff(target, source, filter) {
-	    if (target && source) {
-	      var onChange = function(change) {
-	        if (!filter || filter(target, source, change)) {
-	          applyChange(target, source, change);
-	        }
-	      };
-	      deepDiff(target, source, onChange);
-	    }
-	  }
-
-	  Object.defineProperties(accumulateDiff, {
-
-	    diff: {
-	      value: accumulateDiff,
-	      enumerable: true
-	    },
-	    observableDiff: {
-	      value: deepDiff,
-	      enumerable: true
-	    },
-	    applyDiff: {
-	      value: applyDiff,
-	      enumerable: true
-	    },
-	    applyChange: {
-	      value: applyChange,
-	      enumerable: true
-	    },
-	    revertChange: {
-	      value: revertChange,
-	      enumerable: true
-	    },
-	    isConflict: {
-	      value: function() {
-	        return 'undefined' !== typeof conflict;
-	      },
-	      enumerable: true
-	    },
-	    noConflict: {
-	      value: function() {
-	        if (conflictResolution) {
-	          conflictResolution.forEach(function(it) {
-	            it();
-	          });
-	          conflictResolution = null;
-	        }
-	        return accumulateDiff;
-	      },
-	      enumerable: true
-	    }
-	  });
-
-	  return accumulateDiff;
-	}));
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = {
-	  level: "log",
-	  logger: console,
-	  logErrors: true,
-	  collapsed: undefined,
-	  predicate: undefined,
-	  duration: false,
-	  timestamp: true,
-	  stateTransformer: function stateTransformer(state) {
-	    return state;
-	  },
-	  actionTransformer: function actionTransformer(action) {
-	    return action;
-	  },
-	  errorTransformer: function errorTransformer(error) {
-	    return error;
-	  },
-	  colors: {
-	    title: function title() {
-	      return "inherit";
-	    },
-	    prevState: function prevState() {
-	      return "#9E9E9E";
-	    },
-	    action: function action() {
-	      return "#03A9F4";
-	    },
-	    nextState: function nextState() {
-	      return "#4CAF50";
-	    },
-	    error: function error() {
-	      return "#F20404";
-	    }
-	  },
-	  diff: false,
-	  diffPredicate: undefined,
-
-	  // Deprecated options
-	  transformer: undefined
-	};
-	module.exports = exports['default'];
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = (__webpack_require__(2))(262);
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
 	module.exports = (__webpack_require__(2))(261);
 
 /***/ },
-/* 16 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1093,17 +230,15 @@
 	  return state;
 	};
 
-	var _Product = __webpack_require__(17);
+	var _Product = __webpack_require__(11);
 
 	var INITIAL_STATE = {
 	  searchProduct: { products: null, err: null, pending: false },
 	  activeProduct: { product: null, err: null, pending: false }
 	};
 
-	;
-
 /***/ },
-/* 17 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1117,7 +252,7 @@
 	exports.resetSearchProduct = resetSearchProduct;
 	exports.resetActiveProduct = resetActiveProduct;
 
-	__webpack_require__(18);
+	__webpack_require__(12);
 
 	var SEARCH_PRODUCT = exports.SEARCH_PRODUCT = "SEARCH_PRODUCT";
 	var SEARCH_PRODUCT_RESET = exports.SEARCH_PRODUCT_RESET = SEARCH_PRODUCT + "_RESET";
@@ -1151,7 +286,7 @@
 	}
 
 /***/ },
-/* 18 */
+/* 12 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -1459,9 +594,7 @@
 	    options = options || {}
 	    var body = options.body
 
-	    if (typeof input === 'string') {
-	      this.url = input
-	    } else {
+	    if (input instanceof Request) {
 	      if (input.bodyUsed) {
 	        throw new TypeError('Already read')
 	      }
@@ -1476,6 +609,8 @@
 	        body = input._bodyInit
 	        input.bodyUsed = true
 	      }
+	    } else {
+	      this.url = String(input)
 	    }
 
 	    this.credentials = options.credentials || this.credentials || 'omit'
@@ -1511,7 +646,7 @@
 
 	  function parseHeaders(rawHeaders) {
 	    var headers = new Headers()
-	    rawHeaders.split('\r\n').forEach(function(line) {
+	    rawHeaders.split(/\r?\n/).forEach(function(line) {
 	      var parts = line.split(':')
 	      var key = parts.shift().trim()
 	      if (key) {
@@ -1615,7 +750,7 @@
 
 
 /***/ },
-/* 19 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1628,7 +763,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Toolbar = __webpack_require__(20);
+	var _Toolbar = __webpack_require__(14);
 
 	var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
@@ -1648,7 +783,7 @@
 	};
 
 /***/ },
-/* 20 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1666,29 +801,29 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(21);
+	var _reactRedux = __webpack_require__(15);
 
-	var _debounce = __webpack_require__(22);
+	var _debounce = __webpack_require__(16);
 
 	var _debounce2 = _interopRequireDefault(_debounce);
 
 	var _reactRouter = __webpack_require__(5);
 
-	var _Product = __webpack_require__(17);
+	var _Product = __webpack_require__(11);
 
-	var _progressbar = __webpack_require__(24);
+	var _progressbar = __webpack_require__(18);
 
 	var _progressbar2 = _interopRequireDefault(_progressbar);
 
-	var _cart = __webpack_require__(25);
+	var _cart = __webpack_require__(19);
 
 	var _cart2 = _interopRequireDefault(_cart);
 
-	var _logo = __webpack_require__(26);
+	var _logo = __webpack_require__(20);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
-	var _reactSearchbox = __webpack_require__(27);
+	var _reactSearchbox = __webpack_require__(21);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1775,7 +910,7 @@
 	        return _react2.default.createElement(
 	          _reactSearchbox.Suggestion,
 	          null,
-	          "Nena\u0161li jsme \u017E\xE1dn\xFD produkt... \u2639"
+	          "Nena\u0161li jsme \u017E\xE1dn\xFD produkt... &#x2639"
 	        );
 	      }
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -1828,13 +963,13 @@
 	exports.default = Toolbar;
 
 /***/ },
-/* 21 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (__webpack_require__(2))(178);
 
 /***/ },
-/* 22 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1842,7 +977,7 @@
 	 * Module dependencies.
 	 */
 
-	var now = __webpack_require__(23);
+	var now = __webpack_require__(17);
 
 	/**
 	 * Returns a function, that, as long as it continues to be invoked, will not
@@ -1893,7 +1028,7 @@
 
 
 /***/ },
-/* 23 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = Date.now || now
@@ -1904,25 +1039,25 @@
 
 
 /***/ },
-/* 24 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = "/dist/assets/progressbar-daa4e6.gif";
 
 /***/ },
-/* 25 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = "/dist/assets/cart-805c01.png";
 
 /***/ },
-/* 26 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = "/dist/assets/logo-3932ee.png";
 
 /***/ },
-/* 27 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1932,15 +1067,15 @@
 	});
 	exports.SuggestionLink = exports.Suggestion = exports.SearchBox = undefined;
 
-	var _SearchBox = __webpack_require__(28);
+	var _SearchBox = __webpack_require__(22);
 
 	var _SearchBox2 = _interopRequireDefault(_SearchBox);
 
-	var _Suggestion = __webpack_require__(30);
+	var _Suggestion = __webpack_require__(24);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
-	var _SuggestionLink = __webpack_require__(31);
+	var _SuggestionLink = __webpack_require__(25);
 
 	var _SuggestionLink2 = _interopRequireDefault(_SuggestionLink);
 
@@ -1951,7 +1086,7 @@
 	var SuggestionLink = exports.SuggestionLink = _SuggestionLink2.default;
 
 /***/ },
-/* 28 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1966,7 +1101,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SuggestionList = __webpack_require__(29);
+	var _SuggestionList = __webpack_require__(23);
 
 	var _SuggestionList2 = _interopRequireDefault(_SuggestionList);
 
@@ -2093,7 +1228,7 @@
 	exports.default = SearchBox;
 
 /***/ },
-/* 29 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2108,7 +1243,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Suggestion = __webpack_require__(30);
+	var _Suggestion = __webpack_require__(24);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
@@ -2196,7 +1331,7 @@
 	exports.default = SuggestionList;
 
 /***/ },
-/* 30 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2249,7 +1384,7 @@
 	exports.default = Suggestion;
 
 /***/ },
-/* 31 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2264,7 +1399,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Suggestion = __webpack_require__(30);
+	var _Suggestion = __webpack_require__(24);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
@@ -2321,7 +1456,7 @@
 	exports.default = SuggestionLink;
 
 /***/ },
-/* 32 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2339,13 +1474,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _EckoList = __webpack_require__(33);
+	var _EckoList = __webpack_require__(27);
 
 	var _EckoList2 = _interopRequireDefault(_EckoList);
 
-	var _reactRedux = __webpack_require__(21);
+	var _reactRedux = __webpack_require__(15);
 
-	var _Product = __webpack_require__(17);
+	var _Product = __webpack_require__(11);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2430,10 +1565,9 @@
 	  return Product;
 	}(_react2.default.Component)) || _class);
 	exports.default = Product;
-	;
 
 /***/ },
-/* 33 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2549,10 +1683,9 @@
 	}(_react2.default.Component);
 
 	exports.default = EckoList;
-	;
 
 /***/ },
-/* 34 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2724,19 +1857,18 @@
 	}(_react2.default.Component);
 
 	exports.default = AboutUs;
-	;
 
 /***/ },
-/* 35 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(36);
+	var content = __webpack_require__(30);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(40)(content, {});
+	var update = __webpack_require__(34)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2753,13 +1885,13 @@
 	}
 
 /***/ },
-/* 36 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(37)();
+	exports = module.exports = __webpack_require__(31)();
 	// imports
-	exports.i(__webpack_require__(38), "");
-	exports.i(__webpack_require__(39), "");
+	exports.i(__webpack_require__(32), "");
+	exports.i(__webpack_require__(33), "");
 
 	// module
 	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\nstrong { font-weight: bold; }\na { color: blue; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px 5px 50px 5px;\n}\n\n.AboutUs__text {\n  padding-top: 10px;\n  text-align: center;\n  font-size: 25px;\n  font-family: 'Roboto', sans-serif;\n  color: #206320;\n  line-height: 35px;\n}\n\n.AboutUs .text-red {\n  color: red;\n}\n\n.AboutUs__ecka {\n  text-align: center;\n  padding-top: 10px;\n  font-family: 'Roboto', sans-serif;\n}\n\n.AboutUs__ecka p {\n  text-align: justify;\n  font-size: 15px;\n  line-height: 16px;\n  padding-top: 10px;\n}\n\n.AboutUs__ecka .Ecko {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__backBtn {\n  border: none;\n  background-color: transparent;\n  color: white;\n  font-size: 25px;\n  position: absolute;\n  left: 10px;\n  top: 5px;\n}\n\n.Toolbar__fbLink {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n@media only screen and (max-width: 330px) {\n  .Toolbar__title img:first-child { display: none; }\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__clearButton {\n  font-size: 15px;\n  width: 26px;\n  height: 26px;\n  top: calc(50% - 13px);\n}\n\n.SearchBox__input {\n  font-size: 20px;\n  padding: 3px 50px 3px 10px;\n  margin: 0px 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n.Suggestion__link {\n  padding: 6px 10px;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 60px;\n  height: 60px;\n  border-radius: 35px;\n  font-size: 21px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 60px;\n  text-align: center;\n  display: inline-block;\n  margin: 5px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
@@ -2768,7 +1900,7 @@
 
 
 /***/ },
-/* 37 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/*
@@ -2824,10 +1956,10 @@
 
 
 /***/ },
-/* 38 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(37)();
+	exports = module.exports = __webpack_require__(31)();
 	// imports
 
 
@@ -2838,10 +1970,10 @@
 
 
 /***/ },
-/* 39 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(37)();
+	exports = module.exports = __webpack_require__(31)();
 	// imports
 
 
@@ -2852,7 +1984,7 @@
 
 
 /***/ },
-/* 40 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

@@ -1,10 +1,10 @@
-import React from "react";
-import { Route, IndexRoute } from "react-router";
-import store from "./store";
-import { resetActiveProduct } from "./actions/Product";
-import App from "./components/App";
-import Product from "./components/Product";
-import AboutUs from "./components/AboutUs";
+import React from "react"
+import { Route, IndexRoute } from "react-router"
+import store from "./store"
+import { resetActiveProduct } from "./actions/Product"
+import App from "./components/App"
+import Product from "./components/Product"
+import AboutUs from "./components/AboutUs"
 
 export default (
   <Route path="/" component={App}>
@@ -15,4 +15,4 @@ export default (
     } />
     <Route path="product/:id" component={Product}></Route>
   </Route>
-);
+)

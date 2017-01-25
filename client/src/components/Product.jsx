@@ -1,7 +1,7 @@
-import React from "react";
-import EckoList from "./EckoList";
-import { connect } from "react-redux";
-import { getProductById } from "../actions/Product";
+import React from "react"
+import EckoList from "./EckoList"
+import { connect } from "react-redux"
+import { getProductById } from "../actions/Product"
 
 @connect((store) => ({ activeProduct: store.activeProduct }))
 export default class Product extends React.Component {
@@ -13,7 +13,7 @@ export default class Product extends React.Component {
   }
 
   render() {
-    let prod = this.props.activeProduct.product ;
+    let prod = this.props.activeProduct.product 
     return prod ? (
       <div className="Product">
         <h2 className="Product__name">{prod.name}</h2>
@@ -30,6 +30,6 @@ export default class Product extends React.Component {
         }
         {prod.ref}
       </div>
-    ) : null;
+    ) : null
   }
-};
+}
