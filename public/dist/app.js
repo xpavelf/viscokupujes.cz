@@ -66,7 +66,7 @@
 
 	var _reactRouter = __webpack_require__(5);
 
-	__webpack_require__(29);
+	__webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -120,11 +120,11 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Product2 = __webpack_require__(26);
+	var _Product2 = __webpack_require__(25);
 
 	var _Product3 = _interopRequireDefault(_Product2);
 
-	var _AboutUs = __webpack_require__(28);
+	var _AboutUs = __webpack_require__(27);
 
 	var _AboutUs2 = _interopRequireDefault(_AboutUs);
 
@@ -815,15 +815,11 @@
 
 	var _progressbar2 = _interopRequireDefault(_progressbar);
 
-	var _cart = __webpack_require__(19);
-
-	var _cart2 = _interopRequireDefault(_cart);
-
-	var _logo = __webpack_require__(20);
+	var _logo = __webpack_require__(19);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
-	var _reactSearchbox = __webpack_require__(21);
+	var _reactSearchbox = __webpack_require__(20);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -889,13 +885,13 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this.goBack = function () {
-	      _reactRouter.browserHistory.push("/");
-	    }, _this._searchProductDebounced = (0, _debounce2.default)(function (term) {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Toolbar.__proto__ || Object.getPrototypeOf(Toolbar)).call.apply(_ref, [this].concat(args))), _this), _this._searchProductDebounced = (0, _debounce2.default)(function (term) {
 	      _this.props.dispatch((0, _Product.searchProduct)(term));
 	    }, 300), _this.onChange = function (term) {
 	      _this.props.dispatch((0, _Product.resetSearchProduct)());
-	      _this._searchProductDebounced(term);
+	      if (term && term.length > 2) {
+	        _this._searchProductDebounced(term);
+	      }
 	    }, _this.onSelect = function (product) {
 	      _reactRouter.browserHistory.push("/product/" + product.id);
 	    }, _this.renderEmptySuggestion = function (data) {
@@ -910,9 +906,15 @@
 	        return _react2.default.createElement(
 	          _reactSearchbox.Suggestion,
 	          null,
-	          "Nena\u0161li jsme \u017E\xE1dn\xFD produkt... &#x2639"
+	          "Nena\u0161li jsme \u017E\xE1dn\xFD v\xFDrobek... \u2639"
 	        );
 	      }
+	    }, _this.onFocus = function (evt) {
+	      evt.target.parentNode.scrollIntoView();
+	    }, _this.onBlur = function (evt) {
+	      setTimeout(function () {
+	        window.scrollTo(0, 0);
+	      }, 0);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -922,16 +924,14 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "Toolbar" },
-	        this.props.activeProduct.product ? _react2.default.createElement(
-	          "button",
-	          { className: "Toolbar__backBtn", onClick: this.goBack },
-	          "\u2190"
-	        ) : null,
 	        _react2.default.createElement(
 	          "h1",
 	          { className: "Toolbar__title" },
-	          _react2.default.createElement("img", { src: _cart2.default }),
-	          _react2.default.createElement("img", { src: _logo2.default }),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: "/", className: "Toolbar__homeLink" },
+	            _react2.default.createElement("img", { src: _logo2.default })
+	          ),
 	          _react2.default.createElement(
 	            "a",
 	            { target: "_blank", href: "https://www.facebook.com/viscokupujes", title: "Facebook", className: "Toolbar__fbLink" },
@@ -943,17 +943,22 @@
 	            )
 	          )
 	        ),
-	        !this.props.activeProduct.product ? _react2.default.createElement(_reactSearchbox.SearchBox, {
+	        _react2.default.createElement(_reactSearchbox.SearchBox, {
 	          onChange: this.onChange,
 	          onSelect: this.onSelect,
+	          onFocus: this.onFocus,
+	          onBlur: this.onBlur,
 	          placeholder: "Najdi v\xFDrobek...",
 	          suggestions: this.props.searchProduct,
 	          parseSuggestionsData: function parseSuggestionsData(data) {
 	            return data.products;
 	          },
 	          suggestionComp: Suggestion,
-	          renderEmptySuggestion: this.renderEmptySuggestion
-	        }) : null
+	          renderEmptySuggestion: this.renderEmptySuggestion,
+	          selectedToString: function selectedToString() {
+	            return "";
+	          },
+	          autoFocus: false })
 	      );
 	    }
 	  }]);
@@ -1048,16 +1053,10 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "/dist/assets/cart-805c01.png";
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
 	module.exports = "/dist/assets/logo-3932ee.png";
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1067,15 +1066,15 @@
 	});
 	exports.SuggestionLink = exports.Suggestion = exports.SearchBox = undefined;
 
-	var _SearchBox = __webpack_require__(22);
+	var _SearchBox = __webpack_require__(21);
 
 	var _SearchBox2 = _interopRequireDefault(_SearchBox);
 
-	var _Suggestion = __webpack_require__(24);
+	var _Suggestion = __webpack_require__(23);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
-	var _SuggestionLink = __webpack_require__(25);
+	var _SuggestionLink = __webpack_require__(24);
 
 	var _SuggestionLink2 = _interopRequireDefault(_SuggestionLink);
 
@@ -1086,7 +1085,7 @@
 	var SuggestionLink = exports.SuggestionLink = _SuggestionLink2.default;
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1101,7 +1100,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SuggestionList = __webpack_require__(23);
+	var _SuggestionList = __webpack_require__(22);
 
 	var _SuggestionList2 = _interopRequireDefault(_SuggestionList);
 
@@ -1181,6 +1180,8 @@
 	            _this2.input = input;
 	          },
 	          className: "SearchBox__input",
+	          onFocus: this.props.onFocus,
+	          onBlur: this.props.onBlur,
 	          onChange: this.onChange,
 	          placeholder: this.props.placeholder }),
 	        _react2.default.createElement(
@@ -1206,6 +1207,8 @@
 	SearchBox.propTypes = {
 	  onChange: _react2.default.PropTypes.func,
 	  onSelect: _react2.default.PropTypes.func,
+	  onFocus: _react2.default.PropTypes.func,
+	  onBlur: _react2.default.PropTypes.func,
 	  onBack: _react2.default.PropTypes.func,
 	  selectedToString: _react2.default.PropTypes.func,
 	  placeholder: _react2.default.PropTypes.string,
@@ -1228,7 +1231,7 @@
 	exports.default = SearchBox;
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1243,7 +1246,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Suggestion = __webpack_require__(24);
+	var _Suggestion = __webpack_require__(23);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
@@ -1331,7 +1334,7 @@
 	exports.default = SuggestionList;
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1384,7 +1387,7 @@
 	exports.default = Suggestion;
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1399,7 +1402,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Suggestion = __webpack_require__(24);
+	var _Suggestion = __webpack_require__(23);
 
 	var _Suggestion2 = _interopRequireDefault(_Suggestion);
 
@@ -1456,7 +1459,7 @@
 	exports.default = SuggestionLink;
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1474,7 +1477,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _EckoList = __webpack_require__(27);
+	var _EckoList = __webpack_require__(26);
 
 	var _EckoList2 = _interopRequireDefault(_EckoList);
 
@@ -1502,6 +1505,13 @@
 	  }
 
 	  _createClass(Product, [{
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.params.id !== this.props.params.id) {
+	        this.props.dispatch((0, _Product.getProductById)(nextProps.params.id));
+	      }
+	    }
+	  }, {
 	    key: "componentWillMount",
 	    value: function componentWillMount() {
 	      if (this.props.params.id) {
@@ -1567,7 +1577,7 @@
 	exports.default = Product;
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1685,7 +1695,7 @@
 	exports.default = EckoList;
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1859,16 +1869,16 @@
 	exports.default = AboutUs;
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(30);
+	var content = __webpack_require__(29);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
+	var update = __webpack_require__(33)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1885,22 +1895,22 @@
 	}
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
+	exports.i(__webpack_require__(31), "");
 	exports.i(__webpack_require__(32), "");
-	exports.i(__webpack_require__(33), "");
 
 	// module
-	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\nstrong { font-weight: bold; }\na { color: blue; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px 5px 50px 5px;\n}\n\n.AboutUs__text {\n  padding-top: 10px;\n  text-align: center;\n  font-size: 25px;\n  font-family: 'Roboto', sans-serif;\n  color: #206320;\n  line-height: 35px;\n}\n\n.AboutUs .text-red {\n  color: red;\n}\n\n.AboutUs__ecka {\n  text-align: center;\n  padding-top: 10px;\n  font-family: 'Roboto', sans-serif;\n}\n\n.AboutUs__ecka p {\n  text-align: justify;\n  font-size: 15px;\n  line-height: 16px;\n  padding-top: 10px;\n}\n\n.AboutUs__ecka .Ecko {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__backBtn {\n  border: none;\n  background-color: transparent;\n  color: white;\n  font-size: 25px;\n  position: absolute;\n  left: 10px;\n  top: 5px;\n}\n\n.Toolbar__fbLink {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n@media only screen and (max-width: 330px) {\n  .Toolbar__title img:first-child { display: none; }\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__clearButton {\n  font-size: 15px;\n  width: 26px;\n  height: 26px;\n  top: calc(50% - 13px);\n}\n\n.SearchBox__input {\n  font-size: 20px;\n  padding: 3px 50px 3px 10px;\n  margin: 0px 5px;\n  width: calc(100% - 10px);\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n.Suggestion__link {\n  padding: 6px 10px;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 60px;\n  height: 60px;\n  border-radius: 35px;\n  font-size: 21px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 60px;\n  text-align: center;\n  display: inline-block;\n  margin: 5px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
+	exports.push([module.id, "\nbutton { cursor: pointer; }\nhtml, body, #root, .App { height: 100%; }\nstrong { font-weight: bold; }\na { color: blue; }\n\n/**************************/\n/*********** App **********/\n/**************************/\n.App {\n  max-width: 800px;\n  margin: 0 auto 0 auto;\n  background-color: #f8f6ed;\n}\n\n.App__content {\n  padding: 5px 5px 50px 5px;\n}\n\n.AboutUs__text {\n  padding-top: 10px;\n  text-align: center;\n  font-size: 25px;\n  font-family: 'Roboto', sans-serif;\n  color: #206320;\n  line-height: 35px;\n}\n\n.AboutUs .text-red {\n  color: red;\n}\n\n.AboutUs__ecka {\n  text-align: center;\n  padding-top: 10px;\n  font-family: 'Roboto', sans-serif;\n}\n\n.AboutUs__ecka p {\n  text-align: justify;\n  font-size: 15px;\n  line-height: 16px;\n  padding-top: 10px;\n}\n\n.AboutUs__ecka .Ecko {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n/**************************/\n/******* Toolbar **********/\n/**************************/\n.Toolbar {\n  background-color: #3cb73c;\n  position: relative;\n  border-bottom: 3px solid #319631;\n}\n\n.Toolbar__homeLink {\n  border: none;\n  background-color: transparent;\n}\n\n.Toolbar__fbLink {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}\n\n.Toolbar__title {\n  font-size: 30px;\n  color: white;\n  margin: 0 30px 0 0;\n  text-align: center;\n  text-shadow: 1px 1px 3px #222;\n}\n\n.Toolbar__title img {\n  vertical-align: middle;\n  display: inline-block;\n}\n\n.Toolbar__searchButton {\n  background: transparent;\n  border: none;\n  height: 45px;\n  width: 45px;\n  position: absolute;\n  top: calc(50% - 20px);\n  right: 10px;\n  fill: white;\n}\n\n/****************************/\n/********* SearchBox ********/\n/****************************/\n\n.SearchBox,\n.SearchBox__input,\n.SearchBox__clearButton,\n.SearchBox__backButton {\n  font-family: 'Roboto', sans-serif;\n}\n\n.SearchBox__clearButton {\n  font-size: 15px;\n  width: 26px;\n  height: 26px;\n  top: calc(50% - 13px);\n}\n\n.SearchBox__input {\n  font-size: 20px;\n  padding: 5px 50px 5px 10px;\n}\n\n.SearchBox {\n  padding: 5px;\n}\n\n.SearchBox__link {\n  padding: 6px;\n}\n\n.SearchBox__Product-name {\n  padding-bottom: 6px;\n  display: block;\n  font-size: 16px;\n}\n\n.SearchBox__Product-highlight {\n  background-color: yellow;\n}\n\n.SearchBox__Product-producer {\n  font-size: 13px;\n  color: #bbb;\n}\n\n.Suggestion__link {\n  padding: 6px 10px;\n}\n\n/**************************/\n/********* Product ********/\n/**************************/\n\n.Product {\n  padding: 10px 0;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Product__name {\n  padding-bottom: 10px;\n  display: block;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.Product__producer {\n  font-size: 15px;\n  color: #bbb;\n\n}\n\n.Product__nutrition-facts {\n  border: 2px solid black;\n  padding: 10px;\n  border-collapse: separate;\n  background-color: white;\n  margin: 10px auto;\n}\n\n.Product__nutrition-facts td {\n  border-bottom: 1px solid #ccc;\n  padding: 5px;\n}\n\n.Product__nutrition-facts caption {\n  border: 2px solid black;\n  color: white;\n  background-color: black;\n  font-weight: bold;\n  font-size: 20px;\n  padding: 10px;\n}\n\n.Product__nutrition-facts caption div {\n  font-size: 12px;\n  padding-top: 10px;\n}\n\n.Ecko {\n  color: white;\n  border: none;\n  width: 60px;\n  height: 60px;\n  border-radius: 35px;\n  font-size: 21px;\n  font-family: 'Patrick Hand', cursive;\n  line-height: 60px;\n  text-align: center;\n  display: inline-block;\n  margin: 5px;\n  text-transform: capitalize;\n}\n\n.Ecko--0 {\n  background-color: #3cb73c;\n  background-image: linear-gradient(#3cb73c, #319631);\n}\n\n.Ecko--1 {\n  background-color: #ffcc00;\n  background-image: linear-gradient(#ffd265, #ffcc00);\n}\n\n.Ecko--2 {\n  background-color: #ff5353;\n  background-image: linear-gradient(#ff5353, #bb0000);\n}\n\n.Ecko-modal {\n  position: fixed;\n  background-color: white;\n  border: 3px solid gray;\n  width: 500px;\n  z-index: 21;\n  top: 15%;\n  left: 5%;\n  width: 90%;\n  padding: 20px 10px;\n}\n\n.Ecko-modal__btnClose {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  background: transparent;\n  display: inline-block;\n  border: none;\n  font-size: 25px;\n  height: 40px;\n  width: 40px;\n}\n\n.Ecko-modal__title {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Ecko-modal__title > * { display: table-cell; }\n.Ecko-modal__name {\n  padding-left: 10px;\n  vertical-align: middle;\n}\n\n.Ecko-modal__content {\n  padding-top: 15px;\n}\n\n@media only screen and (min-width: 700px) {\n  .Ecko-modal {\n    width: 600px;\n    left: calc(50% - 300px);\n  }\n}\n\n.Ecko-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 20;\n  background-color: rgba(0, 0, 0, .5);\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 31 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/*
@@ -1956,10 +1966,10 @@
 
 
 /***/ },
-/* 32 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -1970,10 +1980,10 @@
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -1984,7 +1994,7 @@
 
 
 /***/ },
-/* 34 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

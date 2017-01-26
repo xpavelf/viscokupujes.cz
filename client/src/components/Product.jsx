@@ -6,6 +6,12 @@ import { getProductById } from "../actions/Product"
 @connect((store) => ({ activeProduct: store.activeProduct }))
 export default class Product extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.params.id !== this.props.params.id) {
+      this.props.dispatch(getProductById(nextProps.params.id))
+    }
+  }
+
   componentWillMount() {
     if (this.props.params.id) {
       this.props.dispatch(getProductById(this.props.params.id))
@@ -13,7 +19,7 @@ export default class Product extends React.Component {
   }
 
   render() {
-    let prod = this.props.activeProduct.product 
+    let prod = this.props.activeProduct.product
     return prod ? (
       <div className="Product">
         <h2 className="Product__name">{prod.name}</h2>

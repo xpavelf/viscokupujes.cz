@@ -60,14 +60,9 @@ a { color: blue; }
   border-bottom: 3px solid #319631;
 }
 
-.Toolbar__backBtn {
+.Toolbar__homeLink {
   border: none;
   background-color: transparent;
-  color: white;
-  font-size: 25px;
-  position: absolute;
-  left: 10px;
-  top: 5px;
 }
 
 .Toolbar__fbLink {
@@ -87,10 +82,6 @@ a { color: blue; }
 .Toolbar__title img {
   vertical-align: middle;
   display: inline-block;
-}
-
-@media only screen and (max-width: 330px) {
-  .Toolbar__title img:first-child { display: none; }
 }
 
 .Toolbar__searchButton {
@@ -124,9 +115,11 @@ a { color: blue; }
 
 .SearchBox__input {
   font-size: 20px;
-  padding: 3px 50px 3px 10px;
-  margin: 0px 5px;
-  width: calc(100% - 10px);
+  padding: 5px 50px 5px 10px;
+}
+
+.SearchBox {
+  padding: 5px;
 }
 
 .SearchBox__link {

@@ -1,10 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import debounce from "debounce"
-import { browserHistory } from "react-router"
+import { browserHistory, Link } from "react-router"
 import { searchProduct, resetSearchProduct, resetActiveProduct } from "../actions/Product"
 import imgProgressbar from "../icons/progressbar.gif"
-import imgCart from "../icons/cart.png"
 import imgLogo from "../icons/logo.png"
 import {
   SearchBox as ReactSearchBox,
@@ -41,18 +40,15 @@ const Suggestion = (props) => {
   searchProduct: store.searchProduct
 }))
 export default class Toolbar extends React.Component {
-
-  goBack = () => {
-    browserHistory.push("/")
-  }
-
   _searchProductDebounced = debounce((term) => {
     this.props.dispatch(searchProduct(term))
   }, 300)
 
   onChange = (term) => {
     this.props.dispatch(resetSearchProduct())
-    this._searchProductDebounced(term)
+    if (term && term.length > 2) {
+      this._searchProductDebounced(term)
+    }
   }
 
   onSelect = (product) => {
@@ -63,16 +59,25 @@ export default class Toolbar extends React.Component {
     if (data.pending) {
       return <ReactSuggestion><img height="15" src={imgProgressbar} />&nbsp;&nbsp;&nbsp;Vyhledávám..</ReactSuggestion>
     } else if (data.products !== null) {
-      return <ReactSuggestion>Nenašli jsme žádný produkt... &#x2639</ReactSuggestion>
+      return <ReactSuggestion>Nenašli jsme žádný výrobek... &#x2639;</ReactSuggestion>
     }
+  }
+
+  onFocus = (evt) => {
+    evt.target.parentNode.scrollIntoView()
+  }
+
+  onBlur = (evt) => {
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 0)
   }
 
   render() {
     return (
       <div className="Toolbar">
-        { this.props.activeProduct.product ? <button className="Toolbar__backBtn" onClick={this.goBack}>←</button> : null }
         <h1 className="Toolbar__title">
-          <img src={imgCart} /><img src={imgLogo} />
+          <Link to="/" className="Toolbar__homeLink"><img src={imgLogo} /></Link>
           <a target="_blank" href="https://www.facebook.com/viscokupujes" title="Facebook" className="Toolbar__fbLink">
             <svg height="32" width="32" viewBox="0 0 512 512">
               <rect fill="#319631" x="0" y="0" width="512" height="512" />
@@ -80,17 +85,18 @@ export default class Toolbar extends React.Component {
             </svg>
           </a>
         </h1>
-        { !this.props.activeProduct.product ?
             <ReactSearchBox
               onChange={this.onChange}
               onSelect={this.onSelect}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
               placeholder="Najdi výrobek..."
               suggestions={this.props.searchProduct}
               parseSuggestionsData={(data) => data.products}
               suggestionComp={Suggestion}
               renderEmptySuggestion={this.renderEmptySuggestion}
-              /> : null
-          }
+              selectedToString={() => ""}
+              autoFocus={false} />
       </div>
     )
   }
