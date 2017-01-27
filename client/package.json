@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf ../public/dist",
+    "build:app": "webpack",
     "build:dll": "webpack --config webpack.dll.config.js",
+    "build": "npm run clean && npm run build:dll && npm run build:app && sw-precache --root ../public",
     "watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +32,7 @@
     "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.13.1",
+    "sw-precache": "^4.3.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "whatwg-fetch": "^2.0.2"

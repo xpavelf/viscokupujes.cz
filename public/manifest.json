@@ -1,0 +1,19 @@
+{
+  "name": "Víš Co Kupuješ?",
+  "short_name": "Víš Co Kupuješ?",
+  "theme_color": "#3cb73c",
+  "background_color": "#3cb73c",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icon-cart-64.png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "icon-cart-540.png",
+      "sizes": "540x540"
+    }
+  ]
+}
