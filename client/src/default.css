@@ -3,7 +3,7 @@
 @import "~react-searchbox/dist/react-searchbox.css";
 
 button { cursor: pointer; }
-html, body, #root, .App { height: 100%; }
+html, body, #root, .App, .App__content { height: 100%; }
 strong { font-weight: bold; }
 a { color: blue; }
 
@@ -13,29 +13,32 @@ a { color: blue; }
 .App {
   max-width: 800px;
   margin: 0 auto 0 auto;
-  background-color: #f8f6ed;
+  background-color: #fff;
 }
 
 .App__content {
   padding: 5px 5px 50px 5px;
 }
 
-.AboutUs__text {
-  padding-top: 10px;
-  text-align: center;
-  font-size: 25px;
+.AboutUs {
+  margin: -5px;
+  padding-bottom: 50px;
+  background-color: #3cb73c;
   font-family: 'Roboto', sans-serif;
-  color: #206320;
-  line-height: 35px;
 }
 
-.AboutUs .text-red {
-  color: red;
+.AboutUs p {
+  padding: 10px 15px;
+  color: white;
+  line-height: 20px;
+  text-align: justify;
 }
+
+.AboutUs a { color: white; }
 
 .AboutUs__ecka {
   text-align: center;
-  padding-top: 10px;
+  padding: 15px 0px;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -48,15 +51,16 @@ a { color: blue; }
 .AboutUs__ecka .Ecko {
   font-weight: bold;
   font-size: 40px;
+  border: 1px solid white;
 }
 
 /**************************/
 /******* Toolbar **********/
 /**************************/
 .Toolbar {
-  background-color: #3cb73c;
+  background-color: #2a802a;
   position: relative;
-  border-bottom: 3px solid #319631;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 2px 9px 1px rgba(0,0,0,.12), 0 4px 2px -2px rgba(0,0,0,.2);
 }
 
 .Toolbar__homeLink {
@@ -198,6 +202,7 @@ a { color: blue; }
   padding: 20px 10px;
   display: table;
   font-size: 20px;
+  font-weight: bold;
   color: #319631;
 }
 

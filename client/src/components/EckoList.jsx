@@ -20,6 +20,7 @@ export default class EckoList extends React.Component {
   }
 
   getModal(e) {
+    let desc = e.desc || (e.rating === 0 && "Není škodlivé pro lidský organismus.")
     return (
       <div className="Ecko-modal">
         <div className="Ecko-modal__title">
@@ -27,7 +28,7 @@ export default class EckoList extends React.Component {
           <div className="Ecko-modal__name">{e.names[0]}</div>
           <button onClick={this.hide} className="Ecko-modal__btnClose">✕</button>
         </div>
-        {e.desc ? <div className="Ecko-modal__content">{e.desc}</div> : null }
+        {desc ? <div className="Ecko-modal__content">{desc}</div> : null }
       </div>
     )
   }
