@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["dist/app.js","89a11c104b5a2e016a581abdb6df6f87"],["dist/assets/logo-3932ee.png","3932eec0a13c9f1a551eb817db603aef"],["dist/assets/progressbar-daa4e6.gif","daa4e642fdf3e268e432b390e46fa418"],["dist/lib/react.dll.js","f4729580124f02b1c31cf72f4f70b9b5"],["dist/lib/react.dll.json","69c643cde9d0a75182c817659e6a0dc4"],["favicon.png","8617921b4b76f6925bec4bc0023d1648"],["icon-cart-540.png","c68cdb6a0d9e0e62544c5a93746808ba"],["icon-cart-64.png","e7bef269b1672144212d2bcbc63089ed"],["index.html","8344f3e2eb072d46ac44254079e6f009"],["manifest.json","d04d0ad82eaf7b23f0a4b796e9e4cff3"],["service-worker-registration.js","c1ee5aec388e1ed07d6d290693b72547"]];
+var precacheConfig = [["dist/app.js","f4342319239b7e6da2e4a2f56433e405"],["dist/assets/logo-3932ee.png","3932eec0a13c9f1a551eb817db603aef"],["dist/assets/progressbar-daa4e6.gif","daa4e642fdf3e268e432b390e46fa418"],["dist/lib/react.dll.js","f4729580124f02b1c31cf72f4f70b9b5"],["dist/lib/react.dll.json","69c643cde9d0a75182c817659e6a0dc4"],["favicon.png","8617921b4b76f6925bec4bc0023d1648"],["icon-cart-128.png","032c12b4054c6db84fdb2629970835af"],["icon-cart-64.png","75bbe76633083c6e1eecf53e6109f3f6"],["index.html","223380d8cbba26f1e0cd7deb0cd35a6a"],["manifest.json","9459d72ddfb56adf7888ab91e25b6d26"],["service-worker-registration.js","c1ee5aec388e1ed07d6d290693b72547"]];
 var cacheName = 'sw-precache-v2-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
