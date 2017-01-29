@@ -7,7 +7,7 @@
     "clean": "rm -rf ../public/dist",
     "build:app": "webpack",
     "build:dll": "webpack --config webpack.dll.config.js",
-    "build": "npm run clean && npm run build:dll && npm run build:app && sw-precache --root ../public",
+    "build": "npm run clean && npm run build:dll && npm run build:app && sw-precache --config=sw-precache.config.js",
     "watch": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
