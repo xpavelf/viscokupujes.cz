@@ -67,12 +67,6 @@ export default class Toolbar extends React.Component {
     evt.target.parentNode.scrollIntoView()
   }
 
-  onBlur = (evt) => {
-    setTimeout(() => {
-      window.scrollTo(0, 0)
-    }, 0)
-  }
-
   render() {
     return (
       <div className="Toolbar">
@@ -89,7 +83,6 @@ export default class Toolbar extends React.Component {
               onChange={this.onChange}
               onSelect={this.onSelect}
               onFocus={this.onFocus}
-              onBlur={this.onBlur}
               placeholder="Najdi výrobek..."
               suggestions={this.props.searchProduct}
               parseSuggestionsData={(data) => data.products}
