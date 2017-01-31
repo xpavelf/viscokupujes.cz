@@ -6,6 +6,7 @@ const winston = require("winston")
 const products = require("../data/data.json")
 const ecka = require("./e.json")
 const removeDiacritics = require("diacritics").remove
+const { queryStringSearch } = require("./strUtils")
 
 winston.add(winston.transports.File, {
   filename: 'run.log',
@@ -23,19 +24,10 @@ const ipaddr =  process.env.NODE_IP || 'localhost'
 
 const router = express.Router()
 
-const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-const normalizeStr = (str) => removeDiacritics(str).toLowerCase()
-const regForTerm = (term) => RegExp(`\\b${escapeRegExp(term)}`, "g")
-const predicateWithHits = (term) => (prod) => {
-  let regx = regForTerm(normalizeStr(term))
-  let str = normalizeStr(prod.name)
-  let hits = []
-  let match
-  while (match = regx.exec(str)) {
-    hits.push([match.index, match.index + term.length])
-  }
+const predicateWithHits = (query) => (prod) => {
+  let hits = queryStringSearch(query, removeDiacritics(prod.name))
 
-  if (hits.length) {
+  if (hits && hits.length) {
     return Object.assign({}, prod, { hits })
   }
 
