@@ -14,12 +14,12 @@ export default class AboutUs extends React.Component {
         <p>Éčka jsou rozdělena do tří kategorií podle škodlivosti. Stačí vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu.</p>
 
         <div style={{ textAlign: "center" }}>
-          <img style={{width: "100%", maxWidth: "450px"}} src={imgLogo} />
+          <img style={{width: "100%", maxWidth: "450px"}} src={imgLogo} alt="Logo - viscokupujes.cz" />
         </div>
-        <p>Zatím máme databázi asi 12 000 výrobků. Nikdo nás nesponzoruje. Jsme jen obyčejní lidi, co chtějí kupovat kvalitnější potraviny. Proto budeme rádi, když naši aplikaci budeš sdílet svým kamarádům přes <a target="_blank" href="https://www.facebook.com/viscokupujes/">Facebook.</a> Pokud se ti na ní něco nelíbí, dej to vědět nám, ať máme co zlepšovat.</p>
+        <p>Zatím máme databázi asi 12 000 výrobků. Nikdo nás nesponzoruje. Jsme jen obyčejní lidi, co chtějí kupovat kvalitnější potraviny. Proto budeme rádi, když naši aplikaci budeš sdílet svým kamarádům přes <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes/">Facebook.</a> Pokud se ti na ní něco nelíbí, dej to vědět nám, ať máme co zlepšovat.</p>
         <p>
           Kontaktuj nás:<br />
-          <a target="_blank" href="https://www.facebook.com/viscokupujes" title="Facebook">
+          <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes" title="Facebook">
             <svg height="32" width="32" viewBox="0 0 512 512">
               <path fill="white" d="M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64 H288z"/>
             </svg>

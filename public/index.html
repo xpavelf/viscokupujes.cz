@@ -19,15 +19,19 @@
   <title>Víš co kupuješ?</title>
   <link href="https://fonts.googleapis.com/css?family=Patrick+Hand|Roboto:300" rel="stylesheet">
   <link rel="shortcut icon" href="/favicon.png">
+  <meta name="theme-color" content="#3cb73c">
   <link rel="manifest" href="/manifest.json">
   <script src="/service-worker-registration.js"></script>
 </head>
 <body>
+  <noscript>
+    viscokupujes.cz - Pro fungování této stránky musíš mít povolený javascript.
+  </noscript>
 
   <div id="root"></div>
   <script src="/dist/reactBundle.js"></script>
-  <script src="/dist/app.js"></script>
-  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58834dc518f9fe86"></script>
+  <script async src="/dist/app.js"></script>
+  <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58834dc518f9fe86"></script>
 
 </body>
 </html>
