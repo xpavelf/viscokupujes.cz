@@ -1,11 +1,5 @@
 
-@import "./reset.css";
 @import "~react-searchbox/dist/react-searchbox.css";
-
-button { cursor: pointer; }
-html, body, #root, .App, .App__content { height: 100%; }
-strong { font-weight: bold; }
-a { color: blue; }
 
 /**************************/
 /*********** App **********/

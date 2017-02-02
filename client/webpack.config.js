@@ -2,16 +2,7 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: {
-    app: "./src/app.jsx",
-    reactBundle: [
-      "react",
-      "react-dom",
-      "react-redux",
-      "react-router",
-      "redux",
-      "redux-thunk",
-      "redux-promise-middleware"
-    ]
+    app: "./src/app.jsx"
   },
   output: {
     path: "../public/dist",
@@ -26,10 +17,5 @@ module.exports = {
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/, loader: "file-loader?name=assets/[name]-[hash:6].[ext]&publicPath=/dist/" }
     ]
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ["reactBundle"]
-    })
-  ]
+  }
 };

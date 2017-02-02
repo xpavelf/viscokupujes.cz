@@ -1,5 +1,6 @@
 const http = require("http")
 const express = require("express")
+const compression = require("compression")
 const app = express()
 const bodyParser = require("body-parser")
 const winston = require("winston")
@@ -15,6 +16,7 @@ winston.add(winston.transports.File, {
   maxFiles: 3
 })
 
+app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use('/', express.static('public'))
