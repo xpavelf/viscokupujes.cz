@@ -55,8 +55,8 @@ const _map_e = (product) => {
 app.get("/api/product", (req, res) => {
   let q = req.query.q
   winston.info("product search '%s'", q)
-  const limit = 20
-  const filtered = q ? arr_filter_with_map(products, predicateWithHits(q), 20) : products.slice(0, 20)
+  const limit = 35
+  const filtered = q ? arr_filter_with_map(products, predicateWithHits(q), limit) : products.slice(0, limit)
 
   res.json(filtered.map(_map_e))
 })
@@ -69,9 +69,8 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
   res.json(_map_e(product))
 })
 
-app.get("/product/*", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html")
-})
+app.get("/product/*", (req, res) => res.sendFile(__dirname + "/public/index.html"))
+app.get("/ecka", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {

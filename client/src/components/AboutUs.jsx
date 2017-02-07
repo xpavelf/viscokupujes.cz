@@ -1,5 +1,5 @@
-
 import React from "react"
+import { Link } from "react-router-dom"
 import imgLogo from "../icons/aboutUs-banner.png"
 
 export default class AboutUs extends React.Component {
@@ -7,9 +7,11 @@ export default class AboutUs extends React.Component {
     return (
       <div className="AboutUs">
         <div className="AboutUs__ecka">
-          <div className="Ecko Ecko--2">!</div>
-          <div className="Ecko Ecko--1">?</div>
-          <div className="Ecko Ecko--0">✓</div>
+          <Link to="/ecka">
+            <div className="Ecko Ecko--2">!</div>
+            <div className="Ecko Ecko--1">?</div>
+            <div className="Ecko Ecko--0">✓</div>
+          </Link>
         </div>
         <p>Éčka jsou rozdělena do tří kategorií podle škodlivosti. Stačí vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu.</p>
 
