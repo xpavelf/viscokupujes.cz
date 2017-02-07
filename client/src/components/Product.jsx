@@ -7,14 +7,14 @@ import { getProductById } from "../actions/Product"
 export default class Product extends React.Component {
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.params.id !== this.props.params.id) {
-      this.props.dispatch(getProductById(nextProps.params.id))
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.props.dispatch(getProductById(nextProps.match.params.id))
     }
   }
 
   componentWillMount() {
-    if (this.props.params.id) {
-      this.props.dispatch(getProductById(this.props.params.id))
+    if (this.props.match.params.id) {
+      this.props.dispatch(getProductById(this.props.match.params.id))
     }
   }
 
