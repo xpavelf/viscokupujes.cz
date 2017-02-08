@@ -9,6 +9,11 @@ import AboutUs from "./AboutUs"
 @withRouter
 export default class App extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    ga('set', 'page', nextProps.location.pathname)
+    ga('send', 'pageview')
+  }
+
   render() {
     let show = this.props.location.state && this.props.location.state.sideNav
     return (
