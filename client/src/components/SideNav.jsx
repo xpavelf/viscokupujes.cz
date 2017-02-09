@@ -1,10 +1,36 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom"
 
+var TOUCH_SLOP = 8 * window.devicePixelRatio * 4
+
 @withRouter
 export default class SideNav extends React.PureComponent {
   hide = () => {
     this.props.replace({ state: { sideNav: false} })
+  }
+
+  resetTouchInfo() {
+    this.touchStartX = undefined
+    this.sideNavTransform = undefined
+  }
+
+  onTouchStart = (e) => {
+    this.touchStartX = e.touches[0].pageX
+  }
+
+  onTouchMove = (e) => {
+    let newTouchX = e.touches[0].pageX
+    this.sideNavTransform = Math.min(0, newTouchX - this.touchStartX)
+
+    this.sideNavContent.style.transform = `translateX(${this.sideNavTransform}px)`
+  }
+
+  onTouchEnd = () => {
+    this.sideNavContent.style.transform = ""
+    if (this.sideNavTransform < -TOUCH_SLOP) {
+      this.hide()
+    }
+    this.resetTouchInfo()
   }
 
   render() {
@@ -12,7 +38,10 @@ export default class SideNav extends React.PureComponent {
 
     return (
       <section onClick={this.hide} className={sectionClass}>
-        <div className="SideNav__content" onClick={e => e.stopPropagation() }>
+        <div className="SideNav__content" onClick={e => e.stopPropagation()}
+            onTouchStart={this.onTouchStart} onTouchEnd={this.onTouchEnd}
+            onTouchMove={this.onTouchMove} ref={el => this.sideNavContent = el}>
+
           <div className="SideNav__header"></div>
           <div className="SideNav__body">
             <Link replace to="/" className="SideNav__link">
