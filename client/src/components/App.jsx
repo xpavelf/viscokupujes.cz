@@ -5,6 +5,7 @@ import { Route, withRouter } from "react-router-dom"
 import Product from "./Product"
 import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
+import Home from "./Home"
 
 @withRouter
 export default class App extends React.Component {
@@ -21,9 +22,10 @@ export default class App extends React.Component {
         <SideNav show={show} />
         <Toolbar />
         <div className="App__content">
-          <Route exact path="/" component={AboutUs} />
+          <Route exact path="/" component={Home} />
           <Route path="/product/:id" component={Product} />
           <Route path="/ecka" component={EckoOverview} />
+          <Route path="/about-us" component={AboutUs} />
         </div>
       </main>
     )

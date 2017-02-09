@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import imgLogo from "../icons/logo.png"
 import SearchBox  from "./SearchBox"
 
-
-
 export default class Toolbar extends React.Component {
   render() {
     return (

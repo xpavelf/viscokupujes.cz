@@ -139,41 +139,60 @@
   left: 10px;
   color: #bbb;
 }
-
 /**************************/
 /*********** AboutUs **********/
 /**************************/
 
-
 .AboutUs {
   margin: -5px;
-  padding-bottom: 50px;
+  background-color: #3cb73c;
+  height: 100%;
+}
+
+.AboutUs p {
+  color: white;
+  padding: 20px;
+  text-align: justify;
+  line-height: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.AboutUs img {
+  width: 100%;
+}
+
+.AboutUs a { color: white; }
+
+/**************************/
+/*********** Home **********/
+/**************************/
+.Home {
+  margin: -5px;
+  height: 100%;
   background-color: #3cb73c;
   font-family: 'Roboto', sans-serif;
 }
 
-.AboutUs p {
+.Home p {
   padding: 10px 15px;
   color: white;
   line-height: 20px;
   text-align: justify;
 }
 
-.AboutUs a { color: white; }
-
-.AboutUs__ecka {
+.Home__ecka {
   text-align: center;
   padding: 15px 0px;
   font-family: 'Roboto', sans-serif;
 }
 
-.AboutUs__ecka p {
+.Home__ecka p {
   text-align: justify;
   line-height: 20px;
   padding-top: 10px;
 }
 
-.AboutUs__ecka .Ecko {
+.Home__ecka .Ecko {
   font-weight: bold;
   font-size: 40px;
   border: 1px solid white;
@@ -199,11 +218,9 @@
   left: 10px;
   opacity: .54;
   transition: opacity 333ms cubic-bezier(0,0,.21,1);
-  border: 1px solid transparent;
 }
 .Toolbar__sideNavLink:hover, .Toolbar__sideNavLink:active {
   opacity: 1;
-  border-color: #fff;
 }
 .Toolbar__sideNavLink svg { vertical-align: middle; }
 
