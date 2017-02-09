@@ -90,8 +90,9 @@
 }
 
 .SideNav__header {
-  height: 120px;
-  background-color: #3cb73c;
+  height: 150px;
+  background: url("/banner-660x360.png") #3cb73c center center no-repeat;
+  background-size: contain;
   position: relative;
 }
 
@@ -123,11 +124,22 @@
 }
 
 .SideNav__link {
+  text-decoration: none;
+  color: black;
   display: block;
-  height: 48px;
-  line-height: 48px;
-  padding-left: 30px;
+  height: 60px;
+  line-height: 60px;
+  position: relative;
+  padding-left: 50px;
 }
+
+.SideNav__link svg {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 10px;
+  color: #bbb;
+}
+
 /**************************/
 /*********** AboutUs **********/
 /**************************/
@@ -204,7 +216,7 @@
 .Toolbar__title {
   font-size: 30px;
   color: white;
-  margin: 0 30px 0 0;
+  margin: 0 30px;
   text-align: center;
   text-shadow: 1px 1px 3px #222;
 }
