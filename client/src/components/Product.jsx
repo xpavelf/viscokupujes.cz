@@ -34,7 +34,7 @@ export default class Product extends React.Component {
           </table>
           : null
         }
-        {prod.ref}
+        {prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null}
       </div>
     ) : null
   }
