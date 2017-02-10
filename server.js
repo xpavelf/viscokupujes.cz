@@ -71,6 +71,7 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
 
 
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/public/index.html"))
+app.get("/search-history", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 app.get("/ecka", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 

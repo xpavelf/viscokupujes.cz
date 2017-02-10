@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import debounce from "debounce"
+import throttle from "lodash/throttle"
 import { withRouter } from "react-router-dom"
 import { searchProduct, resetSearchProduct, resetActiveProduct } from "../actions/Product"
 import imgProgressbar from "../icons/progressbar.gif"
@@ -40,14 +40,14 @@ const Suggestion = (props) => {
 }))
 @withRouter
 export default class SearchBox extends React.Component {
-  _searchProductDebounced = debounce((term) => {
+  _searchProductThrottled = throttle((term) => {
     this.props.dispatch(searchProduct(term))
-  }, 300)
+  }, 300, { leading: false })
 
   onChange = (term) => {
     this.props.dispatch(resetSearchProduct())
     if (term && term.length > 2) {
-      this._searchProductDebounced(term)
+      this._searchProductThrottled(term)
     }
   }
 

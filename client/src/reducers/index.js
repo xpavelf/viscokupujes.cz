@@ -1,10 +1,13 @@
 import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
   GET_PRODUCT_BY_ID, GET_PRODUCT_BY_ID_RESET } from "../actions/Product"
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   searchProduct: { products: null, err: null, pending: false },
-  activeProduct: { product: null, err: null, pending: false }
+  activeProduct: { product: null, err: null, pending: false },
+  searchHistory: []
 }
+
+const SEARCH_HISTORY_LIMIT = 10
 
 export default function(state=INITIAL_STATE, action) {
 
@@ -20,7 +23,11 @@ export default function(state=INITIAL_STATE, action) {
     case GET_PRODUCT_BY_ID_RESET:
       return { ...state, activeProduct: INITIAL_STATE.activeProduct }
     case `${GET_PRODUCT_BY_ID}_FULFILLED`:
-      return { ...state, activeProduct: { product: action.payload, err: null, pending: false } }
+      return {
+        ...state,
+        activeProduct: { product: action.payload, err: null, pending: false },
+        searchHistory: [action.payload, ...state.searchHistory.filter(h => h.id !== action.payload.id)].slice(0, SEARCH_HISTORY_LIMIT)
+      }
 
 
   }
