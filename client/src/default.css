@@ -217,7 +217,7 @@
   background-color: #3cb73c;
   font-family: 'Roboto', sans-serif;
 }
-
+.Home a { color: white; }
 .Home p {
   padding: 10px 15px;
   color: white;

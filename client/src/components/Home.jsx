@@ -20,6 +20,12 @@ export default class Home extends React.Component {
         </div>
 
         <p>
+          Zatím máme databázi asi 12 000 výrobků. Nikdo nás nesponzoruje. Jsme jen obyčejní lidi, co chtějí kupovat kvalitnější potraviny. Proto budeme rádi, když
+          naši aplikaci budeš sdílet svým kamarádům přes <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes/">Facebook.</a> Pokud se ti
+          na ní něco nelíbí, dej to vědět nám, ať máme co zlepšovat.
+        </p>
+
+        <p>
           Kontaktuj nás:<br />
           <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes" title="Facebook">
             <svg height="32" width="32" viewBox="0 0 512 512">
