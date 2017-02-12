@@ -51,7 +51,6 @@ const _map_e = (product) => {
   return Object.assign({}, product, { e: arr_e})
 }
 
-
 app.get("/api/product", (req, res) => {
   let q = req.query.q
   winston.info("product search '%s'", q)
@@ -69,7 +68,7 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
   res.json(_map_e(product))
 })
 
-
+app.get("/scanner", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 app.get("/search-history", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/public/index.html"))

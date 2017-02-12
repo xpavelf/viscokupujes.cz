@@ -1,6 +1,23 @@
 
 @import "~react-searchbox/dist/react-searchbox.css";
 
+.Scanner__videoContainer {
+  position: relative;
+}
+
+.Scanner__videoContainer video,
+.Scanner__videoContainer canvas {
+  width: 100%;
+  max-width: 100%;
+}
+
+.Scanner__videoContainer canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
 /**************************/
 /*********** App **********/
 /**************************/

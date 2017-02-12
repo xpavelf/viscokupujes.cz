@@ -6,6 +6,7 @@ import Product from "./Product"
 import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
 import Home from "./Home"
+import Scanner from "./Scanner"
 import SearchHistory from "./SearchHistory"
 
 @withRouter
@@ -28,6 +29,7 @@ export default class App extends React.Component {
           <Route path="/ecka" component={EckoOverview} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/search-history" component={SearchHistory} />
+          <Route path="/scanner" component={Scanner} />
         </div>
       </main>
     )
