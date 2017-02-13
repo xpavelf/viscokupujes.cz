@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom"
 import ver from "../../version.json"
+import "./SideNav.css"
 
 var TOUCH_SLOP = 8 * window.devicePixelRatio * 4
 

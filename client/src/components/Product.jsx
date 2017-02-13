@@ -2,6 +2,7 @@ import React from "react"
 import EckoList from "./EckoList"
 import { connect } from "react-redux"
 import { getProductById } from "../actions/Product"
+import "./Product.css"
 
 @connect((store) => ({ activeProduct: store.activeProduct }))
 export default class Product extends React.Component {

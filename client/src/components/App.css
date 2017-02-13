@@ -1,0 +1,8 @@
+.App {
+  max-width: 800px;
+  margin: 0 auto 0 auto;
+}
+
+.App__content {
+  padding: 5px 5px 50px 5px;
+}

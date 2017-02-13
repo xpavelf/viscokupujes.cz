@@ -1,0 +1,79 @@
+.SideNav {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+.SideNav:before {
+  content: '';
+  will-change: opacity;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  display: block;
+  position: absolute;
+  transition: opacity 250ms cubic-bezier(0,0,.21,1);
+}
+
+.SideNav--visible {
+  z-index: 20;
+}
+
+.SideNav--visible:before {
+  opacity: .7;
+}
+
+.SideNav__header {
+  height: 150px;
+  background: url("/banner-660x360.png") #3cb73c center center no-repeat;
+  background-size: contain;
+  position: relative;
+}
+
+.SideNav__content {
+  font-family: "Roboto", sans-serif;
+  background-color: #fafafa;
+  z-index: 21;
+  position: relative;
+  height: 100%;
+  width: 300px;
+  max-width: 80%;
+  overflow: hidden;
+  transform: translateX(-100%);
+  will-change: transform;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  transition: transform 250ms cubic-bezier(0,0,.21,1);
+}
+
+.SideNav--visible .SideNav__content {
+  transform: translateX(0);
+}
+
+.SideNav__title {
+  color: #2a802a;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 10px;
+}
+
+.SideNav__link {
+  text-decoration: none;
+  color: black;
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  position: relative;
+  padding-left: 60px;
+}
+
+.SideNav__link svg {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 10px;
+  color: #bbb;
+}

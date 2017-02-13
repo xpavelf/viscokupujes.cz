@@ -1,0 +1,52 @@
+.Toolbar {
+  background-color: #2a802a;
+  position: relative;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 2px 9px 1px rgba(0,0,0,.12), 0 4px 2px -2px rgba(0,0,0,.2);
+}
+
+.Toolbar__homeLink {
+  border: none;
+  background-color: transparent;
+}
+
+.Toolbar__sideNavLink {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  opacity: .54;
+  transition: opacity 333ms cubic-bezier(0,0,.21,1);
+}
+.Toolbar__sideNavLink:hover, .Toolbar__sideNavLink:active {
+  opacity: 1;
+}
+.Toolbar__sideNavLink svg { vertical-align: middle; }
+
+.Toolbar__fbLink {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.Toolbar__title {
+  font-size: 30px;
+  color: white;
+  margin: 0 30px;
+  text-align: center;
+  text-shadow: 1px 1px 3px #222;
+}
+
+.Toolbar__title img {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.Toolbar__searchButton {
+  background: transparent;
+  border: none;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  top: calc(50% - 20px);
+  right: 10px;
+  fill: white;
+}

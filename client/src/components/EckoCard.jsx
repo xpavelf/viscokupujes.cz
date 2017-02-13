@@ -1,4 +1,5 @@
 import React from "react"
+import "./EckoCard.css"
 
 export default class EckoEckoCard extends React.PureComponent {
   state = { open: false }

@@ -1,0 +1,45 @@
+.SearchBox,
+.SearchBox__input,
+.SearchBox__clearButton,
+.SearchBox__backButton {
+  font-family: 'Roboto', sans-serif;
+}
+
+.SearchBox__clearButton {
+  font-size: 15px;
+  width: 26px;
+  height: 26px;
+  top: calc(50% - 13px);
+}
+
+.SearchBox__input {
+  font-size: 20px;
+  padding: 5px 50px 5px 10px;
+}
+
+.SearchBox {
+  padding: 5px;
+}
+
+.SearchBox__link {
+  padding: 6px;
+}
+
+.SearchBox__Product-name {
+  padding-bottom: 6px;
+  display: block;
+  font-size: 16px;
+}
+
+.SearchBox__Product-highlight {
+  background-color: yellow;
+}
+
+.SearchBox__Product-producer {
+  font-size: 13px;
+  color: #bbb;
+}
+
+.Suggestion__link {
+  padding: 6px 10px;
+}

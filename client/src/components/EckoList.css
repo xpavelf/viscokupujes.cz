@@ -1,0 +1,77 @@
+
+.Ecko-emptylist {
+  margin: auto;
+  padding: 20px 10px;
+  display: table;
+  font-size: 20px;
+  font-weight: bold;
+  color: #319631;
+}
+
+.Ecko-emptylist > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.Ecko-emptylist__text {
+  padding-left: 10px;
+}
+
+.Ecko-modal {
+  position: fixed;
+  background-color: white;
+  border: 3px solid gray;
+  width: 500px;
+  z-index: 21;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  padding: 20px 10px;
+}
+
+.Ecko-modal__btnClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  display: inline-block;
+  border: none;
+  font-size: 25px;
+  height: 40px;
+  width: 40px;
+}
+
+.Ecko-modal__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Ecko-modal__title > .Ecko-modal__name,
+.Ecko-modal__title > .Ecko
+ { display: table-cell; }
+
+.Ecko-modal__name {
+  padding-left: 10px;
+  vertical-align: middle;
+}
+
+.Ecko-modal__content {
+  padding-top: 15px;
+}
+
+@media only screen and (min-width: 700px) {
+  .Ecko-modal {
+    width: 600px;
+    left: calc(50% - 300px);
+  }
+}
+
+.Ecko-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, .5);
+}

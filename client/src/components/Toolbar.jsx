@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import imgLogo from "../icons/logo.png"
 import SearchBox  from "./SearchBox"
+import "./Toolbar.css"
 
 export default class Toolbar extends React.Component {
   render() {

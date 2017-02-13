@@ -28,7 +28,7 @@
 
     /* default */
     button { cursor: pointer; }
-    html, body, #root, .App, .App__content { height: 100%; }
+    html, body { height: 100%; }
     strong { font-weight: bold; }
     a { color: blue; }
 
@@ -55,5 +55,6 @@
   <script async src="/dist/app.js"></script>
   <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58834dc518f9fe86"></script>
 
+  <script>document.body.setAttribute("data-page", window.location.pathname)</script>
 </body>
 </html>

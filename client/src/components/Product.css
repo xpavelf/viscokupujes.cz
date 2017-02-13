@@ -1,0 +1,52 @@
+.Product {
+  padding: 10px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.Product__name {
+  padding-bottom: 10px;
+  display: block;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.Product__producer {
+  font-size: 15px;
+  color: #bbb;
+}
+
+.Product__ingredients {
+  padding-top: 15px;
+  font-size: 15px;
+}
+
+.Product__ingredients::first-line {
+  font-weight: bold;
+}
+
+.Product__nutrition-facts {
+  border: 2px solid black;
+  padding: 10px;
+  border-collapse: separate;
+  background-color: white;
+  margin: 10px auto;
+}
+
+.Product__nutrition-facts td {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.Product__nutrition-facts caption {
+  border: 2px solid black;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.Product__nutrition-facts caption div {
+  font-size: 12px;
+  padding-top: 10px;
+}

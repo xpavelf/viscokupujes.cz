@@ -1,0 +1,30 @@
+body[data-page="/"] { background-color: #3cb73c;}
+
+.Home {
+  font-family: 'Roboto', sans-serif;
+}
+.Home a { color: white; }
+.Home p {
+  padding: 10px;
+  color: white;
+  line-height: 20px;
+  text-align: justify;
+}
+
+.Home__ecka {
+  text-align: center;
+  padding: 15px 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.Home__ecka p {
+  text-align: justify;
+  line-height: 20px;
+  padding-top: 10px;
+}
+
+.Home__ecka .Ecko {
+  font-weight: bold;
+  font-size: 40px;
+  border: 1px solid white;
+}

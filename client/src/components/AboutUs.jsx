@@ -1,5 +1,6 @@
 import React from "react"
 import imgShopping from "../icons/shopping.jpg"
+import "./AboutUs.css"
 
 export default () => (
   <div className="AboutUs">

@@ -7,13 +7,21 @@ import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
 import Home from "./Home"
 import SearchHistory from "./SearchHistory"
+import "./App.css"
 
 @withRouter
 export default class App extends React.Component {
 
+
   componentWillReceiveProps(nextProps) {
-    ga('set', 'page', nextProps.location.pathname)
-    ga('send', 'pageview')
+    let page = nextProps.location.pathname
+    if (this.props.location.pathname !== page) {
+
+      ga('set', 'page', page)
+      ga('send', 'pageview')
+
+      document.body.setAttribute("data-page", page)
+    }
   }
 
   render() {

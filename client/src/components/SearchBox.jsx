@@ -4,6 +4,7 @@ import throttle from "lodash/throttle"
 import { withRouter } from "react-router-dom"
 import { searchProduct, resetSearchProduct, resetActiveProduct } from "../actions/Product"
 import imgProgressbar from "../icons/progressbar.gif"
+import "./SearchBox.css"
 import {
   SearchBox as ReactSearchBox,
   Suggestion as ReactSuggestion,

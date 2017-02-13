@@ -1,0 +1,15 @@
+body[data-page="/about-us"] { background-color: #3cb73c;}
+
+.AboutUs p {
+  color: white;
+  padding: 20px;
+  text-align: justify;
+  line-height: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.AboutUs img {
+  width: 100%;
+}
+
+.AboutUs a { color: white; }

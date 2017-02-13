@@ -1,4 +1,5 @@
 import React from "react"
+import "./EckoList.css"
 
 export default class EckoList extends React.Component {
 
