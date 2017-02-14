@@ -27,6 +27,12 @@ export default class EckoList extends React.Component {
         <div className="Ecko-modal__title">
           <div className={"Ecko Ecko--" + e.rating}>{e.id}</div>
           <div className="Ecko-modal__name">{e.names[0]}</div>
+          { e.names.length > 1
+            ? <div className="Ecko-modal__aliases">
+                Další názvy:<br />{ e.names.slice(1).join(", ") }
+              </div>
+            : null
+          }
           <button onClick={this.hide} className="Ecko-modal__btnClose">✕</button>
         </div>
         {desc ? <div className="Ecko-modal__content">{desc}</div> : null }

@@ -55,6 +55,17 @@
   vertical-align: middle;
 }
 
+.Ecko-modal__aliases::first-line {
+  font-weight: bold;
+}
+
+.Ecko-modal__aliases {
+  padding-top: 15px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #777;
+}
+
 .Ecko-modal__content {
   padding-top: 15px;
 }
