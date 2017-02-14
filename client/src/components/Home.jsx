@@ -14,19 +14,18 @@ export default class Home extends React.Component {
             <div className="Ecko Ecko--0">✓</div>
           </Link>
         </div>
-        <p>Éčka jsou rozdělena do tří kategorií podle škodlivosti. Stačí vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu.</p>
+        <p>Najdi éčka v potravinách a nekupuj zbytečnou chemii. Stačí si vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu. Éčka jsou rozdělena do tří kategorií podle škodlivosti, červená jsou nejškodlivější, oranžová s otazníkem a zelená jsou ok. Databáze zatím obsahuje asi 12 000 výrobků.</p>
 
         <div style={{ textAlign: "center" }}>
           <img style={{width: "100%", maxWidth: "450px"}} src={imgLogo} alt="Logo - viscokupujes.cz" />
         </div>
 
         <p>
-          Zatím máme databázi asi 12 000 výrobků. Nikdo nás nesponzoruje. Jsme jen obyčejní lidi, co chtějí kupovat kvalitnější potraviny. Proto budeme rádi, když
-          naši aplikaci budeš sdílet svým kamarádům přes <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes/">Facebook.</a> Pokud se ti
-          na ní něco nelíbí, dej to vědět nám, ať máme co zlepšovat.
+          Zdravě chceme jíst asi všichni, ale ne každý má čas na hledání každého éčka na seznamu ingrediencí. Tak to prostě hodíme do košíku a nezajímá nás to. Kupujeme tak velké množství zbytečné chemie a chováme se k našemu tělu jako by bylo popelnice. Přitom stačí správně volit výrobky. Ne všechny jsou plné éček. A také ne všechny éčka jsou škodlivá. Ale kdo se v tom má vyznat, když jsou jich stovky. Navíc výrobci nemají povinnost všechny látky označovat jako E, takže spoustu z nich najdeme jen v textu a netušíme, co znamenají.
         </p>
-
-        <p>
+        <p>Až tedy půjdeš příště do obchodu, zamysli se nad tím, co kupuješ pro sebe a své blízké. Najdi si v naší aplikaci své oblíbené potraviny a pokud najdeš nějaké s červeným éčkem, zkus je příště nahradit zdravější variantou.</p>
+        <p>Sdílej naši aplikaci svým kamarádům, ať také nekupují chemii v potravinách. Pokud se ti na ní něco nelíbí, dej to vědět nám, ať máme co zlepšovat.</p>
+      <p>
           Kontaktuj nás:<br />
           <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes" title="Facebook">
             <svg height="32" width="32" viewBox="0 0 512 512">

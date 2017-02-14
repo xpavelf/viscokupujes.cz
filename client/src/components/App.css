@@ -6,3 +6,22 @@
 .App__content {
   padding: 5px 5px 50px 5px;
 }
+
+@media only screen and (min-width: 800px) {
+  body {
+    background-image: url("/desktop-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .App {
+    background-color: white;
+    margin-top: 70px;
+  }
+
+  [data-page="/"] .App,
+  [data-page="/about-us"] .App {
+    background-color: #3cb73c;
+  }
+}
