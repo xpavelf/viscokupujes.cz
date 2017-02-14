@@ -14,17 +14,17 @@ export default class Home extends React.Component {
             <div className="Ecko Ecko--0">✓</div>
           </Link>
         </div>
-        <p>Najdi éčka v potravinách a nekupuj zbytečnou chemii. Stačí si vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu. Éčka jsou rozdělena do tří kategorií podle škodlivosti, červená jsou nejškodlivější, oranžová s otazníkem a zelená jsou ok. Databáze zatím obsahuje asi 12 000 výrobků.</p>
+        <p>Najdi si éčka v potravinách a nekupuj zbytečnou chemii. Stačí si vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu. Éčka jsou rozdělena do tří kategorií podle škodlivosti, červená jsou nejškodlivější, oranžová s otazníkem a zelená jsou ok. Databáze zatím obsahuje asi 12 000 výrobků.</p>
 
         <div style={{ textAlign: "center" }}>
           <img style={{width: "100%", maxWidth: "450px"}} src={imgLogo} alt="Logo - viscokupujes.cz" />
         </div>
 
         <p>
-          Zdravě chceme jíst asi všichni, ale ne každý má čas na hledání každého éčka na seznamu ingrediencí. Tak to prostě hodíme do košíku a nezajímá nás to. Kupujeme tak velké množství zbytečné chemie a chováme se k našemu tělu jako by bylo popelnice. Přitom stačí správně volit výrobky. Ne všechny jsou plné éček. A také ne všechny éčka jsou škodlivá. Ale kdo se v tom má vyznat, když jsou jich stovky. Navíc výrobci nemají povinnost všechny látky označovat jako E, takže spoustu z nich najdeme jen v textu a netušíme, co znamenají.
-        </p>
-        <p>Až tedy půjdeš příště do obchodu, zamysli se nad tím, co kupuješ pro sebe a své blízké. Najdi si v naší aplikaci své oblíbené potraviny a pokud najdeš nějaké s červeným éčkem, zkus je příště nahradit zdravější variantou.</p>
-        <p>Sdílej naši aplikaci svým kamarádům, ať také nekupují chemii v potravinách. Pokud se ti na ní něco nelíbí, dej to vědět nám, ať máme co zlepšovat.</p>
+          Zdravě chceme jíst asi všichni, ale ne každý má čas na hledání každého éčka na seznamu ingrediencí. Tak to prostě hodíme do košíku a nezajímá nás to. Kupujeme tak velké množství zbytečné chemie a chováme se k našemu tělu jako by bylo popelnice. Přitom stačí správně volit výrobky. Ne všechny jsou plné éček. A také ne všechna éčka jsou škodlivá. Ale kdo se v tom má vyznat, když jsou jich stovky. Navíc výrobci nemají povinnost všechny látky označovat jako E, takže spoustu z nich najdeme jen v textu a netušíme, co znamenají.
+        Až tedy půjdeš příště do obchodu, zamysli se nad tím, co kupuješ pro sebe a své blízké. Najdi si v naší aplikaci své oblíbené potraviny a pokud najdeš nějaké s červeným éčkem, zkus je příště nahradit zdravější variantou.</p>
+      <p>Snažíme se, aby informace o produktech byly co nejaktuálnější. Nemůžeme ovšem zaručit stoprocentní správnost. Pokud máš jakýkoliv návrh na zlepšení, dej nám to vědět.</p>
+      <p>Sdílej naši aplikaci svým kamarádům na Facebooku, ať také nekupují chemii v potravinách.</p>
       <p>
           Kontaktuj nás:<br />
           <a target="_blank" rel="noopener" href="https://www.facebook.com/viscokupujes" title="Facebook">
