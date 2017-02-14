@@ -1,4 +1,5 @@
 import React from "react"
+import { eComparator } from "../utils/eUtils"
 import "./EckoList.css"
 
 export default class EckoList extends React.Component {
@@ -35,7 +36,7 @@ export default class EckoList extends React.Component {
 
   render() {
     let arr = this.props.list
-      .sort((a, b) => b.rating - a.rating)
+      .sort(eComparator)
 
     if (arr.length === 0) {
       return (
