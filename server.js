@@ -19,7 +19,7 @@ winston.add(winston.transports.File, {
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use('/', express.static('public'))
+app.use('/', express.static('www'))
 
 const port = process.env.PORT || process.env.NODE_PORT || 8989
 const ipaddr =  process.env.NODE_IP || 'localhost'
@@ -70,10 +70,10 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
 })
 
 
-app.get("/product/*", (req, res) => res.sendFile(__dirname + "/public/index.html"))
-app.get("/search-history", (req, res) => res.sendFile(__dirname + "/public/index.html"))
-app.get("/about-us", (req, res) => res.sendFile(__dirname + "/public/index.html"))
-app.get("/ecka", (req, res) => res.sendFile(__dirname + "/public/index.html"))
+app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {

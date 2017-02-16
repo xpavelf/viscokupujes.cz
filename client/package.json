@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ../public/dist",
+    "clean": "rm -rf ../www/dist",
     "build": "npm run clean && npm run ver && webpack -p && sw-precache --config=sw-precache.config.js",
     "watch": "webpack -w --progress",
     "ver": "sh ./scripts.sh",

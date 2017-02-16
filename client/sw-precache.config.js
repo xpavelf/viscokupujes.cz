@@ -1,5 +1,5 @@
 module.exports = {
-  root: "../public",
+  root: "../www",
   verbose: true,
   runtimeCaching: [
     {
