@@ -16,10 +16,10 @@
   },
   "homepage": "https://github.com/xpavelf/zdravamnamka.cz#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.16.1",
     "compression": "^1.6.2",
     "diacritics": "^1.2.3",
-    "express": "^4.14.0",
-    "winston": "^2.3.0"
+    "express": "^4.14.1",
+    "winston": "^2.3.1"
   }
 }
