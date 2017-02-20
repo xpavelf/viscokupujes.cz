@@ -4,18 +4,18 @@ import "./EckoList.css"
 
 export default class EckoList extends React.Component {
 
-  state = { showBackdrop: false }
+  state = { showModal: false }
 
   onClick = (ecko) => {
     this.setState({
-      showBackdrop: true,
+      showModal: true,
       selected: ecko
     })
   }
 
   hide = () => {
     this.setState({
-      showBackdrop: false,
+      showModal: false,
       selected: null
     })
   }
@@ -23,19 +23,21 @@ export default class EckoList extends React.Component {
   getModal(e) {
     let desc = e.desc || (e.rating === 0 && "Není škodlivé pro lidský organismus.")
     return (
-      <div className="Ecko-modal">
-        <div className="Ecko-modal__title">
-          <div className={"Ecko Ecko--" + e.rating}>{e.id}</div>
-          <div className="Ecko-modal__name">{e.names[0]}</div>
-          { e.names.length > 1
-            ? <div className="Ecko-modal__aliases">
-                Další názvy:<br />{ e.names.slice(1).join(", ") }
-              </div>
-            : null
-          }
-          <button onClick={this.hide} className="Ecko-modal__btnClose">✕</button>
+      <div className="Ecko-modal-wrapper" onClick={this.hide}>
+        <div className="Ecko-modal">
+          <div className="Ecko-modal__title">
+            <div className={"Ecko Ecko--" + e.rating}>{e.id}</div>
+            <div className="Ecko-modal__name">{e.names[0]}</div>
+            { e.names.length > 1
+              ? <div className="Ecko-modal__aliases">
+                  Další názvy:<br />{ e.names.slice(1).join(", ") }
+                </div>
+              : null
+            }
+            <button onClick={this.hide} className="Ecko-modal__btnClose">✕</button>
+          </div>
+          {desc ? <div className="Ecko-modal__content">{desc}</div> : null }
         </div>
-        {desc ? <div className="Ecko-modal__content">{desc}</div> : null }
       </div>
     )
   }
@@ -61,8 +63,7 @@ export default class EckoList extends React.Component {
             <button onClick={() => this.onClick(ecko)} className={"Ecko Ecko--" + ecko.rating}  key={ecko.id}>{ecko.id}</button>
           ))
         }
-        { this.state.showBackdrop ? <div className="Ecko-backdrop" onClick={this.hide} /> : null }
-        { this.state.showBackdrop ? this.getModal(this.state.selected) : null }
+        { this.state.showModal ? this.getModal(this.state.selected) : null }
       </div>
     )
   }
