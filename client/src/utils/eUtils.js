@@ -3,7 +3,16 @@ const eNum = (str) => {
   return Number.isNaN(val) ? 0 : val
 }
 
+const eNumSub = (a, b) => eNum(a) - eNum(b)
+
 export const eComparator = (a, b) => {
   let res = b.rating - a.rating
-  return res === 0 ? eNum(a.id) - eNum(b.id) : res
+
+  if (Number.isNaN(res)) {
+    return a.rating === undefined
+      ? (b.rating === undefined ? eNumSub(a.id, b.id) : 1)
+      : -1
+  }
+
+  return res === 0 ? eNumSub(a.id, b.id) : res
 }
