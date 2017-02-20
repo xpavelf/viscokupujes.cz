@@ -47,7 +47,15 @@ const arr_filter_with_map = (arr, cb, limit) => {
 }
 
 const _map_e = (product) => {
-  let arr_e = product.e.map(e => Object.assign({ id: e }, ecka[e]))
+  let arr_e = product.e.map(e => {
+    let info = ecka[e]
+    if (!info) {
+      let eParent = e.replace(/(?!e\d+)i+/g, "")
+      return Object.assign({ id: eParent }, ecka[eParent])
+    }
+
+    return Object.assign({ id: e }, ecka[e])
+  })
   return Object.assign({}, product, { e: arr_e})
 }
 
