@@ -17,7 +17,7 @@ export default class Home extends React.Component {
         <p>Najdi si éčka v potravinách a nekupuj zbytečnou chemii. Stačí si vyhledat výrobek. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu. Éčka jsou rozdělena do tří kategorií podle škodlivosti, červená jsou nejškodlivější, oranžová s otazníkem a zelená jsou ok. Databáze zatím obsahuje asi 12 000 výrobků.</p>
 
         <div style={{ textAlign: "center" }}>
-          <img style={{width: "100%", maxWidth: "450px"}} src={imgLogo} alt="Logo - viscokupujes.cz" />
+          <img className="Home__logo" src={imgLogo} alt="Logo - viscokupujes.cz" />
         </div>
 
         <p>

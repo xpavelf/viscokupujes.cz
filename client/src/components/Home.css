@@ -11,6 +11,18 @@ body[data-page="/"] { background-color: #3cb73c;}
   text-align: justify;
 }
 
+@keyframes scale_in_anim {
+  0% { transform: scale(.5) }
+  80% { transform: scale(1.1) }
+  100% { transform: scale(1) }
+}
+
+.Home__logo {
+  width: 100%;
+  max-width: 450px;
+  animation: 450ms cubic-bezier(0,0,.21,1) scale_in_anim;
+}
+
 .Home__ecka {
   text-align: center;
   padding: 15px 0px;
