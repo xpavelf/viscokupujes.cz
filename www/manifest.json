@@ -4,8 +4,14 @@
   "theme_color": "#3cb73c",
   "background_color": "#3cb73c",
   "display": "standalone",
+  "orientation": "any",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "index.html",
+  "xwalk_app_version": "0.2",
+  "xwalk_package_id": "cz.viscokupujes.mnamka",
+  "xwalk_target_platforms": ["android"],
+  "xwalk_hosts": ["https://viscokupujes.cz/"],
+  "xwalk_android_permissions": ["INTERNET"],
   "icons": [
     {
       "src": "icon-cart-64.png",

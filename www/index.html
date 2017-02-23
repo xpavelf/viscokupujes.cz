@@ -21,7 +21,16 @@
   <link rel="shortcut icon" href="/favicon.png">
   <meta name="theme-color" content="#3cb73c">
   <link rel="manifest" href="/manifest.json">
-  <script>/* service-worker-registration.js */"use strict";"serviceWorker"in navigator&&navigator.serviceWorker.register("service-worker.js").then(function(a){a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case"installed":navigator.serviceWorker.controller?console.log("New or updated content is available."):console.log("Content is now available offline!");break;case"redundant":console.error("The installing service worker became redundant.")}}}}).catch(function(a){console.error("Error during service worker registration:",a)});</script>
+  <script>
+  /* setDataPage */
+  function setDataPage(page) {
+    var pathname = window.location.pathname
+    pathname = (pathname === "/index.html") ? "/" : pathname
+    document.body.setAttribute("data-page", pathname)
+  }
+  /* service-worker-registration.js */
+  "serviceWorker"in navigator&&navigator.serviceWorker.register("service-worker.js").then(function(a){a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case"installed":navigator.serviceWorker.controller?console.log("New or updated content is available."):console.log("Content is now available offline!");break;case"redundant":console.error("The installing service worker became redundant.")}}}}).catch(function(a){console.error("Error during service worker registration:",a)});
+  </script>
   <style>
     /* reset.css */
     a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}*{box-sizing:border-box}
@@ -55,6 +64,6 @@
   <script async src="/dist/app.js"></script>
   <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58834dc518f9fe86"></script>
 
-  <script>document.body.setAttribute("data-page", window.location.pathname)</script>
+  <script>setDataPage(window.location.pathname)</script>
 </body>
 </html>
