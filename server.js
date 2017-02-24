@@ -74,7 +74,17 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
   winston.info("product get by id %d", id)
 
   const product = products.find(product => product.id === id)
-  res.json(_map_e(product))
+
+  let retVal = _map_e(product)
+
+  if (product) {
+    let promProducts = products
+        .filter(pr => pr.prom === true && pr.category === product.category && pr.id !== product.id)
+        .map(_map_e)
+    retVal.promProducts = promProducts
+  }
+
+  res.json(retVal)
 })
 
 

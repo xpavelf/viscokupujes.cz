@@ -4,7 +4,7 @@ export const SEARCH_PRODUCT_RESET = `${SEARCH_PRODUCT}_RESET`
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID"
 export const GET_PRODUCT_BY_ID_RESET = `${GET_PRODUCT_BY_ID}_RESET`
 
-const rootUrl = "https://viscokupujes.cz"
+const rootUrl = ""
 
 export function searchProduct(term) {
   return ({

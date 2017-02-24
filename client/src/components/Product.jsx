@@ -2,6 +2,7 @@ import React from "react"
 import EckoList from "./EckoList"
 import { connect } from "react-redux"
 import { getProductById } from "../actions/Product"
+import PromProduct from "./PromProduct"
 import "./Product.css"
 
 @connect((store) => ({ activeProduct: store.activeProduct }))
@@ -20,6 +21,7 @@ export default class Product extends React.Component {
   }
 
   render() {
+    window.scrollTo(0, 0)
     let prod = this.props.activeProduct.product
     return prod ? (
       <div className="Product">
@@ -36,6 +38,10 @@ export default class Product extends React.Component {
           : null
         }
         {prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null}
+        <div className="ProdProducts">
+          <div className="ProdProducts__title">Podobné produkty bez škodlivých éček</div>
+          { prod.promProducts.map(pr => <PromProduct product={pr} key={pr.id} />)}
+        </div>
       </div>
     ) : null
   }
