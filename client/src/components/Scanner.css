@@ -1,0 +1,43 @@
+.Scanner {
+  font-family: "Roboto", sans-serif;
+}
+
+.Scanner__modal {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.Scanner__modal-notFound {
+  font-weight: bold;
+  color: #b56a00;
+}
+
+.Scanner__modal-extraInfo {
+  padding: 20px 0px;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.Scanner__modal button {
+  background-color: #beddb0;
+  border: 1px solid #95c48a;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  display: inline-block;
+}
+
+.Scanner__infoBox {
+  padding: 10px;
+  margin: 0px 0px 5px 0px;
+  background-color: #ffb852;
+}
+
+.Scanner__videoContainer {
+  position: relative;
+}
+
+.Scanner__videoContainer video {
+  width: 100%;
+  max-width: 100%;
+}

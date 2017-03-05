@@ -1,4 +1,5 @@
 const http = require("http")
+// const fs = require("fs")
 const express = require("express")
 const compression = require("compression")
 const app = express()
@@ -59,14 +60,29 @@ const _map_e = (product) => {
   return Object.assign({}, product, { e: arr_e})
 }
 
+const isBcEqual = (bc0, bc1) => parseInt(bc0) === parseInt(bc1)
+const searchByBc = (bc) => products.find(pr => isBcEqual(pr.bc, bc))
+const searchByName = (name) => {
+  winston.info("product search '%s'", name)
+  const limit = 35
+  return name ? arr_filter_with_map(products, predicateWithHits(name), limit) : products.slice(0, limit)
+}
 
 app.get("/api/product", (req, res) => {
-  let q = req.query.q
-  winston.info("product search '%s'", q)
-  const limit = 35
-  const filtered = q ? arr_filter_with_map(products, predicateWithHits(q), limit) : products.slice(0, limit)
-
-  res.json(filtered.map(_map_e))
+  let name = req.query.q || req.query.name
+  let bc = req.query.bc
+  let retVal
+  if (bc) {
+    retVal = searchByBc(bc)
+    if (retVal) {
+      res.json(_map_e(retVal))
+    } else {
+      res.status(404).json(null)
+    }
+  } else if (name) {
+    retVal = searchByName(name)
+    res.json(retVal.map(_map_e))
+  }
 })
 
 app.get("/api/product/:id(\\d+)", (req, res) => {
@@ -87,11 +103,18 @@ app.get("/api/product/:id(\\d+)", (req, res) => {
   res.json(retVal)
 })
 
-
+// FIXME
+app.get("/scanner", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+
+// var options = {
+//    key  : fs.readFileSync('../cert/localhost.key'),
+//    cert : fs.readFileSync('../cert/localhost.cert')
+// }
+// const server = http.createServer(options, app)
 
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {

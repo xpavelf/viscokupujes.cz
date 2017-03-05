@@ -22,6 +22,7 @@
     "css-loader": "^0.26.1",
     "file-loader": "^0.10.0",
     "lodash": "^4.17.4",
+    "quagga": "^1.0.0-beta.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.2",
