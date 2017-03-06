@@ -1,5 +1,4 @@
 const http = require("http")
-// const fs = require("fs")
 const express = require("express")
 const compression = require("compression")
 const app = express()
@@ -110,6 +109,7 @@ app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.ht
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
+// const fs = require("fs")
 // var options = {
 //    key  : fs.readFileSync('../cert/localhost.key'),
 //    cert : fs.readFileSync('../cert/localhost.cert')

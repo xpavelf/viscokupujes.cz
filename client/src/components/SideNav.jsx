@@ -8,7 +8,7 @@ var TOUCH_SLOP = 8 * window.devicePixelRatio * 4
 @withRouter
 export default class SideNav extends React.PureComponent {
   hide = () => {
-    this.props.replace({ state: { sideNav: false} })
+    this.props.history.replace({ state: { sideNav: false} })
   }
 
   resetTouchInfo() {

@@ -15,32 +15,54 @@ export default class Scanner extends React.Component {
 
   constructor(props) {
     super(props)
-    this.scannerP = navigator.mediaDevices.enumerateDevices()
-      .then(devices => {
-        let d = devices.filter(d => d.kind === "videoinput" && d.label.match("back"))
-        return (d.length > 0) ? d[0].deviceId : 0
-      })
-      .then(deviceId => {
-        let config = {
-          frequency: 10,
-          locate: true,
-          inputStream: {
-              name: "Live",
-              type: "LiveStream",
-              constraints: { width: 1280, height: 720, deviceId: deviceId, facingMode: "environment", aspectRatio: 4/3 },
-              area: { top: "0%", right: "0%", left: "0%", bottom: "0%" },
-              target: ".Scanner__videoContainer"
-          },
-          decoder: { readers: [ "ean_reader", "ean_8_reader" ] },
-          locator: { halfSample: true, patchSize: "medium" }
-        }
+    this.scannerP = this.getCamera()
+  }
 
-        return Quagga.fromConfig(config)
+  getCamera() {
+    return navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+      // throw away first stream, just needed to prompt grant access dialog for the camera
+      // so the label from enumerateDevices gets filled
+      stream.getVideoTracks()[0].stop()
+
+      return navigator.mediaDevices.enumerateDevices()
+        .then(devices => {
+          // we need to use enumerateDevices to find deviceId because the facingMode environment itself
+          // it's not working corectly and returns front camera at the moment
+          let d = devices.filter(d => d.kind === "videoinput" && d.label.match("back"))
+          return (d.length > 0) ? d[0].deviceId : 0
+        })
+        .then(deviceId => {
+          let config = {
+            frequency: 10,
+            locate: true,
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                constraints: { width: 1280, height: 720, deviceId: deviceId, facingMode: "environment", aspectRatio: 16/9 },
+                area: { top: "0%", right: "0%", left: "0%", bottom: "0%" },
+                target: ".Scanner__videoContainer"
+            },
+            decoder: { readers: [ "ean_reader", "ean_8_reader" ] },
+            locator: { halfSample: true, patchSize: "medium" }
+          }
+
+          return Quagga.fromConfig(config)
+        })
       })
   }
 
+  initScanner() {
+    this.scannerP.then(scanner => {
+      this.scanner = scanner
+      this.scanUntilResult = this.scanner.toPromise()
+      this.scanUntilResult.promise.then(this.onDetected)
+    })
+  }
+
   reset = (e) => {
-    window.location.reload()
+    this.setState({ scanned: null, notFound: false })
+    this.scannerP = this.getCamera()
+    this.initScanner()
   }
 
   onDetected = (result) => {
@@ -49,17 +71,17 @@ export default class Scanner extends React.Component {
   }
 
   componentWillMount() {
-    this.scannerP.then(scanner => {
-      this.scanner = scanner
-      this.scanUntilResult = this.scanner.toPromise()
-      this.scanUntilResult.promise.then(this.onDetected)
-    })
+    this.initScanner()
+  }
+
+  componentWillUnmount() {
+    this.scanner.stop()
   }
 
   componentWillReceiveProps(nextProps) {
     let pr = nextProps.scannedProduct.product
     if (pr) {
-      this.props.push("/product/" + pr.id)
+      this.props.history.push("/product/" + pr.id)
     } else {
       this.setState({ notFound: true })
     }
