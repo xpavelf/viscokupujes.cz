@@ -5,7 +5,7 @@ module.exports = {
     app: "./src/app.jsx"
   },
   output: {
-    path: "../www/dist",
+    path: __dirname + "/../www/dist",
     filename: "[name].js"
   },
   resolve: {
