@@ -84,9 +84,9 @@ app.get("/api/product", (req, res) => {
   }
 })
 
-app.get("/api/product/:id(\\d+)", (req, res) => {
-  let id = parseInt(req.params.id)
-  winston.info("product get by id %d", id)
+app.get("/api/product/:id", (req, res) => {
+  let id = req.params.id
+  winston.info("product get by id %s", id)
 
   const product = products.find(product => product.id === id)
 
