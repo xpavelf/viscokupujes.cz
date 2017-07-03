@@ -7,7 +7,6 @@ import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
 import Home from "./Home"
 import SearchHistory from "./SearchHistory"
-import Scanner from "./Scanner"
 import "./App.css"
 
 @withRouter
@@ -35,7 +34,6 @@ export default class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/index.html" component={Home} />
           <Route path="/product/:id" component={Product} />
-          <Route path="/scanner" component={Scanner} />
           <Route path="/ecka" component={EckoOverview} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/search-history" component={SearchHistory} />
