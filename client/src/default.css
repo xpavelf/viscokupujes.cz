@@ -1,5 +1,19 @@
 @import "~react-searchbox/dist/react-searchbox.css";
 
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Patrick Hand'), local('PatrickHand-Regular'), url("./fonts/PatrickHand-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url("./fonts/Roboto-Regular.ttf");
+}
+
 @media only screen and (min-width: 800px) {
   .mobile-only { display: none; }
 }

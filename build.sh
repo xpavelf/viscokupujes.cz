@@ -1,7 +1,7 @@
 #!/bin/bash
 
-function _getXWalkVersion {
-  grep -Po '(?<="xwalk_app_version": ")[^"]*' $1
+function _getApkVersion {
+  grep -Po '(?<=android-versionCode=")[^"]*' $1
 }
 
 function frontend {
@@ -11,23 +11,21 @@ function frontend {
   popd
 }
 
-function apk {
-  mkdir apk
-  local version=$(_getXWalkVersion ./www/manifest.json)
-  pushd apk
-  crosswalk-pkg --release --targets="armeabi-v7a" ../www
-  zipalign -f 4 cz.viscokupujes.mnamka-${version}-release-unsigned.armeabi-v7a.apk cz.viscokupujes.mnamka-${version}-release-unsigned.aligned.armeabi-v7a.apk
-  apksigner.bat sign --ks ../../keys/my-release-key.jks --out cz.viscokupujes.mnamka-${version}.armeabi-v7a.apk cz.viscokupujes.mnamka-${version}-release-unsigned.aligned.armeabi-v7a.apk
+function release {
+  local version=$(_getApkVersion ./config.xml)
+  rm -rf platforms/android/build/outputs/apk/*
+  cordova build android --release
+  pushd platforms/android/build/outputs/apk
+  zipalign -f 4 android-armv7-release-unsigned.apk cz.viscokupujes.mnamka-${version}-unsigned.aligned-armv7.apk
+  apksigner.bat sign --ks /d/dev/keys/my-release-key.jks --out cz.viscokupujes.mnamka-${version}-arm7.apk cz.viscokupujes.mnamka-${version}-unsigned.aligned-armv7.apk
   popd
 }
 
-function phone {
-  local version=$(_getXWalkVersion ./www/manifest.json)
-  pushd apk
-  adb uninstall cz.viscokupujes.mnamka
-  adb install -r cz.viscokupujes.mnamka-${version}.armeabi-v7a.apk
+function test {
+  cordova build android
+  adb install -r platforms/android/build/outputs/apk/android-armv7-debug.apk
   adb shell monkey -p cz.viscokupujes.mnamka -c android.intent.category.LAUNCHER 1
-  popd
 }
 
+set -e
 eval "$@"

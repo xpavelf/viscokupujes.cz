@@ -1,4 +1,7 @@
-node_modules/
-apk/
-log/run*
+/node_modules/
+/client/node_modules/
+/platforms/
+/plugins/
+/apk/
+/log/run*
 npm-debug.log

@@ -32,7 +32,7 @@ export default class App extends React.Component {
         <Toolbar />
         <div className="App__content">
           <Route exact path="/" component={Home} />
-          <Route exact path="/index.html" component={Home} />
+          <Route exact path="/android_asset/www/index.html" component={Home} />
           <Route path="/product/:id" component={Product} />
           <Route path="/ecka" component={EckoOverview} />
           <Route path="/about-us" component={AboutUs} />

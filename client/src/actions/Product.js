@@ -5,13 +5,7 @@ export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID"
 export const GET_PRODUCT_BY_ID_RESET = `${GET_PRODUCT_BY_ID}_RESET`
 export const GET_PRODUCT_BY_BC = "GET_PRODUCT_BY_BC"
 
-const rootUrl = ""
-
-// const enhancePayload = (resp) => new Promise((resolve, reject) => {
-//   resp.json()
-//     .then(data => resolve({ data: data, status: resp.status }))
-//     .catch(err => reject({ data: err, status: resp.status }))
-// })
+const rootUrl = "https://viscokupujes.cz"
 
 export function searchProduct(term) {
   return ({
