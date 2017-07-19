@@ -7,11 +7,12 @@ import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
 import Home from "./Home"
 import SearchHistory from "./SearchHistory"
+import Scanner from "./Scanner"
+import MessageBus from "./MessageBus"
 import "./App.css"
 
 @withRouter
 export default class App extends React.Component {
-
 
   componentWillReceiveProps(nextProps) {
     let page = nextProps.location.pathname
@@ -28,8 +29,10 @@ export default class App extends React.Component {
     let show = this.props.location.state && this.props.location.state.sideNav
     return (
       <main className="App">
-        <SideNav show={show} />
-        <Toolbar />
+        <Scanner>
+          <SideNav show={show} />
+          <Toolbar />
+        </Scanner>
         <div className="App__content">
           <Route exact path="/" component={Home} />
           <Route exact path="/android_asset/www/index.html" component={Home} />
@@ -38,6 +41,7 @@ export default class App extends React.Component {
           <Route path="/about-us" component={AboutUs} />
           <Route path="/search-history" component={SearchHistory} />
         </div>
+        <MessageBus />
       </main>
     )
   }

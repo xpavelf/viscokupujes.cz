@@ -5,8 +5,11 @@ import "./SideNav.css"
 
 var TOUCH_SLOP = 8 * window.devicePixelRatio * 4
 
-@withRouter
-export default class SideNav extends React.PureComponent {
+class SideNav extends React.PureComponent {
+  static contextTypes = {
+    scan: React.PropTypes.func
+  }
+
   hide = () => {
     this.props.history.replace({ state: { sideNav: false} })
   }
@@ -57,7 +60,14 @@ export default class SideNav extends React.PureComponent {
               </svg>
               Domů
             </Link>
-
+            <Link to={{ state: { sideNav: false} }} onClick={this.context.scan} className="SideNav__link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M14.661 2.968H12.2a.95.95 0 0 0-.947-.947h-6.5a.95.95 0 0 0-.947.947H1.333A1.337 1.337 0 0 0 0 4.3v8.1a1.337 1.337 0 0 0 1.333 1.333h13.328a1.337 1.337 0 0 0 1.333-1.333V4.3a1.337 1.337 0 0 0-1.333-1.332zM7.994 12.2a4.2 4.2 0 1 1 4.2-4.2 4.2 4.2 0 0 1-4.2 4.2z"/>
+                <path d="M7.994 4.3a3.7 3.7 0 1 0 3.7 3.7 3.7 3.7 0 0 0-3.7-3.7zm0 6.9a3.2 3.2 0 1 1 3.2-3.2 3.2 3.2 0 0 1-3.2 3.2z"/>
+                <path d="M5.735 6.258h.651v3.484h-.651zm.971 0h.326v3.484h-.326zm.645 0h.651v3.484h-.651zm2.263 0h.651v3.484h-.651zm-1.291 0h.326v3.484h-.326zm.645 0h.326v3.484h-.326z"/>
+              </svg>
+              Naskenuj čárový kód
+            </Link>
             <Link replace to="/ecka" className="SideNav__link">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1000 1000">
                 <path fill="currentColor" d="M783.8,990H216.2c-34.8,0-63.1-28.2-63.1-62.9V167.3c0-34.7,28.2-62.9,63.1-62.9h157.6V170H247.8c-17.4,0-31.5,14.1-31.5,31.5v694.2c0,17.4,14.1,31.5,31.5,31.5h504.5c17.4,0,31.5-14,31.5-31.5V201.4c0-17.4-14.1-31.5-31.5-31.5H626.1v-65.5h157.6c34.8,0,63.1,28.2,63.1,62.9v759.7C846.8,961.8,818.6,990,783.8,990z M373.9,358.7h346.8v31.5H373.9V358.7z M373.9,453.1h346.8v31.5H373.9V453.1z M373.9,547.6h346.8V579H373.9V547.6z M373.9,642h346.8v31.5H373.9V642z M720.7,862.2H373.9v-31.4h346.8V862.2z M373.9,736.4h346.8v31.5H373.9V736.4z M279.3,358.1h31.5v31.5h-31.5V358.1z M279.3,452.5h31.5V484h-31.5V452.5z M279.3,546.9h31.5v31.5h-31.5V546.9z M279.3,641.3h31.5v31.5h-31.5V641.3z M310.8,861.6h-31.5v-31.5h31.5V861.6z M279.3,735.7h31.5v31.5h-31.5V735.7z M689.2,203.4c17.4,0,31.5,14.1,31.5,31.5c0,17.4,0,60.9,0,60.9H279.3c0,0,0-43.6,0-60.9c0-17.4,14.1-31.5,31.5-31.5h94.6c0,0,0.4-44.7,0.4-95.9c0-53.1,41-97.5,94.2-97.5c53.2,0,95.6,46.7,95.6,97.8c0,55.1-1,95.6-1,95.6H689.2z M500,104.4c-17.4,0-31.5,14.1-31.5,31.4c0,17.4,14.1,31.5,31.5,31.5s31.5-14.1,31.5-31.5C531.5,118.5,517.4,104.4,500,104.4z"/>
@@ -86,6 +96,9 @@ export default class SideNav extends React.PureComponent {
     )
   }
 }
+
+export default withRouter(SideNav)
+
 // <Link replace to="/scanner" className="SideNav__link">
 //   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 480 480" fill="currentColor">
 //     <path d="M0,450.818h52.032V61.182H0V450.818z M145.112,450.818h50.092V61.182h-50.092V450.818z M211.182,450.818h59.215V61.182  h-59.215V450.818L211.182,450.818z M362.101,450.818h44.288V61.182h-44.288V450.818z M316.636,450.818h18.897V61.182h-18.897  V450.818z M102.996,450.818h18.916V61.182h-18.916V450.818z M433.672,450.818H512V61.182h-78.328V450.818z"/>
