@@ -98,10 +98,3 @@ class SideNav extends React.PureComponent {
 }
 
 export default withRouter(SideNav)
-
-// <Link replace to="/scanner" className="SideNav__link">
-//   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 480 480" fill="currentColor">
-//     <path d="M0,450.818h52.032V61.182H0V450.818z M145.112,450.818h50.092V61.182h-50.092V450.818z M211.182,450.818h59.215V61.182  h-59.215V450.818L211.182,450.818z M362.101,450.818h44.288V61.182h-44.288V450.818z M316.636,450.818h18.897V61.182h-18.897  V450.818z M102.996,450.818h18.916V61.182h-18.916V450.818z M433.672,450.818H512V61.182h-78.328V450.818z"/>
-//   </svg>
-//   Naskenuj čárový kód
-// </Link>
