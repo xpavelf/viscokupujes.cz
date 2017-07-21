@@ -14,8 +14,7 @@ function frontend {
 function release {
   local version=$(_getApkVersion ./config.xml)
   rm -rf platforms/android/build/outputs/apk/*
-  cordova build --release -- --minSdkVersion=21
-  #cordova build android --release
+  cordova build android --release
   pushd platforms/android/build/outputs/apk
   zipalign -f 4 android-armv7-release-unsigned.apk cz.viscokupujes.mnamka-${version}-unsigned.aligned-armv7.apk
   apksigner.bat sign --ks /d/dev/keys/my-release-key.jks --out cz.viscokupujes.mnamka-${version}-arm7.apk cz.viscokupujes.mnamka-${version}-unsigned.aligned-armv7.apk

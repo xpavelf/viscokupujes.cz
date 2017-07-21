@@ -4,8 +4,12 @@ import { connect } from "react-redux"
 import { getProductById } from "../actions/Product"
 import PromProduct from "./PromProduct"
 import "./Product.css"
+import productSpinner from '../icons/icon-cart-64.png'
 
-@connect((store) => ({ activeProduct: store.activeProduct }))
+@connect((store) => ({
+  activeProduct: store.activeProduct,
+  scannedProduct: store.scannedProduct
+}))
 export default class Product extends React.Component {
 
   componentWillReceiveProps(nextProps) {
@@ -23,6 +27,15 @@ export default class Product extends React.Component {
   render() {
     window.scrollTo(0, 0)
     let prod = this.props.activeProduct.product
+
+    if (this.props.activeProduct.pending || this.props.scannedProduct.pending) {
+      return (
+        <div className="Product">
+          <img className="Product__spinner" src={productSpinner} />
+        </div>
+      )
+    }
+
     return prod ? (
       <div className="Product">
         <h2 className="Product__name">{prod.name}</h2>

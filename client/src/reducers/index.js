@@ -27,6 +27,8 @@ export default function(state=INITIAL_STATE, action) {
 
     case GET_PRODUCT_BY_ID_RESET:
       return { ...state, activeProduct: INITIAL_STATE.activeProduct }
+    case `${GET_PRODUCT_BY_ID}_PENDING`:
+      return { ...state, activeProduct: { product: null, err: null, pending: true } }
     case `${GET_PRODUCT_BY_ID}_FULFILLED`:
       return {
         ...state,
@@ -36,6 +38,8 @@ export default function(state=INITIAL_STATE, action) {
 
     case GET_PRODUCT_BY_BC_RESET:
       return { ...state, scannedProduct: INITIAL_STATE.scannedProduct }
+    case `${GET_PRODUCT_BY_BC}_PENDING`:
+      return { ...state, scannedProduct: { product: null, err: null, pending: true } }
     case `${GET_PRODUCT_BY_BC}_FULFILLED`:
       return { ...state, scannedProduct: { product: action.payload, err: null, pending: false } }
 
