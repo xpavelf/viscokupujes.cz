@@ -18,6 +18,44 @@
   font-weight: bold;
 }
 
+.Product__pricelist {
+  margin-top: 20px;
+  background: #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.Product__pricelist-title {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.Product__price {
+  display: inline-block;
+  margin-right: 2px;
+  padding: 5px;
+  background-color: #777;
+  border-radius: 3px;
+}
+
+.Product__price > * {
+  text-align: center;
+  display: block;
+}
+
+.Product__price-amount {
+  background-color: white;
+  padding: 8px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.Product__price-shop {
+  margin-top: 3px;
+  color: white;
+  font-size: 12px;
+}
+
 .Product__producer {
   font-size: 15px;
   color: #bbb;

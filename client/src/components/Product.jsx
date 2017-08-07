@@ -41,20 +41,37 @@ export default class Product extends React.Component {
         <h2 className="Product__name">{prod.name}</h2>
         <small className="Product__producer">{prod.producer}</small>
         <EckoList list={prod.e} />
-        { prod.nutr ?
-          <table className="Product__nutrition-facts">
-            <caption>Nutriční hodnoty{prod.nutr[0] ? <div>{prod.nutr[0]}</div> : ""}</caption>
-            <tbody>
-              {prod.nutr.slice(1).map(line => <tr>{line.map(t => <td>{t}</td>)}</tr>)}
-            </tbody>
-          </table>
+          { prod.price.length
+              ? <div className="Product__pricelist">
+                  <div className="Product__pricelist-title">Přibližná cena</div>
+                  { prod.price.map(p =>
+                    <div className="Product__price" key={p[0]}>
+                      <span className="Product__price-amount">{p[1]} Kč</span>
+                      <span className="Product__price-shop">{p[0]}</span>
+                    </div>
+                  )}
+                </div>
+              : null
+          }
+        { prod.nutr
+          ?
+            <table className="Product__nutrition-facts">
+              <caption>Nutriční hodnoty{prod.nutr[0] ? <div>{prod.nutr[0]}</div> : ""}</caption>
+              <tbody>
+                {prod.nutr.slice(1).map(line => <tr>{line.map(t => <td>{t}</td>)}</tr>)}
+              </tbody>
+            </table>
           : null
         }
-        {prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null}
-        <div className="ProdProducts">
-          <div className="ProdProducts__title">Podobné produkty bez škodlivých éček</div>
-          { prod.promProducts.map(pr => <PromProduct product={pr} key={pr.id} />)}
-        </div>
+        { prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null }
+        { prod.promProducts.length
+            ?
+              <div className="ProdProducts">
+                <div className="ProdProducts__title">Podobné produkty bez škodlivých éček</div>
+                { prod.promProducts.map(pr => <PromProduct product={pr} key={pr.id} />)}
+              </div>
+            : null
+        }
       </div>
     ) : null
   }
