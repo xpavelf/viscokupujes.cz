@@ -5,6 +5,7 @@ import { getProductById } from "../actions/Product"
 import PromProduct from "./PromProduct"
 import "./Product.css"
 import productSpinner from '../icons/icon-cart-64.png'
+import FbShare from "./FbShare"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -41,7 +42,7 @@ export default class Product extends React.Component {
         <h2 className="Product__name">{prod.name}</h2>
         <small className="Product__producer">{prod.producer}</small>
         <EckoList list={prod.e} />
-          { prod.price.length
+          { prod.price && prod.price.length
               ? <div className="Product__pricelist">
                   <div className="Product__pricelist-title">Přibližná cena</div>
                   { prod.price.map(p =>
@@ -72,6 +73,7 @@ export default class Product extends React.Component {
               </div>
             : null
         }
+        <FbShare />
       </div>
     ) : null
   }
