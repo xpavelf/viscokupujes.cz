@@ -29,6 +29,8 @@
   color: white;
   vertical-align: middle;
   font-size: 30px;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .FbShare__btn:hover {

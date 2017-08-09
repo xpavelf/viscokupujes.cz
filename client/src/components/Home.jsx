@@ -42,11 +42,14 @@ export default class Home extends React.Component {
             </svg>
           </a>
         </p>
-        <div className="Home__gplay">
-          <a href="https://play.google.com/store/apps/details?id=cz.viscokupujes.mnamka&utm_source=web&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-            <img alt="Nyní na Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/cs_badge_web_generic.png" />
-          </a>
-        </div>
+        { __APP_MODE__ !== "mob"
+          ? <div className="Home__gplay">
+              <a href="https://play.google.com/store/apps/details?id=cz.viscokupujes.mnamka&utm_source=web&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+                <img alt="Nyní na Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/cs_badge_web_generic.png" />
+              </a>
+            </div>
+          : null
+        }
       </div>
     )
   }

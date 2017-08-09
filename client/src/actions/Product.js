@@ -6,7 +6,7 @@ export const GET_PRODUCT_BY_ID_RESET = `${GET_PRODUCT_BY_ID}_RESET`
 export const GET_PRODUCT_BY_BC = "GET_PRODUCT_BY_BC"
 export const GET_PRODUCT_BY_BC_RESET = `${GET_PRODUCT_BY_BC}_RESET`
 
-const rootUrl = "https://viscokupujes.cz"
+const rootUrl = (__APP_MODE__ === "mob" ? 'https://viscokupujes.cz' : '')
 
 export function searchProduct(term) {
   return ({

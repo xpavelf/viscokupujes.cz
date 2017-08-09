@@ -42,7 +42,7 @@ class Scanner extends React.Component {
 
   scan = () => {
     if (cordova && cordova.plugins && cordova.plugins.barcodeScanner) {
-      cordova.plugins.barcodeScanner.scan(
+      window.cordova.plugins.barcodeScanner.scan(
         result => this.props.dispatch(getProductByBc(result.text)),
         err => alert("Skenování selhalo."),
         SCANNER_CONFIG

@@ -1,4 +1,5 @@
-var webpack = require("webpack");
+var webpack = require("webpack")
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -8,6 +9,17 @@ module.exports = {
     path: __dirname + "/../www/dist",
     filename: "[name].js"
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      __APP_MODE__: JSON.stringify(process.env.ENV_APP_MODE || 'web')
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.ejs',
+      filename: '../index.html',
+      __APP_MODE__: process.env.ENV_APP_MODE || 'web',
+      inject: false
+    })
+  ],
   resolve: {
     extensions: [".js", ".jsx"]
   },
@@ -18,4 +30,4 @@ module.exports = {
       { test: /\.(gif|png|woff|woff2|eot|ttf|svg|jpg)$/, loader: "file-loader?name=assets/[name]-[hash:6].[ext]&publicPath=dist/" }
     ]
   }
-};
+}
