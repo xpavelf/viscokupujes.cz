@@ -22,7 +22,8 @@
   }
 
   [data-page="/"] .App,
-  [data-page="/about-us"] .App {
+  [data-page="/about-us"] .App,
+  [data-page="/cooperation"] .App {
     background-color: #3cb73c;
   }
 }

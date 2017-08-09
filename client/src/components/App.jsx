@@ -8,6 +8,7 @@ import AboutUs from "./AboutUs"
 import Home from "./Home"
 import SearchHistory from "./SearchHistory"
 import Scanner from "./Scanner"
+import Cooperation from "./Cooperation"
 import MessageBus from "./MessageBus"
 import "./App.css"
 
@@ -40,6 +41,7 @@ export default class App extends React.Component {
           <Route path="/ecka" component={EckoOverview} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/search-history" component={SearchHistory} />
+          <Route path="/cooperation" component={Cooperation} />
         </div>
         <MessageBus />
       </main>

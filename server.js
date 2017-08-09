@@ -103,7 +103,7 @@ app.get("/api/product/:id", (req, res) => {
 })
 
 // FIXME
-app.get("/scanner", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/cooperation", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))

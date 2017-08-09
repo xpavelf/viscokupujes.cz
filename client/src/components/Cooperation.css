@@ -1,0 +1,22 @@
+body[data-page="/cooperation"] { background-color: #3cb73c;}
+
+.Cooperation {
+  font-family: 'Roboto', sans-serif;
+  margin: 10px;
+  color: white;
+}
+
+.Cooperation h2 {
+  padding: 20px 0px 5px 0px;
+  font-size: 20px;
+}
+
+.Cooperation p {
+  text-align: justify;
+  padding: 10px;
+}
+
+.Cooperation a {
+  color: white;
+  text-decoration: none;
+}
