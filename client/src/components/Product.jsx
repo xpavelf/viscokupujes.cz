@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { getProductById } from "../actions/Product"
 import PromProduct from "./PromProduct"
 import "./Product.css"
+import Allergen from "./Allergen"
 import productSpinner from '../icons/icon-cart-64.png'
 import FbShare from "./FbShare"
 
@@ -42,18 +43,28 @@ export default class Product extends React.Component {
         <h2 className="Product__name">{prod.name}</h2>
         <small className="Product__producer">{prod.producer}</small>
         <EckoList list={prod.e} />
-          { prod.price && prod.price.length
-              ? <div className="Product__pricelist">
-                  <div className="Product__pricelist-title">Přibližná cena</div>
-                  { prod.price.map(p =>
-                    <div className="Product__price" key={p[0]}>
-                      <span className="Product__price-amount">{p[1]} Kč</span>
-                      <span className="Product__price-shop">{p[0]}</span>
-                    </div>
-                  )}
-                </div>
-              : null
-          }
+        { prod.price && prod.price.length
+            ? <div className="Product__pricelist">
+                <div className="Product__pricelist-title">Přibližná cena</div>
+                { prod.price.map(p =>
+                  <div className="Product__price" key={p[0]}>
+                    <span className="Product__price-amount">{p[1]} Kč</span>
+                    <span className="Product__price-shop">{p[0]}</span>
+                  </div>
+                )}
+              </div>
+            : null
+        }
+
+        { prod.a && prod.a.length
+          ? <div className="AllergenList">
+              <div className="AllergenList__title">Alergeny:</div>
+              { prod.a.map(a => <Allergen key={a} code={a} />) }
+            </div>
+
+          : null
+        }
+
         { prod.nutr
           ?
             <table className="Product__nutrition-facts">
