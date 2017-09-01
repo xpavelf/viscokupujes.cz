@@ -1,0 +1,33 @@
+.ContactBox {
+  color: black;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  padding: 30px 0 0 0;
+  font-size: 16px;
+}
+
+.ContactBox__box svg {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.ContactBox__link {
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.ContactBox__title {
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.ContactBox__box {
+  text-align: left;
+  display: inline-block;
+  background: #ddd;
+  padding: 25px 45px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px #666;
+}

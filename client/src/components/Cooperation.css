@@ -6,17 +6,22 @@ body[data-page="/cooperation"] { background-color: #3cb73c;}
   color: white;
 }
 
-.Cooperation h2 {
-  padding: 20px 0px 5px 0px;
+.Cooperation > h2 {
+  padding: 30px 0px 5px 0px;
   font-size: 20px;
 }
 
-.Cooperation p {
+.Cooperation > h1 {
+  padding: 20px 0px 5px 0px;
+  font-size: 24px;
+  font-variant: small-caps;
+}
+.Cooperation > p {
   text-align: justify;
   padding: 10px;
 }
 
-.Cooperation a {
+.Cooperation__link {
   color: white;
   text-decoration: none;
 }

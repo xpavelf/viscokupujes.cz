@@ -3,7 +3,6 @@ body[data-page="/"] { background-color: #3cb73c;}
 .Home {
   font-family: 'Roboto', sans-serif;
 }
-.Home a { color: white; }
 .Home p {
   padding: 10px;
   color: white;
