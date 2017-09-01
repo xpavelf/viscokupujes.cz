@@ -74,6 +74,9 @@
     ga(function(tracker) {
       localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
     });
+    ga('set', 'checkProtocolTask', function(data) {
+      data.set('location', 'https://viscokupujes.cz/');
+    });
   }
 <% } else { %>
   ga('create', GA_ID, 'auto');
