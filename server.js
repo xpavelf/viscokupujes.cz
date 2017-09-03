@@ -19,7 +19,7 @@ winston.add(winston.transports.File, {
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use('/', express.static('www'))
+app.use('/', express.static(`${__dirname}/www`))
 
 const port = process.env.PORT || process.env.NODE_PORT || 8989
 const ipaddr =  process.env.NODE_IP || 'localhost'
