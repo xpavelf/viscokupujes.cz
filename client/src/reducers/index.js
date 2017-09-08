@@ -44,7 +44,6 @@ export default function(state=INITIAL_STATE, action) {
       return { ...state, scannedProduct: { product: action.payload, err: null, pending: false } }
 
     case SHOW_MESSAGE:
-      console.log("reducer - adding msg", action)
       return { ...state, messages: state.messages.concat(action.payload) }
   }
 

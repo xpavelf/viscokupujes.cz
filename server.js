@@ -109,13 +109,6 @@ app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.ht
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
-// const fs = require("fs")
-// var options = {
-//    key  : fs.readFileSync('../cert/localhost.key'),
-//    cert : fs.readFileSync('../cert/localhost.cert')
-// }
-// const server = http.createServer(options, app)
-
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {
   let host = server.address().address
