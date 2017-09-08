@@ -85,7 +85,7 @@
   </script>
   <!-- End Google Analytics -->
 </head>
-<body data-page="/">
+<body data-page="/" onload="onLoad()">
   <noscript>
     viscokupujes.cz - Pro fungování této stránky musíš mít povolený javascript.
   </noscript>
@@ -95,9 +95,34 @@
       <img src="splashscreen-background.jpg" style="position: absolute; min-height: 100%; min-width: 100%; opacity: .2;">
     </div>
   </div>
-  <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %><script type="text/javascript" src="cordova.js"></script><% } %>
-  <script type="text/javascript" src="dist/app.js"></script>
+  <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+      function onDeviceReady() {
+        var _AppRateConf = {
+          displayAppName: 'Víš co kupuješ?',
+          useLanguage: 'cs',
+          usesUntilPrompt: 5,
+          promptAgainForEachNewVersion: false,
+          storeAppURL: {
+            android: 'market://details?id=cz.viscokupujes.mnamka'
+          },
+          customLocale: Object.assign(
+            AppRate.locales.getLocale('cs'),
+            { title: "Ohodnoť naši aplikaci!", message: "Nebude to trvat víc než minutu a pomůžeš tak ostatním lidem, kteří nechtějí kupovat zbytečnou chemii.\n\nDĚKUJEME ZA PODPORU!" }
+          )
+        };
+        Object.assign(AppRate.preferences, _AppRateConf);
 
+        AppRate.promptForRating(false);
+      }
+
+      function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+      }
+    </script>
+  <% } %>
+  <script type="text/javascript" src="dist/app.js"></script>
   <script>setDataPage(window.location.pathname)</script>
 </body>
 </html>
