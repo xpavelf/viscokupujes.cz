@@ -65,7 +65,7 @@ export default class Product extends React.Component {
           : null
         }
 
-        { prod.nutr
+        { prod.nutr && prod.nutr.length
           ?
             <table className="Product__nutrition-facts">
               <caption>Nutriční hodnoty{prod.nutr[0] ? <div>{prod.nutr[0]}</div> : ""}</caption>
