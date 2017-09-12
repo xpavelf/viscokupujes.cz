@@ -5,3 +5,4 @@
 /apk/
 /log/run*
 npm-debug.log
+/reports/reported-mistakes.txt

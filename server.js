@@ -71,7 +71,7 @@ const searchByName = (name) => {
 
 app.post("/api/report", (req, res) => {
   let d = new Date()
-  fs.appendFile("reported-mistakes.txt", "\n\n" + d + "\n" + req.body, (err) => {
+  fs.appendFile(`${__dirname}/reports/reported-mistakes.txt`, "\n\n" + d + "\n" + req.body, (err) => {
     if (err) throw err;
   })
   res.send()
