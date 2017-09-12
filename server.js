@@ -7,6 +7,7 @@ const winston = require("winston")
 const products = require("../data/data.json")
 const ecka = require("./e.json")
 const removeDiacritics = require("diacritics").remove
+const fs = require("fs")
 const { queryStringSearch } = require("./strUtils")
 
 winston.add(winston.transports.File, {
@@ -19,6 +20,7 @@ winston.add(winston.transports.File, {
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(bodyParser.text())
 app.use('/', express.static(`${__dirname}/www`))
 
 const port = process.env.PORT || process.env.NODE_PORT || 8989
@@ -66,6 +68,14 @@ const searchByName = (name) => {
   const limit = 35
   return name ? arr_filter_with_map(products, predicateWithHits(name), limit) : products.slice(0, limit)
 }
+
+app.post("/api/report", (req, res) => {
+  let d = new Date()
+  fs.appendFile("reported-mistakes.txt", "\n\n" + d + "\n" + req.body, (err) => {
+    if (err) throw err;
+  })
+  res.send()
+})
 
 app.get("/api/product", (req, res) => {
   let name = req.query.q || req.query.name

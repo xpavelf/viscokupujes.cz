@@ -1,6 +1,7 @@
 import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
   GET_PRODUCT_BY_ID, GET_PRODUCT_BY_ID_RESET,
-  GET_PRODUCT_BY_BC, GET_PRODUCT_BY_BC_RESET } from "../actions/Product"
+  GET_PRODUCT_BY_BC, GET_PRODUCT_BY_BC_RESET,
+  REPORT_MISTAKE } from "../actions/Product"
 
 import { SHOW_MESSAGE } from "../actions/Message"
 
@@ -9,7 +10,8 @@ export const INITIAL_STATE = {
   activeProduct: { product: null, err: null, pending: false },
   searchHistory: [],
   scannedProduct: { product: null, err: null, pending: false },
-  messages: []
+  messages: [],
+  report: { err: null, pending: false }
 }
 
 const SEARCH_HISTORY_LIMIT = 10
@@ -35,6 +37,12 @@ export default function(state=INITIAL_STATE, action) {
         activeProduct: { product: action.payload, err: null, pending: false },
         searchHistory: [action.payload, ...state.searchHistory.filter(h => h.id !== action.payload.id)].slice(0, SEARCH_HISTORY_LIMIT)
       }
+
+    case `${REPORT_MISTAKE}_PENDING`:
+      return { ...state, report: { err: null, pending: true } }
+
+    case `${REPORT_MISTAKE}_FULFILLED`:
+      return { ...state, report: { err: null, pending: false } }
 
     case GET_PRODUCT_BY_BC_RESET:
       return { ...state, scannedProduct: INITIAL_STATE.scannedProduct }

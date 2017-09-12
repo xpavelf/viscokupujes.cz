@@ -1,0 +1,63 @@
+.ReportMistake {
+  padding: 20px 0px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color .5s;
+}
+
+.ReportMistake--finished {
+  
+}
+
+.ReportMistake__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s;
+}
+
+.ReportMistake--open { background-color: #fff0f0; }
+.ReportMistake--open .ReportMistake__content { max-height: 800px; }
+
+.ReportMistake__button {
+  color: #ff1d1d;
+  text-align: center;
+  border: none;
+  background: none;
+  font-size: 12px;
+}
+
+.ReportMistake__description {
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  height: 90px;
+  margin: 20px auto;
+}
+
+
+
+.ReportMistake__actionBtn {
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+  color: #FFF;
+  background-color: #777;
+  text-transform: uppercase;
+  display: inline-block;
+  height: 36px;
+  padding: 0 26px;
+  margin: 6px 10px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.ReportMistake__actionBtn--blue {
+  background-color: #2196F3;
+}
+
+.ReportMistake__actionBtn--red {
+  background-color: #F44336;
+}

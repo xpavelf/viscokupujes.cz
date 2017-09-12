@@ -7,6 +7,7 @@ import "./Product.css"
 import Allergen from "./Allergen"
 import productSpinner from '../icons/icon-cart-64.png'
 import FbShare from "./FbShare"
+import ReportMistake from "./ReportMistake"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -76,6 +77,9 @@ export default class Product extends React.Component {
           : null
         }
         { prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null }
+
+        <ReportMistake product={prod} />
+
         { prod.promProducts.length
             ?
               <div className="ProdProducts">

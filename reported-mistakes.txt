@@ -1,0 +1,6 @@
+
+
+Tue Sep 12 2017 14:19:25 GMT+0200 (Central Europe Daylight Time)
+gfghjl
+=======================
+{"id":"tes-2001000001682","ingredients":"Voda, Fruktózo-glukózový sirup, Oxid uhličitý, Barvivo karamel E150d, Kyselina fosforečná, Aroma, Kofein","name":"Coca-Cola, 500ml","producer":"Prodávající:","bc":"0000054491472","category":4,"nutr":["na 100ml:",["Energetická hodnota ","180 kJ, 42 kcal"],["Bílkoviny ","0,0 g"],["Sacharidy ","10,6 g"],[" z toho cukry ","10,6 g"],["Tuky ","0,0 g"],[" z toho nasycené mastné kyseliny","0,0 g"],["Vláknina ","0,0 g"],["Sodík ","0,0 g"]],"price":[["tesco",21.9]],"e":[{"id":"e150d","rating":1,"names":["Amoniak","Sulfitový karamel"],"desc":"Jedno z nejběžnějších barviv. Po požití může docházet k průjmům. Světová zdravotnická organizace neprokázala karcinogenitu, ale v jedné studii byly zvýšené úrovně látky 4-methyldimazol, která je potenciálním karcinogenem."},{"id":"e150","rating":0,"names":["Karamel"],"desc":""},{"id":"e150a","rating":0,"names":["Karamel"],"desc":""},{"id":"e290","rating":0,"names":["Oxid uhličitý","Suchý led"],"desc":""},{"id":"e338","rating":0,"names":["Kyselina fosforečná","Kyseliny fosforečná"],"desc":""}],"a":[],"prom":false,"promProducts":null}
