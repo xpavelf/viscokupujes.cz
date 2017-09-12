@@ -85,7 +85,7 @@
   </script>
   <!-- End Google Analytics -->
 </head>
-<body data-page="/" onload="onLoad()">
+<body data-page="/" <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %> onload="onLoad()" <% } %>>
   <noscript>
     viscokupujes.cz - Pro fungování této stránky musíš mít povolený javascript.
   </noscript>
