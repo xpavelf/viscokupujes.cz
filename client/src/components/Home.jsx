@@ -8,7 +8,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="Home">
-        <p>Najdi si éčka v potravinách a nekupuj zbytečnou chemii. Stačí si textově vyhledat výrobek nebo načíst jeho kód. Zobrazí se ti všechny éčka, která produkt obsahuje, a to včetně těch "schovaných" v textu.</p>
+        <p>Najdi si éčka v potravinách a nekupuj zbytečnou chemii. Získej také přehled o alergenech a složení. Stačí si výrobek vyhledat nebo naskenovat jeho kód. Zobrazí se ti všechny éčka a alergeny, která produkt obsahuje, a to včetně těch "schovaných" v textu.</p>
 
         <div className="Home__ecka">
           <Link to="/ecka">
@@ -27,7 +27,7 @@ export default class Home extends React.Component {
           : null
         }
 
-        <p>Éčka jsou rozdělena do tří kategorií podle škodlivosti, červená jsou nejškodlivější, oranžová s otazníkem a zelená jsou ok. Pod každým vyhledaným produktem ti nabízíme podobné zdravější výrobky bez éček. Databáze zatím obsahuje asi 19 000 výrobků.</p>
+        <p>Každé éčko je zařazeno do jedné ze tří kategorií podle škodlivosti. Červená éčka jsou nejškodlivější, oranžová s otazníkem a zelená jsou ok. Pod každým vyhledaným produktem ti nabízíme podobné zdravější výrobky bez éček. Databáze zatím obsahuje asi 20 000 výrobků.</p>
 
         <div style={{ textAlign: "center" }}>
           <img className="Home__logo" src={imgLogo} alt="Logo - viscokupujes.cz" />
