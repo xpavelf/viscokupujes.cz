@@ -8,6 +8,7 @@ import Allergen from "./Allergen"
 import productSpinner from '../icons/icon-cart-64.png'
 import FbShare from "./FbShare"
 import ReportMistake from "./ReportMistake"
+import PalmOilBadge from "./PalmOilBadge"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -57,14 +58,16 @@ export default class Product extends React.Component {
             : null
         }
 
-        { prod.a && prod.a.length
+        { prod.a && prod.a.length || prod.po
           ? <div className="AllergenList">
-              <div className="AllergenList__title">Alergeny:</div>
-              { prod.a.map(a => <Allergen key={a} code={a} />) }
+              { prod.a && prod.a.length ? <div className="AllergenList__title">Alergeny:</div> : null }
+              { prod.a && prod.a.length ? prod.a.map(a => <Allergen key={a} code={a} />) : null }
+              { prod.po ? <PalmOilBadge /> : null }
             </div>
-
           : null
         }
+
+
 
         { prod.nutr && prod.nutr.length
           ?
