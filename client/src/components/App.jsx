@@ -18,9 +18,10 @@ export default class App extends React.Component {
   componentWillReceiveProps(nextProps) {
     let page = nextProps.location.pathname
     if (this.props.location.pathname !== page) {
-
-      ga('set', 'page', page)
-      ga('send', 'pageview')
+      if (ga) {
+        ga('set', 'page', page)
+        ga('send', 'pageview')
+      }
 
       setDataPage(page)
     }

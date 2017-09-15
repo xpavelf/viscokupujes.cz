@@ -22,15 +22,19 @@ class Scanner extends React.Component {
     scan: React.PropTypes.func
   }
 
+  state = {}
+
   componentWillReceiveProps(nextProps) {
     let pr = nextProps.scannedProduct.product
     if (pr) {
       let url = "/product/" + pr.id
       if (this.props.location.pathname !== url) {
+        ga && ga('send', 'event', 'ProductScan', 'found', this.state.ean)
         this.props.history.push(url)
       }
       this.props.dispatch(resetScannedProduct())
     } else if (pr === undefined) {
+      ga && ga('send', 'event', 'ProductScan', 'not found', this.state.ean)
       this.props.dispatch(showMessage({ title: "Kód nenalezen", text: "Zkuste produkt vyhledat pomocí textového vyhledávání." }))
       this.props.dispatch(resetScannedProduct())
     }
@@ -43,7 +47,11 @@ class Scanner extends React.Component {
   scan = () => {
     if (cordova && cordova.plugins && cordova.plugins.barcodeScanner) {
       window.cordova.plugins.barcodeScanner.scan(
-        result => this.props.dispatch(getProductByBc(result.text)),
+        result => {
+          this.setState({ean: result.text})
+          ga && ga('send', 'event', 'ProductScan', 'searching', result.text)
+          this.props.dispatch(getProductByBc(result.text))
+        },
         err => alert("Skenování selhalo."),
         SCANNER_CONFIG
       )

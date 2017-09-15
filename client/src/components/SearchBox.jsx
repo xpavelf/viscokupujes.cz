@@ -43,6 +43,7 @@ const Suggestion = (props) => {
 export default class SearchBox extends React.Component {
   _searchProductThrottled = throttle((term) => {
     this.props.dispatch(searchProduct(term))
+    ga && ga('send', 'event', 'ProductSearch', 'searching', term)
   }, 300, { leading: false })
 
   onChange = (term) => {
