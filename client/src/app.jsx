@@ -2,18 +2,19 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import store from "./store"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { Router } from "react-router"
 import App from "./components/App"
 import Product from "./components/Product"
 import AboutUs from "./components/AboutUs"
+import history from "./history"
 import "./default.css"
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
         <App/>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById("root")
 )

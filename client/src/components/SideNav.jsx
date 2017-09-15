@@ -2,14 +2,12 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom"
 import ver from "../../version.json"
 import "./SideNav.css"
+import scanProduct from "../utils/scanProduct"
 
 var TOUCH_SLOP = 8 * window.devicePixelRatio * 4
 
-class SideNav extends React.PureComponent {
-  static contextTypes = {
-    scan: React.PropTypes.func
-  }
-
+@withRouter
+export default class SideNav extends React.PureComponent {
   hide = () => {
     this.props.history.replace({ state: { sideNav: false} })
   }
@@ -61,7 +59,7 @@ class SideNav extends React.PureComponent {
               Domů
             </Link>
             { __APP_MODE__ === "mob"
-                ? <Link to={{ state: { sideNav: false} }} onClick={this.context.scan} className="SideNav__link">
+                ? <Link to={{ state: { sideNav: false} }} onClick={scanProduct} className="SideNav__link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16" fill="currentColor">
                       <path d="M14.661 2.968H12.2a.95.95 0 0 0-.947-.947h-6.5a.95.95 0 0 0-.947.947H1.333A1.337 1.337 0 0 0 0 4.3v8.1a1.337 1.337 0 0 0 1.333 1.333h13.328a1.337 1.337 0 0 0 1.333-1.333V4.3a1.337 1.337 0 0 0-1.333-1.332zM7.994 12.2a4.2 4.2 0 1 1 4.2-4.2 4.2 4.2 0 0 1-4.2 4.2z"/>
                       <path d="M7.994 4.3a3.7 3.7 0 1 0 3.7 3.7 3.7 3.7 0 0 0-3.7-3.7zm0 6.9a3.2 3.2 0 1 1 3.2-3.2 3.2 3.2 0 0 1-3.2 3.2z"/>
@@ -115,5 +113,3 @@ class SideNav extends React.PureComponent {
     )
   }
 }
-
-export default withRouter(SideNav)

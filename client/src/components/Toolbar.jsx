@@ -3,13 +3,11 @@ import { Link } from "react-router-dom"
 import imgLogo from "../icons/logo.png"
 import { connect } from "react-redux"
 import SearchBox  from "./SearchBox"
+import scanProduct from "../utils/scanProduct"
 import "./Toolbar.css"
 
-class Toolbar extends React.Component {
-
-  static contextTypes = {
-    scan: React.PropTypes.func
-  }
+@connect((store) => ({ activeProduct: store.activeProduct }))
+export default class Toolbar extends React.Component {
 
   share = () => {
     let pr
@@ -50,7 +48,7 @@ class Toolbar extends React.Component {
 
         </h1>
         { __APP_MODE__ === "mob"
-            ? <button className="Toolbar__scanner" onClick={this.context.scan}>
+            ? <button className="Toolbar__scanner" onClick={scanProduct}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 16 16" fill="black">
                   <path d="M14.661 2.968H12.2a.95.95 0 0 0-.947-.947h-6.5a.95.95 0 0 0-.947.947H1.333A1.337 1.337 0 0 0 0 4.3v8.1a1.337 1.337 0 0 0 1.333 1.333h13.328a1.337 1.337 0 0 0 1.333-1.333V4.3a1.337 1.337 0 0 0-1.333-1.332zM7.994 12.2a4.2 4.2 0 1 1 4.2-4.2 4.2 4.2 0 0 1-4.2 4.2z"/>
                   <path d="M7.994 4.3a3.7 3.7 0 1 0 3.7 3.7 3.7 3.7 0 0 0-3.7-3.7zm0 6.9a3.2 3.2 0 1 1 3.2-3.2 3.2 3.2 0 0 1-3.2 3.2z"/>
@@ -64,5 +62,3 @@ class Toolbar extends React.Component {
     )
   }
 }
-
-export default connect((store) => ({ activeProduct: store.activeProduct }))(Toolbar)

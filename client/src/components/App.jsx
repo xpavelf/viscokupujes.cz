@@ -7,9 +7,9 @@ import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
 import Home from "./Home"
 import SearchHistory from "./SearchHistory"
-import Scanner from "./Scanner"
 import Cooperation from "./Cooperation"
 import MessageBus from "./MessageBus"
+import AddProduct from "./AddProduct"
 import "./App.css"
 
 @withRouter
@@ -31,13 +31,12 @@ export default class App extends React.Component {
     let show = this.props.location.state && this.props.location.state.sideNav
     return (
       <main className="App">
-        <Scanner>
-          <SideNav show={show} />
-          <Toolbar />
-        </Scanner>
+        <SideNav show={show} />
+        <Toolbar />
         <div className="App__content">
           <Route exact path="/" component={Home} />
           <Route exact path="/android_asset/www/index.html" component={Home} />
+          <Route path="/add-product" component={AddProduct} />
           <Route path="/product/:id" component={Product} />
           <Route path="/ecka" component={EckoOverview} />
           <Route path="/about-us" component={AboutUs} />

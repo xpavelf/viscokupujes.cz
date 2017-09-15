@@ -116,6 +116,7 @@ app.get("/api/product/:id", (req, res) => {
 app.get("/cooperation", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/add-product", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
