@@ -75,7 +75,7 @@ export default class SearchBox extends React.Component {
         onChange={this.onChange}
         onSelect={this.onSelect}
         onFocus={this.onFocus}
-        placeholder="Hledej nebo načti kód..."
+        placeholder={ __APP_MODE__ === "mob" ? "Hledej nebo načti kód..." : "Hledej výrobek..." }
         suggestions={this.props.searchProduct}
         parseSuggestionsData={(data) => data.products}
         suggestionComp={Suggestion}
