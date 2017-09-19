@@ -5,7 +5,7 @@ import { getProductById } from "../actions/Product"
 import PromProduct from "./PromProduct"
 import "./Product.css"
 import Allergen from "./Allergen"
-import productSpinner from '../icons/icon-cart-64.png'
+import Spinner from "./common/Spinner"
 import FbShare from "./FbShare"
 import ReportMistake from "./ReportMistake"
 import PalmOilBadge from "./PalmOilBadge"
@@ -35,7 +35,7 @@ export default class Product extends React.Component {
     if (this.props.activeProduct.pending || this.props.scannedProduct.pending) {
       return (
         <div className="Product">
-          <img className="Product__spinner" src={productSpinner} />
+          <Spinner />
         </div>
       )
     }
@@ -66,8 +66,6 @@ export default class Product extends React.Component {
             </div>
           : null
         }
-
-
 
         { prod.nutr && prod.nutr.length
           ?
