@@ -7,7 +7,7 @@
 }
 
 .ReportMistake--finished {
-  
+
 }
 
 .ReportMistake__content {
@@ -36,28 +36,4 @@
   max-width: 400px;
   height: 90px;
   margin: 20px auto;
-}
-
-
-
-.ReportMistake__actionBtn {
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
-  color: #FFF;
-  background-color: #777;
-  text-transform: uppercase;
-  display: inline-block;
-  height: 36px;
-  padding: 0 26px;
-  margin: 6px 10px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.ReportMistake__actionBtn--blue {
-  background-color: #2196F3;
-}
-
-.ReportMistake__actionBtn--red {
-  background-color: #F44336;
 }

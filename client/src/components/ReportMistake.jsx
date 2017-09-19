@@ -4,6 +4,7 @@ import { reportMistake } from "../actions/Product"
 import debounce from "lodash/debounce"
 import progressbar from "../icons/progressbar.gif"
 import "./ReportMistake.css"
+import Btn from "./common/Button"
 
 @connect((store) => ({
   report: store.report
@@ -84,8 +85,8 @@ export default class ReportMistake extends React.Component {
         </button>
         <form className="ReportMistake__content" onSubmit={this.submit}>
           <textarea ref={ta => this.textArea = ta} className="ReportMistake__description" onChange={this.change}></textarea>
-          <button className="ReportMistake__actionBtn ReportMistake__actionBtn--red">Odeslat</button>
-          <button className="ReportMistake__actionBtn" type="reset" onClick={this.storno}>Storno</button>
+          <Btn color="red">Odeslat</Btn>
+          <Btn type="reset" onClick={this.storno}>Storno</Btn>
         </form>
       </div>
     )
