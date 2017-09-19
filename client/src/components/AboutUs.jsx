@@ -1,6 +1,6 @@
 import React from "react"
 import imgShopping from "../icons/shopping.jpg"
-import ContactBox from "./ContactBox"
+import ContactBox from "./common/ContactBox"
 import "./AboutUs.css"
 
 export default () => (

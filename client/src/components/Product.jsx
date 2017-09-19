@@ -6,7 +6,7 @@ import PromProduct from "./PromProduct"
 import "./Product.css"
 import Allergen from "./Allergen"
 import Spinner from "./common/Spinner"
-import FbShare from "./FbShare"
+import FbShare from "./common/FbShare"
 import ReportMistake from "./ReportMistake"
 import PalmOilBadge from "./PalmOilBadge"
 

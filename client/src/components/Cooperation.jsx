@@ -1,5 +1,5 @@
 import React from "react"
-import ContactBox from "./ContactBox"
+import ContactBox from "./common/ContactBox"
 import "./Cooperation.css"
 
 

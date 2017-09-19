@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import imgLogo from "../icons/home-banner.png"
-import ContactBox from "./ContactBox"
+import ContactBox from "./common/ContactBox"
 import "./Home.css"
 
 export default class Home extends React.Component {
