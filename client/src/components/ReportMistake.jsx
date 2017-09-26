@@ -81,7 +81,7 @@ export default class ReportMistake extends React.Component {
         			c0.6,10.2,8.5,17.6,18.7,17.6c10.2,0,18.2-7.9,18.7-18.2c0-6.2,0-11.9,0.6-18.2c1.1-19.3,2.3-38.6,3.4-57.9
         			c0.6-12.5,1.7-25,2.3-37.5c0-4.5-0.6-8.5-2.3-12.5C260.825,160.782,248.925,155.082,237.025,157.882z"/>
           </svg>
-          <div>Nahlásit chybu</div>
+          <div>Našel jsi nějakou chybu?</div>
         </button>
         <form className="ReportMistake__content" onSubmit={this.submit}>
           <textarea ref={ta => this.textArea = ta} className="ReportMistake__description" onChange={this.change}></textarea>
