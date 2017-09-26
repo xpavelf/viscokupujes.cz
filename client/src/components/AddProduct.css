@@ -1,0 +1,40 @@
+.AddProduct {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.AddProduct__box {
+  display: inline-block;
+  margin-top: 45px;
+}
+
+.AddProduct__wrapper {
+  padding: 10px 20px 20px 20px;
+  background: #e0ffe0;
+}
+
+.AddProduct p {
+  padding: 20px 0px;
+}
+
+.AddProduct__ingredients {
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  height: 90px;
+  margin: 0px auto 20px auto;
+}
+
+.AddProduct__actionBtn--icon {
+  padding-left: 60px;
+  margin-top: 30px;
+}
+
+.AddProduct__actionBtn--icon svg {
+  position: absolute;
+  top: calc(50% - 17px);
+  left: 20px;
+}

@@ -2,7 +2,10 @@ import store from "../store"
 import history from "../history"
 import scan from "./scanner"
 
-import { getProductByBc, resetScannedProduct } from "../actions/Product"
+import React from "react"
+import Btn from "../components/common/Button"
+
+import { getProductByBc } from "../actions/Product"
 import { showMessage } from "../actions/Message"
 
 let scannedBC
@@ -19,11 +22,17 @@ const handleChange = () => {
         ga && ga('send', 'event', 'ProductScan', 'found', scannedProduct.bc)
         history.push(url)
       }
-      store.dispatch(resetScannedProduct())
     } else if (scannedProduct === undefined) {
       ga && ga('send', 'event', 'ProductScan', 'not found', scannedBC)
-      store.dispatch(showMessage({ title: "Kód nenalezen", text: "Zkuste produkt vyhledat pomocí textového vyhledávání." }))
-      store.dispatch(resetScannedProduct())
+      store.dispatch(showMessage({
+        title: "Produkt nenalezen",
+        text: "Ale můžeš nám ho pomoct přidat :)",
+        getFooter: (hideMsg) => (
+          <div style={{textAlign: "center", marginTop: "20px"}}>
+            <Btn color="green" onClick={() => { hideMsg(); history.push("/add-product/entry") }}>Přidej produkt</Btn>
+          </div>
+        )
+      }))
     }
   }
 }

@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
   searchProduct: { products: null, err: null, pending: false },
   activeProduct: { product: null, err: null, pending: false },
   searchHistory: [],
-  scannedProduct: { product: null, err: null, pending: false },
+  scannedProduct: { bc: null, product: null, err: null, pending: false },
   messages: [],
   report: { err: null, pending: false }
 }
@@ -44,12 +44,10 @@ export default function(state=INITIAL_STATE, action) {
     case `${REPORT_MISTAKE}_FULFILLED`:
       return { ...state, report: { err: null, pending: false } }
 
-    case GET_PRODUCT_BY_BC_RESET:
-      return { ...state, scannedProduct: INITIAL_STATE.scannedProduct }
     case `${GET_PRODUCT_BY_BC}_PENDING`:
-      return { ...state, scannedProduct: { product: null, err: null, pending: true } }
+      return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: action.payload, pending: true } }
     case `${GET_PRODUCT_BY_BC}_FULFILLED`:
-      return { ...state, scannedProduct: { product: action.payload, err: null, pending: false } }
+      return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct,  bc: state.scannedProduct.bc, product: action.payload } }
 
     case SHOW_MESSAGE:
       return { ...state, messages: state.messages.concat(action.payload) }

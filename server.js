@@ -19,7 +19,7 @@ winston.add(winston.transports.File, {
 
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '250kb' }))
 app.use(bodyParser.text())
 app.use('/', express.static(`${__dirname}/www`))
 
@@ -69,10 +69,34 @@ const searchByName = (name) => {
   return name ? arr_filter_with_map(products, predicateWithHits(name), limit) : products.slice(0, limit)
 }
 
+app.post("/api/add-product", (req, res) => {
+  let data = JSON.parse(req.body)
+  let uid = parseInt(data.uid)
+  let bc = parseInt(data.bc)
+  let fn = `[${uid}]${bc}.html`
+  let tmpl = (data) => `${bc}<br><img src="data:image/jpeg;base64, ${data.mainPic}"><img src="data:image/jpeg;base64, ${data.ingPic}"><br>`
+  fs.writeFile(`${__dirname}/user-products/${fn}`, tmpl(data), (err) => {
+    if (err) throw err
+    res.send()
+  })
+})
+
+app.put("/api/add-product", (req, res) => {
+  let data = JSON.parse(req.body)
+  let uid = parseInt(data.uid)
+  let bc = parseInt(data.bc)
+  let fn = `[${uid}]${bc}.html`
+  let path = `${__dirname}/user-products/${fn}`
+  if (fs.existsSync(path)) {
+    fs.appendFile(path, `<p>${data.ingTxt}</p>`)
+  }
+  res.send()
+})
+
 app.post("/api/report", (req, res) => {
   let d = new Date()
   fs.appendFile(`${__dirname}/reports/reported-mistakes.txt`, "\n\n" + d + "\n" + req.body, (err) => {
-    if (err) throw err;
+    if (err) throw err
   })
   res.send()
 })
@@ -117,6 +141,7 @@ app.get("/cooperation", (req, res) => res.sendFile(__dirname + "/www/index.html"
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/add-product", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/add-product/entry", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/about-us", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 

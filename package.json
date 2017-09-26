@@ -46,7 +46,8 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-camera": {},
             "cordova-plugin-compat": {},
-            "cordova-plugin-globalization": {}
+            "cordova-plugin-globalization": {},
+            "cordova-plugin-inappbrowser": {}
         }
     }
 }

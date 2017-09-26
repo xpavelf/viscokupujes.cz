@@ -1,7 +1,7 @@
 import React from "react"
 import Toolbar from "./Toolbar"
 import SideNav from "./SideNav"
-import { Route, withRouter } from "react-router-dom"
+import { Switch, Route, withRouter, Redirect } from "react-router-dom"
 import Product from "./Product"
 import EckoOverview from "./EckoOverview"
 import AboutUs from "./AboutUs"
@@ -34,14 +34,17 @@ export default class App extends React.Component {
         <SideNav show={show} />
         <Toolbar />
         <div className="App__content">
-          <Route exact path="/" component={Home} />
-          <Route exact path="/android_asset/www/index.html" component={Home} />
-          <Route path="/add-product" component={AddProduct} />
-          <Route path="/product/:id" component={Product} />
-          <Route path="/ecka" component={EckoOverview} />
-          <Route path="/about-us" component={AboutUs} />
-          <Route path="/search-history" component={SearchHistory} />
-          <Route path="/cooperation" component={Cooperation} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/android_asset/www/index.html" component={Home} />
+            <Redirect from="/add-product/entry" to="/add-product" />
+            <Route path="/add-product" component={AddProduct} />
+            <Route path="/product/:id" component={Product} />
+            <Route path="/ecka" component={EckoOverview} />
+            <Route path="/about-us" component={AboutUs} />
+            <Route path="/search-history" component={SearchHistory} />
+            <Route path="/cooperation" component={Cooperation} />
+          </Switch>
         </div>
         <MessageBus />
       </main>
