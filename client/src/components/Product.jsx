@@ -9,6 +9,7 @@ import Spinner from "./common/Spinner"
 import FbShare from "./common/FbShare"
 import ReportMistake from "./ReportMistake"
 import PalmOilBadge from "./PalmOilBadge"
+import GlucoseFructoseBadge from "./GlucoseFructoseBadge"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -58,11 +59,12 @@ export default class Product extends React.Component {
             : null
         }
 
-        { prod.a && prod.a.length || prod.po
+        { prod.a && prod.a.length || prod.po || prod.gf
           ? <div className="AllergenList">
               { prod.a && prod.a.length ? <div className="AllergenList__title">Alergeny:</div> : null }
               { prod.a && prod.a.length ? prod.a.map(a => <Allergen key={a} code={a} />) : null }
               { prod.po ? <PalmOilBadge /> : null }
+              { prod.gf ? <GlucoseFructoseBadge /> : null }
             </div>
           : null
         }
