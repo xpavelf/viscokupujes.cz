@@ -20,7 +20,7 @@ winston.add(winston.transports.File, {
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ limit: '250kb' }))
-app.use(bodyParser.text())
+app.use(bodyParser.text({ limit: '250kb' }))
 app.use('/', express.static(`${__dirname}/www`))
 
 const port = process.env.PORT || process.env.NODE_PORT || 8989
