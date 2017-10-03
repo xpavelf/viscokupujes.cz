@@ -14,7 +14,7 @@ export const INITIAL_STATE = {
   report: { err: null, pending: false }
 }
 
-const SEARCH_HISTORY_LIMIT = 10
+const SEARCH_HISTORY_LIMIT = 20
 
 export default function(state=INITIAL_STATE, action) {
 
