@@ -8,7 +8,7 @@ export default class MessageBus extends React.Component {
   state = { hide: false }
 
   componentWillReceiveProps(nextProps) {
-    let msg = nextProps.messages[0]
+    let msg = nextProps.messages.slice(-1)[0]
     this.setState({ msg, hide: false })
     setTimeout(this.hide, SHOW_MSG_INTERVAL)
   }
