@@ -1,5 +1,6 @@
 import React from "react"
 import { eComparator } from "../utils/eUtils"
+import Modal from "./common/Modal"
 import "./EckoList.css"
 
 export default class EckoList extends React.Component {
@@ -23,8 +24,7 @@ export default class EckoList extends React.Component {
   getModal(e) {
     let desc = e.desc || (e.rating === 0 && "Není škodlivé pro lidský organismus.")
     return (
-      <div className="Ecko-modal-wrapper" onClick={this.hide}>
-        <div className="Ecko-modal">
+      <Modal onClose={this.hide}>
           <div className="Ecko-modal__title">
             <div className={"Ecko Ecko--" + e.rating}>{e.id}</div>
             <div className="Ecko-modal__name">{e.names[0]}</div>
@@ -34,11 +34,9 @@ export default class EckoList extends React.Component {
                 </div>
               : null
             }
-            <button onClick={this.hide} className="Ecko-modal__btnClose">✕</button>
           </div>
           {desc ? <div className="Ecko-modal__content">{desc}</div> : null }
-        </div>
-      </div>
+        </Modal>
     )
   }
 

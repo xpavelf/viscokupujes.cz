@@ -1,0 +1,48 @@
+@keyframes VisCoKupujesModalSlide {
+  0% { top: -10%; opacity: .5 }
+  100% { top: 15%; opacity: 1 }
+}
+
+.VisCoKupujesModal:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .7;
+  display: block;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+}
+
+.VisCoKupujesModal__main {
+  position: absolute;
+  background-color: white;
+  border: 3px solid gray;
+  z-index: 21;
+  left: 5%;
+  top: 15%;
+  width: 90%;
+  padding: 20px 10px 10px 10px;
+  animation: VisCoKupujesModalSlide 500ms ease;
+}
+
+.VisCoKupujesModal__btnClose {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: transparent;
+  display: inline-block;
+  border: none;
+  font-size: 25px;
+  height: 40px;
+  width: 40px;
+}
+
+@media only screen and (min-width: 700px) {
+  .VisCoKupujesModal__main {
+    width: 600px;
+    left: calc(50% - 300px);
+  }
+}
