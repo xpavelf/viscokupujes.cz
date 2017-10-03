@@ -1,13 +1,11 @@
 import React from "react"
 import "./AddProduct.css"
-import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
 import Spinner from "./common/Spinner"
 import scan from "../utils/scanner"
 import Btn from "./common/Button"
 import { addProduct, updateProduct } from "../actions/Product"
 
-@withRouter
 @connect((store) => ({
   scannedProduct: store.scannedProduct
 }))
@@ -105,12 +103,6 @@ export default class AddProduct extends React.Component {
     }
   }
 
-  cancel = () => {
-    ga && ga('send', 'event', 'AddProduct', 'cancel')
-    this.props.history.push("/")
-    window.scrollTo(0, 0)
-  }
-
   render() {
     let step = this.getStep()
     let svg = (
@@ -134,32 +126,33 @@ export default class AddProduct extends React.Component {
 
     return (
       <div className="AddProduct">
-        { step === 0 ? <div className="AddProduct__box"><p>Nyní vyfoťte přední stranu výrobku s názvem.</p><div>{svg}</div>{ this.getPicBtn("mainPic") }</div> : null }
-        { step === 1 ? <div className="AddProduct__box"><p>Nyní vyfoťte složení výrobku.</p><div>{svg}</div>{ this.getPicBtn("ingPic") }</div> : null }
-        { step === 2 ? <Spinner /> : null }
-        { step === 3 || step === 4
-          ? <div>
-              <p><br />
+        <div className="AddProduct__box">
+          { step === 0 ? <div><p>Nyní vyfoťte <span style={{fontWeight: "bold"}}>přední stranu</span> výrobku s názvem.</p><div>{svg}</div>{ this.getPicBtn("mainPic") }</div> : null }
+          { step === 1 ? <div><p>Nyní vyfoťte <span style={{fontWeight: "bold"}}>složení</span> výrobku.</p><div>{svg}</div>{ this.getPicBtn("ingPic") }</div> : null }
+          { step === 2 ? <Spinner /> : null }
+          { step === 3 || step === 4
+            ? <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 512 512">
                   <circle fill="#2a802a" cx="256" cy="256" r="256" />
                   <g stroke="#fff" strokeWidth="30">
                     <line x1="213.6" x2="369.7" y1="344.2" y2="188.2"/>
                     <line x1="233.8" x2="154.7" y1="345.2" y2="266.1"/>
                   </g>
-                </svg><br />Děkujeme!<br />
-              </p>
-              { step === 3
-                ? <div className="AddProduct__wrapper">
-                    <p>Velice by nám pomohlo, kdyby jste nám složení vypsali i ručně</p>
-                    <textarea className="AddProduct__ingredients" onChange={this.ingTxtChange}></textarea>
-                    <Btn color="green" disabled={!this.state.ingTxt} onClick={this.updateIng}>Uložit</Btn>
-                    <Btn onClick={this.cancel}>Ne, děkuji</Btn>
-                  </div>
-                : <div className="AddProduct__box" style={{marginTop: "20px"}}><p style={{fontWeight: "bold"}}>Právě jsi udělal/a dobrý skutek!</p><p>Budeme se snažit co nejdříve produkt zařadit do databáze.</p></div>
-              }
-            </div>
-          : null
-        }
+                </svg>
+                <div style={{fontWeight: "bold", paddingBottom: 10}}>Děkujeme!</div>
+
+                { step === 3
+                  ? <div className="AddProduct__wrapper">
+                      <p>Velice by nám pomohlo, kdyby jste nám složení vypsali i ručně</p>
+                      <textarea className="AddProduct__ingredients" onChange={this.ingTxtChange}></textarea>
+                      <Btn color="green" disabled={!this.state.ingTxt} onClick={this.updateIng}>Uložit</Btn>
+                    </div>
+                  : <div className="AddProduct__box" style={{marginTop: "20px"}}><p style={{fontWeight: "bold"}}>Právě jsi udělal/a dobrý skutek!</p><p>Budeme se snažit co nejdříve produkt zařadit do databáze.</p></div>
+                }
+              </div>
+            : null
+          }
+        </div>
       </div>
     )
   }
