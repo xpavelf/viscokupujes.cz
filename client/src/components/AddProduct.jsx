@@ -18,18 +18,24 @@ export default class AddProduct extends React.Component {
     uid: new Date().getTime()
   }
 
+  constructor(props) {
+    super(props)
+    ga && ga('send', 'event', 'AddProduct', 'start', this.props.scannedProduct.bc)
+  }
+
   componentWillUpdate(nextProps, nextState) {
     if (nextProps.scannedProduct.bc && !nextProps.scannedProduct.product) {
       // Scanned and not found before
 
       if (nextState.ingPic && nextState.mainPic && !nextState.finished) {
+        ga && ga('send', 'event', 'AddProduct', 'upload')
         this.props.dispatch(addProduct({
           bc: nextProps.scannedProduct.bc,
           uid: nextState.uid,
           mainPic: nextState.mainPic,
           ingPic: nextState.ingPic
         }))
-        setTimeout(() => this.setState({ finished: true }), 1000)
+        setTimeout(() => this.setState({ finished: true }), 1500)
       }
     }
   }
@@ -90,6 +96,7 @@ export default class AddProduct extends React.Component {
   updateIng = () => {
     if (this.state.ingTxt) {
       this.setState({ sendIngTxt: true, mainPic: "", ingPic: "" })
+      ga && ga('send', 'event', 'AddProduct', 'updateIngTxt')
       this.props.dispatch(updateProduct({
         bc: this.props.scannedProduct.bc,
         ingTxt: this.state.ingTxt,
@@ -99,6 +106,7 @@ export default class AddProduct extends React.Component {
   }
 
   cancel = () => {
+    ga && ga('send', 'event', 'AddProduct', 'cancel')
     this.props.history.push("/")
     window.scrollTo(0, 0)
   }
