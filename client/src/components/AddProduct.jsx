@@ -127,7 +127,7 @@ export default class AddProduct extends React.Component {
     return (
       <div className="AddProduct">
         <div className="AddProduct__box">
-          { step === 0 ? <div><p>Nyní vyfoťte <span style={{fontWeight: "bold"}}>přední stranu</span> výrobku s názvem.</p><div>{svg}</div>{ this.getPicBtn("mainPic") }</div> : null }
+          { step === 0 ? <div><p>Nyní vyfoťte <span style={{fontWeight: "bold"}}>přední stranu</span> výrobku s názvem a značkou.</p><div>{svg}</div>{ this.getPicBtn("mainPic") }</div> : null }
           { step === 1 ? <div><p>Nyní vyfoťte <span style={{fontWeight: "bold"}}>složení</span> výrobku.</p><div>{svg}</div>{ this.getPicBtn("ingPic") }</div> : null }
           { step === 2 ? <Spinner /> : null }
           { step === 3 || step === 4
@@ -139,7 +139,9 @@ export default class AddProduct extends React.Component {
                     <line x1="233.8" x2="154.7" y1="345.2" y2="266.1"/>
                   </g>
                 </svg>
-                <div style={{fontWeight: "bold", paddingBottom: 10}}>Děkujeme!</div>
+                <div style={{fontWeight: "bold", paddingBottom: 10}}>
+                  { step === 3 ? "Děkujeme!" : "Díky za spolupráci!" }
+                </div>
 
                 { step === 3
                   ? <div className="AddProduct__wrapper">
@@ -147,7 +149,7 @@ export default class AddProduct extends React.Component {
                       <textarea className="AddProduct__ingredients" onChange={this.ingTxtChange}></textarea>
                       <Btn color="green" disabled={!this.state.ingTxt} onClick={this.updateIng}>Uložit</Btn>
                     </div>
-                  : <div className="AddProduct__box" style={{marginTop: "20px"}}><p style={{fontWeight: "bold"}}>Právě jsi udělal/a dobrý skutek!</p><p>Budeme se snažit co nejdříve produkt zařadit do databáze.</p></div>
+                  : <div className="AddProduct__box" style={{marginTop: "20px"}}><p style={{fontWeight: "bold"}}>Právě jsi se zasloužil o zlepšení této aplikace!</p><p>My se budeme snažit co nejdříve produkt zařadit do databáze.</p></div>
                 }
               </div>
             : null
