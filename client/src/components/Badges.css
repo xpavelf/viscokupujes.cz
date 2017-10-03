@@ -1,0 +1,49 @@
+.Badges__modal__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Badges__modal__title > .Badges__modal__name,
+.Badges__modal__title > .Ecko,
+.Badges__modal__title > .Badge
+ { display: table-cell; }
+
+.Badges__modal__name {
+  padding-left: 10px;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.Badges__modal__aliases::first-line {
+  font-weight: bold;
+}
+
+.Badges__modal__aliases {
+  padding-top: 15px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #777;
+}
+
+.Badges__modal__content {
+  padding-top: 15px;
+}
+
+
+.Badges__emptyEckoList {
+  margin: auto;
+  padding: 20px 10px;
+  display: table;
+  font-size: 20px;
+  font-weight: bold;
+  color: #319631;
+}
+
+.Badges__emptyEckoList > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.Badges__emptyEckoList__text {
+  padding-left: 10px;
+}

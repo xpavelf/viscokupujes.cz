@@ -11,6 +11,7 @@ export default class EckoEckoCard extends React.PureComponent {
     let className = "EckoCard" + (e.desc ? " EckoCard--expandable" : "")
     className += this.state.open ? " EckoCard--open" : ""
 
+    // FIXME: use Ecko component
     return (
       <div onClick={this.toggle} className={className} key={e.id}>
         <div className={"Ecko Ecko--small Ecko--" + e.rating}>{e.id}</div>

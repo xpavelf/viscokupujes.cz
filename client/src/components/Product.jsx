@@ -1,5 +1,4 @@
 import React from "react"
-import EckoList from "./EckoList"
 import { connect } from "react-redux"
 import { getProductById } from "../actions/Product"
 import PromProduct from "./PromProduct"
@@ -8,8 +7,7 @@ import Allergen from "./Allergen"
 import Spinner from "./common/Spinner"
 import FbShare from "./common/FbShare"
 import ReportMistake from "./ReportMistake"
-import PalmOilBadge from "./PalmOilBadge"
-import GlucoseFructoseBadge from "./GlucoseFructoseBadge"
+import Badges from "./Badges"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -45,7 +43,11 @@ export default class Product extends React.Component {
       <div className="Product">
         <h2 className="Product__name">{prod.name}</h2>
         <small className="Product__producer">{prod.producer}</small>
-        <EckoList list={prod.e} />
+        <Badges
+          ecka={prod.e}
+          po={prod.po}
+          gf={prod.gf}
+        />
         { prod.price && prod.price.length
             ? <div className="Product__pricelist">
                 <div className="Product__pricelist-title">Přibližná cena</div>
@@ -59,12 +61,10 @@ export default class Product extends React.Component {
             : null
         }
 
-        { prod.a && prod.a.length || prod.po || prod.gf
+        { prod.a && prod.a.length
           ? <div className="AllergenList">
-              { prod.a && prod.a.length ? <div className="AllergenList__title">Alergeny:</div> : null }
-              { prod.a && prod.a.length ? prod.a.map(a => <Allergen key={a} code={a} />) : null }
-              { prod.po ? <PalmOilBadge /> : null }
-              { prod.gf ? <GlucoseFructoseBadge /> : null }
+              <div className="AllergenList__title">Alergeny:</div>
+              { prod.a.map(a => <Allergen key={a} code={a} />) }
             </div>
           : null
         }

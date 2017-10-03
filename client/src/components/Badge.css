@@ -1,0 +1,28 @@
+.Badge {
+  display: inline-block;
+  border: none;
+  padding: 0;
+  width: 70px;
+  height: 60px;
+  margin: 5px 0px;
+  background-position: center 10%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  position: relative;
+  vertical-align: middle;
+}
+
+.Badge--gf { background-image: url('../icons/badge-glukosefruktose.png'); }
+.Badge--po { background-image: url('../icons/badge-palmoil.png'); }
+
+.Badge__text {
+  font-weight: bold;
+  position: absolute;
+  font-size: 12px;
+  width: 70px;
+
+  color: #cc3333;
+  text-align: center;
+  text-transform: uppercase;
+  bottom: 0;
+}

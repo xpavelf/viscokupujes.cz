@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import imgLogo from "../icons/home-banner.png"
 import ContactBox from "./common/ContactBox"
+import Ecko from "./common/Ecko"
 import "./Home.css"
 
 export default class Home extends React.Component {
@@ -12,9 +13,9 @@ export default class Home extends React.Component {
 
         <div className="Home__ecka">
           <Link to="/ecka">
-            <div className="Ecko Ecko--2">!</div>
-            <div className="Ecko Ecko--1">?</div>
-            <div className="Ecko Ecko--0">✓</div>
+            <Ecko e={{ rating: 2, id: "!" }} />
+            <Ecko e={{ rating: 1, id: "?" }} />
+            <Ecko e={{ rating: 0, id: "✓" }} />
           </Link>
         </div>
 
