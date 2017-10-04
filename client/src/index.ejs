@@ -50,9 +50,15 @@
     strong { font-weight: bold; }
     a { color: blue; }
 
-    #root, .SplashScreen { height: 100%; }
+    #root { height: 100%; }
     .SplashScreen {
+      top: 0;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      height: 100%;
       background-color: #3cb73c;
+      z-index: 50;
     }
 
   </style>
@@ -89,13 +95,13 @@
   <noscript>
     viscokupujes.cz - Pro fungování této stránky musíš mít povolený javascript.
   </noscript>
-  <div id="root">
-    <div class="SplashScreen" style="overflow:hidden; position: relative;">
+  <div id="root"></div>
+  <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %>
+    <div class="SplashScreen" style="overflow:hidden;">
       <img alt="Banner - Víš co kupuješ" src="banner-256x256.png" style="position: absolute; top: calc(50% - 128px); left: calc(50% - 128px)">
       <img src="splashscreen-background.jpg" style="position: absolute; min-height: 100%; min-width: 100%; opacity: .2;">
     </div>
-  </div>
-  <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
       function onDeviceReady() {
@@ -118,6 +124,7 @@
       }
 
       function onLoad() {
+        setTimeout(function() { document.querySelector('.SplashScreen').remove(); }, 1500);
         document.addEventListener("deviceready", onDeviceReady, false);
       }
     </script>
