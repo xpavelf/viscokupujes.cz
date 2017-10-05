@@ -10,6 +10,8 @@ const removeDiacritics = require("diacritics").remove
 const fs = require("fs")
 const { queryStringSearch } = require("./strUtils")
 
+const TMPL = fs.readFileSync(`${__dirname}/user-products/tmpl.html`, 'utf8')
+
 winston.add(winston.transports.File, {
   filename: 'run.log',
   dirname: './log',
@@ -74,8 +76,13 @@ app.post("/api/add-product", (req, res) => {
   let uid = parseInt(data.uid)
   let bc = parseInt(data.bc)
   let fn = `[${uid}]${bc}.html`
-  let tmpl = (data) => `${bc}<br><img src="data:image/jpeg;base64, ${data.mainPic}"><img src="data:image/jpeg;base64, ${data.ingPic}"><br>`
-  fs.writeFile(`${__dirname}/user-products/${fn}`, tmpl(data), (err) => {
+  let out = TMPL.replace('__PLACEHOLDER__', JSON.stringify({
+    ean: data.bc,
+    mainPic: "data:image/jpeg;base64, " + data.mainPic,
+    ingPic: "data:image/jpeg;base64, " + data.ingPic
+  }))
+
+  fs.writeFile(`${__dirname}/user-products/${fn}`, out, (err) => {
     if (err) throw err
     res.send()
   })
@@ -88,7 +95,11 @@ app.put("/api/add-product", (req, res) => {
   let fn = `[${uid}]${bc}.html`
   let path = `${__dirname}/user-products/${fn}`
   if (fs.existsSync(path)) {
-    fs.appendFile(path, `<p>${data.ingTxt}</p>`)
+    let d = fs.readFileSync(path, 'utf8')
+    let out = d.replace('__PLACEHOLDER__INGTXT__', JSON.stringify(data.ingTxt))
+    fs.writeFile(path, out, (err) => {
+      if (err) throw err
+    })
   }
   res.send()
 })
