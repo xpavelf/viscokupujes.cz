@@ -104,7 +104,7 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
-      function onDeviceReady() {
+      function initAppRate() {
         var _AppRateConf = {
           displayAppName: 'Víš co kupuješ?',
           useLanguage: 'cs',
@@ -119,13 +119,24 @@
           )
         };
         Object.assign(AppRate.preferences, _AppRateConf);
-
         AppRate.promptForRating(false);
+      }
+
+      function initAdMob() {
+        admob.banner.config({
+          id: "ca-app-pub-1551253277388421/7487171343",
+          autoShow: true
+        })
+        admob.banner.prepare()
       }
 
       function onLoad() {
         setTimeout(function() { document.querySelector('.SplashScreen').remove(); }, 1500);
-        document.addEventListener("deviceready", onDeviceReady, false);
+
+        document.addEventListener("deviceready", function() {
+          initAppRate();
+          initAdMob();
+        }, false);
       }
     </script>
   <% } %>
