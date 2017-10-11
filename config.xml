@@ -7,6 +7,7 @@
     <icon src="www/icon-cart-64.png" />
     <access origin="*" />
     <allow-intent href="https://www.facebook.com/*" />
+    <allow-intent href="http://www.jidelniplan.cz/*" />
     <allow-intent href="mailto:*" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="loadUrlTimeoutValue" value="60000" />

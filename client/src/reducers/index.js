@@ -3,9 +3,11 @@ import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
   GET_PRODUCT_BY_BC, GET_PRODUCT_BY_BC_RESET,
   REPORT_MISTAKE } from "../actions/Product"
 
+import { GET_RECIPES } from "../actions/Recipe"
 import { SHOW_MESSAGE } from "../actions/Message"
 
 export const INITIAL_STATE = {
+  recipes: {  bc: null, recipes: null, err: null, pending: false },
   searchProduct: { products: null, err: null, pending: false },
   activeProduct: { product: null, err: null, pending: false },
   searchHistory: [],
@@ -38,6 +40,11 @@ export default function(state=INITIAL_STATE, action) {
         searchHistory: [action.payload, ...state.searchHistory.filter(h => h.id !== action.payload.id)].slice(0, SEARCH_HISTORY_LIMIT)
       }
 
+    case `${GET_RECIPES}_PENDING`:
+      return { ...state, recipes: { ...INITIAL_STATE.recipes, bc: action.payload.bc, pending: true }}
+    case `${GET_RECIPES}_FULFILLED`:
+      return { ...state, recipes: { ...INITIAL_STATE.recipes, bc: state.recipes.bc, recipes: action.payload.data }}
+
     case `${REPORT_MISTAKE}_PENDING`:
       return { ...state, report: { err: null, pending: true } }
 
@@ -47,7 +54,7 @@ export default function(state=INITIAL_STATE, action) {
     case `${GET_PRODUCT_BY_BC}_PENDING`:
       return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: action.payload, pending: true } }
     case `${GET_PRODUCT_BY_BC}_FULFILLED`:
-      return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct,  bc: state.scannedProduct.bc, product: action.payload } }
+      return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: state.scannedProduct.bc, product: action.payload } }
 
     case SHOW_MESSAGE:
       return { ...state, messages: state.messages.concat(action.payload) }

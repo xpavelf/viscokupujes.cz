@@ -1,0 +1,82 @@
+.Recipes {
+  padding: 20px 0;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+}
+
+.Recipes__banner:before {
+  content: '';
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  left: -25px;
+  top: -7px;
+  background-image: url('../icons/jidelniplan-logo.png');
+  height: 70px;
+  width: 70px;
+  transition: left .5s, transform 1s;
+}
+
+.Recipes--open .Recipes__banner:before {
+  left: calc(100% - 50px);
+  transform: rotate(360deg);
+}
+
+.Recipes__banner {
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  height: 55px;
+  position: relative;
+  border-radius: 3px;
+  background-color: #93c21f;
+  padding-top: 10px;
+}
+
+.Recipes__bannerExtra {
+  font-size: 12px;
+}
+
+.Recipes__list {
+  width: 80%;
+  background-color: #eee;
+  margin: auto;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .5s;
+}
+
+.Recipes--open .Recipes__list {
+  max-height: 1000px;
+}
+
+.Recipe {
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.Recipe__link {
+  display: inline-block;
+}
+
+.Recipe__img {
+  height: 100px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.Recipe__img img { height: 100px; }
+
+.Recipe__title {
+  color: #2a802a;
+  text-align: center;
+  text-decoration: underline;
+}

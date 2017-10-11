@@ -147,6 +147,9 @@ app.get("/api/product/:id", (req, res) => {
   res.json(retVal)
 })
 
+// TODO: REMOVE
+// app.get("/api/recipes/", (req, res) => res.sendFile(__dirname + "/mock-recipes.json"))
+
 // FIXME
 app.get("/cooperation", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))

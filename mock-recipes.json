@@ -1,0 +1,43 @@
+{
+    "pagination": {
+        "page": 1,
+        "perPage": 10,
+        "pages": 3,
+        "total": 25
+    },
+    "data": [
+        {
+            "title": "Borůvkový dort s bílou čokoládou",
+            "description": false,
+            "urls": {
+                "view": "http://www.jidelniplan.cz/recepty/boruvkovy-dort-s-bilou-cokoladou"
+            },
+            "images": {
+                "hero": "http://www.jidelniplan.cz/tmp/image/versions/b422d5de0fdd86b2394bed841dbd889090cfdacb_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
+                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/b422d5de0fdd86b2394bed841dbd889090cfdacb_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
+            }
+        },
+        {
+            "title": "Red Velvet-buchta z červené řepy",
+            "description": false,
+            "urls": {
+                "view": "http://www.jidelniplan.cz/recepty/red-velvet-buchta-z-cervene-repy"
+            },
+            "images": {
+                "hero": "http://www.jidelniplan.cz/tmp/image/versions/5ba39172e89f21d415e832e29658ca5e87457095_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
+                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/5ba39172e89f21d415e832e29658ca5e87457095_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
+            }
+        },
+        {
+            "title": "Chia puding s kiwi a borůvkami",
+            "description": "Chia semínka jsou moje oblíbená, sypu je skoro všude - na chleba, do buchet nebo do smoothie, ale úplně nejradši z nich mám puding. Často si ho teď dělám k snídani, je neskutečně jednoduchý, večer si dáte chia semínka nabobtnat a ráno už to je úplně bez práce. A o tom, jaká to je dobrota, ani nemluvím.",
+            "urls": {
+                "view": "http://www.jidelniplan.cz/recepty/chia-puding-s-kiwi-a-boruvkami"
+            },
+            "images": {
+                "hero": "http://www.jidelniplan.cz/tmp/image/versions/61f58db9dd1e36eb4d5e4601f63a3a9bddeacca3_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.JPG",
+                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/61f58db9dd1e36eb4d5e4601f63a3a9bddeacca3_version_39b51cb9a16948ce77a357f17e1d3be97273d209.JPG"
+            }
+        }
+    ]
+}

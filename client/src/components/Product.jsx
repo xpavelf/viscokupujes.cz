@@ -8,6 +8,7 @@ import Spinner from "./common/Spinner"
 import FbShare from "./common/FbShare"
 import ReportMistake from "./ReportMistake"
 import Badges from "./Badges"
+import Recipes from "./Recipes"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -79,9 +80,12 @@ export default class Product extends React.Component {
             </table>
           : null
         }
-        { prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null }
 
         <ReportMistake product={prod} />
+
+        { prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null }
+
+        <Recipes bc={prod.bc} />
 
         { prod.promProducts.length
             ?

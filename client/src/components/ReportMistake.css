@@ -1,13 +1,9 @@
 .ReportMistake {
-  padding: 20px 0px;
+  padding: 10px 0px;
   margin-top: 10px;
   font-weight: bold;
   text-align: center;
   transition: background-color .5s;
-}
-
-.ReportMistake--finished {
-
 }
 
 .ReportMistake__content {
