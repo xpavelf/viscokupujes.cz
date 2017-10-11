@@ -4,6 +4,21 @@ import { withRouter } from "react-router-dom"
 import { getRecipes } from "../actions/Recipe"
 import "./Recipes.css"
 
+const _shuffle = (arrSrc) => {
+  let arr = arrSrc.slice()
+  let ctr = arr.length, temp, index
+
+  while (ctr > 0) {
+      index = Math.floor(Math.random() * ctr)
+      ctr--
+      temp = arr[ctr]
+      arr[ctr] = arr[index]
+      arr[index] = temp
+  }
+  return arr
+}
+
+
 @withRouter
 @connect((store) => ({ data: store.recipes }))
 export default class Recipes extends React.Component {
@@ -41,9 +56,6 @@ export default class Recipes extends React.Component {
   )
 
   render() {
-    if ((this.props.data.recipes && this.props.data.bc === this.props.bc)) {
-      console.log(this.props.data.recipes, this.props.data.bc, this.props.bc)
-    }
     return ((this.props.data.recipes && this.props.data.bc === this.props.bc)
       ?
         <div className={`Recipes${this.state.open ? " Recipes--open": ""}`}>
@@ -52,7 +64,7 @@ export default class Recipes extends React.Component {
             <div className="Recipes__bannerExtra">obsahující tento produkt</div>
           </div>
           <ul className="Recipes__list">
-            { this.props.data.recipes.map(this.recipeTmpl) }
+            { _shuffle(this.props.data.recipes).slice(0, 3).map(this.recipeTmpl) }
           </ul>
         </div>
       : null
