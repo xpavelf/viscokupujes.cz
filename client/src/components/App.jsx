@@ -28,10 +28,9 @@ export default class App extends React.Component {
   }
 
   render() {
-    let show = this.props.location.state && this.props.location.state.sideNav
     return (
       <main className="App">
-        <SideNav show={show} />
+        <SideNav />
         <Toolbar />
         <div className="App__content">
           <Switch>
