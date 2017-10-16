@@ -145,7 +145,7 @@ export default class AddProduct extends React.Component {
 
                 { step === 3
                   ? <div className="AddProduct__wrapper">
-                      <p>Velice by nám pomohlo, kdyby jste nám složení vypsali i ručně</p>
+                      <p>Velice nám pomůže, když nám složení vypíšeš i ručně</p>
                       <textarea className="AddProduct__ingredients" onChange={this.ingTxtChange}></textarea>
                       <Btn color="green" disabled={!this.state.ingTxt} onClick={this.updateIng}>Uložit</Btn>
                     </div>

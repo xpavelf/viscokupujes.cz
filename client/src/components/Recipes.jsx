@@ -44,16 +44,23 @@ export default class Recipes extends React.Component {
     }
   }
 
-  recipeTmpl = (rec) => (
-    <li className="Recipe" key={rec.title}>
-      <a className="Recipe__link" href={rec.urls.view} target="_blank" onClick={this.onClick}>
-        <div className="Recipe__img">
-          { this.state.open ? <img src={rec.images.hero} /> : null }
-        </div>
-        <div className="Recipe__title">{rec.title}</div>
-      </a>
-    </li>
-  )
+  recipeTmpl = (rec) => {
+    // jidelniplan api change
+    let url = (rec.urls.recipes && rec.urls.recipes.view)
+      ? rec.urls.recipes.view
+      : rec.urls.view
+
+    return (
+      <li className="Recipe" key={rec.title}>
+        <a className="Recipe__link" href={url} target="_blank" onClick={this.onClick}>
+          <div className="Recipe__img">
+            { this.state.open ? <img src={rec.images.hero} /> : null }
+          </div>
+          <div className="Recipe__title">{rec.title}</div>
+        </a>
+      </li>
+    )
+  }
 
   render() {
     return ((this.props.data.recipes && this.props.data.bc === this.props.bc)
