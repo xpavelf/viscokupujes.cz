@@ -63,6 +63,17 @@ export default class Recipes extends React.Component {
   }
 
   render() {
+    if (this.props.data.pending) {
+      return (
+        <div className="Recipes Recipes--pending">
+          <div className="Recipes__banner">
+            Hledám recepty
+            <div className="Recipes__bannerExtra">obsahující tento produkt</div>
+          </div>
+        </div>
+      )
+    }
+
     return ((this.props.data.recipes && this.props.data.bc === this.props.bc)
       ?
         <div className={`Recipes${this.state.open ? " Recipes--open": ""}`}>
@@ -74,7 +85,12 @@ export default class Recipes extends React.Component {
             { _shuffle(this.props.data.recipes).slice(0, 3).map(this.recipeTmpl) }
           </ul>
         </div>
-      : null
+      : <div className="Recipes Recipes--empty">
+          <div className="Recipes__banner">
+            Nenašli jsme žádný recept
+            <div className="Recipes__bannerExtra">obsahující tento produkt</div>
+          </div>
+        </div>
     )
   }
 }

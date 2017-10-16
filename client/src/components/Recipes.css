@@ -20,6 +20,11 @@
   transition: left .5s, transform 1s;
 }
 
+@keyframes RecipesBannerSpin { 100% { transform:rotate(360deg); } }
+.Recipes--pending .Recipes__banner:before {
+  animation: RecipesBannerSpin 2s ease infinite;
+}
+
 .Recipes--open .Recipes__banner:before {
   left: calc(100% - 50px);
   transform: rotate(360deg);
@@ -30,7 +35,7 @@
   font-size: 20px;
   color: white;
   text-align: center;
-  width: 80%;
+  width: 85%;
   margin: auto;
   height: 55px;
   position: relative;
@@ -39,12 +44,19 @@
   padding-top: 10px;
 }
 
+.Recipes--empty .Recipes__banner {
+  padding-left: 25px;
+  font-size: 16px;
+  padding-top: 13px;
+}
+
 .Recipes__bannerExtra {
   font-size: 12px;
+  margin-top: 3px;
 }
 
 .Recipes__list {
-  width: 80%;
+  width: 85%;
   background-color: #eee;
   margin: auto;
   max-height: 0px;
