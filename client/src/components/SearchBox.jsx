@@ -81,6 +81,7 @@ export default class SearchBox extends React.Component {
         suggestionComp={Suggestion}
         renderEmptySuggestion={this.renderEmptySuggestion}
         selectedToString={() => ""}
+        showPrevSearch={true}
         autoFocus={false} />
     )
   }

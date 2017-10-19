@@ -14,7 +14,7 @@ export default class SideNav extends React.PureComponent {
 
     return (
       <ReactSideNav visible={visible} hide={hide}>
-        <div class="SideNav__content">
+        <div className="SideNav__content">
           <div className="SideNav__header">
             <div className="SideNav__title">{ver}</div>
           </div>
