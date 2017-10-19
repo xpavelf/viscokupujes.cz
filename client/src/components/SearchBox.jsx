@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import throttle from "lodash/throttle"
+import debounce from "lodash/debounce"
 import { withRouter } from "react-router-dom"
 import { searchProduct, resetSearchProduct, resetActiveProduct } from "../actions/Product"
 import imgProgressbar from "../icons/progressbar.gif"
@@ -35,21 +36,25 @@ const Suggestion = (props) => {
   )
 }
 
+const _ga_searchDebounced = debounce((term) => {
+  ga && ga('send', 'event', 'ProductSearch', 'searching', term)
+}, 1500)
+
 @connect((store) => ({
   activeProduct: store.activeProduct,
   searchProduct: store.searchProduct
 }))
 @withRouter
 export default class SearchBox extends React.Component {
-  _searchProductThrottled = throttle((term) => {
+  searchProductThrottled = throttle((term) => {
     this.props.dispatch(searchProduct(term))
-    ga && ga('send', 'event', 'ProductSearch', 'searching', term)
   }, 300, { leading: false })
 
   onChange = (term) => {
     this.props.dispatch(resetSearchProduct())
     if (term && term.length > 2) {
-      this._searchProductThrottled(term)
+      this.searchProductThrottled(term)
+      _ga_searchDebounced(term)
     }
   }
 

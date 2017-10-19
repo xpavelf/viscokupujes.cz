@@ -148,7 +148,9 @@ app.get("/api/product/:id", (req, res) => {
 })
 
 // TODO: REMOVE
-// app.get("/api/recipes/", (req, res) => res.sendFile(__dirname + "/mock-recipes.json"))
+// app.get("/api/recipes/", (req, res) => {
+//   setTimeout(() => res.sendFile(__dirname + "/mock-recipes.json"), 3000)
+// })
 
 // FIXME
 app.get("/cooperation", (req, res) => res.sendFile(__dirname + "/www/index.html"))
