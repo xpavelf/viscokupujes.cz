@@ -2,118 +2,78 @@
     "pagination": {
         "page": 1,
         "perPage": 10,
-        "pages": 3,
-        "total": 25
+        "pages": 4,
+        "total": 33
     },
     "data": [
         {
+            "id": 3532,
+            "title": "BABA GHANNOUJ A DOMÁCÍ PITA CHLÉB",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/baba-ghannouj-a-domaci-pita-chleb"
+            }
+        },
+        {
+            "id": 3530,
+            "title": "KUŘE MAKHANI / BUTTER CHICKEN / MURG MAKHANI",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/kure-makhani-butter-chicken-murg-makhani"
+            }
+        },
+        {
+            "id": 3506,
+            "title": "PEČENÁ DÝNĚ HOKAIDO S VAJEČNOU OMÁČKOU",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/pecena-dyne-hokaido-s-vajecnou-omackou"
+            }
+        },
+        {
+            "id": 3501,
+            "title": "Tiramisu zdravě",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/tiramisu-zdrave"
+            }
+        },
+        {
+            "id": 3498,
+            "title": "Avokadový krém s lískovými oříšky",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/avokadovy-krem-s-liskovymi-orisky"
+            }
+        },
+        {
+            "id": 3496,
+            "title": "Latte řezy",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/latte-rezy-1"
+            }
+        },
+        {
+            "id": 3494,
+            "title": "Knedlíky fitness",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/knedliky-fitness"
+            }
+        },
+        {
+            "id": 3492,
+            "title": "Kuře na paprice",
+            "urls": {
+                "recipes.view": "http://www.jidelniplan.cz/recepty/kure-na-paprice"
+            }
+        },
+        {
+            "id": 3412,
             "title": "Borůvkový dort s bílou čokoládou",
-            "description": false,
             "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/boruvkovy-dort-s-bilou-cokoladou"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/b422d5de0fdd86b2394bed841dbd889090cfdacb_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/b422d5de0fdd86b2394bed841dbd889090cfdacb_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
+                "recipes.view": "http://www.jidelniplan.cz/recepty/boruvkovy-dort-s-bilou-cokoladou"
             }
         },
         {
+            "id": 3411,
             "title": "Red Velvet-buchta z červené řepy",
-            "description": false,
             "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/red-velvet-buchta-z-cervene-repy"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/5ba39172e89f21d415e832e29658ca5e87457095_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/5ba39172e89f21d415e832e29658ca5e87457095_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Vanilkovo-malinový dort",
-            "description": false,
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/vanilkovo-malinovy-dort"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/77f6f6509affffe153fdda9ec0e9113a518c3937_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/77f6f6509affffe153fdda9ec0e9113a518c3937_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Chia puding s kiwi a borůvkami",
-            "description": "Chia semínka jsou moje oblíbená, sypu je skoro všude - na chleba, do buchet nebo do smoothie, ale úplně nejradši z nich mám puding. Často si ho teď dělám k snídani, je neskutečně jednoduchý, večer si dáte chia semínka nabobtnat a ráno už to je úplně bez práce. A o tom, jaká to je dobrota, ani nemluvím.",
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/chia-puding-s-kiwi-a-boruvkami"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/61f58db9dd1e36eb4d5e4601f63a3a9bddeacca3_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.JPG",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/61f58db9dd1e36eb4d5e4601f63a3a9bddeacca3_version_39b51cb9a16948ce77a357f17e1d3be97273d209.JPG"
-            }
-        },
-        {
-            "title": "Vločkový koláč s proteinem",
-            "description": false,
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/vlockovy-kolac-s-proteinem"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/60c682f4f72a121ad722cc78b0c4552b9dd1828b_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/60c682f4f72a121ad722cc78b0c4552b9dd1828b_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Vločková miska s jogurtem,  fíky a broskví",
-            "description": "Skvělá svačinka...  nebo snídaně, která každého dostane z postele!",
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/vlockova-miska-s-jogurtem-fiky-a-broskvi"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/1a77c179778627d710bf27b2ef0993705c2c7344_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/1a77c179778627d710bf27b2ef0993705c2c7344_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Borůvkové řezy",
-            "description": false,
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/boruvkove-rezy"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/5d5e83293f214c8df15df6c2fc0d436666dd0657_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/5d5e83293f214c8df15df6c2fc0d436666dd0657_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Makový závin",
-            "description": false,
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/makovy-zavin"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/1c1656a0cac7996ced07822f027e54d56ea9fed7_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/1c1656a0cac7996ced07822f027e54d56ea9fed7_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Kakaovo-banánový koláč",
-            "description": false,
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/kolac-s-proteinem"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/4bb12cda1879a025206f15565e6fc6fff00e7ec8_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/4bb12cda1879a025206f15565e6fc6fff00e7ec8_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
-            }
-        },
-        {
-            "title": "Limetkový koláč",
-            "description": "Do klasického cheesecaku se mi nechtělo, tak jsem stvořila lehký, příjemně nakyslý koláč, který si určitě zamilujete. A nebojte se opět experimentovat. Těsto je univerzální a velmi lehké, navíc ho můžete zdvoj- až ztrojnásobit a upéct celý plech, krém také můžete zkusit ochutit čím vás napadne. Každopádně zkuste i mou limetkovou verzi.",
-            "urls": {
-                "view": "http://www.jidelniplan.cz/recepty/limetkovy-kolac"
-            },
-            "images": {
-                "hero": "http://www.jidelniplan.cz/tmp/image/versions/b481e909bc89ffe924036bd40e8d6f6fddfc50cf_version_6f7478c9bbb315d638bc2f9553dd0f271eedd598.jpg",
-                "hero.4x": "http://www.jidelniplan.cz/tmp/image/versions/b481e909bc89ffe924036bd40e8d6f6fddfc50cf_version_39b51cb9a16948ce77a357f17e1d3be97273d209.jpg"
+                "recipes.view": "http://www.jidelniplan.cz/recepty/red-velvet-buchta-z-cervene-repy"
             }
         }
     ]

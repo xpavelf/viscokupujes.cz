@@ -45,10 +45,7 @@ export default class Recipes extends React.Component {
   }
 
   recipeTmpl = (rec) => {
-    // jidelniplan api change
-    let url = (rec.urls.recipes && rec.urls.recipes.view)
-      ? rec.urls.recipes.view
-      : rec.urls.view
+    let url = rec.urls["recipes.view"]
 
     return (
       <li className="Recipe" key={rec.title}>

@@ -35,10 +35,15 @@ function releaseNew {
   mv platforms/android/build/outputs/apk/cz.viscokupujes.mnamka-${version}.apk apk/
 }
 
-
 function test {
   cordova build android
   adb install -r platforms/android/build/outputs/apk/android-debug.apk
+  adb shell monkey -p cz.viscokupujes.mnamka -c android.intent.category.LAUNCHER 1
+}
+
+function testOld {
+  cordova build android
+  adb install -r platforms/android/build/outputs/apk/android-armv7-debug.apk
   adb shell monkey -p cz.viscokupujes.mnamka -c android.intent.category.LAUNCHER 1
 }
 
