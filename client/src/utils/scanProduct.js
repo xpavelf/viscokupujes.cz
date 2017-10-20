@@ -24,15 +24,22 @@ const handleChange = () => {
       }
     } else if (scannedProduct === undefined) {
       ga && ga('send', 'event', 'ProductScan', 'not found', scannedBC)
-      store.dispatch(showMessage({
+      let msg = {
         title: "Produkt nenalezen",
+        text: "Můžeš ho zkusit vyhledat podle názvu"
+      }
+      let ext = {
         text: "Ale můžeš nám ho pomoct přidat :)",
         getFooter: (hideMsg) => (
           <div style={{textAlign: "center", marginTop: "20px"}}>
             <Btn color="green" onClick={() => { hideMsg(); history.push("/add-product/entry") }}>Přidej produkt</Btn>
           </div>
         )
-      }))
+      }
+
+      Object.assign(msg, (__APP_MODE__ === "mob") ? ext : {})
+
+      store.dispatch(showMessage(msg))
     }
   }
 }
