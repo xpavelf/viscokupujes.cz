@@ -14,7 +14,7 @@ export default () => {
   return new Promise((resolve, reject) => {
     if (cordova && cordova.plugins && cordova.plugins.barcodeScanner) {
       window.cordova.plugins.barcodeScanner.scan(
-        result => resolve(result.text),
+        result => result.cancelled ? resolve(null) : resolve(result.text),
         err => reject("BarcodeScanner failed."),
         SCANNER_CONFIG
       )

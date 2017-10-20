@@ -49,9 +49,11 @@ let unsubscribe = store.subscribe(handleChange)
 export default () => {
   scan()
     .then(bc => {
-      scannedBC = bc
-      ga && ga('send', 'event', 'ProductScan', 'searching', scannedBC)
-      store.dispatch(getProductByBc(bc))
+      if (bc) {
+        scannedBC = bc
+        ga && ga('send', 'event', 'ProductScan', 'searching', scannedBC)
+        store.dispatch(getProductByBc(bc))
+      }
     })
     .catch(err => alert("Skenování selhalo."))
 }
