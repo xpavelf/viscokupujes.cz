@@ -5,9 +5,10 @@ const app = express()
 const bodyParser = require("body-parser")
 const winston = require("winston")
 const products = require("../data/data.json")
-const ecka = require("./e.json")
 const removeDiacritics = require("diacritics").remove
 const fs = require("fs")
+const { getAllergens } = require('alergeny')
+const { ecka, getAdditives } = require('ecka')
 const { queryStringSearch } = require("./strUtils")
 
 const TMPL = fs.readFileSync(`${__dirname}/user-products/tmpl.html`, 'utf8')
@@ -145,6 +146,44 @@ app.get("/api/product/:id", (req, res) => {
   }
 
   res.json(retVal)
+})
+
+const PALM_OIL_RX = /\b(palmov(?!\w+\scukr)|palmoj|palm oil|cbe)/gi
+const GF_RX = new RegExp(
+  "/" + ["přírodní cukr", "glukozofruktozovy sirup", "glukozo-fruktozovy sirup", "fruktozo-glukozovy sirup",
+  "fruktozo-glukozovym sirupem", "fruktozoglukozovy sirup", "fruktózový sirup", "glukózový sirup",
+  "glukozo-fruktozovym sirupem", "glukozovym sirupem", "fruktozovym sirupem", "glukozofruktozovym sirupem"]
+    .map(str => removeDiacritics(str))
+    .join("|")
+  + "/"
+  , "i")
+
+const hasPalmOil = (ingredients) =>
+  removeDiacritics(ingredients).match(PALM_OIL_RX) !== null
+
+const hasGlukoseSirup = (ingredients) =>
+  removeDiacritics(ingredients).match(GF_RX) !== null
+
+app.post("/api/get-info", (req, res) => {
+  let data = req.is('application/json') ? req.body : JSON.parse(req.body)
+
+  if (data.ingredients) {
+    let additives = getAdditives(data.ingredients)
+    let allergens = getAllergens(data.ingredients)
+    let po = hasPalmOil(data.ingredients)
+    let gf = hasGlukoseSirup(data.ingredients)
+
+    res.json(_map_e({
+      ingredients: data.ingredients,
+      a: allergens,
+      e: additives,
+      po,
+      gf
+    }))
+
+  } else {
+    res.status(404).json("'ingredients' field not present")
+  }
 })
 
 // TODO: REMOVE
