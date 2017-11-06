@@ -64,8 +64,8 @@ const _map_e = (product) => {
   return Object.assign({}, product, { e: arr_e})
 }
 
-const isBcEqual = (bc0, bc1) => parseInt(bc0) === parseInt(bc1)
-const searchByBc = (bc) => products.find(pr => isBcEqual(pr.bc, bc))
+const isBcEqual = (bc0, bc1) => bc0 === bc1
+const searchByBc = (bc) => products.find(pr => Array.isArray(pr.bc) ? pr.bc.some(prbc => isBcEqual(prbc, bc)) : isBcEqual(pr.bc, bc))
 const searchByName = (name) => {
   winston.info("product search '%s'", name)
   const limit = 35
@@ -118,7 +118,8 @@ app.get("/api/product", (req, res) => {
   let bc = req.query.bc
   let retVal
   if (bc) {
-    retVal = searchByBc(bc)
+    let bcInt = parseInt(bc)
+    retVal = searchByBc(bcInt)
     if (retVal) {
       res.json(_map_e(retVal))
     } else {
