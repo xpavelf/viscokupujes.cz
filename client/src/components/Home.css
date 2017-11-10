@@ -3,6 +3,26 @@
   color: #444;
 }
 
+.Home__aboutUs {
+  text-align: center;
+  font-family: 'Caveat';
+  font-size: 20px; 
+}
+
+.Home__aboutUs > div {
+  display: inline-block;
+  position: relative;
+  margin: 10px 20px 0px 20px;
+}
+
+.Home__aboutUs > div > * {
+  display: block;
+}
+
+.Home__aboutUs img {
+  border-radius: 50px;
+}
+
 .Home__container {
   max-width: 900px;
   margin: 0 auto;

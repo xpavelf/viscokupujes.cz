@@ -12,8 +12,12 @@
   vertical-align: middle;
 }
 
-.Badge--gf { background-image: url('../icons/badge-glukosefruktose.png'); }
-.Badge--po { background-image: url('../icons/badge-palmoil.png'); }
+.Badge svg {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  display: block;
+}
 
 .Badge__text {
   font-weight: bold;

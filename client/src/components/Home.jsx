@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 import ContactBox from "./common/ContactBox"
 import Ecko from "./common/Ecko"
+import pImg from "../icons/pavel.jpg"
+import jImg from "../icons/jana.jpg"
 import imgSprite from "../icons/sprite.svg"
 import "./Home.css"
 
@@ -101,9 +103,16 @@ export default class Home extends React.Component {
         <div className="Home__bgblock Home__bgblock--withImg">
           <div className="Home__container">
             <h2 className="Home__subtitle">Kdo jsme?</h2>
-            <p>Jsme dva celkem normální lidi, jmenujeme se hezky česky Pavel a Jana a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala. </p>
-            <p> Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? neustále vyvíjíme a rozšiřujeme dle přání uživatelů. Máte-li tedy jakýkoliv návrh, neváhejte nás kontaktovat. Můžete se tak podílet na zlepšování této aplikace.</p>
-              <p> Víš co kupuješ? vyvíjíme ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
+            <p>
+              Jsme dva celkem normální lidi a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.
+              <div className="Home__aboutUs">
+                <div><img src={pImg} alt="Pavel" /><div>Pavel</div></div>
+                <div><img src={jImg} alt="Jana" /><div>Jana</div></div>
+              </div>
+            </p>
+            
+            <p>Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? neustále vyvíjíme a rozšiřujeme dle přání uživatelů. Máte-li tedy jakýkoliv návrh, neváhejte nás kontaktovat. Můžete se tak podílet na zlepšování této aplikace.</p>
+            <p>Víš co kupuješ? vyvíjíme ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
           </div>
         </div>
         <ContactBox />
