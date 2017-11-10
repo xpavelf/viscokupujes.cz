@@ -81,9 +81,9 @@ export default class Product extends React.Component {
           : null
         }
 
-        <ReportMistake product={prod} />
-
         { prod.ingredients ? <div className="Product__ingredients">Složení:<br/>{prod.ingredients}</div> : null }
+
+        <ReportMistake product={prod} />
 
         <Recipes bc={prod.bc} />
 

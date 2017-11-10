@@ -1,29 +1,38 @@
-.App {
+.App__content {
   max-width: 800px;
   margin: 0 auto 0 auto;
-}
-
-.App__content {
   padding: 5px 5px 50px 5px;
 }
 
+body[data-page="/"] .App__content {
+  padding-top: 20px;
+}
+
 @media only screen and (min-width: 800px) {
-  body {
+  body[data-page="/"] .App__content {
+    max-width: none;
+    padding-top: 40px;
+  }
+
+  .App__content {
+    background-color: white;
+  }
+
+  #root:before {
+    content: '';
+    opacity: .3;
     background-image: url("/desktop-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: fixed;
+    z-index: -1;
   }
 
-  .App {
-    background-color: white;
-    margin-top: 70px;
-    opacity: 0.93
+  body[data-page="/"] #root:before {
+    content: none;
   }
 
-  [data-page="/"] .App,
-  [data-page="/about-us"] .App,
-  [data-page="/cooperation"] .App {
-    background-color: #3cb73c;
-  }
 }

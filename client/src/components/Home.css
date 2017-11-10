@@ -1,47 +1,175 @@
-body[data-page="/"] { background-color: #3cb73c;}
-
 .Home {
   font-family: 'Roboto', sans-serif;
+  color: #444;
 }
-.Home p {
-  padding: 10px;
+
+.Home__container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.Home__container--first {
+  text-align: center;
+  font-size: 110%;
+}
+
+.Home__bgblock {
+  background-color: #dedede;
+  position: relative;
+}
+
+.Home__bgblock--withImg:before {
+  content: '';
+  opacity: .1;
+  background-image: url("/desktop-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+}
+
+.Home__bgblock--white {
+  background-color: #fff;
+}
+
+.Home__bgblock--green {
+  background-color: #2a802a;
   color: white;
-  line-height: 20px;
-  text-align: justify;
 }
 
-@keyframes scale_in_anim {
-  0% { transform: scale(.5) }
-  80% { transform: scale(1.1) }
-  100% { transform: scale(1) }
+.Home__bgblock--green .Home__subtitle {
+  color: white;
 }
 
-.Home__logo {
+.Home__subtitle {
+  text-align: center;
+  font-size: 25px;
+  color: #2a802a;
+  padding: 35px 0 30px 0;
+}
+
+.Home__list {
+  counter-reset: section;
+  position: relative;
+}
+
+.Home__list li:before {
+  border: 1px solid white;
+  padding-top: 2px;
+  text-align: center;
+  counter-increment: section;
+  content: counter(section);
+  width: 32px;
+  height: 30px;
+  border-radius: 16px;
+  display: inline-block;
+  position: absolute;
+  left: -45px;
+}
+
+.Home__list li {
+  position: relative;
+  line-height: 27px;
+  display: block;
+  vertical-align: top;
+  padding: 0 10px 30px 0px;
+  margin-left: 50px;
+}
+
+.Home__funcList {
+  text-align: center;
+  padding: 20px 0 40px 0;
+}
+
+.Home__func {
+  opacity: .9;
+  display: inline-block;
+  height: 90px;
+  width: 90px;
+  margin: 10px 20px;
+  border: 2px solid #2a802a;
+  box-shadow: 2px 2px 1px gray;
+  background-color: #fff;
+  border-radius: 45px;
+  color: #2a802a;
+  font-size: 20px;
+}
+
+.Home__funcbox {
+  display: inline-block;
   width: 100%;
-  max-width: 450px;
-  animation: 450ms cubic-bezier(0,0,.21,1) scale_in_anim;
+  height: 100%;
+  position: relative;
+  margin-bottom: 10px;
 }
 
-.Home__gplay { text-align: center; }
+.Home__func:nth-child(odd) {
+  background-color: #2a802a;
+  color: #fff;
+}
+
+.Home__funcbox svg {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}
+
+.Home__funcbox + div {
+  font-family: 'Caveat';
+
+  color: #2a802a;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+
+.Home p {
+  padding: 0px 10px 20px 10px;
+  line-height: 27px;
+  margin: 0 auto;
+}
+
 .Home__gplay img {
-  max-width: 300px;
+  max-width: 200px;
   width: 100%;
+  margin: -10px;
 }
 
 .Home__ecka {
   text-align: center;
-  padding: 15px 0px;
+  display: inline-block;
   font-family: 'Roboto', sans-serif;
-}
-
-.Home__ecka p {
-  text-align: justify;
-  line-height: 20px;
-  padding-top: 10px;
 }
 
 .Home__ecka .Ecko {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 25px;
   border: 1px solid white;
+}
+
+
+  .Home__container--first p {
+    padding-bottom: 5px;
+  }
+
+@media only screen and (max-width: 799px) {
+  .Home__container--first {
+    font-size: 100%;
+  }
+
+  .Home__funcList {
+    padding: 0 0 15px 0;
+  }
+
+  .Home__func {
+    height: 70px;
+    width: 70px;
+    font-size: 16px;
+    margin: 20px 15px;
+  }
 }

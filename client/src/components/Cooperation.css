@@ -1,9 +1,6 @@
-body[data-page="/cooperation"] { background-color: #3cb73c;}
-
 .Cooperation {
   font-family: 'Roboto', sans-serif;
   margin: 10px;
-  color: white;
 }
 
 .Cooperation > h2 {
@@ -22,6 +19,5 @@ body[data-page="/cooperation"] { background-color: #3cb73c;}
 }
 
 .Cooperation__link {
-  color: white;
   text-decoration: none;
 }

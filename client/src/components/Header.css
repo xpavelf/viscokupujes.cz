@@ -1,0 +1,78 @@
+.Header__homeLink, .Header__sideNavLink {
+  display: none;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .Header {
+    position: relative;
+    background-color: #2a802a;
+    height: 340px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .Header__sideNavLink {
+    border: 2px solid white;
+    border-radius: 3px;
+    padding: 3px;
+    margin-top: 5px;
+    opacity: .7;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Caveat';
+    line-height: 0;
+    position: absolute;
+    top: -60px;
+  }
+
+
+  .Header__homeLink {
+    position: relative;
+    display: block;
+    color: white;
+    text-decoration: none;
+  }
+
+  .Header__title {
+    padding-top: 60px;
+    font-family: 'Luckiest Guy';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+    font-size: 65px;
+  }
+
+
+  .Header__titleE {
+    color: red;
+    font-size: 135%;
+  }
+
+  .Header__title svg {
+    vertical-align: top;
+    margin-right: 20px;
+  }
+
+  .Header__subtitle {
+    text-align: center;
+    padding: 20px 0px;
+    font-family: 'Roboto';
+    opacity: .8;
+    font-size: 27px;
+  }
+
+  .Header:before {
+    content: '';
+    opacity: .1;
+    background-image: url("/desktop-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+  }
+}

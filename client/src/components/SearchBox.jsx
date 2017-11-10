@@ -71,7 +71,8 @@ export default class SearchBox extends React.Component {
   }
 
   onFocus = (evt) => {
-    evt.target.parentNode.scrollIntoView()
+    let el = evt.target.parentNode
+    _smooth_scroll(el, 300)
   }
 
   render() {

@@ -10,63 +10,12 @@
   position: relative;
   height: 65px;
   width: 65px;
-  background-image: url("../icons/allergens.png");
-  background-repeat: no-repeat;
   display: inline-block;
+  text-align: center;
 }
 
-.Allergen--2 {
-  background-position: 0px 0;
-}
-
-.Allergen--11 {
-  background-position: -65px 0;
-}
-
-.Allergen--8 {
-  background-position: -130px 0;
-}
-
-.Allergen--1 {
-  background-position: -195px 0;
-}
-
-.Allergen--3 {
-  background-position: -260px 0;
-}
-
-.Allergen--4 {
-  background-position: -325px 0;
-}
-
-.Allergen--14 {
-  background-position: -390px 0;
-}
-
-.Allergen--10 {
-  background-position: 0px -65px;
-}
-
-.Allergen--9 {
-  background-position: -65px -65px;
-}
-
-.Allergen--5 {
-  background-position: -130px -65px;
-}
-
-.Allergen--7 {
-  background-position: -195px -65px;
-}
-
-.Allergen--12 {
-  background-position: -260px -65px;
-}
-
-.Allergen--6 {
-  background-position: -325px -65px;
-}
-
-.Allergen--13 {
-  background-position: -390px -65px;
+.Allergen svg {
+  margin-top: 5px;
+  width: 45px;
+  height: 45px;
 }

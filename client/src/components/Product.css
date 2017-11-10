@@ -1,6 +1,6 @@
 .Product {
-  padding: 10px 0;
   font-family: "Roboto", sans-serif;
+  margin-top: 10px;
 }
 
 .AllergenList {
@@ -96,4 +96,10 @@
 .Product__nutrition-facts caption div {
   font-size: 12px;
   padding-top: 10px;
+}
+
+@media only screen and (min-width: 800px) {
+  .Product {
+    margin: 20px 10px 10px 10px;
+  }
 }
