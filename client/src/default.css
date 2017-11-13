@@ -18,7 +18,7 @@
   font-family: 'Luckiest Guy';
   font-style: normal;
   font-weight: 400;
-  src: url("./fonts/Luckiest-Guy.ttf");
+  src: local('Luckiest Guy Regular'), local('LuckiestGuy-Regular'), url("./fonts/LuckiestGuy-Regular.ttf");
 }
 
 @font-face {

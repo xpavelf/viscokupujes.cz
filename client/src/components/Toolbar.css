@@ -16,15 +16,7 @@
 }
 
 .Toolbar__homeLink {
-  font-size: 26px;
-  line-height: 45px;
-  font-family: 'Luckiest Guy';
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 1px black;
-  text-decoration: none;
   color: white;
-  background-color: transparent;
 }
 
 .Toolbar__sideNavLink {
@@ -50,7 +42,7 @@
 .Toolbar__title {
   font-size: 30px;
   color: white;
-  margin: 0 30px;
+  margin: 0 45px;
   height: 45px;
   text-align: center;
   text-shadow: 1px 1px 3px #222;

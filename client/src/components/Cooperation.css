@@ -1,6 +1,60 @@
 .Cooperation {
   font-family: 'Roboto', sans-serif;
   margin: 10px;
+  line-height: 27px;
+  color: #444;
+}
+
+.Cooperation__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.Cooperation__Pack {
+  margin-top: 10px;
+  text-align: center;
+  vertical-align: middle;
+  width: 235px;
+  border: 2px solid #2a802a;
+  position: relative;
+  color: #2a802a;
+}
+
+.Cooperation__Pack__title {
+  padding: 15px 0;
+  font-family: 'Caveat';
+  font-size: 30px;
+  background-color: #2a802a;
+  color: white;
+}
+
+.Cooperation__Pack__desc {
+  text-align: left;
+  margin: 30px 20px 50px 30px;
+}
+
+.Cooperation__Pack__desc li:before {
+  content: '+';
+  display: inline-block;
+  position: absolute;
+  left: -15px;
+}
+
+.Cooperation__Pack__desc li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.Cooperation__Pack__pricing {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.Cooperation__Pack__price {
+  font-weight: bold;
 }
 
 .Cooperation > h2 {
@@ -12,6 +66,7 @@
   padding: 20px 0px 5px 0px;
   font-size: 24px;
   font-variant: small-caps;
+  color: #2a802a;
 }
 .Cooperation > p {
   text-align: justify;

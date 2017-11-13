@@ -70,7 +70,6 @@ export default class Home extends React.Component {
               }
               <li>
                 Vyhledej produkt nebo naskenuj čárový kód.
-                <svg width="30" height="30" style={{ verticalAlign: "bottom", margin: "0 10px" }}><use xlinkHref={`${imgSprite}#camera`}></use></svg><br />
                 Pokud výrobek nenajdeš mezi 24 000 produkty, můžeš nám ho jednoduše přidat do databáze.
               </li>
               <li>
@@ -105,12 +104,12 @@ export default class Home extends React.Component {
             <h2 className="Home__subtitle">Kdo jsme?</h2>
             <p>
               Jsme dva celkem normální lidi a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.
-              <div className="Home__aboutUs">
-                <div><img src={pImg} alt="Pavel" /><div>Pavel</div></div>
-                <div><img src={jImg} alt="Jana" /><div>Jana</div></div>
-              </div>
             </p>
-            
+            <div className="Home__aboutUs">
+              <div><img src={pImg} alt="Pavel" /><div>Pavel</div></div>
+              <div><img src={jImg} alt="Jana" /><div>Jana</div></div>
+            </div>
+
             <p>Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? neustále vyvíjíme a rozšiřujeme dle přání uživatelů. Máte-li tedy jakýkoliv návrh, neváhejte nás kontaktovat. Můžete se tak podílet na zlepšování této aplikace.</p>
             <p>Víš co kupuješ? vyvíjíme ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
           </div>

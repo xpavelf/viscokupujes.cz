@@ -7,17 +7,42 @@ export default function() {
   return (
     <div className="Cooperation">
       <h1>Spolupráce</h1>
-      <h2>Nenašli jste hledaný výrobek?</h2>
-      <p>Pokud máte zájem o rozšíření naší databáze o vaše výrobky či vám u nás chybí oblíbené produkty, stačí nám zaslat následující informace na <a className="Cooperation__link" href="mailto:viscokupujes@gmail.com">viscokupujes@gmail.com</a><br />
-        <br />- název výrobku
-        <br />- název výrobce či značky
-        <br />- EAN kód a jeho foto
-        <br />- složení výrobku a jeho foto
-      </p>
-      <h2>Jste firma?</h2>
-      <p>Pokud vyrábíte nebo prodáváte zdravé potraviny, nabízíme Vám možnost zadat výrobky do naší databáze zdarma. Nebráníme se dalším formám spolupráce, například možnost propagace vaší značky formou bannerové reklamy a další dle domluvy.</p>
-      <h2>Jste nutriční terapeut či jiným stylem propagujete zdravý životní styl?</h2>
-      <p>Jsme otevření všem druhům spolupráce, můžete klidně něco navrhnout.</p>
+      <p>Naším cílem je propagovat výrobce nabízející zdravé produkty bez škodlivých éček. Proto nabízíme spolupráci firmám i jednotlivcům, kteří vyrábí nebo prodávávají zdravé potraviny. Vyberte si balíček, který vám vyhovuje a neváhejte nás kontaktovat.</p>
+      <div className="Cooperation__container">
+        <div className="Cooperation__Pack">
+          <div className="Cooperation__Pack__title">FREE</div>
+          <ul className="Cooperation__Pack__desc">
+            <li>přidání výrobků do naší aplikace</li>
+          </ul>
+          <div className="Cooperation__Pack__pricing">
+            Cena: <span className="Cooperation__Pack__price">ZDARMA</span>
+          </div>
+        </div>
+
+        <div className="Cooperation__Pack">
+          <div className="Cooperation__Pack__title">MINI</div>
+          <ul className="Cooperation__Pack__desc">
+            <li>přidání výrobků do naší aplikace</li>
+            <li>umístění vašich produktů bez éček na první pozice zdravějších alternativ</li>
+          </ul>
+          <div className="Cooperation__Pack__pricing">
+            Cena: <span className="Cooperation__Pack__price">399 Kč / měsíc</span>
+          </div>
+        </div>
+
+        <div className="Cooperation__Pack">
+          <div className="Cooperation__Pack__title">TOP</div>
+          <ul className="Cooperation__Pack__desc">
+            <li>přidání výrobků do naší aplikace</li>
+            <li>umístění vašich produktů bez éček na první pozice zdravějších alternativ</li>
+            <li>propagace ve formě bannerové reklamy</li>
+          </ul>
+          <div className="Cooperation__Pack__pricing">
+            Cena: <span className="Cooperation__Pack__price">990 Kč / měsíc</span>
+          </div>
+        </div>
+      </div>
+
       <ContactBox />
     </div>
   )

@@ -36,16 +36,23 @@ export default class Toolbar extends React.Component {
 
   onCloseModal = () => this.setState({ showModal: false })
 
+  // workaround - if logo styled only as txt in css - chrome desktop vs android renders on different baseline in the block
+  __title = (
+    <svg xmlns="http://www.w3.org/2000/svg" width="230" height="40" viewBox="0 0 230 40">
+      <text fill="currentColor" x="0" y="35" fontFamily="Luckiest Guy" fontSize="26">
+        VÍŠ CO KUPUJUJ<tspan fill="red" fontSize="35">E</tspan>Š?
+      </text>
+    </svg>
+  )
+
   render() {
     return (
-      <header className="Toolbar">
+      <div className="Toolbar">
         <h1 className="Toolbar__title">
           <Link className="Toolbar__sideNavLink" to={ ({state: {sideNav: true}}) }>
             <svg width="30" height="30" style={{ color: "white" }}><use xlinkHref={`${imgSprite}#menu`}></use></svg>
           </Link>
-          <Link to="/" className="Toolbar__homeLink">
-            Víš co kupuj<span style={{ color: "red", fontSize: "135%" }}>E</span>š?
-          </Link>
+          <Link to="/" className="Toolbar__homeLink">{this.__title}</Link>
 
           { __APP_MODE__ === "mob"
             ? <button onClick={this.share} className="Toolbar__share">
@@ -69,7 +76,7 @@ export default class Toolbar extends React.Component {
           : null
         }
         <SearchBox />
-      </header>
+      </div>
     )
   }
 }
