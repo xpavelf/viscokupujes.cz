@@ -3,8 +3,13 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { getRecipes } from "../actions/Recipe"
 import "./Recipes.css"
+const ITEMS_ON_PAGE = 3
 
 const _shuffle = (arrSrc) => {
+  if (!arrSrc) {
+    return
+  }
+
   let arr = arrSrc.slice()
   let ctr = arr.length, temp, index
 
@@ -33,6 +38,26 @@ export default class Recipes extends React.Component {
   }
 
   toggle = () => this.setState({ open: !this.state.open })
+
+  setPage = (delta) => {
+    let page = this.state.page + delta
+    if (page < 0) {
+      page = this.state.pages - 1
+    }
+
+    page = page % this.state.pages
+
+    this.setState({ page })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let pages = nextProps.data.recipes ? Math.ceil(nextProps.data.recipes.length / ITEMS_ON_PAGE) : 0
+    this.setState({
+      recipes: _shuffle(nextProps.data.recipes),
+      page: 0,
+      pages
+    })
+  }
 
   onClick = (evt) => {
     let url = evt.currentTarget.href
@@ -71,7 +96,7 @@ export default class Recipes extends React.Component {
       )
     }
 
-    return ((this.props.data.recipes && this.props.data.bc === this.props.bc)
+    return ((this.state.recipes && this.props.data.bc === this.props.bc)
       ?
         <div className={`Recipes${this.state.open ? " Recipes--open": ""}`}>
           <div className="Recipes__banner" onClick={this.toggle}>
@@ -79,7 +104,11 @@ export default class Recipes extends React.Component {
             <div className="Recipes__bannerExtra">obsahující tento produkt</div>
           </div>
           <ul className="Recipes__list">
-            { _shuffle(this.props.data.recipes).slice(0, 3).map(this.recipeTmpl) }
+            { this.state.recipes.slice(this.state.page * ITEMS_ON_PAGE, this.state.page * ITEMS_ON_PAGE + ITEMS_ON_PAGE).map(this.recipeTmpl) }
+            <li style={{ textAlign: "center" }}>
+              <button className="Recipes__actionBtn" onClick={() => this.setPage(-1)}>&#x1f868;</button>
+              <button className="Recipes__actionBtn" onClick={() => this.setPage(1)}>&#x1f86a;</button>
+            </li>
           </ul>
         </div>
       : <div className="Recipes Recipes--empty">

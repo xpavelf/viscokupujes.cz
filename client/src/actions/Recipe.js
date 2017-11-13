@@ -6,7 +6,7 @@ export function getRecipes(bc) {
   return ({
     type: GET_RECIPES,
     payload: {
-      promise: fetch(`${rootUrl}/api/recipes/?page=1&perPage=10&ean=${bc}`).then(resp => resp.json()),
+      promise: fetch(`${rootUrl}/api/recipes/?page=1&perPage=15&ean=${bc}`).then(resp => resp.json()),
       data: { bc }
     }
   })
