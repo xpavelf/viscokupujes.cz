@@ -21,6 +21,11 @@ export default class Badges extends React.Component {
 
   getModalE() {
     let e = this.state.selectedE
+
+    if (!e.names) {
+      return null
+    }
+
     let desc = e.desc || (e.rating === 0 && "Není škodlivé pro lidský organismus.")
     return (
       <Modal onClose={this.selectE.bind(this, null)}>
