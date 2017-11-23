@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { getRecipes } from "../actions/Recipe"
+import imgSprite from "../icons/sprite.svg"
 import "./Recipes.css"
 const ITEMS_ON_PAGE = 3
 
@@ -106,8 +107,12 @@ export default class Recipes extends React.Component {
           <ul className="Recipes__list">
             { this.state.recipes.slice(this.state.page * ITEMS_ON_PAGE, this.state.page * ITEMS_ON_PAGE + ITEMS_ON_PAGE).map(this.recipeTmpl) }
             <li style={{ textAlign: "center" }}>
-              <button className="Recipes__actionBtn" onClick={() => this.setPage(-1)}>&#x1f868;</button>
-              <button className="Recipes__actionBtn" onClick={() => this.setPage(1)}>&#x1f86a;</button>
+              <button className="Recipes__actionBtn" style={{ paddingRight: 10 }} onClick={() => this.setPage(-1)}>
+                <svg width="30" height="30" ><use xlinkHref={`${imgSprite}#arrow-chevron-left`}></use></svg>
+              </button>
+              <button className="Recipes__actionBtn" style={{ paddingLeft: 10 }} onClick={() => this.setPage(1)}>
+                <svg width="30" height="30"><use xlinkHref={`${imgSprite}#arrow-chevron-right`}></use></svg>
+              </button>
             </li>
           </ul>
         </div>
