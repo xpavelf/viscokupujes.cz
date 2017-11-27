@@ -42,6 +42,12 @@
   opacity: .5;
 }
 
+.VisCoKupujesBtn--small {
+  padding: 0 15px;
+  font-size: 14px;
+  height: 35px;
+}
+
 .VisCoKupujesBtn--blue {
   background-color: #2196F3;
 }
