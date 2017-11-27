@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import throttle from "lodash/throttle"
 import debounce from "lodash/debounce"
+import { scrollToElement } from "../utils/scroll"
 import { withRouter } from "react-router-dom"
 import { searchProduct, resetSearchProduct, resetActiveProduct } from "../actions/Product"
 import imgProgressbar from "../icons/progressbar.gif"
@@ -72,7 +73,7 @@ export default class SearchBox extends React.Component {
 
   onFocus = (evt) => {
     let el = evt.target.parentNode
-    _smooth_scroll(el, 300)
+    scrollToElement(el, 300)
   }
 
   render() {
