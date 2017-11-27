@@ -12,7 +12,7 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 const rootUrl = (__APP_MODE__ === "mob" ? 'https://viscokupujes.cz' : '')
 
 const __checkConnection = () => {
-  if (__APP_MODE__ === "mob" && navigator.connection.type === "none") {
+  if (__APP_MODE__ === "mob" && navigator.onLine !== undefined && navigator.onLine === false) {
     return (dispatch) => dispatch(showMessage({
       title: "Vaše zařízení je offline",
       text: "Připojte zařízení k síti a zkuste to znovu."
