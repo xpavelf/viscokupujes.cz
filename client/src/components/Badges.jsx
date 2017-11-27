@@ -4,12 +4,16 @@ import Modal from "./common/Modal"
 import Ecko from "./common/Ecko"
 import Badge from "./Badge"
 import "./Badges.css"
+import imgSprite from "../icons/sprite.svg"
+import { withRouter } from "react-router-dom"
+import Btn from "./common/Button"
 
 const badgesTxt = {
   po: ["Palmový olej", <p>Palmový olej se získává z plodů palmy olejné. Kvůli rychlému rozšiřování palmových plantáží se kácí deštné pralesy, čímž přicházejí o svůj domov nejen lidé, ale také kriticky ohrožené druhy zvířat jako orangutani, tygři, sloni a nosorožci. Nejhorší je situace v Indonésii a Malajsii, ale plantáže se vysazují také v Africe a Jižní Americe.<br /><br />A jak je to s jeho škodlivostí?<br />Je vnímán jako nezdravý tuk z důvodu vyššího podílu nasycených mastných kyselin, které zvyšují hladinu cholesterolu v krvi. Jeho škodlivost zdraví je ovšem relativní. Zjednodušeně řečeno, pokud nahradíte slunečnicový olej palmovým, tak si zvýšíte podíl nasycených mastných kyselin a cholesterol se vám tak bude zvyšovat. Pokud ale palmovým olejem nahradíte živočišné tuky, které mají vysoký podíl nasycených mastných kyselin, tak se vám bude cholesterol snižovat. Důležité je, aby ve stravě převažovaly tuky s vyšším podílem nenasycených mastných kyselin. Pokud tomu tak je, není třeba se palmového tuku ze zdravotního hlediska obávat.</p>],
   gf: ["Glukózo-fruktózový sirup", <p>Glukózo-fruktózový sirup je levnou náhražkou cukru. Vyrábí se z kukuřice nebo pšenice a oproti cukru je více než dvakrát sladší a obsahuje více fruktózy než glukózy. Glukóza se mění v tělě na tuk jen z 5%, ale fruktóza rovnou ze 40%. Glukózo-fruktózový sirup tak může za nebezpečné ukládání tuku kolem břišních orgánů a v cévách. Způsobuje tak obezitu, cukrovku a srdeční nemoci. Dokáže také stimulovat náš mozek tak, že vyvolává větší pocit hladu.</p>]
 }
 
+@withRouter
 export default class Badges extends React.Component {
 
   state = {
@@ -40,6 +44,11 @@ export default class Badges extends React.Component {
           }
         </div>
         {desc ? <div className="Badges__modal__content">{desc}</div> : null }
+        <Btn color="green" size="small" className="Badges__modal__bottomLink" onClick={() => this.props.history.push("/ecka")}>
+          <svg width="20" height="20"><use xlinkHref={`${imgSprite}#list`}></use></svg>
+          Přehled éček
+        </Btn>
+
       </Modal>
     )
   }

@@ -3,6 +3,19 @@
   font-weight: bold;
 }
 
+.Badges__modal__bottomLink {
+  margin: 20px auto 0px auto;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+}
+
+.Badges__modal__bottomLink svg {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 10px;
+}
+
 .Badges__modal__title > .Badges__modal__name,
 .Badges__modal__title > .Ecko,
 .Badges__modal__title > .Badge
