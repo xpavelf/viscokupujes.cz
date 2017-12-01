@@ -4,7 +4,7 @@ const FB_URL = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvisco
 const _handleClick = () => {
   if (window.plugins && window.plugins.socialsharing) {
     window.plugins.socialsharing.shareViaFacebook(
-      'Chceš jíst zdravě, ale nevyznáš se v éčkách? Najdi si éčka v potravinách a nekupuj zbytečnou chemii.',
+      'Získej během sekundy přehled o éčkách, alergenech a složení výrobku. Jednoduše a zdarma. Ušetříš tak spoustu času a peněz a uděláš něco pro své zdraví.',
       null,
       'https://play.google.com/store/apps/details?id=cz.viscokupujes.mnamka',
       null,

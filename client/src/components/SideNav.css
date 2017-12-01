@@ -1,6 +1,6 @@
 .SideNav__header {
   height: 150px;
-  background: url("../icons/banner-660x360.png") #3cb73c center center no-repeat;
+  background: url("../icons/banner-660x360.png") #2a802a center center no-repeat;
   background-size: contain;
   position: relative;
 }
@@ -14,7 +14,7 @@
 }
 
 .SideNav__title {
-  color: #2a802a;
+  color: #2a5b0b;
   position: absolute;
   bottom: 3px;
   right: 3px;

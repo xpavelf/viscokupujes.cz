@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
+  <style>
+    <![CDATA[
+      @font-face {
+        font-family: 'Luckiest Guy';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Luckiest Guy Regular'), local('LuckiestGuy-Regular'), url("../client/src/fonts/LuckiestGuy-Regular.ttf");
+      }
+
+      @font-face {
+        font-family: 'Oswald';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Oswald Regular'), local('Oswald-Regular');
+      }
+
+      text {
+        font-family: 'Luckiest Guy';
+        color: white;
+        font-size: 33px;
+      }
+
+      tspan {
+        font-size: 120%;
+        color: red;
+      }
+
+      .link {
+        font-size: 30px;
+        font-family: 'Oswald';
+      }
+    ]]>
+
+  </style>
+
+  <image class="bg" xlink:href="./bg.png" />
+
+  <rect x="0" y="0" width="272" height="272" stroke="black" fill="transparent"/>
+  <image x="90" y="95" width="90" height="90" xlink:href="./logo-wo-circle.svg" />
+  <text fill="currentColor" x="12" y="80">
+    VÍŠ CO KUPUJ<tspan>E</tspan>Š?
+  </text>
+  <text class="link" fill="currentColor" x="50" y="230">viscokupujes.cz</text>
+
+</svg>

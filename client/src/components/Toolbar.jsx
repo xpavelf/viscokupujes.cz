@@ -20,7 +20,7 @@ export default class Toolbar extends React.Component {
     let url = pr ? `https://viscokupujes.cz/product/${pr.id}` : "https://viscokupujes.cz"
     window.plugins.socialsharing.share(
       (pr ? `${pr.name}\n\n`: '') +
-      'Chceš jíst zdravě, ale nevyznáš se v éčkách? Najdi si éčka v potravinách a nekupuj zbytečnou chemii.',
+      'Získej během sekundy přehled o éčkách, alergenech a složení výrobku. Jednoduše a zdarma. Ušetříš tak spoustu času a peněz a uděláš něco pro své zdraví.',
       'viscokupujes.cz',
       'https://viscokupujes.cz/banner-256x256.png',
       url)
@@ -39,8 +39,8 @@ export default class Toolbar extends React.Component {
   // workaround - if logo styled only as txt in css - chrome desktop vs android renders on different baseline in the block
   __title = (
     <svg xmlns="http://www.w3.org/2000/svg" width="230" height="40" viewBox="0 0 230 40">
-      <text fill="currentColor" x="0" y="35" fontFamily="Luckiest Guy" fontSize="26">
-        VÍŠ CO KUPUJUJ<tspan fill="red" fontSize="35">E</tspan>Š?
+      <text fill="currentColor" x="15" y="35" fontFamily="Luckiest Guy" fontSize="26">
+        VÍŠ CO KUPUJ<tspan fill="red" fontSize="35">E</tspan>Š?
       </text>
     </svg>
   )
