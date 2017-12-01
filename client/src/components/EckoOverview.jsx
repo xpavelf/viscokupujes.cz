@@ -1,5 +1,5 @@
 import React from "react"
-import { ecka } from "ecka"
+import ecka from "ecka/ecka.json"
 import { eComparator } from "../utils/eUtils"
 import EckoCard from "./EckoCard"
 import { remove as removeDiacritics } from "diacritics"
