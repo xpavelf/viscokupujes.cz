@@ -142,7 +142,7 @@
 
 .Home__funcbox + div {
   font-family: 'Caveat';
-
+  white-space: nowrap;
   color: #2a802a;
   text-transform: uppercase;
   width: 100%;
