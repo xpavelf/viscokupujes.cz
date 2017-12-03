@@ -106,14 +106,19 @@ export default class Recipes extends React.Component {
           </div>
           <ul className="Recipes__list">
             { this.state.recipes.slice(this.state.page * ITEMS_ON_PAGE, this.state.page * ITEMS_ON_PAGE + ITEMS_ON_PAGE).map(this.recipeTmpl) }
-            <li style={{ textAlign: "center" }}>
-              <button className="Recipes__actionBtn" style={{ paddingRight: 10 }} onClick={() => this.setPage(-1)}>
-                <svg width="30" height="30" ><use xlinkHref={`${imgSprite}#arrow-chevron-left`}></use></svg>
-              </button>
-              <button className="Recipes__actionBtn" style={{ paddingLeft: 10 }} onClick={() => this.setPage(1)}>
-                <svg width="30" height="30"><use xlinkHref={`${imgSprite}#arrow-chevron-right`}></use></svg>
-              </button>
-            </li>
+            {
+              this.state.recipes.length > ITEMS_ON_PAGE
+                ? <li style={{ textAlign: "center" }}>
+                    <button className="Recipes__actionBtn" style={{ paddingRight: 10 }} onClick={() => this.setPage(-1)}>
+                      <svg width="30" height="30" ><use xlinkHref={`${imgSprite}#arrow-chevron-left`}></use></svg>
+                    </button>
+                    <button className="Recipes__actionBtn" style={{ paddingLeft: 10 }} onClick={() => this.setPage(1)}>
+                      <svg width="30" height="30"><use xlinkHref={`${imgSprite}#arrow-chevron-right`}></use></svg>
+                    </button>
+                  </li>
+                : null
+            }
+
           </ul>
         </div>
       : <div className="Recipes Recipes--empty">

@@ -189,7 +189,7 @@ app.post("/api/get-info", (req, res) => {
 
 // TODO: REMOVE
 // app.get("/api/recipes/", (req, res) => {
-//   setTimeout(() => res.sendFile(__dirname + "/mock-recipes.json"), 3000)
+//   setTimeout(() => res.sendFile(__dirname + "/mock-recipes.json"), 500)
 // })
 
 // FIXME
