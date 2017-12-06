@@ -93,6 +93,14 @@ export default class Home extends React.Component {
 
         <div className="Home__bgblock Home__bgblock--white">
           <div className="Home__container">
+            { __APP_MODE__ !== "mob"
+              ? <div style={{ maxWidth: 600, margin: "35px auto 10px auto", textAlign: "center" }}>
+                  <div className="Home__video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/l_qApM2nKCY?rel=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                  </div>
+                </div>
+              : null
+            }
             <h2 className="Home__subtitle">Proč tato aplikace vznikla?</h2>
             <p>Zdravě chceme jíst asi všichni, ale ne každý má čas na hledání všech éček ve složení výrobku. Ne všechny potraviny jsou plné éček. A také ne všechna éčka jsou škodlivá. Ale kdo se v tom má vyznat, když jsou jich stovky. Navíc výrobci nemají povinnost všechny látky označovat písmenem E, takže spoustu z nich najdeme pod různými názvy a netušíme, co znamenají.</p>
             <p>Zdraví máme jen jedno a proto aplikaci Víš co kupuješ? nabízíme všem zadarmo. Chceme všem usnadnit výběr potravin a zlepšit tak náš životní styl v Česku. Proto je našim cílem také podporovat firmy vyrábějící zdravé potraviny bez chemie.</p>
