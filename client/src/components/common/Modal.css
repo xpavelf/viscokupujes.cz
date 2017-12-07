@@ -1,6 +1,6 @@
 @keyframes VisCoKupujesModalSlide {
   0% { top: -10%; opacity: .5 }
-  100% { top: 15%; opacity: 1 }
+  100% { top: 10%; opacity: 1 }
 }
 
 .VisCoKupujesModal:before {
@@ -17,12 +17,12 @@
 }
 
 .VisCoKupujesModal__main {
-  position: absolute;
+  position: fixed;
   background-color: white;
   border: 3px solid gray;
   z-index: 21;
   left: 5%;
-  top: 15%;
+  top: 10%;
   width: 90%;
   padding: 20px 10px 10px 10px;
   animation: VisCoKupujesModalSlide 500ms ease;
