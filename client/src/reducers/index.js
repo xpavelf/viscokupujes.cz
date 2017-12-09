@@ -4,7 +4,7 @@ import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
   REPORT_MISTAKE } from "../actions/Product"
 
 import { GET_RECIPES } from "../actions/Recipe"
-import { SHOW_MESSAGE } from "../actions/Message"
+import { SHOW_MESSAGE, ERROR_MESSAGE } from "../actions/Message"
 
 export const INITIAL_STATE = {
   recipes: {  bc: null, recipes: null, err: null, pending: false },
@@ -25,9 +25,10 @@ export default function(state=INITIAL_STATE, action) {
       return { ...state, searchProduct: INITIAL_STATE.searchProduct }
     case `${SEARCH_PRODUCT}_PENDING`:
       return { ...state, searchProduct: { products: null, err: null, pending: true } }
-
     case `${SEARCH_PRODUCT}_FULFILLED`:
       return { ...state, searchProduct: { products: action.payload, err: null, pending: false } }
+    case `${SEARCH_PRODUCT}_REJECTED`:
+      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
 
     case GET_PRODUCT_BY_ID_RESET:
       return { ...state, activeProduct: INITIAL_STATE.activeProduct }
@@ -39,6 +40,8 @@ export default function(state=INITIAL_STATE, action) {
         activeProduct: { product: action.payload, err: null, pending: false },
         searchHistory: [action.payload, ...state.searchHistory.filter(h => h.id !== action.payload.id)].slice(0, SEARCH_HISTORY_LIMIT)
       }
+    case `${GET_PRODUCT_BY_ID}_REJECTED`:
+      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
 
     case `${GET_RECIPES}_PENDING`:
       return { ...state, recipes: { ...INITIAL_STATE.recipes, bc: action.payload.bc, pending: true }}
@@ -47,14 +50,17 @@ export default function(state=INITIAL_STATE, action) {
 
     case `${REPORT_MISTAKE}_PENDING`:
       return { ...state, report: { err: null, pending: true } }
-
     case `${REPORT_MISTAKE}_FULFILLED`:
       return { ...state, report: { err: null, pending: false } }
+    case `${REPORT_MISTAKE}_REJECTED`:
+      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
 
     case `${GET_PRODUCT_BY_BC}_PENDING`:
       return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: action.payload, pending: true } }
     case `${GET_PRODUCT_BY_BC}_FULFILLED`:
       return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: state.scannedProduct.bc, product: action.payload } }
+    case `${GET_PRODUCT_BY_BC}_REJECTED`:
+      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
 
     case SHOW_MESSAGE:
       return { ...state, messages: state.messages.concat(action.payload) }

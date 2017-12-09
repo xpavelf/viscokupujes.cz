@@ -96,7 +96,7 @@ export default class Home extends React.Component {
             { __APP_MODE__ !== "mob"
               ? <div style={{ maxWidth: 600, margin: "35px auto 10px auto", textAlign: "center" }}>
                   <div className="Home__video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/l_qApM2nKCY?rel=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/l_qApM2nKCY?rel=0" frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
                   </div>
                 </div>
               : null
