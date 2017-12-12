@@ -8,7 +8,9 @@ export const REPORT_MISTAKE = "REPORT_MISTAKE"
 export const ADD_PRODUCT = "ADD_PRODUCT"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 
-const rootUrl = (__APP_MODE__ === "mob" ? 'https://viscokupujes.cz' : '')
+const URL_ORIGIN = 'https://viscokupujes.cz'
+
+const rootUrl = (__APP_MODE__ === "mob" ? URL_ORIGIN : '')
 
 export function updateProduct(pr) {
   return ({
@@ -60,9 +62,10 @@ export function getProductByBc(bc) {
   })
 }
 
-export function reportMistake(msg, pr) {
+export function reportMistake(msg, email, pr) {
   let p = Object.assign({}, pr, {promProducts: null})
-  let text = msg + '\n=======================\n' + JSON.stringify(p)
+  let e = email ? ( '\n' + email ) : ''
+  let text = msg + e + `\n${URL_ORIGIN}/product/${p.id}\n=======================\n` + JSON.stringify(p)
   return ({
     type: REPORT_MISTAKE,
     payload: fetch(

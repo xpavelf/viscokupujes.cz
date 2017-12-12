@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="20000115" id="cz.viscokupujes.mnamka" version="1.1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="20000116" id="cz.viscokupujes.mnamka" version="1.1.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Víš Co Kupuješ?</name>
     <description>Chceš jíst zdravě, ale nevyznáš se v éčkách?</description>
     <author email="viscokupujes@gmail.com" href="https://viscokupujes.cz">goBANANA</author>

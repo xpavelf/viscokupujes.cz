@@ -23,7 +23,7 @@
   font-size: 12px;
 }
 
-.ReportMistake__description {
+.ReportMistake__description, .ReportMistake__email {
   resize: none;
   border: none;
   border-bottom: 1px solid #9e9e9e;
@@ -32,4 +32,16 @@
   max-width: 400px;
   height: 90px;
   margin: 20px auto;
+  padding: 10px;
+}
+
+.ReportMistake label {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.ReportMistake__email {
+  height: auto;
+  max-width: 200px;
+  margin-top: 5px;
 }

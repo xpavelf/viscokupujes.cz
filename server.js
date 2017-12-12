@@ -107,7 +107,8 @@ app.put("/api/add-product", (req, res) => {
 
 app.post("/api/report", (req, res) => {
   let d = new Date()
-  fs.appendFile(`${__dirname}/reports/reported-mistakes.txt`, "\n\n" + d + "\n" + req.body, (err) => {
+  let dstr = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`
+  fs.appendFile(`${__dirname}/reports/reported-mistakes.txt`, "\n\n" + dstr + "\n" + req.body, (err) => {
     if (err) throw err
   })
   res.send()

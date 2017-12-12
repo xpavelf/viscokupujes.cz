@@ -20,8 +20,8 @@ export default class ReportMistake extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    if (this.state.open) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.open && !prevState.open) {
       this.textArea.focus()
     }
   }
@@ -35,7 +35,7 @@ export default class ReportMistake extends React.Component {
     this.toggle()
   }
 
-  change = (e) => this.setState({ msg: e.target.value.trim() })
+  change = (key, e) => this.setState({ [key]: e.target.value.trim() })
 
   submit = (e) => {
     e.preventDefault()
@@ -47,7 +47,7 @@ export default class ReportMistake extends React.Component {
 
   send = debounce(() => {
     this.toggle()
-    this.props.dispatch(reportMistake(this.state.msg, this.props.product))
+    this.props.dispatch(reportMistake(this.state.msg, this.state.email, this.props.product))
   }, 3000, {'leading': true, 'trailing': false })
 
 
@@ -84,8 +84,10 @@ export default class ReportMistake extends React.Component {
           <div>Našel jsi nějakou chybu?</div>
         </button>
         <form className="ReportMistake__content" onSubmit={this.submit}>
-          <textarea ref={ta => this.textArea = ta} className="ReportMistake__description" onChange={this.change}></textarea>
-          <Btn color="red">Odeslat</Btn>
+          <textarea ref={ta => this.textArea = ta} className="ReportMistake__description" onChange={this.change.bind(this, 'msg')}></textarea>
+          <label htmlFor="email">Zde můžeš uvést email,<br/>kde Tě můžeme kontaktovat</label>
+          <input id="email" type="email" className="ReportMistake__email" onChange={this.change.bind(this, 'email')}/>
+          <Btn disabled={!this.state.msg} color="red">Odeslat</Btn>
           <Btn type="reset" onClick={this.storno}>Storno</Btn>
         </form>
       </div>
