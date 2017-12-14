@@ -21,13 +21,7 @@ const router = express.Router()
 //   setTimeout(() => res.sendFile(__dirname + "/mock-recipes.json"), 500)
 // })
 
-// FIXME
-app.get("/cooperation", (req, res) => res.sendFile(__dirname + "/www/index.html"))
-app.get("/product/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
-app.get("/search-history", (req, res) => res.sendFile(__dirname + "/www/index.html"))
-app.get("/add-product", (req, res) => res.sendFile(__dirname + "/www/index.html"))
-app.get("/add-product/entry", (req, res) => res.sendFile(__dirname + "/www/index.html"))
-app.get("/ecka", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {

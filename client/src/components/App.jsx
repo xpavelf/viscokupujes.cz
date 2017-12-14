@@ -63,6 +63,7 @@ export default class App extends React.Component {
             <Route path="/ecka" component={EckoOverview} />
             <Route path="/search-history" component={SearchHistory} />
             <Route path="/cooperation" component={Cooperation} />
+            <Redirect from="/*" to="/" />
           </Switch>
         </div>
         <MessageBus />
