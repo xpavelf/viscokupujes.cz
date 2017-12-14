@@ -37,8 +37,7 @@
         "ecka": "0.0.4",
         "es6-promise-plugin": "^4.1.1",
         "express": "^4.16.1",
-        "phonegap-plugin-barcodescanner": "^6.0.8",
-        "winston": "^2.3.1"
+        "phonegap-plugin-barcodescanner": "^6.0.8"
     },
     "cordova": {
         "platforms": [
