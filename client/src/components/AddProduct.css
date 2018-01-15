@@ -1,42 +1,30 @@
 .AddProduct {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
+  background-color: #e0ffe0;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  position: relative;
 }
 
-.AddProduct__box {
-  display: inline-block;
-  margin-top: 40px;
-  font-size: 18px;
-  line-height: 22px;
-}
-
-.AddProduct__wrapper {
-  padding: 0px 20px 20px 20px;
-  background: #e0ffe0;
-}
-
-.AddProduct p {
-  padding: 20px 0px;
-}
-
-.AddProduct__ingredients {
-  resize: none;
-  border: none;
-  border-bottom: 1px solid #9e9e9e;
-  display: block;
-  width: 90%;
-  max-width: 400px;
-  height: 90px;
-  margin: 0px auto 20px auto;
-}
-
-.AddProduct__actionBtn--icon {
-  padding-left: 60px;
-  margin-top: 30px;
-}
-
-.AddProduct__actionBtn--icon svg {
+.AddProduct__page {
+  font-size: 20px;
   position: absolute;
-  top: calc(50% - 17px);
-  left: 20px;
+  top: 10px;
+  right: 10px;
+  color: #555;
+  font-family: 'Caveat', sans-serif;
+}
+
+.AddProduct__finished {
+  text-align: center;
+}
+
+.AddProduct__finished p {
+  font-family: 'Caveat', sans-serif;
+  font-size: 30px;
+  padding: 20px 0;
+}
+
+.AddProduct__finished p + p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }

@@ -12,6 +12,7 @@
   width: 65px;
   display: inline-block;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .Allergen svg {

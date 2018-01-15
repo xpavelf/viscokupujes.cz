@@ -23,6 +23,10 @@ export default class Badges extends React.Component {
   selectE = (e) => this.setState({ selectedE: e })
   selectB = (b) => this.setState({ selectedB: b })
 
+  componentWillReceiveProps(props) {
+    this.setState({ ecka: props.ecka.sort(eComparator) })
+  }
+
   getModalE() {
     let e = this.state.selectedE
 
@@ -44,10 +48,13 @@ export default class Badges extends React.Component {
           }
         </div>
         {desc ? <div className="Badges__modal__content">{desc}</div> : null }
-        <Btn color="green" size="small" className="Badges__modal__bottomLink" onClick={() => this.props.history.push("/ecka")}>
-          <svg width="20" height="20"><use xlinkHref={`${imgSprite}#list`}></use></svg>
-          Přehled éček
-        </Btn>
+        { this.props.nojumps === true
+          ? null
+          : <Btn color="green" size="small" className="Badges__modal__bottomLink" onClick={() => this.props.history.push("/ecka")}>
+              <svg width="20" height="20"><use xlinkHref={`${imgSprite}#list`}></use></svg>
+              Přehled éček
+            </Btn>
+        }
 
       </Modal>
     )
@@ -82,7 +89,7 @@ export default class Badges extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="Badges">
         { this.getEckaList() }
         { this.props.po ? <Badge onClick={this.selectB.bind(this, "po")} type="po" /> : null }
         { this.props.gf ? <Badge onClick={this.selectB.bind(this, "gf")}  type="gf" /> : null }

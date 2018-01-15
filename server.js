@@ -2,13 +2,13 @@ const http = require("http")
 const express = require("express")
 const compression = require("compression")
 const app = express()
-const routes = require('./routes')(app)
+const routes = require('./routes')
 const bodyParser = require("body-parser")
 
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json({ limit: '250kb' }))
-app.use(bodyParser.text({ limit: '250kb' }))
+app.use(bodyParser.json({ limit: '350kb' }))
+app.use(bodyParser.text({ limit: '350kb' }))
 app.use('/', express.static(`${__dirname}/www`))
 
 const port = process.env.PORT || process.env.NODE_PORT || 8989
@@ -21,7 +21,9 @@ const router = express.Router()
 //   setTimeout(() => res.sendFile(__dirname + "/mock-recipes.json"), 500)
 // })
 
+routes(app)
 app.get("/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+
 
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {

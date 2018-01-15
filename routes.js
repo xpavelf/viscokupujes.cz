@@ -49,6 +49,26 @@ module.exports = (app) => {
     return name ? arr_filter_with_map(products, predicateWithHits(name), limit) : products.slice(0, limit)
   }
 
+  app.post('/api/add-product-full', (req, res) => {
+    let data = JSON.parse(req.body)
+    let uid = parseInt(data.uid)
+    let bc = parseInt(data.bc)
+    let fn = `[${uid}]${bc}.json`
+    let out = {
+      ean: data.bc,
+      mainPic: data.mainPic,
+      ingPic: data.ingPic,
+      q: data.q,
+      ing: data.ing,
+      name: data.name,
+      producer: data.producer
+    }
+    fs.writeFile(`${__dirname}/user-products/${fn}`, JSON.stringify(out), (err) => {
+      if (err) throw err
+      res.send()
+    })
+  })
+
   app.post("/api/add-product", (req, res) => {
     let data = JSON.parse(req.body)
     let uid = parseInt(data.uid)

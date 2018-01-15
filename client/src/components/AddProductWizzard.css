@@ -1,0 +1,53 @@
+.AddProductWizzard {
+  text-align: center;
+  font-family: 'Caveat', sans-serif;
+  font-size: 30px;
+}
+
+.AddProductWizzard__infobox {
+  background-color: #f0fff0;
+  margin: 10px;
+  padding: 10px;
+}
+
+.AddProductWizzard__info {
+  max-width: 400px;
+  text-align: left;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding-bottom: 40px;
+}
+
+.AddProductWizzard__actionBtn--icon {
+  padding-left: 60px;
+  margin-top: 30px;
+}
+
+.AddProductWizzard__actionBtn--icon svg {
+  position: absolute;
+  top: calc(50% - 17px);
+  left: 20px;
+}
+
+
+.AddProductWizzard__input, .AddProductWizzard__ta {
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  display: block;
+  width: 90%;
+  max-width: 300px;
+  margin: 0px auto 45px auto;
+  padding: 10px;
+}
+
+.AddProductWizzard__ta {
+  height: 200px;
+}
+
+.AddProductWizzard label {
+  padding-bottom: 15px;
+  font-size: 32px;
+  display: inline-block;
+}
