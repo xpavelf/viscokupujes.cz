@@ -9,12 +9,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/xpavelf/zdravamnamka.cz.git"
+        "url": "git+https://github.com/xpavelf/viscokupujes.cz.git"
     },
     "bugs": {
-        "url": "https://github.com/xpavelf/zdravamnamka.cz/issues"
+        "url": "https://github.com/xpavelf/viscokupujes.cz/issues"
     },
-    "homepage": "https://github.com/xpavelf/zdravamnamka.cz#readme",
+    "homepage": "https://github.com/xpavelf/viscokupujes.cz#readme",
     "dependencies": {
         "alergeny": "0.0.3",
         "body-parser": "^1.18.2",
