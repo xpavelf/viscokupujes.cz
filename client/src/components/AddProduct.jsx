@@ -82,7 +82,7 @@ export default class AddProduct extends React.Component {
         { step === 0 ? <Step0 next={ () => { this.takePic("mainPic") } } /> : null }
         { step === 1 ? <Step1 q={this.state.q} name={this.state.name} producer={this.state.producer} prev={(st) => this.back(st)} next={ (st) => { this.next(); this.setState(st) } } /> : null }
         { step === 2 ? <Step2 prev={this.back} next={ () => { this.takePic("ingPic") } } /> : null }
-        { step === 3 ? <Step3 ing={this.state.ing} info={this.state.info} prev={(st) => this.back(st)} next={ (st) => { this.setState(st); this.save() } } /> : null }
+        { step === 3 ? <Step3 ing={this.state.ing} info={this.state.info} prev={(st) => this.back(st)} next={ (st) => this.setState(st, this.save) } /> : null }
 
       </div>
     )
