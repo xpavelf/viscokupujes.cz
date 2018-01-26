@@ -35,19 +35,20 @@ function _release {
 
   rm -rf ${OUT_APK_FOLDER}/*
   if (_isPluginInstalled $XWALK_PLUGIN_NAME) ; then
-    cordova build android --release -- --gradleArg=-PcdvBuildMultipleApks=true --gradleArg=-PcdvBuildArch=arm
     version=${ver}-xwalk
-    mv ${OUT_APK_FOLDER}/armv7/release/app-armv7-release-unsigned.apk ${OUT_APK_FOLDER}/release/app-release-unsigned.apk
+    cordova build android --release -- --gradleArg=-PcdvBuildMultipleApks=true --gradleArg=-PcdvBuildArch=arm
+    mv ${OUT_APK_FOLDER}/armv7/release/app-armv7-release-unsigned.apk ${OUT_APK_FOLDER}/app-release-unsigned.apk
   else
     version=${ver}4
-    cordova build android --release -- --minSdkVersion=21 --versionCode=${version}
+    cordova build android --release --gradleArg=-PcdvMinSdkVersion=21 -- --versionCode=${version}
+    mv ${OUT_APK_FOLDER}/release/app-release-unsigned.apk ${OUT_APK_FOLDER}/app-release-unsigned.apk
   fi
 
-  pushd ${OUT_APK_FOLDER}/release
+  pushd ${OUT_APK_FOLDER}
   zipalign -f 4 app-release-unsigned.apk "${APP_ID}-${version}-unsigned.aligned.apk"
   apksigner.bat sign --ks /d/dev/keys/my-release-key.jks --out "${APP_ID}-${version}.apk" "${APP_ID}-${version}-unsigned.aligned.apk"
   popd
-  mv "${OUT_APK_FOLDER}/release/${APP_ID}-${version}.apk" apk/
+  mv "${OUT_APK_FOLDER}/${APP_ID}-${version}.apk" apk/
 
 }
 
