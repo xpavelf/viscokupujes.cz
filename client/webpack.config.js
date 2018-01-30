@@ -25,7 +25,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules(?!\\alergeny)(?!\\ecka)/, loader: "babel-loader" },
+      { test: /\.jsx?$/, exclude: /node_modules(?!\\ecka)/, loader: "babel-loader" },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.(gif|png|woff|woff2|eot|ttf|svg|jpg)$/, loader: "file-loader?name=assets/[name]-[hash:6].[ext]&publicPath=dist/" }
     ]

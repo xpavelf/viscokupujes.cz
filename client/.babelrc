@@ -1,9 +1,6 @@
 {
-  "presets": ["react", "env"],
+  "presets": ["@babel/preset-react", "@babel/preset-env", "@babel/preset-stage-2"],
   "plugins": [
-    "transform-class-properties",
-    "transform-decorators-legacy",
-    "transform-object-rest-spread",
-    "transform-react-jsx"
+    "@babel/plugin-proposal-decorators"
   ]
 }
