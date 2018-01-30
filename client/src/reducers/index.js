@@ -3,6 +3,7 @@ import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
   GET_PRODUCT_BY_BC, GET_PRODUCT_BY_BC_RESET,
   REPORT_MISTAKE } from "../actions/Product"
 
+import { GET_USER_PRODUCT, APPROVE_USER_PRODUCT, REJECT_USER_PRODUCT } from "../actions/UserProduct"
 import { GET_RECIPES } from "../actions/Recipe"
 import { SHOW_MESSAGE, ERROR_MESSAGE } from "../actions/Message"
 
@@ -13,7 +14,8 @@ export const INITIAL_STATE = {
   searchHistory: [],
   scannedProduct: { bc: null, product: null, err: null, pending: false },
   messages: [],
-  report: { err: null, pending: false }
+  report: { err: null, pending: false },
+  userProduct: null
 }
 
 const SEARCH_HISTORY_LIMIT = 20
@@ -42,6 +44,13 @@ export default function(state=INITIAL_STATE, action) {
       }
     case `${GET_PRODUCT_BY_ID}_REJECTED`:
       return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
+
+    case `${GET_USER_PRODUCT}_FULFILLED`:
+      return { ...state, userProduct: action.payload }
+    case `${APPROVE_USER_PRODUCT}_FULFILLED`:
+      return { ...state, userProduct: { ...state.userProduct, review: 'approved' } }
+    case `${REJECT_USER_PRODUCT}_FULFILLED`:
+      return { ...state, userProduct: { ...state.userProduct, review: 'rejected' } }
 
     case `${GET_RECIPES}_PENDING`:
       return { ...state, recipes: { ...INITIAL_STATE.recipes, bc: action.payload.bc, pending: true }}

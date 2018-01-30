@@ -3,6 +3,7 @@ const express = require("express")
 const compression = require("compression")
 const app = express()
 const routes = require('./routes')
+const routes_userProducts = require('./routes-userProducts')
 const bodyParser = require("body-parser")
 
 app.use(compression())
@@ -22,6 +23,8 @@ const router = express.Router()
 // })
 
 routes(app)
+routes_userProducts(app)
+
 app.get("/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
 

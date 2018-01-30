@@ -9,6 +9,7 @@ import SearchHistory from "./SearchHistory"
 import Cooperation from "./Cooperation"
 import MessageBus from "./MessageBus"
 import AddProduct from "./AddProduct"
+import ApproveUserProduct from "./ApproveUserProduct";
 import imgSprite from "../icons/sprite.svg"
 import "./Header.css"
 import "./App.css"
@@ -63,6 +64,7 @@ export default class App extends React.Component {
             <Route path="/ecka" component={EckoOverview} />
             <Route path="/search-history" component={SearchHistory} />
             <Route path="/cooperation" component={Cooperation} />
+            <Route path="/user-product/approve" component={ApproveUserProduct} />
             <Redirect from="/*" to="/" />
           </Switch>
         </div>

@@ -8,5 +8,5 @@
 npm-debug.log
 /reports/reported-mistakes.txt
 /user-products/*.html
-/user-products/*.json
+/user-products/**/*.json
 !/user-products/tmpl.html

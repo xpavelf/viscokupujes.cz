@@ -3,27 +3,9 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { getRecipes } from "../actions/Recipe"
 import imgSprite from "../icons/sprite.svg"
+import { shuffleArr } from "../utils/shuffle"
 import "./Recipes.css"
 const ITEMS_ON_PAGE = 3
-
-const _shuffle = (arrSrc) => {
-  if (!arrSrc) {
-    return
-  }
-
-  let arr = arrSrc.slice()
-  let ctr = arr.length, temp, index
-
-  while (ctr > 0) {
-      index = Math.floor(Math.random() * ctr)
-      ctr--
-      temp = arr[ctr]
-      arr[ctr] = arr[index]
-      arr[index] = temp
-  }
-  return arr
-}
-
 
 @withRouter
 @connect((store) => ({ data: store.recipes }))
@@ -54,7 +36,7 @@ export default class Recipes extends React.Component {
   componentWillReceiveProps(nextProps) {
     let pages = nextProps.data.recipes ? Math.ceil(nextProps.data.recipes.length / ITEMS_ON_PAGE) : 0
     this.setState({
-      recipes: _shuffle(nextProps.data.recipes),
+      recipes: shuffleArr(nextProps.data.recipes),
       page: 0,
       pages
     })

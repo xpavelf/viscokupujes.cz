@@ -1,0 +1,24 @@
+.ApproveUserProduct label {
+  display: block;
+  padding-bottom: 3px;
+}
+
+.ApproveUserProduct img {
+  width: 100%;
+}
+
+.ApproveUserProduct__hBox {
+  width: 45%;
+  margin-right: 2%;
+  display: inline-block;
+}
+
+.ApproveUserProduct textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.ApproveUserProduct__ta--big {
+  min-height: 150px;
+}
