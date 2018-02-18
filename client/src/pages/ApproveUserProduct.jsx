@@ -5,7 +5,7 @@ import {
   approveUserProduct,
   rejectUserProduct
 } from "../actions/UserProduct"
-import Btn from "./common/Button"
+import Btn from "../components/common/Button"
 import "./ApproveUserProduct.css"
 
 

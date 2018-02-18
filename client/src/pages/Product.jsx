@@ -1,14 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getProductById } from "../actions/Product"
-import PromProduct from "./PromProduct"
+import PromProduct from "../components/PromProduct"
 import "./Product.css"
-import Allergen from "./Allergen"
-import Spinner from "./common/Spinner"
-import FbShare from "./common/FbShare"
-import ReportMistake from "./ReportMistake"
-import Badges from "./Badges"
-import Recipes from "./Recipes"
+import Allergen from "../components/Allergen"
+import Spinner from "../components/common/Spinner"
+import FbShare from "../components/common/FbShare"
+import ReportMistake from "../components/ReportMistake"
+import Badges from "../components/Badges"
+import Recipes from "../components/Recipes"
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
