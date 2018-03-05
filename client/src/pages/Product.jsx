@@ -9,6 +9,7 @@ import FbShare from "../components/common/FbShare"
 import ReportMistake from "../components/ReportMistake"
 import Badges from "../components/Badges"
 import Recipes from "../components/Recipes"
+import AlertBox from '../components/AlertBox'
 
 @connect((store) => ({
   activeProduct: store.activeProduct,
@@ -42,6 +43,7 @@ export default class Product extends React.Component {
 
     return prod ? (
       <div className="Product">
+        <AlertBox product={prod} />
         <h2 className="Product__name">{prod.name}</h2>
         <small className="Product__producer">{prod.producer}</small>
         <Badges

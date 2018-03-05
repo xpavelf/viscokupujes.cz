@@ -13,7 +13,11 @@ const state = Object.assign({}, INITIAL_STATE, persistedState)
 const store = createStore(reducer, state, middleware)
 
 store.subscribe(throttle(() => {
-  saveState({ searchHistory: store.getState().searchHistory })
+  const state = store.getState()
+  saveState({
+    searchHistory: state.searchHistory,
+    alert: state.alert
+  })
 }, 1000, { leading: false }))
 
 export default store

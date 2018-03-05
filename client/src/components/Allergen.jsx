@@ -1,30 +1,31 @@
 import React from "react"
 import "./Allergen.css"
 import imgSprite from "../icons/sprite.svg"
+import { getAllergenName } from '../datasets/allergens'
 
 const list = [
-  ["", ""],
-  ["lepek", "allergens-wheat"],
-  ["korýši", "allergens-crustacens"],
-  ["vejce", "allergens-eggs"],
-  ["ryby", "allergens-fish"],
-  ["arašídy", "allergens-peanut"],
-  ["sója", "allergens-soy"],
-  ["mléko", "allergens-milk"],
-  ["ořechy", "allergens-treenut"],
-  ["celer", "allergens-celery"],
-  ["hořčice", "allergens-mustard"],
-  ["sezam", "allergens-sesame"],
-  ["siřičitany", "allergens-sulphurdioxide"],
-  ["lupina", "allergens-lupin"],
-  ["měkkýši", "allergens-molluscs"]
+  "",
+  "allergens-wheat",
+  "allergens-crustacens",
+  "allergens-eggs",
+  "allergens-fish",
+  "allergens-peanut",
+  "allergens-soy",
+  "allergens-milk",
+  "allergens-treenut",
+  "allergens-celery",
+  "allergens-mustard",
+  "allergens-sesame",
+  "allergens-sulphurdioxide",
+  "allergens-lupin",
+  "allergens-molluscs"
 ]
 
 export default function(props) {
   return (
     <div className="Allergen">
-      <svg><use xlinkHref={ `${imgSprite}#${list[props.code][1]}` } /></svg>
-      <div className="Allergen__name"><strong>{props.code}</strong> {list[props.code][0]}</div>
+      <svg><use xlinkHref={ `${imgSprite}#${list[props.code]}` } /></svg>
+      <div className="Allergen__name"><strong>{props.code}</strong> {getAllergenName(props.code)}</div>
     </div>
   )
 }

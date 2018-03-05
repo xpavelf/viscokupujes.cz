@@ -8,7 +8,8 @@ import Home from "../pages/Home"
 import SearchHistory from "../pages/SearchHistory"
 import Cooperation from "../pages/Cooperation"
 import AddProduct from "../pages/AddProduct"
-import ApproveUserProduct from "../pages/ApproveUserProduct";
+import ApproveUserProduct from "../pages/ApproveUserProduct"
+import Alert from '../pages/Alert'
 import MessageBus from "./MessageBus"
 import imgSprite from "../icons/sprite.svg"
 import "./Header.css"
@@ -65,6 +66,7 @@ export default class App extends React.Component {
             <Route path="/search-history" component={SearchHistory} />
             <Route path="/cooperation" component={Cooperation} />
             <Route path="/user-product/approve" component={ApproveUserProduct} />
+            <Route path="/alert" component={Alert} />
             <Redirect from="/*" to="/" />
           </Switch>
         </div>

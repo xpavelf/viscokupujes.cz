@@ -6,6 +6,7 @@ import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
 import { GET_USER_PRODUCT, APPROVE_USER_PRODUCT, REJECT_USER_PRODUCT } from "../actions/UserProduct"
 import { GET_RECIPES } from "../actions/Recipe"
 import { SHOW_MESSAGE, ERROR_MESSAGE } from "../actions/Message"
+import { SAVE_ALERT } from '../actions/Alert'
 
 export const INITIAL_STATE = {
   recipes: {  bc: null, recipes: null, err: null, pending: false },
@@ -15,7 +16,8 @@ export const INITIAL_STATE = {
   scannedProduct: { bc: null, product: null, err: null, pending: false },
   messages: [],
   report: { err: null, pending: false },
-  userProduct: null
+  userProduct: null,
+  alert: { e: [], a: [], gf: false, po: false, text: '' }
 }
 
 const SEARCH_HISTORY_LIMIT = 20
@@ -73,6 +75,9 @@ export default function(state=INITIAL_STATE, action) {
 
     case SHOW_MESSAGE:
       return { ...state, messages: state.messages.concat(action.payload) }
+
+    case SAVE_ALERT:
+      return { ...state, alert: action.payload }
   }
 
   return state
