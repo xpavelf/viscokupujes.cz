@@ -20,7 +20,7 @@ function frontend {
 }
 
 function releaseOld {
-  cordova plugin add https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview#2.4.0
+  cordova plugin add cordova-plugin-crosswalk-webview
   _release
 }
 
@@ -40,7 +40,7 @@ function _release {
     mv ${OUT_APK_FOLDER}/armv7/release/app-armv7-release-unsigned.apk ${OUT_APK_FOLDER}/app-release-unsigned.apk
   else
     version=${ver}4
-    cordova build android --release --gradleArg=-PcdvMinSdkVersion=21 -- --versionCode=${version}
+    cordova build android --release --gradleArg=-PcdvMinSdkVersion=22 -- --versionCode=${version}
     mv ${OUT_APK_FOLDER}/release/app-release-unsigned.apk ${OUT_APK_FOLDER}/app-release-unsigned.apk
   fi
 

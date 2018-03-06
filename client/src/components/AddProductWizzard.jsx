@@ -15,7 +15,7 @@ import './AddProductWizzard.css'
 
 const Step0 = (props) => (
   <div className="AddProductWizzard">
-    <div><p>Vyfoťte <span style={{fontWeight: "bold"}}>přední stranu</span> výrobku.</p></div>
+    <div><p>Vyfoť <span style={{fontWeight: "bold"}}>přední stranu</span> výrobku.</p></div>
     { getPic(0) }
     { getPicBtn(props.next) }
   </div>
@@ -49,7 +49,8 @@ class Step1 extends React.Component {
 
 const Step2 = (props) => (
   <div className="AddProductWizzard">
-    <div><p>Nyní vyfoťte <span style={{fontWeight: "bold"}}>složení</span> výrobku.</p></div>
+
+    <div><p>Nyní vyfoť <span style={{fontWeight: "bold"}}>složení</span> výrobku. <div style={{ fontSize: 20, paddingTop: 10 }}>např. pitná voda, jedlá sůl, cukr, ...</div></p></div>
     { getPic(1) }
     <Btn onClick={props.prev}>Zpět</Btn>
     { getPicBtn(props.next) }
@@ -76,7 +77,7 @@ class Step3 extends React.Component {
     let { e, po, gf, a } = this.state.info
     return (
      <div className="AddProductWizzard">
-       <label htmlFor="ing">Vypište <span style={{fontWeight: "bold"}}>složení</span></label>
+       <label htmlFor="ing">Vypiš přesné <span style={{fontWeight: "bold"}}>složení a alergeny</span><div style={{ fontSize: 20 }}>(pouze v češtině)</div></label>
        <div className="AddProductWizzard__info">
          { e.length || a.length
            ? <div className="AddProductWizzard__infobox">
@@ -88,7 +89,8 @@ class Step3 extends React.Component {
            : <div className="AddProductWizzard__infobox" style={{ textAlign: "center", fontSize: 12 }}>Zde se zobrazí éčka a alergeny.</div>
          }
        </div>
-       <textarea value={this.state.ing} placeholder="např. pitná voda, sůl, e330" id="ing" className="AddProductWizzard__ta" onChange={this.ingChange} />
+       <textarea value={this.state.ing} placeholder="např. pitná voda, sůl, e330. Výrobek může obsahovat stopy arašídů." id="ing" className="AddProductWizzard__ta" onChange={this.ingChange} />
+       <div style={{ fontSize: 13, fontFamily: 'Roboto', padding: '0 20px 20px 20px', textAlign: 'justify' }}>Víme, že manuální vypisování složení je otrava. Je to ale způsob, jak rozšířit tuto databázi. Budeme moc rádi, když budeš vkládat složení výrobku velmi přesně. Každý produkt musíme totiž manuálně schválit a případně opravit. To také znamená, že se produkty hned nepřidají automaticky do databáze. Děkujeme za trpělivost.</div>
        <Btn onClick={this.props.prev.bind(this, this.state)}>Zpět</Btn>
        <Btn disabled={!this.state.ing.trim()} onClick={this.props.next.bind(this, this.state)} color="green">Uložit</Btn>
      </div>

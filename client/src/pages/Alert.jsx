@@ -46,7 +46,7 @@ export default class Alert extends PureComponent {
 
     return (
       <Layout>
-        <Description>Zadej éčka, alergeny, na které chceš být u výrobku upozorňěn.</Description>
+        <Description>Zadej éčka a alergeny, na které chceš být u výrobku upozorněn.</Description>
         <TextArea value={text} placeholder="např. krevety, aspartam, e330" id="ing" onChange={this.alertChange} />
         { e.length ? <Badges ecka={e} po={po} gf={gf} nojumps={true} /> : null }
         { a.map(it => <Allergen key={it} code={it} />) }
