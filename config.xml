@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="20000123" id="cz.viscokupujes.mnamka" version="1.2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="20000125" id="cz.viscokupujes.mnamka" version="1.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Víš Co Kupuješ?</name>
     <description>Chceš jíst zdravě, ale nevyznáš se v éčkách?</description>
     <author email="viscokupujes@gmail.com" href="https://viscokupujes.cz">goBANANA</author>
@@ -27,5 +27,8 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
-    <engine name="android" spec="^7.0.0" />
+    <plugin name="cordova-android-support-gradle-release" spec="^1.2.0">
+        <variable name="ANDROID_SUPPORT_VERSION" value="26.+" />
+    </plugin>
+    <engine name="android" spec="^7.1.0" />
 </widget>

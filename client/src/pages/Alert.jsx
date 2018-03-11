@@ -4,6 +4,7 @@ import Badges from '../components/Badges'
 import Allergen from '../components/Allergen'
 import { saveAlert } from '../actions/Alert'
 import { connect } from "react-redux"
+import AlertBox from '../components/AlertBox'
 
 import {
     getAdditives,
@@ -13,12 +14,19 @@ import {
     populateProduct
   } from '../utils/getInfoAboutProduct'
 
+const PageHeading = styled.h2`
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+`
+
 const Layout = styled.div`
-  padding: 30px 10px;
+  padding: 20px 10px 30px 10px;
 `
 
 const Description = styled.div`
   font-family: 'Roboto', sans-serif;
+  padding: 20px 0px;
 `
 
 const TextArea = styled.textarea`
@@ -42,12 +50,17 @@ export default class Alert extends PureComponent {
   }
 
   render() {
-    let { e, po, gf, a, text } = populateProduct(this.props.alert)
+    const pr = populateProduct(this.props.alert)
+    let { e, po, gf, a, text } = pr
 
     return (
       <Layout>
-        <Description>Zadej éčka a alergeny, na které chceš být u výrobku upozorněn.</Description>
+        <PageHeading>Upozornění</PageHeading>
+
+        <Description>Pokud chceš být u výrobků upozorňován na konkrétní éčka nebo alergeny, vypiš je zde:</Description>
+        <AlertBox product={pr} showEmpty={true} />
         <TextArea value={text} placeholder="např. krevety, aspartam, e330" id="ing" onChange={this.alertChange} />
+
         { e.length ? <Badges ecka={e} po={po} gf={gf} nojumps={true} /> : null }
         { a.map(it => <Allergen key={it} code={it} />) }
       </Layout>

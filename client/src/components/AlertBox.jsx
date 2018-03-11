@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getAllergenName } from '../datasets/allergens'
 
 const Box = styled.div`
+  font-family: Roboto, sans-serif;
   background-color: #a358b3;
   color: white;
   padding: 10px 10px 10px 40px;
@@ -48,7 +49,7 @@ export default class AlertBox extends PureComponent {
   render() {
     const info = _getAlertsForProduct(this.props.product, this.props.alert)
 
-    if (!info.length) {
+    if (!info.length && !this.props.showEmpty) {
       return null
     }
 
