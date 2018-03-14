@@ -1,17 +1,9 @@
 import { remove as removeDiacritics } from 'diacritics'
 import { getAllergens } from 'alergeny'
-import { ecka, getAdditives } from 'ecka'
+import { ecka, getAdditives, getEData } from 'ecka'
 
 const populateProduct= (product) => {
-  let arr_e = product.e.map(e => {
-    let info = ecka[e]
-    if (!info) {
-      let eParent = e.replace(/(?!e\d+)i+/g, "")
-      return Object.assign({ id: eParent }, ecka[eParent])
-    }
-
-    return Object.assign({ id: e }, ecka[e])
-  })
+  const arr_e = product.e.map(getEData)
   return Object.assign({}, product, { e: arr_e})
 }
 

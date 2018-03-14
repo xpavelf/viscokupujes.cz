@@ -3,7 +3,7 @@ const removeDiacritics = require("diacritics").remove
 const fs = require("fs")
 const { getAllergens } = require('alergeny')
 const { ecka, getAdditives } = require('ecka')
-const { hasGlukoseSirup, hasPalmOil, populateE } = require('./productUtils')
+const { hasGlukoseSirup, hasPalmOil } = require('./productUtils')
 
 const shuffleArr = (arrSrc) => {
   if (!arrSrc) {

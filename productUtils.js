@@ -1,5 +1,5 @@
 const removeDiacritics = require("diacritics").remove
-const { ecka } = require('ecka')
+const { ecka, getEData } = require('ecka')
 
 const PALM_OIL_RX = /\b(palmov(?!\w+\scukr)|palmoj|palm oil|cbe)/gi
 const GF_RX = new RegExp(
@@ -19,15 +19,7 @@ const hasGlukoseSirup = (ingredients) =>
 
 
 const populateE = (product) => {
-  let arr_e = product.e.map(e => {
-    let info = ecka[e]
-    if (!info) {
-      let eParent = e.replace(/(?!e\d+)i+/g, "")
-      return Object.assign({ id: eParent }, ecka[eParent])
-    }
-
-    return Object.assign({ id: e }, ecka[e])
-  })
+  const arr_e = product.e.map(getEData)
   return Object.assign({}, product, { e: arr_e})
 }
 
