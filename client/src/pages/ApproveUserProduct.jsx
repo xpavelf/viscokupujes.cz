@@ -44,6 +44,19 @@ export default class ApproveUserProduct extends React.Component {
     this.setState({ pr: { ...this.state.pr, [e.target.id]: e.target.value } })
   }
 
+  rotate = (e) => {
+    const el = e.target
+    const deg = (+el.dataset.rotate || 0) + 90
+
+    if (deg === 90) {
+      el.defHeight = el.height
+    }
+
+    el.height = (deg % 180 === 0) ? el.defHeight : el.width
+    el.dataset.rotate = deg
+    el.style.transform = `rotate(${deg}deg)`
+  }
+
   render() {
     if (__APP_MODE__ === "mob") {
       return null
@@ -67,11 +80,11 @@ export default class ApproveUserProduct extends React.Component {
               <textarea id="q" value={pr.q} onChange={this.onChange} />
             </div>
           </div>
-          <img src={ "data:image/jpeg;base64," + pr.mainPic } />
+          <img onClick={this.rotate} src={ "data:image/jpeg;base64," + pr.mainPic } />
 
           <label htmlFor="ing">Ingredience</label>
           <textarea id="ing" className="ApproveUserProduct__ta--big" value={pr.ing} onChange={this.onChange} />
-          <img src={ "data:image/jpeg;base64," + pr.ingPic } />
+          <img onClick={this.rotate} src={ "data:image/jpeg;base64," + pr.ingPic } />
 
           <Btn onClick={this.reject} color="red">Zamitnout</Btn>
           <Btn onClick={this.skip}>Preskocit</Btn>
