@@ -17,7 +17,7 @@
 }
 
 .VisCoKupujesModal__main {
-  position: fixed;
+  position: absolute;
   background-color: white;
   border: 3px solid gray;
   z-index: 21;
