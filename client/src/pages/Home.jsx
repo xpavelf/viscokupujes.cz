@@ -118,8 +118,7 @@ export default class Home extends React.Component {
               <div><img src={jImg} alt="Jana" /><div>Jana</div></div>
             </div>
 
-            <p>Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? neustále vyvíjíme a rozšiřujeme dle přání uživatelů. Máte-li tedy jakýkoliv návrh, neváhejte nás kontaktovat. Můžete se tak podílet na zlepšování této aplikace.</p>
-            <p>Víš co kupuješ? vyvíjíme ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
+            <p>Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? jsme vyvinuli ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
           </div>
         </div>
         <ContactBox />
