@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["banner-256x256-light.png","e2bc2582f2317a70efa564f0032c6b0b"],["banner-256x256.png","f126587aa7b1f12e79d5126d0a948f87"],["banner-660x360.png","98f98690fa50895aa5bc43a262056ad9"],["desktop-background.jpg","0c8bbef3a7bcf3a7fd17076805e2b7b1"],["dist/app.js","82d3017ed16e402e6040bf8ad4dd8d77"],["dist/assets/Caveat-Regular-21e34b.ttf","21e34be24e1dcf90700db552fd3d17bf"],["dist/assets/Caveat-Regular_Latin-522b13.woff2","522b13ff3bb5c49f45a4cec7b1a6ac42"],["dist/assets/Caveat-Regular_LatinExt-e525bb.woff2","e525bb0dfa754a05b30a3291d987da85"],["dist/assets/LuckiestGuy-Regular-e33559.woff","e335591cf6cd729293956257fedb437e"],["dist/assets/LuckiestGuy-Regular-fd7340.ttf","fd7340fce24c602b4c7014be27bfced5"],["dist/assets/Oswald-Regular-68a85f.ttf","68a85f5cf2497486387d6c9f253bde62"],["dist/assets/Oswald-Regular_Latin-f15aa2.woff2","f15aa285863274b4f6ed578caa76565e"],["dist/assets/Oswald-Regular_LatinExt-7e100e.woff2","7e100eb1d49504d4ab318c55c261aaf7"],["dist/assets/PatrickHand-Regular-5771ce.ttf","5771ceaf12961b3c26914a70e18dcca8"],["dist/assets/PatrickHand-Regular_Latin-a5d4f1.woff2","a5d4f17781c8a790823b4178e3c28149"],["dist/assets/PatrickHand-Regular_LatinExt-6d0835.woff2","6d08357706da6b3e04fed3591ad01f8d"],["dist/assets/Roboto-Regular-3e1af3.ttf","3e1af3ef546b9e6ecef9f3ba197bf7d2"],["dist/assets/Roboto-Regular_Latin-5d4aeb.woff2","5d4aeb4e5f5ef754e307d7ffaef688bd"],["dist/assets/Roboto-Regular_LatinExt-15d8ed.woff2","15d8ede0a816bc7a9838207747c6620c"],["dist/assets/banner-660x360-8973a6.png","8973a6d75bd2960c90dae76a4f785aad"],["dist/assets/icon-cart-64-75bbe7.png","75bbe76633083c6e1eecf53e6109f3f6"],["dist/assets/jana-050622.jpg","0506221a02063ce9bab8a7e6962a6a29"],["dist/assets/jidelniplan-logo-fbb28a.png","fbb28aa063208bd2b94e86da0a5a5cf7"],["dist/assets/pavel-fd95a2.jpg","fd95a2a9f492d06bba98ce654743ddc0"],["dist/assets/progressbar-daa4e6.gif","daa4e642fdf3e268e432b390e46fa418"],["dist/assets/sprite-cca3cf.svg","cca3cf29a214e0d02440d59aa6bde2d7"],["favicon.png","8617921b4b76f6925bec4bc0023d1648"],["icon-cart-128.png","032c12b4054c6db84fdb2629970835af"],["icon-cart-256.png","1bcbff9307d26580f167d0b828dad088"],["icon-cart-64.png","75bbe76633083c6e1eecf53e6109f3f6"],["index.html","7bb79560c818858109c28a65c9e55fa7"],["manifest.json","eb9781deb24319683df594312a10f41b"],["splashscreen-background.jpg","6fa105ddbe041748ebb8cab5fdc46185"]];
+var precacheConfig = [["banner-256x256-light.png","e2bc2582f2317a70efa564f0032c6b0b"],["banner-256x256.png","f126587aa7b1f12e79d5126d0a948f87"],["banner-660x360.png","98f98690fa50895aa5bc43a262056ad9"],["desktop-background.jpg","0c8bbef3a7bcf3a7fd17076805e2b7b1"],["dist/app.js","bd9ca3995b0b9479f5c4966cea46d70a"],["dist/assets/Caveat-Regular-21e34b.ttf","21e34be24e1dcf90700db552fd3d17bf"],["dist/assets/Caveat-Regular_Latin-522b13.woff2","522b13ff3bb5c49f45a4cec7b1a6ac42"],["dist/assets/Caveat-Regular_LatinExt-e525bb.woff2","e525bb0dfa754a05b30a3291d987da85"],["dist/assets/LuckiestGuy-Regular-e33559.woff","e335591cf6cd729293956257fedb437e"],["dist/assets/LuckiestGuy-Regular-fd7340.ttf","fd7340fce24c602b4c7014be27bfced5"],["dist/assets/Oswald-Regular-68a85f.ttf","68a85f5cf2497486387d6c9f253bde62"],["dist/assets/Oswald-Regular_Latin-f15aa2.woff2","f15aa285863274b4f6ed578caa76565e"],["dist/assets/Oswald-Regular_LatinExt-7e100e.woff2","7e100eb1d49504d4ab318c55c261aaf7"],["dist/assets/PatrickHand-Regular-5771ce.ttf","5771ceaf12961b3c26914a70e18dcca8"],["dist/assets/PatrickHand-Regular_Latin-a5d4f1.woff2","a5d4f17781c8a790823b4178e3c28149"],["dist/assets/PatrickHand-Regular_LatinExt-6d0835.woff2","6d08357706da6b3e04fed3591ad01f8d"],["dist/assets/Roboto-Regular-3e1af3.ttf","3e1af3ef546b9e6ecef9f3ba197bf7d2"],["dist/assets/Roboto-Regular_Latin-5d4aeb.woff2","5d4aeb4e5f5ef754e307d7ffaef688bd"],["dist/assets/Roboto-Regular_LatinExt-15d8ed.woff2","15d8ede0a816bc7a9838207747c6620c"],["dist/assets/banner-660x360-8973a6.png","8973a6d75bd2960c90dae76a4f785aad"],["dist/assets/icon-cart-64-75bbe7.png","75bbe76633083c6e1eecf53e6109f3f6"],["dist/assets/jidelniplan-logo-fbb28a.png","fbb28aa063208bd2b94e86da0a5a5cf7"],["dist/assets/progressbar-daa4e6.gif","daa4e642fdf3e268e432b390e46fa418"],["dist/assets/sprite-a15a39.svg","a15a392d8c994e8756a26f51f4cc0280"],["favicon.png","8617921b4b76f6925bec4bc0023d1648"],["icon-cart-128.png","032c12b4054c6db84fdb2629970835af"],["icon-cart-256.png","1bcbff9307d26580f167d0b828dad088"],["icon-cart-64.png","75bbe76633083c6e1eecf53e6109f3f6"],["index.html","7bb79560c818858109c28a65c9e55fa7"],["manifest.json","eb9781deb24319683df594312a10f41b"],["splashscreen-background.jpg","6fa105ddbe041748ebb8cab5fdc46185"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -45,7 +45,7 @@ var ignoreUrlParametersMatching = [/^utm_/];
 
 
 
-var addDirectoryIndex = function (originalUrl, index) {
+var addDirectoryIndex = function(originalUrl, index) {
     var url = new URL(originalUrl);
     if (url.pathname.slice(-1) === '/') {
       url.pathname += index;
@@ -53,7 +53,7 @@ var addDirectoryIndex = function (originalUrl, index) {
     return url.toString();
   };
 
-var cleanResponse = function (originalResponse) {
+var cleanResponse = function(originalResponse) {
     // If this is not a redirected response, then we don't have to do anything.
     if (!originalResponse.redirected) {
       return Promise.resolve(originalResponse);
@@ -75,7 +75,7 @@ var cleanResponse = function (originalResponse) {
     });
   };
 
-var createCacheKey = function (originalUrl, paramName, paramValue,
+var createCacheKey = function(originalUrl, paramName, paramValue,
                            dontCacheBustUrlsMatching) {
     // Create a new URL object to avoid modifying originalUrl.
     var url = new URL(originalUrl);
@@ -91,7 +91,7 @@ var createCacheKey = function (originalUrl, paramName, paramValue,
     return url.toString();
   };
 
-var isPathWhitelisted = function (whitelist, absoluteUrlString) {
+var isPathWhitelisted = function(whitelist, absoluteUrlString) {
     // If the whitelist is empty, then consider all URLs to be whitelisted.
     if (whitelist.length === 0) {
       return true;
@@ -104,7 +104,7 @@ var isPathWhitelisted = function (whitelist, absoluteUrlString) {
     });
   };
 
-var stripIgnoredUrlParameters = function (originalUrl,
+var stripIgnoredUrlParameters = function(originalUrl,
     ignoreUrlParametersMatching) {
     var url = new URL(originalUrl);
     // Remove the hash; see https://github.com/GoogleChrome/sw-precache/issues/290

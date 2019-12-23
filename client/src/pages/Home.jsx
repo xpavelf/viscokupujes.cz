@@ -108,13 +108,20 @@ export default class Home extends React.Component {
         <div className="Home__bgblock Home__bgblock--withImg">
           <div className="Home__container">
             <h2 className="Home__subtitle">Kdo jsme?</h2>
-            <p>
-              Jsme dva celkem normální lidi a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.
-            </p>
-
-            <p>Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? jsme vyvinuli ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
+            <p>Jsme pár a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.</p>
+            <p>Víš co kupuješ? jsme vyvinuli ve svém volném čase a nemáme žádné sponzory. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací a do budoucna s tvorbou. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
           </div>
         </div>
+
+        <div className="Home__bgblock Home__bgblock--white">
+          <div className="Home__container">
+          <h2 className="Home__subtitle">Plán do budoucna</h2>
+          <p>Často nám píšete, že v aplikaci není dostatek výrobků. Snažili jsme se o to, aby nám velké řetězce poskytli databázi, ale bezúspěšně. Důvody k tomu můžou mít různé, ale nám nezbývá než výrobky přidávat převážně ručně hlavně díky vám uživatelům. Jsme moc rádi, že nám pomáháte a přidáváte potraviny do databáze. Ve dvou lidech ale naprosto nezvládáme schvalovat tisíce výrobků. Bohužel velké množství přidaných výrobků není zadáno správně, což proces výrazně zpomaluje. Naprosto ale chápeme, že vypisování složení je otrava a hodně z vás to vzdá. Proto máme následující plán.</p>
+          <p>Nedávno jsme přidali možnost zobrazit také neschválený výrobek. Poznáte ho tak, že má před názevm POZOR ZATÍM NESCHVÁLENO. Do budoucna chceme také prozkoumat možnosti technologie OCR, která pomůže číst obrázek a přepsat složení za vás. Našim velkým cílem je umožnit schvalování lidmi tak, že celou databázi budou tvořit a schvalovat hlavně uživatelé.</p>
+          </div>
+        </div>
+
+
         <ContactBox />
       </div>
     )
