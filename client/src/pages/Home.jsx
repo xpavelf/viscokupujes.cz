@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom"
 import ContactBox from "../components/common/ContactBox"
 import Ecko from "../components/common/Ecko"
-import pImg from "../icons/pavel.jpg"
-import jImg from "../icons/jana.jpg"
 import imgSprite from "../icons/sprite.svg"
 import "./Home.css"
 
@@ -113,10 +111,6 @@ export default class Home extends React.Component {
             <p>
               Jsme dva celkem normální lidi a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.
             </p>
-            <div className="Home__aboutUs">
-              <div><img src={pImg} alt="Pavel" /><div>Pavel</div></div>
-              <div><img src={jImg} alt="Jana" /><div>Jana</div></div>
-            </div>
 
             <p>Informace čerpáme z knihy Dr. Vrbové "Víme co jíme?" a z dalších veřejně dostupných zdrojů na internetu. Víš co kupuješ? jsme vyvinuli ve svém volném čase. Nemáme žádné sponzory a ani statisíce korun na marketing. Aplikaci chceme lidem nabízet zdarma a proto doufáme, že nám pomůžete s propagací. Uděláte nám velkou radost, když se o své zkušenosti s Víš co kupuješ? podělíte se všemi okolo. Ať také nekupují zbytečnou chemii.</p>
           </div>

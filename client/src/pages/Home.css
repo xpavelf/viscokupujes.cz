@@ -35,10 +35,6 @@
   display: block;
 }
 
-.Home__aboutUs img {
-  border-radius: 50px;
-}
-
 .Home__container {
   max-width: 900px;
   margin: 0 auto;
