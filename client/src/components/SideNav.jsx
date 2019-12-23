@@ -56,10 +56,6 @@ export default class SideNav extends React.PureComponent {
                 Ohodnoťte aplikaci
               </a>
           }
-          <Link replace to="/cooperation" className="SideNav__link">
-            <SvgSprite width="30" height="30" icon="shaking-hands" />
-            Spolupráce
-          </Link>
         </div>
       </ReactSideNav>
     )
