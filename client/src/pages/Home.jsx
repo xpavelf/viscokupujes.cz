@@ -68,7 +68,7 @@ export default class Home extends React.Component {
               }
               <li>
                 Vyhledej produkt nebo naskenuj čárový kód.
-                Pokud výrobek nenajdeš mezi 24 000 produkty, můžeš nám ho jednoduše přidat do databáze.
+                Pokud výrobek nenajdeš mezi 33 000 produkty, můžeš nám ho přidat do databáze.
               </li>
               <li>
                 Zobrazí se ti éčka, alergeny, palmový olej nebo glukózo-fruktózový sirup.
