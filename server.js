@@ -27,6 +27,16 @@ routes_userProducts(app)
 
 app.get("/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
 
+const handleExit = (signal) => {
+  console.log(`Received ${signal}. Closing the server.`)
+  server.close(function () {
+    process.exit(0);
+  });
+}
+process.on('SIGINT', handleExit)
+process.on('SIGQUIT', handleExit)
+process.on('SIGTERM', handleExit)
+
 
 const server = http.createServer(app)
 server.listen(port, ipaddr, () => {
