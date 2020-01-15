@@ -5,7 +5,7 @@ import reducer, { INITIAL_STATE } from "./reducers"
 import { loadState, saveState } from "./localStorage"
 import throttle from "lodash/throttle"
 
-const middleware = applyMiddleware(promise(), thunk)
+const middleware = applyMiddleware(promise, thunk)
 
 const persistedState = loadState()
 const state = Object.assign({}, INITIAL_STATE, persistedState)
