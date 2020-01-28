@@ -7,42 +7,9 @@ export const GET_PRODUCT_BY_BC = "GET_PRODUCT_BY_BC"
 export const REPORT_MISTAKE = "REPORT_MISTAKE"
 export const ADD_PRODUCT_FULL = "ADD_PRODUCT_FULL"
 
-// DEPRECATED
-export const ADD_PRODUCT = "ADD_PRODUCT"
-// DEPRECATED
-export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
-
 const URL_ORIGIN = 'https://viscokupujes.cz'
 
 const rootUrl = (__APP_MODE__ === "mob" ? URL_ORIGIN : '')
-
-// DEPRECATED
-export function updateProduct(pr) {
-  return ({
-    type: UPDATE_PRODUCT,
-    payload: fetch(
-      `${rootUrl}/api/add-product`,
-      {
-        method: "PUT",
-        body: JSON.stringify(pr)
-      }
-    )
-  })
-}
-
-// DEPRECATED
-export function addProduct(pr) {
-  return ({
-    type: ADD_PRODUCT,
-    payload: fetch(
-      `${rootUrl}/api/add-product`,
-      {
-        method: "POST",
-        body: JSON.stringify(pr)
-      }
-    )
-  })
-}
 
 export function addProductFull(pr) {
   return ({

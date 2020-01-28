@@ -23,10 +23,6 @@ const shuffleArr = (arrSrc) => {
   return arr
 }
 
-
-// DEPRECATED
-const TMPL = fs.readFileSync(`${USER_PRODUCTS_PATH}/tmpl.html`, 'utf8')
-
 const RX_JSON = /\.json$/i
 fs.readdirSync(USER_PRODUCTS_PATH)
   .filter(fn => RX_JSON.test(fn))
@@ -128,38 +124,4 @@ module.exports = (app) => {
     })
   })
 
-  // DEPRECATED
-  app.post("/api/add-product", (req, res) => {
-    let data = JSON.parse(req.body)
-    let uid = parseInt(data.uid)
-    let bc = parseInt(data.bc)
-    let fn = `[${uid}]${bc}.html`
-    let out = TMPL.replace('__PLACEHOLDER__', JSON.stringify({
-      ean: data.bc,
-      mainPic: "data:image/jpeg;base64, " + data.mainPic,
-      ingPic: "data:image/jpeg;base64, " + data.ingPic
-    }))
-
-    fs.writeFile(`${USER_PRODUCTS_PATH}/${fn}`, out, (err) => {
-      if (err) throw err
-      res.send()
-    })
-  })
-
-  // DEPRECATED
-  app.put("/api/add-product", (req, res) => {
-    let data = JSON.parse(req.body)
-    let uid = parseInt(data.uid)
-    let bc = parseInt(data.bc)
-    let fn = `[${uid}]${bc}.html`
-    let path = `${USER_PRODUCTS_PATH}/${fn}`
-    if (fs.existsSync(path)) {
-      let d = fs.readFileSync(path, 'utf8')
-      let out = d.replace('__PLACEHOLDER__INGTXT__', JSON.stringify(data.ingTxt))
-      fs.writeFile(path, out, (err) => {
-        if (err) throw err
-      })
-    }
-    res.send()
-  })
 }
