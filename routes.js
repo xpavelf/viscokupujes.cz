@@ -1,43 +1,12 @@
-const products = require("../data/data.json")
-const removeDiacritics = require("diacritics").remove
+const { searchByName, searchByBc, findById, getPromotedProducts } = require("./dataService")
 const fs = require("fs")
 const { getAllergens } = require('alergeny')
-const { ecka, getAdditives } = require('ecka')
+const { getAdditives } = require('ecka')
 const { hasGlukoseSirup, hasPalmOil, populateE } = require('./productUtils')
-const { queryStringSearch } = require("./strUtils")
 
 const USER_PRODUCTS_PATH = `${__dirname}/user-products`
 
 module.exports = (app) => {
-
-  const predicateWithHits = (query) => (prod) => {
-    let hits = queryStringSearch(query, removeDiacritics(prod.name))
-
-    if (hits && hits.length) {
-      return Object.assign({}, prod, { hits })
-    }
-
-    return null
-  }
-
-  const arr_filter_with_map = (arr, cb, limit) => {
-    let ret = []
-    for (let i = 0; i < arr.length && ret.length < limit; i++) {
-      let val = arr[i]
-      let res = cb(val, i, arr)
-      if (res) ret.push(res)
-    }
-    return ret
-  }
-
-  const isBcEqual = (bc0, bc1) => bc0 === bc1
-  const searchByBc = (bc) => products.find(pr => Array.isArray(pr.bc) ? pr.bc.some(prbc => isBcEqual(prbc, bc)) : isBcEqual(pr.bc, bc))
-  const searchByName = (name) => {
-    console.info("product search '%s'", name)
-    const limit = 35
-    return name ? arr_filter_with_map(products, predicateWithHits(name), limit) : products.slice(0, limit)
-  }
-
   const getUnapprovedFromFile = (file) => {
     if (file) {
       let product = JSON.parse(fs.readFileSync(`${USER_PRODUCTS_PATH}/review/${file}`))
@@ -70,8 +39,6 @@ module.exports = (app) => {
       .find(f => f.endsWith(".json") && f.slice(15).slice(0, -5) === ""+bc)
 
     return getUnapprovedFromFile(file)
-
-    return null
   }
 
   app.post("/api/report", (req, res) => {
@@ -96,7 +63,6 @@ module.exports = (app) => {
       } else {
         retVal = searchInUnapproved(bcInt)
         if (retVal) {
-          
           res.json(retVal)
         } else {
           res.status(404).json(null)
@@ -120,15 +86,12 @@ module.exports = (app) => {
       return res.json(p)
     }
 
-    const product = products.find(product => product.id === id)
+    const product = findById(id)
 
     let retVal = populateE(product)
 
     if (product) {
-      let promProducts = products
-          .filter(pr => pr.prom === true && pr.category === product.category && pr.id !== product.id)
-          .map(populateE)
-      retVal.promProducts = promProducts
+      retVal.promProducts = getPromotedProducts(product).map(populateE)
     }
 
     res.json(retVal)

@@ -5,6 +5,7 @@ const { getAllergens } = require('alergeny')
 const { ecka, getAdditives } = require('ecka')
 const { hasGlukoseSirup, hasPalmOil } = require('./productUtils')
 
+// DEPRECATED
 const shuffleArr = (arrSrc) => {
   if (!arrSrc) {
     return
@@ -30,15 +31,9 @@ fs.readdirSync(USER_PRODUCTS_PATH)
 
 module.exports = (app) => {
 
+  // DEPRECATED
   app.post('/api/user-product/approve', (req, res) => {
     let data = JSON.parse(req.body)
-    let pr = {
-      ean: parseInt(data.bc),
-      q: data.q,
-      ing: data.ing,
-      name: data.name,
-      producer: data.producer
-    }
 
     let fn = data.fn
     if (fn) {
@@ -77,6 +72,7 @@ module.exports = (app) => {
     res.send()
   })
 
+  // DEPRECATED
   app.post('/api/user-product/reject', (req, res) => {
     let data = JSON.parse(req.body)
 
@@ -90,6 +86,7 @@ module.exports = (app) => {
     res.send()
   })
 
+  // DEPRECATED
   app.get('/api/user-product', (req, res) => {
     let files = fs.readdirSync(`${USER_PRODUCTS_PATH}/review`)
       .filter(fn => RX_JSON.test(fn))
