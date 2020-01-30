@@ -1,7 +1,0 @@
-#!/bin/bash
-
-PWD=$(pwd)
-WORKDIR=/root/vck
-NAME=vck
-
-docker run -it -v ${PWD}:${WORKDIR} -w ${WORKDIR} --name ${NAME} beevelop/cordova:latest bash
