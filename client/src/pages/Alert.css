@@ -1,0 +1,21 @@
+.Alert {
+  padding: 20px 10px 30px 10px;
+}
+
+.Alert h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+
+.Alert__description {
+  font-family: 'Roboto', sans-serif;
+  padding: 20px 0px;
+}
+
+.Alert textarea {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 10px;
+}

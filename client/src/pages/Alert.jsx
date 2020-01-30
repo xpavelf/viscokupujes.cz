@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react'
-import styled from 'styled-components'
 import Badges from '../components/Badges'
 import Allergen from '../components/Allergen'
 import { saveAlert } from '../actions/Alert'
 import { connect } from "react-redux"
 import AlertBox from '../components/AlertBox'
-
 import {
     getAdditives,
     getAllergens,
@@ -14,26 +12,7 @@ import {
     populateProduct
   } from '../utils/getInfoAboutProduct'
 
-const PageHeading = styled.h2`
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  padding-bottom: 10px;
-`
-
-const Layout = styled.div`
-  padding: 20px 10px 30px 10px;
-`
-
-const Description = styled.div`
-  font-family: 'Roboto', sans-serif;
-  padding: 20px 0px;
-`
-
-const TextArea = styled.textarea`
-  width: 100%;
-  min-height: 50px;
-  margin-top: 10px;
-`
+import "./Alert.css"
 
 @connect((store) => ({ alert: store.alert }))
 export default class Alert extends PureComponent {
@@ -54,16 +33,16 @@ export default class Alert extends PureComponent {
     let { e, po, gf, a, text } = pr
 
     return (
-      <Layout>
-        <PageHeading>Upozornění</PageHeading>
+      <div className="Alert">
+        <h2>Upozornění</h2>
 
-        <Description>Pokud chceš být u výrobků upozorňován na konkrétní éčka nebo alergeny, vypiš je zde:</Description>
+        <div className="Alert__description">Pokud chceš být u výrobků upozorňován na konkrétní éčka nebo alergeny, vypiš je zde:</div>
         <AlertBox product={pr} showEmpty={true} />
-        <TextArea value={text} placeholder="např. krevety, aspartam, e330" id="ing" onChange={this.alertChange} />
+        <textarea value={text} placeholder="např. krevety, aspartam, e330" id="ing" onChange={this.alertChange} />
 
         { e.length ? <Badges ecka={e} po={po} gf={gf} nojumps={true} /> : null }
         { a.map(it => <Allergen key={it} code={it} />) }
-      </Layout>
+      </div>
     )
   }
 }
