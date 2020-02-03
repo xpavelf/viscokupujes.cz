@@ -4,7 +4,7 @@ import {
   Allergen,
   AlertBox,
 } from '@components'
-import { saveAlert } from '../actions/Alert'
+import { saveAlert } from '@actions/Alert'
 import { connect } from "react-redux"
 import {
     getAdditives,

@@ -3,7 +3,7 @@ import "./AddProduct.css"
 import { connect } from "react-redux"
 import { AddProductWizzard } from '@components'
 import { withRouter } from "react-router-dom"
-import { addProductFull } from "../actions/Product"
+import { addProductFull } from "@actions/Product"
 
 @connect((store) => ({
   scannedProduct: store.scannedProduct

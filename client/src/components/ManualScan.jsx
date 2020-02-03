@@ -1,5 +1,5 @@
 import React from "react"
-import { getProductByBc } from "../actions/Product"
+import { getProductByBc } from "@actions/Product"
 import { connect } from "react-redux"
 import Modal from "./Modal"
 import Btn from "./Button"
@@ -25,7 +25,7 @@ export default class ManualScan extends React.Component {
 
   search = () => {
     this.props.onClose()
-    this.props.dispatch(getProductByBc(this.state.inputValue))
+    this.props.dispatch(Product.getProductByBc(this.state.inputValue))
   }
 
   render() {

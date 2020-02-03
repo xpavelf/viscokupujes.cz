@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getProductById } from "../actions/Product"
+import { getProductById } from "@actions/Product"
 import {
   PromProduct,
   Allergen,

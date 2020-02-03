@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { reportMistake } from "../actions/Product"
+import { reportMistake } from "@actions/Product"
 import debounce from "lodash/debounce"
 import progressbar from "../icons/progressbar.gif"
 import "./ReportMistake.css"

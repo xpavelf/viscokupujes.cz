@@ -4,7 +4,7 @@ import {
   getUserProduct,
   approveUserProduct,
   rejectUserProduct
-} from "../actions/UserProduct"
+} from "@actions/UserProduct"
 import { Button } from "@components"
 import "./ApproveUserProduct.css"
 

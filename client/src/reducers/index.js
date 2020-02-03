@@ -1,12 +1,12 @@
 import { SEARCH_PRODUCT, SEARCH_PRODUCT_RESET,
   GET_PRODUCT_BY_ID, GET_PRODUCT_BY_ID_RESET,
-  GET_PRODUCT_BY_BC, GET_PRODUCT_BY_BC_RESET,
-  REPORT_MISTAKE } from "../actions/Product"
+  GET_PRODUCT_BY_BC, REPORT_MISTAKE
+} from "@actions/Product"
 
-import { GET_USER_PRODUCT, APPROVE_USER_PRODUCT, REJECT_USER_PRODUCT } from "../actions/UserProduct"
-import { GET_RECIPES } from "../actions/Recipe"
-import { SHOW_MESSAGE, ERROR_MESSAGE } from "../actions/Message"
-import { SAVE_ALERT } from '../actions/Alert'
+import { GET_USER_PRODUCT, APPROVE_USER_PRODUCT, REJECT_USER_PRODUCT } from "@actions/UserProduct"
+import { GET_RECIPES } from "@actions/Recipe"
+import { SHOW_MESSAGE, ERROR_MESSAGE } from "@actions/Message"
+import { SAVE_ALERT } from '@actions/Alert'
 
 export const INITIAL_STATE = {
   recipes: {  bc: null, recipes: null, err: null, pending: false },

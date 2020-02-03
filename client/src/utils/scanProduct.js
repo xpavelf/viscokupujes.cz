@@ -5,8 +5,8 @@ import scan from "./scanner"
 import React from "react"
 import { Button } from "@components"
 
-import { getProductByBc } from "../actions/Product"
-import { showMessage } from "../actions/Message"
+import { getProductByBc } from "@actions/Product"
+import { showMessage } from "@actions/Message"
 
 let scannedBC
 let scannedProduct

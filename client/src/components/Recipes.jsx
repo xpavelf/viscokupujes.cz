@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import { getRecipes } from "../actions/Recipe"
+import { getRecipes } from "@actions/Recipe"
 import imgSprite from "../icons/sprite.svg"
 import { shuffleArr } from "../utils/shuffle"
 import "./Recipes.css"
