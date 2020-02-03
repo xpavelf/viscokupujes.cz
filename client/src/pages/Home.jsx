@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import ContactBox from "../components/common/ContactBox"
-import Ecko from "../components/common/Ecko"
+import ContactBox from "../components/ContactBox"
+import Ecko from "../components/Ecko"
 import imgSprite from "../icons/sprite.svg"
 import "./Home.css"
 

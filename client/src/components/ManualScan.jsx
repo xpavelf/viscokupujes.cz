@@ -1,8 +1,8 @@
 import React from "react"
 import { getProductByBc } from "../actions/Product"
 import { connect } from "react-redux"
-import Modal from "./common/Modal"
-import Btn from "./common/Button"
+import Modal from "./Modal"
+import Btn from "./Button"
 import "./ManualScan.css"
 
 @connect((store) => ({}))

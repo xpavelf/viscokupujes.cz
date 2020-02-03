@@ -2,7 +2,7 @@ import React from "react"
 import "./AddProduct.css"
 import { connect } from "react-redux"
 import scan from "../utils/scanner"
-import Btn from "../components/common/Button"
+import Btn from "../components/Button"
 import { Step0, Step1, Step2, Step3 } from '../components/AddProductWizzard'
 import { withRouter } from "react-router-dom"
 import { addProductFull } from "../actions/Product"

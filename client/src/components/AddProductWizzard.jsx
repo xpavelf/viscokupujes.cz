@@ -1,5 +1,5 @@
 import React from 'react'
-import Btn from "./common/Button"
+import Btn from "./Button"
 import Badges from "./Badges"
 import Allergen from "./Allergen"
 import {

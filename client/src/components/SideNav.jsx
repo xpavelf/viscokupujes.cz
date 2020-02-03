@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom"
 import ver from "../../version.json"
-import ReactSideNav from "./common/SideNav"
+import ReactSideNav from "./ReactSideNav"
 import scanProduct from "../utils/scanProduct"
 import "./SideNav.css"
 import imgSprite from "../icons/sprite.svg"

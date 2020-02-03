@@ -1,5 +1,5 @@
 import React from "react";
-import "./SideNav.css"
+import "./ReactSideNav.css"
 
 var TOUCH_SLOP = 8 * window.devicePixelRatio * 4
 

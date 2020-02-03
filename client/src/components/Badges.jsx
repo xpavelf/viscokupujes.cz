@@ -1,12 +1,12 @@
 import React from "react"
 import { eComparator } from "../utils/eUtils"
-import Modal from "./common/Modal"
-import Ecko from "./common/Ecko"
+import Modal from "./Modal"
+import Ecko from "./Ecko"
 import Badge from "./Badge"
 import "./Badges.css"
 import imgSprite from "../icons/sprite.svg"
 import { withRouter } from "react-router-dom"
-import Btn from "./common/Button"
+import Btn from "./Button"
 
 const badgesTxt = {
   po: ["Palmový olej", <p>Palmový olej se získává z plodů palmy olejné. Kvůli rychlému rozšiřování palmových plantáží se kácí deštné pralesy, čímž přicházejí o svůj domov nejen lidé, ale také kriticky ohrožené druhy zvířat jako orangutani, tygři, sloni a nosorožci. Nejhorší je situace v Indonésii a Malajsii, ale plantáže se vysazují také v Africe a Jižní Americe.<br /><br />A jak je to s jeho škodlivostí?<br />Je vnímán jako nezdravý tuk z důvodu vyššího podílu nasycených mastných kyselin, které zvyšují hladinu cholesterolu v krvi. Jeho škodlivost zdraví je ovšem relativní. Zjednodušeně řečeno, pokud nahradíte slunečnicový olej palmovým, tak si zvýšíte podíl nasycených mastných kyselin a cholesterol se vám tak bude zvyšovat. Pokud ale palmovým olejem nahradíte živočišné tuky, které mají vysoký podíl nasycených mastných kyselin, tak se vám bude cholesterol snižovat. Důležité je, aby ve stravě převažovaly tuky s vyšším podílem nenasycených mastných kyselin. Pokud tomu tak je, není třeba se palmového tuku ze zdravotního hlediska obávat.</p>],

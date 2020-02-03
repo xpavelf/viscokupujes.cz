@@ -4,7 +4,7 @@ import { reportMistake } from "../actions/Product"
 import debounce from "lodash/debounce"
 import progressbar from "../icons/progressbar.gif"
 import "./ReportMistake.css"
-import Btn from "./common/Button"
+import Btn from "./Button"
 
 @connect((store) => ({
   report: store.report

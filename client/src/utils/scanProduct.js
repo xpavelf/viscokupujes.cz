@@ -3,7 +3,7 @@ import history from "../history"
 import scan from "./scanner"
 
 import React from "react"
-import Btn from "../components/common/Button"
+import Btn from "../components/Button"
 
 import { getProductByBc } from "../actions/Product"
 import { showMessage } from "../actions/Message"
