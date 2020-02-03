@@ -5,7 +5,7 @@ import {
   approveUserProduct,
   rejectUserProduct
 } from "../actions/UserProduct"
-import Btn from "../components/Button"
+import { Button } from "@components"
 import "./ApproveUserProduct.css"
 
 
@@ -86,9 +86,9 @@ export default class ApproveUserProduct extends React.Component {
           <textarea id="ing" className="ApproveUserProduct__ta--big" value={pr.ing} onChange={this.onChange} />
           <img onClick={this.rotate} src={ "data:image/jpeg;base64," + pr.ingPic } />
 
-          <Btn onClick={this.reject} color="red">Zamitnout</Btn>
-          <Btn onClick={this.skip}>Preskocit</Btn>
-          <Btn onClick={this.save} color="green">Potvrdit</Btn>
+          <Button onClick={this.reject} color="red">Zamitnout</Button>
+          <Button onClick={this.skip}>Preskocit</Button>
+          <Button onClick={this.save} color="green">Potvrdit</Button>
         </div>
       )
     }

@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
-import Badges from '../components/Badges'
-import Allergen from '../components/Allergen'
+import { 
+  Badges,
+  Allergen,
+  AlertBox,
+} from '@components'
 import { saveAlert } from '../actions/Alert'
 import { connect } from "react-redux"
-import AlertBox from '../components/AlertBox'
 import {
     getAdditives,
     getAllergens,

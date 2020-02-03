@@ -1,14 +1,16 @@
 import React from 'react'
-import Btn from "./Button"
-import Badges from "./Badges"
-import Allergen from "./Allergen"
 import {
-    getAdditives,
-    getAllergens,
-    hasPalmOil,
-    hasGlukoseSirup,
-    populateProduct
-  } from '../utils/getInfoAboutProduct'
+  Button,
+  Badges,
+  Allergen
+} from "@components"
+import {
+  getAdditives,
+  getAllergens,
+  hasPalmOil,
+  hasGlukoseSirup,
+  populateProduct
+} from '../utils/getInfoAboutProduct'
 import './AddProductWizzard.css'
 
 
@@ -39,9 +41,9 @@ class Step1 extends React.Component {
        <input value={this.state.producer} placeholder="např. Mondelez" id="producer" className="AddProductWizzard__input" onChange={this.change.bind(this, 'producer')} type="text" />
        <label htmlFor="q"><span style={{fontWeight: "bold"}}>Hmotnost</span> nebo <span style={{fontWeight: "bold"}}>objem</span></label>
        <input value={this.state.q} placeholder="např. 100g nebo 300ml" id="q" className="AddProductWizzard__input" onChange={this.change.bind(this, 'q')} type="text" />
-       <Btn onClick={this.props.prev.bind(this, this.state)}>Zpět</Btn>
-       <Btn disabled={!this.state.name.trim() || !this.state.producer.trim() || !this.state.q.trim()}
-         onClick={this.props.next.bind(this, this.state)} color="green">Pokračovat</Btn>
+       <Button onClick={this.props.prev.bind(this, this.state)}>Zpět</Button>
+       <Button disabled={!this.state.name.trim() || !this.state.producer.trim() || !this.state.q.trim()}
+         onClick={this.props.next.bind(this, this.state)} color="green">Pokračovat</Button>
      </div>
    )
   }
@@ -52,7 +54,7 @@ const Step2 = (props) => (
 
     <div><p>Nyní vyfoť <span style={{fontWeight: "bold"}}>složení</span> výrobku. <div style={{ fontSize: 20, paddingTop: 10 }}>např. pitná voda, jedlá sůl, cukr, ...</div></p></div>
     { getPic(1) }
-    <Btn onClick={props.prev}>Zpět</Btn>
+    <Button onClick={props.prev}>Zpět</Button>
     { getPicBtn(props.next) }
   </div>
 )
@@ -91,18 +93,18 @@ class Step3 extends React.Component {
        </div>
        <textarea value={this.state.ing} placeholder="např. pitná voda, sůl, e330. Výrobek může obsahovat stopy arašídů." id="ing" className="AddProductWizzard__ta" onChange={this.ingChange} />
        <div style={{ fontSize: 13, fontFamily: 'Roboto', padding: '0 20px 20px 20px', textAlign: 'justify' }}>Víme, že manuální vypisování složení je otrava. Je to ale způsob, jak rozšířit tuto databázi. Budeme moc rádi, když budeš vkládat složení výrobku velmi přesně. Každý produkt musíme totiž manuálně schválit a případně opravit. To také znamená, že se produkty hned nepřidají automaticky do databáze. Děkujeme za trpělivost.</div>
-       <Btn onClick={this.props.prev.bind(this, this.state)}>Zpět</Btn>
-       <Btn disabled={!this.state.ing.trim()} onClick={this.props.next.bind(this, this.state)} color="green">Uložit</Btn>
+       <Button onClick={this.props.prev.bind(this, this.state)}>Zpět</Button>
+       <Button disabled={!this.state.ing.trim()} onClick={this.props.next.bind(this, this.state)} color="green">Uložit</Button>
      </div>
    )
   }
 }
 
-export { Step0, Step1, Step2, Step3 }
+export default { Step0, Step1, Step2, Step3 }
 
 const getPicBtn = (onclick) => {
   return (
-    <Btn onClick={onclick} color="green" className="AddProductWizzard__actionBtn--icon">
+    <Button onClick={onclick} color="green" className="AddProductWizzard__actionBtn--icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 32 32">
         <g fill="currentColor">
           <path d="M16,9.501c-4.419,0-8,3.581-8,8c0,4.418,3.581,8,8,8c4.418,0,8-3.582,8-8S20.418,9.501,16,9.501z
@@ -118,7 +120,7 @@ const getPicBtn = (onclick) => {
         </g>
       </svg>
       Vyfotit
-    </Btn>
+    </Button>
   )
 }
 

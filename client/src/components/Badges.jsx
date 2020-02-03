@@ -1,12 +1,14 @@
 import React from "react"
 import { eComparator } from "../utils/eUtils"
-import Modal from "./Modal"
-import Ecko from "./Ecko"
-import Badge from "./Badge"
+import {
+  Modal,
+  Ecko,
+  Badge,
+  Button,
+} from "@components"
 import "./Badges.css"
 import imgSprite from "../icons/sprite.svg"
 import { withRouter } from "react-router-dom"
-import Btn from "./Button"
 
 const badgesTxt = {
   po: ["Palmový olej", <p>Palmový olej se získává z plodů palmy olejné. Kvůli rychlému rozšiřování palmových plantáží se kácí deštné pralesy, čímž přicházejí o svůj domov nejen lidé, ale také kriticky ohrožené druhy zvířat jako orangutani, tygři, sloni a nosorožci. Nejhorší je situace v Indonésii a Malajsii, ale plantáže se vysazují také v Africe a Jižní Americe.<br /><br />A jak je to s jeho škodlivostí?<br />Je vnímán jako nezdravý tuk z důvodu vyššího podílu nasycených mastných kyselin, které zvyšují hladinu cholesterolu v krvi. Jeho škodlivost zdraví je ovšem relativní. Zjednodušeně řečeno, pokud nahradíte slunečnicový olej palmovým, tak si zvýšíte podíl nasycených mastných kyselin a cholesterol se vám tak bude zvyšovat. Pokud ale palmovým olejem nahradíte živočišné tuky, které mají vysoký podíl nasycených mastných kyselin, tak se vám bude cholesterol snižovat. Důležité je, aby ve stravě převažovaly tuky s vyšším podílem nenasycených mastných kyselin. Pokud tomu tak je, není třeba se palmového tuku ze zdravotního hlediska obávat.</p>],
@@ -50,10 +52,10 @@ export default class Badges extends React.Component {
         {desc ? <div className="Badges__modal__content">{desc}</div> : null }
         { this.props.nojumps === true
           ? null
-          : <Btn color="green" size="small" className="Badges__modal__bottomLink" onClick={() => this.props.history.push("/ecka")}>
+          : <Button color="green" size="small" className="Badges__modal__bottomLink" onClick={() => this.props.history.push("/ecka")}>
               <svg width="20" height="20"><use xlinkHref={`${imgSprite}#list`}></use></svg>
               Přehled éček
-            </Btn>
+            </Button>
         }
 
       </Modal>

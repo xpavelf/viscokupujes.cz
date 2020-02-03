@@ -3,7 +3,7 @@ import history from "../history"
 import scan from "./scanner"
 
 import React from "react"
-import Btn from "../components/Button"
+import { Button } from "@components"
 
 import { getProductByBc } from "../actions/Product"
 import { showMessage } from "../actions/Message"
@@ -32,7 +32,7 @@ const handleChange = () => {
         text: "Ale můžeš nám ho pomoct přidat :)",
         getFooter: (hideMsg) => (
           <div style={{textAlign: "center", marginTop: "20px"}}>
-            <Btn color="green" onClick={() => { hideMsg(); history.push("/add-product/entry") }}>Přidej produkt</Btn>
+            <Button color="green" onClick={() => { hideMsg(); history.push("/add-product/entry") }}>Přidej produkt</Button>
           </div>
         )
       }

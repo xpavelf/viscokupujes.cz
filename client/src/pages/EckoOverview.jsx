@@ -1,7 +1,7 @@
 import React from "react"
 import { ecka } from "ecka"
 import { eComparator } from "../utils/eUtils"
-import EckoCard from "../components/EckoCard"
+import { EckoCard } from "@components"
 import { remove as removeDiacritics } from "diacritics"
 import "./EckoOverview.css"
 

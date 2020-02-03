@@ -1,5 +1,6 @@
 const webpack = require("webpack")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   entry: {
@@ -17,11 +18,14 @@ module.exports = {
       template: './src/index.ejs',
       filename: '../index.html',
       __APP_MODE__: process.env.ENV_APP_MODE || 'web',
-      inject: false
+      inject: false,
     })
   ],
   resolve: {
-    extensions: [".js", ".jsx"]
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components')
+    },
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [

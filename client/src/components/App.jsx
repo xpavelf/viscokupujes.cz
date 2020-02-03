@@ -1,6 +1,9 @@
 import React from "react"
-import Toolbar from "./Toolbar"
-import SideNav from "./SideNav"
+import {
+  Toolbar,
+  SideNav,
+  MessageBus,
+} from "@components"
 import { Switch, Route, withRouter, Redirect, Link } from "react-router-dom"
 import Product from "../pages/Product"
 import EckoOverview from "../pages/EckoOverview"
@@ -10,12 +13,9 @@ import SearchHistory from "../pages/SearchHistory"
 import AddProduct from "../pages/AddProduct"
 import ApproveUserProduct from "../pages/ApproveUserProduct"
 import Alert from '../pages/Alert'
-import MessageBus from "./MessageBus"
 import imgSprite from "../icons/sprite.svg"
 import "./Header.css"
 import "./App.css"
-
-import l from "../icons/icon-cart-64.png"
 
 @withRouter
 export default class App extends React.Component {
