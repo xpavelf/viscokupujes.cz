@@ -32,7 +32,7 @@ const handleChange = () => {
         text: "Ale můžeš nám ho pomoct přidat :)",
         getFooter: (hideMsg) => (
           <div style={{textAlign: "center", marginTop: "20px"}}>
-            <Button color="green" onClick={() => { hideMsg(); history.push("/add-product/entry") }}>Přidej produkt</Button>
+            <Button color="green" onClick={() => { hideMsg(); history.push("/add-product") }}>Přidej produkt</Button>
           </div>
         )
       }
