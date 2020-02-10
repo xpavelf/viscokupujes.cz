@@ -38,7 +38,7 @@ export default class Badges extends React.Component {
 
     let desc = e.desc || (e.rating === 0 && "Není škodlivé pro lidský organismus.")
     return (
-      <Modal onClose={this.selectE.bind(this, null)}>
+      <Modal onClose={this.selectE.bind(this, null)} className="Badges__modal">
         <div className="Badges__modal__title">
           <Ecko e={e} />
           <div className="Badges__modal__name">{e.names[0]}</div>
@@ -65,7 +65,7 @@ export default class Badges extends React.Component {
   getModalB() {
     let b = this.state.selectedB
     return (
-      <Modal onClose={this.selectB.bind(this, null)}>
+      <Modal onClose={this.selectB.bind(this, null)} className="Badges__modal">
         <div className="Badges__modal__title">
           <Badge type={b} />
           <div className="Badges__modal__name">{ badgesTxt[b][0] }</div>

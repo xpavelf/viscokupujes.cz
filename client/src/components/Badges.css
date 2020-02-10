@@ -1,4 +1,4 @@
-.Badges {
+.Badges, .Badges__modal {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   text-align: left;
@@ -9,7 +9,7 @@
   font-weight: bold;
 }
 
-.Badges__modal__bottomLink {
+Button.Badges__modal__bottomLink {
   margin: 20px auto 0px auto;
   display: block;
   position: relative;
