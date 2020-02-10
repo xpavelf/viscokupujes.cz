@@ -1,34 +1,28 @@
-import React from "react"
-import "./MessageBus.css"
-import { connect } from "react-redux"
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import './MessageBus.css'
 const SHOW_MSG_INTERVAL = 6000
 
-@connect((store) => ({ messages: store.messages }))
-export default class MessageBus extends React.Component {
-  state = { hide: false }
+export default function MessageBus() {
+  const [hidden, setHidden] = useState(false)
+  const message = useSelector(state => state.message)
 
-  componentWillReceiveProps(nextProps) {
-    let msg = nextProps.messages.slice(-1)[0]
-    this.setState({ msg, hide: false })
-    setTimeout(this.hide, SHOW_MSG_INTERVAL)
-  }
+  useEffect(() => {
+    setHidden(false)
+    const timer = setTimeout(() => setHidden(true), SHOW_MSG_INTERVAL)
+    return () => { clearTimeout(timer); }
+  }, [message])
 
-  hide = () => this.setState({ hide: true })
-
-  render() {
-    let msg = this.state.msg
-    let cls = "MessageBus" + (msg && !this.state.hide ? " MessageBus--visible" : "")
-    return (
-      <div className={cls}>
-        { msg
-            ? <div>
-                <div className="MessageBus__title">{msg.title}</div>
-                <div className="MessageBus__text">{msg.text}</div>
-                {msg.getFooter ? msg.getFooter(this.hide) : null}
-              </div>
-            : null
-        }
-      </div>
-    )
-  }
+  return (
+    <div className={"MessageBus " + (message && !hidden ? "MessageBus--visible" : "")}>
+      { message
+          ? <div>
+              <div className="MessageBus__title">{message.title}</div>
+              <div className="MessageBus__text">{message.text}</div>
+              {message.getFooter ? message.getFooter(() => setHidden(true)) : null}
+            </div>
+          : null
+      }
+    </div>
+  )
 }

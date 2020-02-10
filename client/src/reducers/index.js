@@ -14,7 +14,7 @@ export const INITIAL_STATE = {
   activeProduct: { product: null, err: null, pending: false },
   searchHistory: [],
   scannedProduct: { bc: null, product: null, err: null, pending: false },
-  messages: [],
+  message: null,
   report: { err: null, pending: false },
   userProduct: null,
   alert: { e: [], a: [], gf: false, po: false, text: '' }
@@ -32,7 +32,7 @@ export default function(state=INITIAL_STATE, action) {
     case `${SEARCH_PRODUCT}_FULFILLED`:
       return { ...state, searchProduct: { products: action.payload, err: null, pending: false } }
     case `${SEARCH_PRODUCT}_REJECTED`:
-      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
+      return { ...state, message: ERROR_MESSAGE }
 
     case GET_PRODUCT_BY_ID_RESET:
       return { ...state, activeProduct: INITIAL_STATE.activeProduct }
@@ -45,7 +45,7 @@ export default function(state=INITIAL_STATE, action) {
         searchHistory: [action.payload, ...state.searchHistory.filter(h => h.id !== action.payload.id)].slice(0, SEARCH_HISTORY_LIMIT)
       }
     case `${GET_PRODUCT_BY_ID}_REJECTED`:
-      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
+      return { ...state, message: ERROR_MESSAGE }
 
     case `${GET_USER_PRODUCT}_FULFILLED`:
       return { ...state, userProduct: action.payload }
@@ -64,17 +64,17 @@ export default function(state=INITIAL_STATE, action) {
     case `${REPORT_MISTAKE}_FULFILLED`:
       return { ...state, report: { err: null, pending: false } }
     case `${REPORT_MISTAKE}_REJECTED`:
-      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
+      return { ...state, message: ERROR_MESSAGE }
 
     case `${GET_PRODUCT_BY_BC}_PENDING`:
       return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: action.payload, pending: true } }
     case `${GET_PRODUCT_BY_BC}_FULFILLED`:
       return { ...state, scannedProduct: { ...INITIAL_STATE.scannedProduct, bc: state.scannedProduct.bc, product: action.payload } }
     case `${GET_PRODUCT_BY_BC}_REJECTED`:
-      return { ...state, messages: state.messages.concat(ERROR_MESSAGE) }
+      return { ...state, message: ERROR_MESSAGE }
 
     case SHOW_MESSAGE:
-      return { ...state, messages: state.messages.concat(action.payload) }
+      return { ...state, message: action.payload }
 
     case SAVE_ALERT:
       return { ...state, alert: action.payload }
