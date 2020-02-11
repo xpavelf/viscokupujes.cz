@@ -1,0 +1,38 @@
+.AboutUs {
+  color: #444;
+}
+
+.AboutUs__heading {
+  font-size: 130%;
+  padding-bottom: 20px;
+  color: #319631;
+}
+
+.AboutUs p {
+  padding-bottom: 20px;
+}
+
+.AboutUs img {
+  width: 100%;
+  max-width: 450px;
+  display: block;
+  margin: 10px auto 0px auto;
+  border-radius: 10px;
+}
+
+.AboutUs img.AboutUs__img-us {
+  max-width: 120px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.AboutUs__signature {
+  text-align: center;
+  font-family: 'Caveat';
+  font-size: 130%;
+}
+
+.AboutUS__ps {
+  text-align: center;
+  padding-top: 20px;
+}

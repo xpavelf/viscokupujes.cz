@@ -5,7 +5,7 @@ import {
   PromProduct,
   Allergen,
   Spinner,
-  FbShare,
+  Share,
   ReportMistake,
   Badges,
   Recipes,
@@ -99,7 +99,7 @@ export default class Product extends React.Component {
               </div>
             : null
         }
-        <FbShare />
+        <Share />
       </div>
     ) : null
   }

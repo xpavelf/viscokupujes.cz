@@ -8,6 +8,8 @@
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="https://www.facebook.com/*" />
+    <allow-intent href="https://wa.me/*" />
+    <allow-intent href="https://*.whatsapp.com/*" />
     <allow-intent href="http://www.jidelniplan.cz/*" />
     <allow-intent href="mailto:*" />
     <preference name="loadUrlTimeoutValue" value="60000" />

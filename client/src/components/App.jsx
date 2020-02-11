@@ -12,6 +12,7 @@ import SearchHistory from "../pages/SearchHistory"
 
 import AddProduct from "../pages/AddProduct"
 import ApproveUserProduct from "../pages/ApproveUserProduct"
+import AboutUs from '../pages/AboutUs'
 import Alert from '../pages/Alert'
 import imgSprite from "../icons/sprite.svg"
 import "./Header.css"
@@ -41,26 +42,11 @@ export default function App() {
         </Link>
 
 
-<<<<<<< HEAD
         <Toolbar />
         <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
           <Link className="Header__sideNavLink" to={ ({state: {sideNav: true}}) }>
             <svg width="40" height="40" style={{ color: "white" }}><use xlinkHref={`${imgSprite}#menu`}></use></svg>
           </Link>
-=======
-        <div className="App__content">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/android_asset/www/index.html" component={Home} />
-            <Route path="/add-product" component={AddProduct} />
-            <Route path="/product/:id" component={Product} />
-            <Route path="/ecka" component={EckoOverview} />
-            <Route path="/search-history" component={SearchHistory} />
-            <Route path="/user-product/approve" component={ApproveUserProduct} />
-            <Route path="/alert" component={Alert} />
-            <Redirect from="/*" to="/" />
-          </Switch>
->>>>>>> C:/Program Files/Git/add-product/entry removed
         </div>
       </header>
 
@@ -69,13 +55,13 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/android_asset/www/index.html" component={Home} />
-          <Redirect from="/add-product/entry" to="/add-product" />
           <Route path="/add-product" component={AddProduct} />
           <Route path="/product/:id" component={Product} />
           <Route path="/ecka" component={EckoOverview} />
           <Route path="/search-history" component={SearchHistory} />
           <Route path="/user-product/approve" component={ApproveUserProduct} />
           <Route path="/alert" component={Alert} />
+          <Route path="/about-us" component={AboutUs} />
           <Redirect from="/*" to="/" />
         </Switch>
       </div>

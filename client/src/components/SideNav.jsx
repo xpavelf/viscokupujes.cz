@@ -45,6 +45,10 @@ export default class SideNav extends React.PureComponent {
             <SvgSprite width="30" height="30" icon="bell" />
             Upozornění
           </Link>
+          <Link replace to="/about-us" className="SideNav__link">
+            <SvgSprite width="30" height="30" icon="about-us" />
+            O nás
+          </Link>
 
           { __APP_MODE__ === "mob"
             ? <Link to={{ state: { sideNav: false} }} onClick={this.rateApp} className="SideNav__link">
