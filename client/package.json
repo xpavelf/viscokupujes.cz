@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ../www/dist ../www/index.html",
+    "clean": "rm -rf ../www/dist ../www/app/index.html",
     "build": "npm run clean && npm run ver && webpack --mode production",
     "watch": "webpack -w --progress --mode development",
     "ver": "sh ./scripts.sh",

@@ -7,7 +7,7 @@ export default class PromProduct extends React.PureComponent {
   render() {
     let pr = this.props.product
     return (
-      <Link className="PromProduct" to={"/product/" + pr.id}>
+      <Link className="PromProduct" to={"/app/product/" + pr.id}>
           {pr.name}
           <div className="PromProduct__producer">{pr.producer}</div>
       </Link>

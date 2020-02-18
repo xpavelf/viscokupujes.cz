@@ -15,11 +15,11 @@ module.exports = {
       __APP_MODE__: JSON.stringify(process.env.ENV_APP_MODE || 'web')
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.ejs',
-      filename: '../index.html',
+      template: './src/index-app.ejs',
+      filename: '../app/index.html',
       __APP_MODE__: process.env.ENV_APP_MODE || 'web',
       inject: false,
-    })
+    }),
   ],
   resolve: {
     alias: {

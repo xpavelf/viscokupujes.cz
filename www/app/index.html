@@ -2,15 +2,13 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
-<% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %>
-  <base href="/android_asset/www/">
-<% } else { %>
+
   <base href="/">
-<% } %>
+
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
   <meta name="description" content="Chceš jíst zdravě, ale nevyznáš se v Éčkách?">
   <meta name="keywords" content="éčka, alergeny, konzervanty, barviva, zdravé potraviny, přidatné látky v potravinách, kvalitní potraviny, hyperaktivita dětí, kvalitní produkty, nezdravá éčka, škodlivá éčka, nebezpečná éčka, glutaman, umělá sladidla">
-<% if (htmlWebpackPlugin.options.__APP_MODE__ !== "mob") { %>
+
   <meta property="og:site_name" content="viscokupujes.cz">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Víš co kupuješ?">
@@ -23,9 +21,9 @@
   <meta property="og:image:width" content="660">
   <meta property="og:image:height" content="360">
   <link rel="manifest" href="/manifest.json">
-<% } %>
+
   <title>Víš co kupuješ?</title>
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
   <meta name="theme-color" content="#3cb73c">
   <script>
   /* Object.assign polyfill */ "function"!=typeof Object.assign&&(Object.assign=function(a,b){"use strict";if(null==a)throw new TypeError("Cannot convert undefined or null to object");for(var c=Object(a),d=1;d<arguments.length;d++){var e=arguments[d];if(null!=e)for(var f in e)Object.prototype.hasOwnProperty.call(e,f)&&(c[f]=e[f])}return c});
@@ -35,7 +33,7 @@
   /* setDataPage */
   function setDataPage(page) {
     var pathname = window.location.pathname
-    pathname = (pathname === "/android_asset/www/index.html") ? "/" : pathname
+    pathname = (pathname === "/android_asset/www/app/index.html") ? "/app" : pathname
     document.body.setAttribute("data-page", pathname)
   }
   </script>
@@ -69,77 +67,19 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   var GA_ID = 'UA-89177871-1'
-<% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %>
-  var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
-  if (window.localStorage) {
-    ga('create', GA_ID, {
-      'storage': 'none',
-      'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
-    });
-    ga(function(tracker) {
-      localStorage.setItem(GA_LOCAL_STORAGE_KEY, tracker.get('clientId'));
-    });
-    ga('set', 'checkProtocolTask', function(data) {
-      data.set('location', 'https://viscokupujes.cz/');
-    });
-  }
-<% } else { %>
+
   ga('create', GA_ID, 'auto');
-<% } %>
+
   ga('send', 'pageview');
   </script>
   <!-- End Google Analytics -->
 </head>
-<body data-page="/" <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %> onload="onLoad()" <% } %>>
+<body data-page="/" >
   <noscript>
     viscokupujes.cz - Pro fungování této stránky musíš mít povolený javascript.
   </noscript>
   <div id="root"></div>
-  <% if (htmlWebpackPlugin.options.__APP_MODE__ === "mob") { %>
-    <div class="SplashScreen" style="overflow:hidden;">
-      <img alt="Banner - Víš co kupuješ" src="banner-256x256-light.png" style="position: absolute; top: calc(50% - 128px); left: calc(50% - 128px)">
-      <img src="splashscreen-background.jpg" style="position: absolute; min-height: 100%; min-width: 100%; opacity: .2;">
-    </div>
-
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript">
-      function initAppRate() {
-        var _AppRateConf = {
-          displayAppName: 'Víš co kupuješ?',
-          useLanguage: 'cs',
-          usesUntilPrompt: 5,
-          simpleMode: true,
-          promptAgainForEachNewVersion: false,
-          storeAppURL: {
-            android: 'market://details?id=cz.viscokupujes.mnamka'
-          },
-          customLocale: Object.assign(
-            AppRate.locales.getLocale('cs'),
-            { title: "Ohodnoť naši aplikaci!", message: "Nebude to trvat víc než minutu a pomůžeš tak ostatním lidem, kteří nechtějí kupovat zbytečnou chemii.\n\nDĚKUJEME ZA PODPORU!" }
-          )
-        };
-        Object.assign(AppRate.preferences, _AppRateConf);
-        AppRate.promptForRating(false);
-      }
-
-      function initAdMob() {
-        admob.banner.config({
-          id: "ca-app-pub-1551253277388421/7487171343",
-          autoShow: true
-        })
-        admob.banner.prepare()
-      }
-
-      function onLoad() {
-        setTimeout(function() { document.querySelector('.SplashScreen').remove(); }, 1500);
-
-        document.addEventListener("deviceready", function() {
-          initAppRate();
-          initAdMob();
-        }, false);
-      }
-    </script>
-  <% } %>
+  
   <script type="text/javascript" src="dist/app.js"></script>
   <script>setDataPage(window.location.pathname)</script>
 </body>

@@ -17,7 +17,7 @@ export default class Toolbar extends React.Component {
     if (window.location.pathname.indexOf('/product') !== -1) {
       pr = this.props.activeProduct.product
     }
-    let url = pr ? `https://viscokupujes.cz/product/${pr.id}` : "https://viscokupujes.cz"
+    let url = pr ? `https://viscokupujes.cz/app/product/${pr.id}` : "https://viscokupujes.cz"
     window.plugins.socialsharing.share(
       (pr ? `${pr.name}\n\n`: '') +
       'Získej během sekundy přehled o éčkách, alergenech a složení výrobku. Jednoduše a zdarma. Ušetříš tak spoustu času a peněz a uděláš něco pro své zdraví.',

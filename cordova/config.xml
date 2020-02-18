@@ -3,7 +3,7 @@
     <name>Víš Co Kupuješ?</name>
     <description>Chceš jíst zdravě, ale nevyznáš se v éčkách?</description>
     <author email="viscokupujes@gmail.com" href="https://viscokupujes.cz">goBANANA</author>
-    <content src="index.html" />
+    <content src="app/index.html" />
     <icon src="www/icon-cart-64.png" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />

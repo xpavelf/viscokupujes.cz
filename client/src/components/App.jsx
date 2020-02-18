@@ -53,16 +53,16 @@ export default function App() {
 
       <div className="App__content">
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/android_asset/www/index.html" component={Home} />
-          <Route path="/add-product" component={AddProduct} />
-          <Route path="/product/:id" component={Product} />
-          <Route path="/ecka" component={EckoOverview} />
-          <Route path="/search-history" component={SearchHistory} />
-          <Route path="/user-product/approve" component={ApproveUserProduct} />
-          <Route path="/alert" component={Alert} />
-          <Route path="/about-us" component={AboutUs} />
-          <Redirect from="/*" to="/" />
+          <Route exact path="/app" component={Home} />
+          <Route exact path="/android_asset/www/app/index.html" component={Home} />
+          <Route path="/app/add-product" component={AddProduct} />
+          <Route path="/app/product/:id" component={Product} />
+          <Route path="/app/ecka" component={EckoOverview} />
+          <Route path="/app/search-history" component={SearchHistory} />
+          <Route path="/app/user-product/approve" component={ApproveUserProduct} />
+          <Route path="/app/alert" component={Alert} />
+          <Route path="/app/about-us" component={AboutUs} />
+          <Redirect from="/app/*" to="/app" />
         </Switch>
       </div>
       <MessageBus />

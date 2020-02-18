@@ -60,7 +60,7 @@ export default class SearchBox extends React.Component {
   }
 
   onSelect = (product) => {
-    this.props.history.push("/product/" + product.id)
+    this.props.history.push("/app/product/" + product.id)
   }
 
   renderEmptySuggestion = (data) => {

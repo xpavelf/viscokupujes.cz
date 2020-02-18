@@ -25,7 +25,7 @@ const router = express.Router()
 routes(app)
 routes_userProducts(app)
 
-app.get("/*", (req, res) => res.sendFile(__dirname + "/www/index.html"))
+app.get("/*", (req, res) => res.redirect('/'))
 
 const handleExit = (signal) => {
   console.log(`Received ${signal}. Closing the server.`)

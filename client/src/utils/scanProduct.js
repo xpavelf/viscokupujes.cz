@@ -17,7 +17,7 @@ const handleChange = () => {
 
   if (scannedProduct !== prevScannedProduct) {
     if (scannedProduct) {
-      let url = "/product/" + scannedProduct.id
+      let url = "/app/product/" + scannedProduct.id
       if (history.location.pathname !== url) {
         ga && ga('send', 'event', 'ProductScan', 'found', scannedProduct.bc)
         history.push(url)

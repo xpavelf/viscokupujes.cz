@@ -51,7 +51,7 @@ export function getProductByBc(bc) {
 export function reportMistake(msg, email, pr) {
   let p = Object.assign({}, pr, {promProducts: null})
   let e = email ? ( '\n' + email ) : ''
-  let text = msg + e + `\n${URL_ORIGIN}/product/${p.id}\n=======================\n` + JSON.stringify(p)
+  let text = msg + e + `\n${URL_ORIGIN}/app/product/${p.id}\n=======================\n` + JSON.stringify(p)
   return ({
     type: REPORT_MISTAKE,
     payload: fetch(
