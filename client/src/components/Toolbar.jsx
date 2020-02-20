@@ -52,7 +52,7 @@ export default class Toolbar extends React.Component {
           <Link className="Toolbar__sideNavLink" to={ ({state: {sideNav: true}}) }>
             <svg width="30" height="30" style={{ color: "white" }}><use xlinkHref={`${imgSprite}#menu`}></use></svg>
           </Link>
-          <Link to="/" className="Toolbar__homeLink">{this.__title}</Link>
+          <Link to="/app" className="Toolbar__homeLink">{this.__title}</Link>
 
           { __APP_MODE__ === "mob"
             ? <button onClick={this.share} className="Toolbar__share">

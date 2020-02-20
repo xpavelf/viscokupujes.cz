@@ -33,7 +33,7 @@ export default function App() {
     <main className="App">
       <SideNav />
       <header className="Header">
-        <Link className="Header__homeLink" to="/">
+        <Link className="Header__homeLink" to="/app">
           <div className="Header__title">
             <svg height="90" width="90"><use xlinkHref={`${imgSprite}#logo-wo-circle`}></use></svg>
             Víš co kupuj<span className="Header__titleE">E</span>š?

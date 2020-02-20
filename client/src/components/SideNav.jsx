@@ -22,7 +22,7 @@ export default class SideNav extends React.PureComponent {
           <div className="SideNav__header">
             <div className="SideNav__title">{ver}</div>
           </div>
-          <Link replace to="/" className="SideNav__link">
+          <Link replace to="/app" className="SideNav__link">
             <SvgSprite width="30" height="30" icon="home" />
             Domů
           </Link>
@@ -33,19 +33,19 @@ export default class SideNav extends React.PureComponent {
                 </Link>
               : null
           }
-          <Link replace to="/ecka" className="SideNav__link">
+          <Link replace to="/app/ecka" className="SideNav__link">
             <SvgSprite width="30" height="30" icon="list" />
             Seznam éček
           </Link>
-          <Link replace to="/search-history" className="SideNav__link">
+          <Link replace to="/app/search-history" className="SideNav__link">
             <SvgSprite width="30" height="30" icon="search-history" />
             Poslední hledání
           </Link>
-          <Link replace to="/alert" className="SideNav__link">
+          <Link replace to="/app/alert" className="SideNav__link">
             <SvgSprite width="30" height="30" icon="bell" />
             Upozornění
           </Link>
-          <Link replace to="/about-us" className="SideNav__link">
+          <Link replace to="/app/about-us" className="SideNav__link">
             <SvgSprite width="30" height="30" icon="about-us" />
             O nás
           </Link>

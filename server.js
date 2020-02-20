@@ -10,6 +10,7 @@ app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ limit: '350kb' }))
 app.use(bodyParser.text({ limit: '350kb' }))
+app.use('/app/*', express.static(`${__dirname}/www/app`))
 app.use('/', express.static(`${__dirname}/www`))
 
 const port = process.env.PORT || process.env.NODE_PORT || 8989
@@ -25,7 +26,7 @@ const router = express.Router()
 routes(app)
 routes_userProducts(app)
 
-app.get("/*", (req, res) => res.redirect('/'))
+// app.get("/*", (req, res) => res.redirect('/'))
 
 const handleExit = (signal) => {
   console.log(`Received ${signal}. Closing the server.`)

@@ -73,7 +73,7 @@ export default class Home extends React.Component {
                 Zobrazí se ti éčka, alergeny, palmový olej nebo glukózo-fruktózový sirup.
                 Každé éčko, včetně těch "schovaných" v textu, je zařazeno do jedné ze tří kategorií podle škodlivosti.
                 <br /><div className="Home__ecka">
-                  <Link to="/ecka">
+                  <Link to="/app/ecka">
                     <Ecko size="small" e={{ rating: 2, id: "!" }} />
                     <Ecko size="small" e={{ rating: 1, id: "?" }} />
                     <Ecko size="small" e={{ rating: 0, id: "✓" }} />

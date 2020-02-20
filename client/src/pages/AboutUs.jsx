@@ -11,7 +11,7 @@ export default function() {
   return (
     <Page>
       <div className="AboutUs">
-        <h2 className="AboutUs__heading">Jak vznikla naše appka?</h2>
+        <h2 className="AboutUs__heading">O nás a jak vznikla naše appka?</h2>
         <p>Jsme pár a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.</p>
         <p>Zdravě chceme jíst asi všichni, ale ne každý má čas na hledání všech éček ve složení výrobku. Ne všechny potraviny jsou plné éček. A také ne všechna éčka jsou škodlivá. Ale kdo se v tom má vyznat, když jsou jich stovky. Navíc výrobci nemají povinnost všechny látky označovat písmenem E, takže spoustu z nich najdeme pod různými názvy a netušíme, co znamenají.</p>
         <a href="https://play.google.com/store/apps/details?id=cz.viscokupujes.mnamka" target="_blank">

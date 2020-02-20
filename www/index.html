@@ -22,20 +22,346 @@
   <title>Víš co kupuješ?</title>
   <link rel="shortcut icon" href="/favicon.png">
   <meta name="theme-color" content="#3cb73c">
+  <link rel="stylesheet" href="/assets/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="stylesheet" href="/assets/lightbox/css/lightbox.min.css">
   <link rel="stylesheet" href="/assets/aos.css">
+  <link rel="stylesheet" href="/assets/bootstrap.min.css">
+  <style>
+    #welcome-logo {
+      font-family: 'Luckiest Guy';
+      color: white;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 1px #333;
+      font-size: 32px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    #welcome-background {
+      background-color: #52972d;
+      background-image: url('/bg.png');
+    }
+
+    #welcome-motto {
+      padding-top: 90px;
+      padding-bottom: 40px;
+      font-size: 40px;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #2a7f2a;
+    }
+
+    #web-app-button, #web-app-button:hover {
+      background-color: white;
+      border: 1px solid #2a7f2a;
+      border-radius: 7px;
+      color: #2a7f2a;
+      font-size: 20px;
+      padding: 5px 15px;
+      display: inline-block;
+      text-decoration: none;
+      vertical-align: middle;
+    }
+
+    .count-box {
+      margin: 80px 0px;
+      text-align: center;
+      font-size: 30px;
+    }
+    .count-box .count {
+      color: #2a7f2a;
+      font-weight: bold;
+      font-size: 50px;
+    }
+
+    .navbar {
+      z-index: 10000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    #navbarNav.show.collapse, #navbarNav.collapsing { 
+      background: rgba(22, 100, 22, .9);
+    }
+    #navbarNav.show.collapse a, #navbarNav.collapsing a { 
+      margin: 10px 20px;
+    }
+
+    #moto {
+      position: relative;
+      font-size: 30px;
+      background-color: #2a802ac4;
+
+      color: white;
+      text-shadow: 1px 1px 1px #333;
+    }
+
+    #moto:before {
+      content: '';
+      opacity: .8;
+      background-image: url("/desktop-background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      z-index: -1;
+    }
+
+    #welcome-motto-text {
+      padding-top: 100px;
+    }
+
+    .col-md-2 img {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .navbar .navbar-nav { margin-left: auto; }
+    .navbar .nav-item { padding-left: 20px; text-align: right; }
+    .navbar-dark .navbar-nav .nav-link { 
+      color: rgba(255,255,255,0.9);
+      font-size: 120%;
+    }
+
+    #google-play-badge img {
+      max-width: 250px;
+      margin-left: -12px;
+    }
+
+    #about-us-container {
+
+    }
+
+    #about-us {
+      padding: 30px 0px;
+      margin-bottom: 50px;
+    }
+
+    #about-us-img {
+      max-width: 161px;
+    }
+
+    .Share_button {
+      line-height: 100%;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      vertical-align: middle;
+      font-size: 20px;
+      display: inline-block;
+      text-decoration: none;
+      margin: 10px 10px 0px 10px;
+      position: relative;
+      padding: 7px 40px 7px 20px;
+    }
+    .Share_button:hover {
+      text-decoration: none;
+      color: white;
+    }
+
+    .Share__title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #319631;
+    }
+
+    .Share__text {
+      font-size: 13px;
+      padding-top: 5px;
+    }
+    .Share_button--facebook { background: #3b5998; }
+    .Share_button--facebook:hover { background: #2f4779; }
+    .Share_button--whatsapp { background: #25D366; }
+    .Share_button--whatsapp:hover { background: #128C7E; }
+    .Share_button svg {
+      right: 10px;
+      position: absolute;
+    }
+
+    .navbar-brand img {
+      width: 64px;
+      width: 64px;
+    }
+
+    @media (max-width: 767px) {
+      .navbar-brand img { display: none; }
+      #welcome-logo { font-size: 27px; }
+
+      #moto {
+        text-align: center;
+        font-size: 25px;
+      }
+
+      #welcome-motto {
+        font-size: 27px;
+      }
+
+      #welcome-motto-text { 
+        text-align: center;
+        padding-top: 50px;
+        padding-bottom: 40px;
+      }
+
+      .count-box {
+        margin: 50px 0px;
+        font-size: 25px;
+      }
+
+      #google-play-badge img {
+        max-width: 200px;
+      }
+
+      #google-play-badge + div {
+        padding-top: 0 !important;
+      }
+
+      #about-us-container {
+        margin-top: 30px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
+  
+  <section id="welcome">
+    <div id="welcome-background">
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="/logo-white-circle.svg" alt="logo">
+              <span id="welcome-logo">Víš co kupuj<span style="color: red;">E</span>š?</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#about-us-container">O nás</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/app" target="_blank" id="web-app-button">
+                    Najdi&nbsp;výrobek
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+      <div id="welcome-motto" class="container">
+        <div class="row">
+          <div id="welcome-motto-text" class="col-md-7 col-sm-12" data-aos="zoom-out">
+            <span style="font-size: 150%">Stáhni appku</span>
+            <br>
+            a nekupuj zbytečnou ch<span style="color: red">E</span>mii!
+            <br><br>
+            <a id="google-play-badge" href="https://play.google.com/store/apps/details?id=cz.viscokupujes.mnamka" target="_blank" style="text-decoration: none !important;">
+              <img src="/assets/google-play-badge.png" alt="google play badge">
+            </a>
+            <div style="font-size: 25px; font-weight: normal; padding-top: 20px;">Jednoduše a zdarma</div>
+          </div>
+          <div class="col-md-5 col-sm-12" style="text-align: center;"><img style="width: 100%; max-width: 357px;" src="/assets/mockup00.png"></div>
+        </div>
+      </div>
+  </section>
+
+  <div class="container">
+    <div class="row d-flex justify-content-around">
+      <div class="count-box col-md-3 col-sm-10" data-aos="flip-left" data-aos-delay="200">Už máme přes<div class="count">35.600</div>výrobků</div>
+      <div class="count-box col-md-5 col-sm-10" data-aos="flip-left" data-aos-delay="500" style="font-size: 20px;">
+        <div style="padding-bottom: 20px;">Uděláte nám velkou radost, když naši apku budete používat a doporučíte ji svým blízkým. Ať také nekupují zbytečnou chemii.</div>
+        <div class="fb-like" data-href="https://www.facebook.com/viscokupujes/" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
+      </div>
+      <div class="count-box col-md-3 col-sm-10" data-aos="flip-left" data-aos-delay="800">Appku si stáhlo už<div class="count">44.410</div>lidí</div>
+    </div>
+  </div>
+
+  <div id="moto">
+    <div class="container" style="padding: 50px 30px">
+      Zdravě chceme jíst všichni, ale ne každý má čas na hledání všech éček. Ne všechna éčka jsou škodlivá, ale kdo se v tom má vyznat, když jsou jich stovky a spoustu z nich také najdeme jen v textu pod nejasnými názvy.
+    </div>
+  </div>
+
+  <div class="container d-none d-md-block" style="padding-top: 30px; padding-bottom: 70px;">
+    <div class="row mc-slide d-flex justify-content-around">
+      <a class="col-md-2 col-sm-6" href="/assets/mc6.png" data-lightbox="app-screenshots">
+        <img src="/assets/mc6-thumb.png">
+      </a>
+      <a class="col-md-2 col-sm-6" href="/assets/mc2.png" data-lightbox="app-screenshots">
+        <img src="/assets/mc2-thumb.png">
+      </a>
+      <a class="col-md-2 col-sm-6" href="/assets/mc3.png" data-lightbox="app-screenshots">
+        <img src="/assets/mc3-thumb.png">
+      </a>
+      <a class="col-md-2 col-sm-6" href="/assets/mc5.png" data-lightbox="app-screenshots">
+        <img src="/assets/mc5-thumb.png">
+      </a>
+    </div>
+  </div>
+  <div id="about-us-container">
+    <div class="container">
+        <p>Jsme pár a je nám něco přes třicet. Začalo to tak, že jsme chtěli kupovat potraviny bez chemie, a proto jsme luštili malá písmenka na obalech a vypisovali si seznamy škodlivých éček. To bylo časově náročné a hlavně hrozně nudné. Takže jsme se rozhodli vytvořit mobilní aplikaci, která by tento proces usnadňovala.</p>
+        <p>Zdravě chceme jíst asi všichni, ale ne každý má čas na hledání všech éček ve složení výrobku. Ne všechny potraviny jsou plné éček. A také ne všechna éčka jsou škodlivá. Ale kdo se v tom má vyznat, když jsou jich stovky. Navíc výrobci nemají povinnost všechny látky označovat písmenem E, takže spoustu z nich najdeme pod různými názvy a netušíme, co znamenají.</p>
+        <div style="text-align: center;">
+          <a href="https://play.google.com/store/apps/details?id=cz.viscokupujes.mnamka" target="_blank">
+            <img style="max-width: 450px; border-radius: 10px; width: 100%;" src="/assets/mockup.jpg">
+          </a>
+          <div class="Share">
+            <div class="Share__title">Sdílej appku</div>
+            <div class="Share__text">Pokud chceš, aby i ostatní nekupovali chemii.</div>
+          </div>
+          <a class="Share_button Share_button--facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fviscokupujes.cz">
+            Facebook <svg width="20" height="20"><use xlink:href="/assets/sprite.svg#facebook"></use></svg>
+          </a>
+          <!-- <a class="Share_button Share_button--whatsapp" target="_blank" href="https://wa.me/?text=Nekupuj%20zbyte%C4%8Dnou%20chemii!%20St%C3%A1hni%20si%20appku%20V%C3%AD%C5%A1%20co%20kupuje%C5%A1%3F%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcz.viscokupujes.mnamka">
+            WhatsApp <svg width="20" height="20"><use xlink:href="/assets/sprite.svg#whatsapp"></use></svg>
+          </a>         -->
+        </div>
+        <br>
+        <p>Víš co kupuješ? jsme vyvinuli ve svém volném čase a nemáme žádné sponzory. Zdraví máme jen jedno a proto aplikaci Víš co kupuješ? nabízíme všem zadarmo. Chceme všem usnadnit výběr potravin a zlepšit tak náš životní styl v Česku. Proto je našim cílem také podporovat firmy vyrábějící zdravé potraviny bez chemie.</p>
+        <div style="text-align: center;">
+          <img src="/assets/us.png">
+          <p>PS: Kromě appky máme ještě cestovní blog<br><a href="https://travelenjoylive.com" target="_blank">travelenjoylive.com</a></p>
+        </div>
+    </div>
+  </div>
+
+  <script src="/assets/jquery-3.4.1.min.js"></script>
+  <script src="/assets/lightbox/js/lightbox.min.js"></script>
+  <script src="/assets/bootstrap.min.js"></script>
+  <script src="/assets/aos.js"></script>
   <script>
-    function onPageLoad() {
+    $(document).ready(function() {
       AOS.init({
         duration: 2000,
         easing: 'ease-out-back',
       })
-    }
-  </script>
-</head>
 
-<body onload="onPageLoad()">
-  <div data-aos="fade-right">ahoj c</div data-aos="fade-right">
-  <script src="/assets/aos.js"></script>
+      var NAVBAR_HIDE_THRESHOLD = 40;
+      if (window.scrollY > NAVBAR_HIDE_THRESHOLD) {
+        $('.navbar').fadeOut();
+      }
+      
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > NAVBAR_HIDE_THRESHOLD) {
+            $('.navbar').fadeOut();
+        } else {
+            $('.navbar').fadeIn();
+        }
+      }, false);
+    })
+  </script>
 </body>
 </html>
 
