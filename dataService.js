@@ -1,4 +1,4 @@
-const products = require("../sc/data.json")
+const products = require("../data/data.json")
 const removeDiacritics = require("diacritics").remove
 const { queryStringSearch } = require("./strUtils")
 const SEARCH_BY_NAME_LIMIT = 35
