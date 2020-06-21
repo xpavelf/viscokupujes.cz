@@ -1,7 +1,8 @@
-const products = require("../data/data.json")
+const products = require("../sc/data.json")
 const removeDiacritics = require("diacritics").remove
 const { queryStringSearch } = require("./strUtils")
 const SEARCH_BY_NAME_LIMIT = 35
+const PROPMOTE_PRODUCTS_LIMIT = 50
 
 const predicateWithHits = (query) => (prod) => {
   const hits = queryStringSearch(query, removeDiacritics(prod.name))
@@ -48,8 +49,15 @@ module.exports = {
   },
 
   getPromotedProducts(product) {
-    const promProducts = products
-      .filter(pr => pr.prom === true && pr.category === product.category && pr.id !== product.id)
+    let promProducts = []
+    for (let i = 0; i < products.length && promProducts.length < PROPMOTE_PRODUCTS_LIMIT; i++) {
+      const pr = products[i]
+      const filter = pr => pr.prom === true && pr.category === product.category && pr.id !== product.id
+      if (filter) {
+        promProducts.push(pr)
+      }
+    }
+
     return promProducts
   },
 }
