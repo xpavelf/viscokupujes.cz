@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cz.viscokupujes.mnamka" android-versionCode="20000200" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="cz.viscokupujes.mnamka" android-versionCode="200002000" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Víš Co Kupuješ?</name>
     <description>Chceš jíst zdravě, ale nevyznáš se v éčkách?</description>
     <author email="viscokupujes@gmail.com" href="https://viscokupujes.cz">goBANANA</author>
@@ -18,5 +18,6 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <platform name="android">
         <preference name="SplashScreenDelay" value="0" />
+        <preference name="AndroidXEnabled" value="true" />
     </platform>
 </widget>
